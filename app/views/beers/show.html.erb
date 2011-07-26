@@ -7,13 +7,37 @@
 
 <p>
   <b>Brewery:</b>
-  <%= @beer.brewery.name %>
+  <%= link_to @beer.brewery.name, @beer.brewery %>
 </p>
 
 <p>
   <b>Description:</b>
   <%= @beer.description %>
 </p>
+
+<div id="itemlist">
+<table>
+  <tr>
+    <th width=150>Bar</th>
+	<th width=150>Address</th>
+    <th width=100>Price</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @beer_items.each do |item| %>
+  <tr>
+    <td><%= link_to item.bar.name, item.bar %></td>
+	<td><%= item.bar.address %></td>
+    <td><%= number_to_currency(item.price) %></td>
+    <td><%= link_to 'Show', item %></td>
+    <td><%= link_to 'Edit', edit_beer_item_path(item) %></td>
+    <td><%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+</div>
 
 
 <%= link_to 'Edit', edit_beer_path(@beer) %> |

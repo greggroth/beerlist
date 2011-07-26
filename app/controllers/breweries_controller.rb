@@ -14,6 +14,8 @@ class BreweriesController < ApplicationController
   # GET /breweries/1.xml
   def show
     @brewery = Brewery.find(params[:id])
+	@beers = @brewery.beers
+	@beer_items = BeerItem.where("brewery_id = ?", params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -80,4 +82,9 @@ class BreweriesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def beer_items(beerid)
+	  BeerItem.where("beer_id = ?", beerid)
+  end
+
 end

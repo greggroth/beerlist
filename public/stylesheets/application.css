@@ -55,6 +55,15 @@ a:hover {
   font-size: 10px;
 }
 
+#itemlist {
+  border-top: 5px solid #556B2F;
+  margin-top: 10px;
+  clear:both;
+  padding: 10px 0;
+  text-align: left;
+  font-size: 11px;
+}
+
 #footer {
   border-top: 5px solid #C1C1C1;
   margin-top: 10px;

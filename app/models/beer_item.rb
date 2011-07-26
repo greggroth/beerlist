@@ -6,6 +6,7 @@ class BeerItem < ActiveRecord::Base
 	belongs_to :bar
 	belongs_to :beer
 	belongs_to :user
+	belongs_to :brewery
 
 	after_create :notify_item_create_sucess
 
@@ -21,5 +22,9 @@ class BeerItem < ActiveRecord::Base
 	def notify_item_create_sucess
 	  puts "New beer listing added successfully"
     end
+
+	def breweryid
+	  beer.brewery.id
+	end
 
 end

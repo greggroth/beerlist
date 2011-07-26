@@ -12,10 +12,9 @@
 
 <% @beer_items.each do |beer_item| %>
   <tr>
-    <td width=150><%= beer_item.beer.name %></td>
-    <td width=150><%= beer_item.bar.name %></td>
+    <td width=150><%= link_to beer_item.beer.name, beer_item.beer %></td>
+    <td width=150><%= link_to beer_item.bar.name, beer_item.bar %></td>
     <td width=100><%= number_to_currency(beer_item.price) %></td>
-    <td><%= link_to 'Show', beer_item %></td>
 	<% if beer_item.owned_by? current_user %>
 	  <span class='actions'>    
 		<td><%= link_to 'Edit', edit_beer_item_path(beer_item) %></td>
