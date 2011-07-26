@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+bells1:
+  name: pbr
+  description: 'Only the best'
+
+bells2:
+  name: oberon
+  description: 'Still damn good'

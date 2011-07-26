@@ -1,0 +1,82 @@
+class BeerItemsController < ApplicationController
+
+before_filter :authenticate, :except => [:index, :show]
+
+# GET /beer_items/
+
+# GET /beer_items.xml
+def index
+   @beer_items = BeerItem.find(:all)
+
+   respond_to do |format|
+	format.html
+	format.xml { render :xml => @beer_items }
+   end
+end
+
+# GET /beer_items/1
+# GET /beer_items/1.xml
+def show
+   @beer_item = BeerItem.find(params[:id])
+
+   respond_to do |format|
+	format.html
+	format.xml { render :xml => @beer_item }
+   end
+end
+
+# GET /beer_items/new
+# GET /beer_items/new.xml
+def new
+   @beer_item = BeerItem.new
+end
+
+# POST /beer_items
+# POST /beer_items.xml
+def create
+   @beer_item = current_user.beer_items.new(params[:beer_item])
+   respond_to do |format|
+     if @beer_item.save
+	format.html { redirect_to(beer_items_path, :notice => 'New listing added') }
+	format.xml { render :xml => @beer_item, :status => :created, :location => @beer_item }
+     else
+	format.html { render :action => "new" }
+	format.xml { render :xml => @beer_item.errors, :status => :unprocessable_entity }
+     end
+   end
+end
+
+# GET /beer_items/1/edit
+def edit
+   @beer_item = current_user.beer_items.find(params[:id])
+end
+
+# PUT /beer_items/1
+# PUT /beer_itmes/1.xml
+def update
+   @beer_item = current_user.beer_items.find(params[:id])
+   
+   respond_to do |format|
+	if @beer_item.update_attributes(params[:beer_item])
+	  format.html { redirect_to(@beer_item, :notice => 'Entry was sucesfully updated') }
+	  format.xml { head :ok }
+	else
+	  format.html { render :action => "edit" }
+	  format.xml { render :xml => @article.errors, :status => :unprocessable_entry }
+	end
+   end
+end
+
+def destroy
+    @beer_item = current_user.beer_items.find(params[:id])
+
+    @beer_item.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(beer_items_url) }
+      format.xml { head :ok }
+    end
+end
+
+
+end

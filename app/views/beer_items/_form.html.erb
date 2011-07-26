@@ -1,0 +1,31 @@
+<%= form_for(@beer_item) do |f| %>
+  <% if @beer_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@beer_item.errors.count, "error") %> prohibited this beer_item from being saved:</h2>
+
+      <ul>
+      <% @beer_item.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+     <%= f.label "Beer Name" %><br />
+     <%= collection_select :beer_item, :beer_id, Beer.all, :id, :name %>
+  </div>
+ 
+  <div class="field">
+     <%= f.label :name %><br />
+     <%= collection_select :beer_item, :bar_id, Bar.all, :id, :name %><br />
+  </div>
+
+  <div class="field">
+    <%= f.label :price %><br />
+    <%= f.text_field :price %>
+  </div>
+  <div class="actions">
+    <%= submit_or_cancel(f) %>
+  </div>
+<% end %>

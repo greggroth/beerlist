@@ -1,0 +1,4 @@
+class AdministratorController < ApplicationController
+
+
+end

@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: earl
+  address: MyString
+  zip: 1
+  state: MyString
+  description: MyText
+
+two:
+  name: midway
+  address: MyString
+  zip: 1
+  state: MyString
+  description: MyText

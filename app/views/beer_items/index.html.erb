@@ -1,0 +1,30 @@
+<h1>Listing All Entries</h1>
+
+<table>
+  <tr>
+    <th align="left">Beer</th>
+    <th align="left">Bar</th>
+    <th align="left">Price</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @beer_items.each do |beer_item| %>
+  <tr>
+    <td width=150><%= beer_item.beer.name %></td>
+    <td width=150><%= beer_item.bar.name %></td>
+    <td width=100><%= number_to_currency(beer_item.price) %></td>
+    <td><%= link_to 'Show', beer_item %></td>
+	<% if beer_item.owned_by? current_user %>
+	  <span class='actions'>    
+		<td><%= link_to 'Edit', edit_beer_item_path(beer_item) %></td>
+	    <td><%= link_to 'Destroy', beer_item, :confirm => 'Are you sure?', :method => :delete %></td>
+	  </span>
+	<% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+

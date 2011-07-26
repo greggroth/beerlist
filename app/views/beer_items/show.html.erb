@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Beer:</b>
+  <%= @beer_item.beer.name %>
+</p>
+
+<p>
+  <b>Bar:</b>
+  <%= @beer_item.bar.name %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= number_to_currency(@beer_item.price) %>
+</p>
+
+
+<%= link_to 'Edit', edit_beer_item_path(@beer_item) %> |
+<%= link_to 'Back', beer_items_path %>

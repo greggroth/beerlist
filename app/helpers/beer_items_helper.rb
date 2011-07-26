@@ -1,0 +1,2 @@
+module BeerItemsHelper
+end
