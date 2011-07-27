@@ -14,7 +14,7 @@ class BreweriesController < ApplicationController
   # GET /breweries/1.xml
   def show
     @brewery = Brewery.find(params[:id])
-	@beers = @brewery.beers
+	@beers = @brewery.beers.all
 	@beer_items = BeerItem.where("brewery_id = ?", params[:id])
 
     respond_to do |format|
