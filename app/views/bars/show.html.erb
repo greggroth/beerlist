@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @bar.name %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @bar.address %>
+</p>
+
+<p>
+  <b>Zip:</b>
+  <%= @bar.zip %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%= @bar.state %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @bar.description %>
+</p>
+
+<div id="itemlist">
+<table>
+  <tr>
+    <th width=150>Name</th>
+	<th width=150>Brewery</th>
+    <th width=100>Price</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @beer_items.each do |item| %>
+  <tr>
+    <td><%= link_to item.beer.name, item.beer %></td>
+	<td><%= link_to item.beer.brewery.name, item.beer.brewery %></td>
+    <td><%= number_to_currency(item.price) %></td>
+    <td><%= link_to 'Show', item %></td>
+    <td><%= link_to 'Edit', edit_beer_item_path(item) %></td>
+    <td><%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+</div>
+
+<%= link_to 'Edit', edit_bar_path(@bar) %> |
+<%= link_to 'Back', bars_path %>
