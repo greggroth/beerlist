@@ -94,7 +94,8 @@ a:hover {
 }
 
 #main h1 {
-  font-size: 16px;
+  font-size: 24px;
+  color: black;
   padding: 10px 0;
   border-bottom: 1px solid #bbb;
   margin-bottom: 10px;

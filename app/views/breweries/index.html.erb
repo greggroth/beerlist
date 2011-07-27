@@ -1,11 +1,11 @@
 <h1>Breweries</h1>
 
 <table>
-  <tr>
-    <th>Name</th>
-	<th>Address</th>
-    <th>Zip</th>
-	<th>State</th>
+  <tr align="left">
+    <th width=220>Name</th>
+	<th width=200>Address</th>
+    <th width=75>Zip</th>
+	<th width=75>State</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,11 +13,10 @@
 
 <% @breweries.each do |brewery| %>
   <tr>
-    <td><%= brewery.name %></td>
+    <td><%= link_to brewery.name, brewery %></td>
 	<td><%= brewery.address %></td>
     <td><%= brewery.zip %></td>
     <td><%= brewery.state %></td>
-    <td><%= link_to 'Show', brewery %></td>
     <td><%= link_to 'Edit', edit_brewery_path(brewery) %></td>
     <td><%= link_to 'Destroy', brewery, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
@@ -25,5 +24,6 @@
 </table>
 
 <br />
+<div align="left"><%= link_to 'New Brewery', new_brewery_path %></div>
 
-<%= link_to 'New Brewery', new_brewery_path %>
+

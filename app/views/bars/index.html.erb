@@ -1,12 +1,11 @@
 <h1>Bars</h1>
 
 <table>
-  <tr>
-    <th>Name</th>
-	<th>Address</th>
-    <th>Zip</th>
-    <th>State</th>
-    <th>Description</th>
+  <tr align="left">
+    <th width=150>Name</th>
+	<th width=200>Address</th>
+    <th width=100>Zip</th>
+    <th width=75>State</th>
     <th></th>
     <th></th>
   </tr>
@@ -17,7 +16,6 @@
 	<td><%= bar.address %></td>
     <td><%= bar.zip %></td>
     <td><%= bar.state %></td>
-    <td><%= bar.description %></td>
     <td><%= link_to 'Edit', edit_bar_path(bar) %></td>
     <td><%= link_to 'Destroy', bar, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
