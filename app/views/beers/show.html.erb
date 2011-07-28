@@ -48,11 +48,11 @@
    <% if not item.beer.abv.nil? %>
 	<% case @beer.volunit %>
 	<% when 'oz' %>
-		<td><%= sprintf("%.1f",(@beer.abv*@beer.volume)/item.price) %> </td>
+		<td><%= sprintf("%.3f",(@beer.abv*@beer.volume)/(100*item.price)) %> </td>
 	<% when 'ml' %>
-		<td><%= sprintf("%.1f",(@beer.abv*@beer.volume*0.03381)/item.price) %> </td>
+		<td><%= sprintf("%.3f",(@beer.abv*@beer.volume*0.03381)/(100*item.price)) %> </td>
 	<% when 'cl' %>
-		<td><%= sprintf("%.1f",(@beer.abv*@beer.volume*0.3381)/item.price) %> </td>
+		<td><%= sprintf("%.3f",(@beer.abv*@beer.volume*0.3381)/(100*item.price)) %> </td>
 	<% end %>
    <% else %>
 	<td></td>
