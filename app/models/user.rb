@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
 	has_one :profile
 	has_many :beer_items 
     #, :order => 'beer.name ASC'
+	has_many :bar_permissions
+	has_many :bars, :through => :bar_permissions
 
 	before_save :encrypt_new_password
 

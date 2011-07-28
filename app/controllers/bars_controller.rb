@@ -38,6 +38,10 @@ class BarsController < ApplicationController
   # GET /bars/1/edit
   def edit
     @bar = Bar.find(params[:id])
+
+	if not @bar.has_permission?(current_user)
+		redirect_to(@bar)
+	end
   end
 
   # POST /bars
@@ -62,11 +66,11 @@ class BarsController < ApplicationController
     @bar = Bar.find(params[:id])
 
     respond_to do |format|
-      if @bar.update_attributes(params[:bar])
+      if @bar.update_attributes(params[:bar]) && @bar.has_permission?(current_user)
         format.html { redirect_to(@bar, :notice => 'Bar was successfully updated.') }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html { render :action => "edit", :notice => 'Unable to edit' }
         format.xml  { render :xml => @bar.errors, :status => :unprocessable_entity }
       end
     end

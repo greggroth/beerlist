@@ -10,7 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110726155847) do
+ActiveRecord::Schema.define(:version => 20110728150752) do
+
+  create_table "bar_permissions", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "bar_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "bars", :force => true do |t|
     t.string   "name"
@@ -39,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20110726155847) do
     t.integer  "brewery_id"
     t.decimal  "abv"
     t.decimal  "volume"
+    t.string   "volunit",     :default => "oz"
   end
 
   create_table "breweries", :force => true do |t|

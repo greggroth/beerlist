@@ -15,12 +15,26 @@
   <%= @beer.description %>
 </p>
 
+<p>
+  <b>ABV:</b>
+  <%= @beer.abv %> 
+</p>
+
+<p>
+  <b>Volume:</b>
+  <%= @beer.volume %> 
+	<% if not @beer.volume.nil? %>
+		<%= @beer.volunit %>
+	<% end %>
+</p>
+
 <div id="itemlist">
 <table>
   <tr>
     <th width=150>Bar</th>
 	<th width=150>Address</th>
     <th width=100>Price</th>
+	<th width=100>ABD</th>
     <th></th>
     <th></th>
     <th></th>
@@ -31,6 +45,18 @@
     <td><%= link_to item.bar.name, item.bar %></td>
 	<td><%= item.bar.address %></td>
     <td><%= number_to_currency(item.price) %></td>
+   <% if not item.beer.abv.nil? %>
+	<% case @beer.volunit %>
+	<% when 'oz' %>
+		<td><%= sprintf("%.1f",(@beer.abv*@beer.volume)/item.price) %> </td>
+	<% when 'ml' %>
+		<td><%= sprintf("%.1f",(@beer.abv*@beer.volume*0.03381)/item.price) %> </td>
+	<% when 'cl' %>
+		<td><%= sprintf("%.1f",(@beer.abv*@beer.volume*0.3381)/item.price) %> </td>
+	<% end %>
+   <% else %>
+	<td></td>
+   <% end %>
     <td><%= link_to 'Show', item %></td>
     <td><%= link_to 'Edit', edit_beer_item_path(item) %></td>
     <td><%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete %></td>

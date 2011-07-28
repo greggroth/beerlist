@@ -19,7 +19,7 @@ You've stumbled on the best thing to happen to the Atlanta beer scene since Bric
     <td width=150><%= link_to beer_item.beer.name, beer_item.beer %></td>
     <td width=150><%= link_to beer_item.bar.name, beer_item.bar %></td>
     <td width=100><%= number_to_currency(beer_item.price) %></td>
-	<% if beer_item.owned_by? current_user %>
+	<% if beer_item.bar.has_permission?(current_user) %>
 	  <span class='actions'>    
 		<td><%= link_to 'Edit', edit_beer_item_path(beer_item) %></td>
 	    <td><%= link_to 'Destroy', beer_item, :confirm => 'Are you sure?', :method => :delete %></td>

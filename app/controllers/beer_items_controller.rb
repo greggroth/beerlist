@@ -6,7 +6,7 @@ before_filter :authenticate, :except => [:index, :show]
 
 # GET /beer_items.xml
 def index
-   @beer_items = BeerItem.find(:all)
+   @beer_items = BeerItem.find(:all, :include => [:beer, :bar], :order => ('beers.name ASC'))
 
    respond_to do |format|
 	format.html
@@ -28,7 +28,11 @@ end
 # GET /beer_items/new
 # GET /beer_items/new.xml
 def new
-   @beer_item = BeerItem.new
+	if BarPermission.exists?(user_id = current_user)
+   		@beer_item = BeerItem.new
+	else
+		redirect_to beer_items_path
+	end
 end
 
 # POST /beer_items
@@ -48,16 +52,22 @@ end
 
 # GET /beer_items/1/edit
 def edit
-   @beer_item = current_user.beer_items.find(params[:id])
+   # @beer_item = current_user.beer_items.find(params[:id])
+	@beer_item = BeerItem.find(params[:id])
+
+	if not @beer_item.bar.has_permission?(current_user)
+		redirect_to(beer_items_path)
+	end
 end
 
 # PUT /beer_items/1
 # PUT /beer_itmes/1.xml
 def update
-   @beer_item = current_user.beer_items.find(params[:id])
+   # @beer_item = current_user.beer_items.find(params[:id])
+	@beer_item = BeerItem.find(params[:id])
    
    respond_to do |format|
-	if @beer_item.update_attributes(params[:beer_item])
+	if @beer_item.update_attributes(params[:beer_item]) && @beer_item.bar.has_permission?(current_user)
 	  format.html { redirect_to(@beer_item, :notice => 'Entry was sucesfully updated') }
 	  format.xml { head :ok }
 	else
@@ -68,9 +78,13 @@ def update
 end
 
 def destroy
-    @beer_item = current_user.beer_items.find(params[:id])
-
-    @beer_item.destroy
+   # @beer_item = current_user.beer_items.find(params[:id])
+	@beer_item = BeerItem.find(params[:id])
+	if @beer_item.bar.has_permission?(current_user)
+    		@beer_item.destroy
+	else
+		redirect_to beer_items_path
+	end
 
     respond_to do |format|
       format.html { redirect_to(beer_items_url) }

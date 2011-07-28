@@ -231,3 +231,7 @@ a:hover {
   font-size: 12px;
   list-style: square;
 }
+
+#select {
+  margin-left: 10px;
+}

@@ -5,7 +5,6 @@
     <th width=150>Name</th>
 	<th width=200>Address</th>
     <th width=100>Zip</th>
-    <th width=75>State</th>
     <th></th>
     <th></th>
   </tr>
@@ -15,9 +14,12 @@
     <td><%= link_to bar.name, bar %></td>
 	<td><%= bar.address %></td>
     <td><%= bar.zip %></td>
-    <td><%= bar.state %></td>
-    <td><%= link_to 'Edit', edit_bar_path(bar) %></td>
-    <td><%= link_to 'Destroy', bar, :confirm => 'Are you sure?', :method => :delete %></td>
+	<% if bar.has_permission? current_user %>
+		<span class="actions">
+		    <td><%= link_to 'Edit', edit_bar_path(bar) %></td>
+		    <td><%= link_to 'Destroy', bar, :confirm => 'Are you sure?', :method => :delete %></td>
+		</span>
+	<% end %>
   </tr>
 <% end %>
 </table>

@@ -22,6 +22,16 @@
   </div>
 
   <div class="field">
+	<%= f.label 'ABV' %><br />
+	<%= f.text_field :abv %>
+  </div>
+
+  <div class="field">
+	<%= f.label 'Volume' %><br />
+  </div>
+	<%= f.text_field :volume %> <%= select :beer, :volunit, options_for_select([["oz","oz"],["ml","ml"],["cl","cl"]],@beer.volunit)%>
+
+  <div class="field">
     <%= f.label :description %><br />
     <%= f.text_area :description %>
   </div>
