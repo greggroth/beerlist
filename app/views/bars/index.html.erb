@@ -2,6 +2,7 @@
 
 <table>
   <tr align="left">
+	<th width=10></th>
     <th width=150>Name</th>
 	<th width=200>Address</th>
     <th width=100>Zip</th>
@@ -11,6 +12,11 @@
 
 <% @bars.each do |bar| %>
   <tr>
+	<% if bar.is_followed? current_user %>
+		<td><b>*</b></td>
+	<% else %>
+		<td></td>
+	<% end %>
     <td><%= link_to bar.name, bar %></td>
 	<td><%= bar.address %></td>
     <td><%= bar.zip %></td>

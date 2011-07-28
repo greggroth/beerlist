@@ -13,10 +13,24 @@ class User < ActiveRecord::Base
 	has_one :profile
 	has_many :beer_items 
     #, :order => 'beer.name ASC'
-	has_many :bar_permissions
-	has_many :bars, :through => :bar_permissions
+	# has_many :bar_permissions
+	# has_many :bars, :through => :bar_permissions
+	has_many :bar_followings
+	has_many :bars, :through => :bar_followings
 
 	before_save :encrypt_new_password
+
+	# def followed_bars
+	#  @followed_bars ||=BarFollowing.find_by_user_id(self.id)
+	# end
+
+	def is_following?(bar)
+		bars.exists?(bar)
+	end
+
+	def admin_bars
+	   @admin_bars ||=BarPermission.find_by_user_id(self.id)
+	end
 
 	def self.authenticate(email, password)
 	  user = find_by_email(email)

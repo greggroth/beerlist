@@ -1,0 +1,2 @@
+class BarFollowingsController < ApplicationController
+end

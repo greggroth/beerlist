@@ -10,7 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110728150752) do
+ActiveRecord::Schema.define(:version => 20110728183826) do
+
+  create_table "bar_followings", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "bar_id"
+  end
 
   create_table "bar_permissions", :force => true do |t|
     t.integer  "user_id"
@@ -27,6 +34,11 @@ ActiveRecord::Schema.define(:version => 20110728150752) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "bars_users", :id => false, :force => true do |t|
+    t.integer "bar_id"
+    t.integer "user_id"
   end
 
   create_table "beer_items", :force => true do |t|
