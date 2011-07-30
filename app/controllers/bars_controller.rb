@@ -86,5 +86,17 @@ class BarsController < ApplicationController
       format.html { redirect_to(bars_url) }
       format.xml  { head :ok }
     end
+  end	
+
+  def follow
+    @bar_following = current_user.BarFollowing.new(:bar_id=>@bar.id)
+
+	redirect_to bars_path
+
+    # respond_to do |format|
+    #  format.html # new.html.erb
+    #  format.xml  { render :xml => @bar }
+    # end
   end
+
 end

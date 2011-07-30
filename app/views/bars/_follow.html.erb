@@ -1,0 +1,5 @@
+<%= form_for current_user.bar_followings.build(:bar_id => bar.id), :remote => true do |f| %>
+  <div><%= f.hidden_field :bar_id %></div>
+  <div class="actions"><%= f.submit "Follow" %></div>
+<% end %>
+

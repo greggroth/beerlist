@@ -28,6 +28,14 @@ class User < ActiveRecord::Base
 		bars.exists?(bar)
 	end
 
+	def follow!(bar)
+		self.bars << bar
+	end
+
+	def unfollow!(bar)
+		self.bar_followings.find_by_bar_id(bar).destroy
+	end
+
 	def admin_bars
 	   @admin_bars ||=BarPermission.find_by_user_id(self.id)
 	end

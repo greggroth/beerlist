@@ -28,4 +28,10 @@ class ApplicationController < ActionController::Base
     def access_denied
       redirect_to login_path, :notice => "Please log in to continue" and return false
     end
+
+	def follow(b_id, u_id)
+		BarFollowing.new(:bar_id=>b_id, :user_id=>u_id)
+	end
+	
+	helper_method :follow
 end

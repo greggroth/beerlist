@@ -1,0 +1,9 @@
+<div id="follow_form">
+	<% if logged_in? %>
+		<% if bar.is_followed? current_user %>
+			<%= render 'unfollow', :bar => bar %>
+		<% else %>
+			<%= render 'follow', :bar => bar %>
+		<% end %>
+	<% end %>
+</div>

@@ -2,11 +2,17 @@ Beerlist::Application.routes.draw do
   root :to => "beer_items#index"
 
   resources :beer_items
-  resources :bars
+  resources :bars do
+	member do
+		get :bar_followings, :users
+		post 'follow'
+	end
+  end
   resources :beers 
   resources :breweries
   resources :users
-  resource :session
+  resources :bar_followings, :only => [:create, :destroy]
+  resource :session, :only => [:new, :create, :destroy]
    match '/login' => "sessions#new", :as => "login"
    match '/logout' => "sessions#destroy", :as => "logout"
 
