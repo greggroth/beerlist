@@ -33,7 +33,8 @@
     <td><%= f.zip %></td>
 	<% if f.has_permission?(current_user) %>
 		<span class="actions">
-		    <td><%= link_to 'Edit', edit_bars_path(f) %></td>
+			<%= f.inspect %>
+		    <td><%= link_to 'Edit', f, :action => :edit %>
 		    <td><%= link_to 'Destroy', f, :confirm => 'Are you sure?', :method => :delete %></td>
 		</span>
 	<% else %>
