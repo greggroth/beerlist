@@ -2,7 +2,7 @@ class BreweriesController < ApplicationController
   # GET /breweries
   # GET /breweries.xml
   def index
-    @breweries = Brewery.all
+    @breweries = Brewery.find(:all,:order=>"name ASC")
 
     respond_to do |format|
       format.html # index.html.erb

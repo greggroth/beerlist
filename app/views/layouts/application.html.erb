@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Beerlist</title>
+  <title>BeerList</title>
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
@@ -9,7 +9,7 @@
 <body>
 
 <div id="header">
-    <h1><%= link_to "Beer List", root_path %></h1>
+    <h1><%= link_to "The Atlanta Beer List", root_path %><div class="beta">beta</div> </h1>
     <div id="user_bar">
       <% if logged_in? %>
 		<%= link_to "Beers", beers_path %> | 

@@ -89,8 +89,14 @@ a:hover {
   border-bottom: 4px solid #ccc;
 }
 
+
 #header p {
   float: right;
+}
+
+.beta {
+  margin-left: 310px;
+  font-size: 16px;
 }
 
 #main h1 {
@@ -99,6 +105,13 @@ a:hover {
   padding: 10px 0;
   border-bottom: 1px solid #bbb;
   margin-bottom: 10px;
+}
+
+.brewerylink {
+  font-size: 15px;
+  text-align: left;
+  margin-top: 0px;
+  margin-bottom: 12px;
 }
 
 #main table{
@@ -140,6 +153,11 @@ a:hover {
 
 #main form .field, #main form .actions {
   padding-top: 10px;
+  clear: both;
+}
+
+#main form .following {
+  padding-top: 5px;
   clear: both;
 }
 

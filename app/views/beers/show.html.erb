@@ -1,14 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @beer.name %>
-</p>
-
-<p>
-  <b>Brewery:</b>
-  <%= link_to @beer.brewery.name, @beer.brewery %>
-</p>
+<h1> <%= @beer.name %> </h1>
+<div class="brewerylink">
+  	<%= link_to @beer.brewery.name, @beer.brewery %>
+</div>
 
 <p>
   <b>Description:</b>
@@ -17,7 +12,7 @@
 
 <p>
   <b>ABV:</b>
-  <%= @beer.abv %> 
+  <%= number_to_percentage @beer.abv, :precision => 1 %> 
 </p>
 
 <p>
