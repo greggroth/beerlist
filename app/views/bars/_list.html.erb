@@ -1,3 +1,4 @@
+<% if logged_in? %>
 <% if not current_user.bars.empty? %> 
 <h2>Following</h2><br />
 <table>
@@ -45,6 +46,7 @@
 <% end %>
 </table> 
 <br />
+<% end %>
 <% end %>
 
 <h2>All Bars</h2> <br />
