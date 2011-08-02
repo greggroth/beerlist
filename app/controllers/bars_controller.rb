@@ -1,4 +1,6 @@
 class BarsController < ApplicationController
+  before_filter :authenticate, :except => [:index, :show]
+
   # GET /bars
   # GET /bars.xml
   def index

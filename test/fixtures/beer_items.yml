@@ -1,13 +1,14 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  beer: pbr
-  bar: earl
-  price: 9.00
+pbr_at_the_earl:
   user: eugene
+  beer: pbr
+  bar: the_earl
+  price: 9.00
 
-two:
-  beer: oberon
+
+oberon_at_midway:
+  beer: bells_oberon
   bar: midway
   price: 4.00
-  user: carl
+  user: eugene

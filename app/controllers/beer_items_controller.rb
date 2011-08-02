@@ -1,12 +1,11 @@
 class BeerItemsController < ApplicationController
-
 before_filter :authenticate, :except => [:index, :show]
 
 # GET /beer_items/
 
 # GET /beer_items.xml
 def index
-   @beer_items = BeerItem.find(:all, :include => [:beer, :bar], :order => ('beers.name ASC'))
+   @beer_items = BeerItem.find(:all, :include => [:beer, :bar], :order => ('updated_at DESC'), :limit => 15)
 
    respond_to do |format|
 	format.html
@@ -87,7 +86,7 @@ def destroy
 	end
 
     respond_to do |format|
-      format.html { redirect_to(beer_items_url) }
+      format.html { redirect_to(beer_items_path) }
       format.xml { head :ok }
     end
 end

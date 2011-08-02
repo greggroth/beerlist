@@ -1,13 +1,7 @@
 <%= form_for(@beer_item) do |f| %>
   <% if @beer_item.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@beer_item.errors.count, "error") %> prohibited this beer_item from being saved:</h2>
-
-      <ul>
-      <% @beer_item.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+      <h2><%= error_messages_for @beer_item, :header_message => "Whoops!", :message => "Please address the following:"%></h2>
     </div>
   <% end %>
 
@@ -18,7 +12,7 @@
  
   <div class="field">
      <%= f.label :name %><br />
-     <%= collection_select :beer_item, :bar_id, Bar.order('name ASC'), :id, :name %><br />
+     <%= collection_select :beer_item, :bar_id, current_user.admin_bars, :id, :name %><br />
   </div>
 
   <div class="field">

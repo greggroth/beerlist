@@ -1,13 +1,7 @@
 <%= form_for(@bar) do |f| %>
   <% if @bar.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@bar.errors.count, "error") %> prohibited this bar from being saved:</h2>
-
-      <ul>
-      <% @bar.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+      <h2><%= error_messages_for @bar, :header_message => "Whoops!", :message => "Please address the following:"%></h2>
     </div>
   <% end %>
 
@@ -22,13 +16,18 @@
   </div>
 
   <div class="field">
-     <%= f.label "Zip" %><br />
-     <%= f.text_field :zip %>
+     <%= f.label "City" %><br />
+     <%= f.text_field :city %>
   </div>
 
   <div class="field">
      <%= f.label "State" %><br />
      <%= f.text_field :state %>
+  </div>
+  
+  <div class="field">
+     <%= f.label "Zip" %><br />
+     <%= f.text_field :zip %>
   </div>
 
   <div class="field">

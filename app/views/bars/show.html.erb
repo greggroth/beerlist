@@ -1,10 +1,13 @@
-<p id="notice"><%= notice %></p>
-
 <h1><%= @bar.name %></h1>
 
+<h3> Pouring <%= pluralize(@bar.beers.count, "beer") %> </h3> <br />
+
 <p>
-  <%= @bar.address %>  <%= @bar.zip %>  <%= @bar.state %>
+  <p><%= @bar.address %></p>
+  <p><%= @bar.city %> <%= @bar.state %></p>
+  <p><%= @bar.zip %></p>
 </p>
+
 
 <p>
   <b>Description:</b>
@@ -15,7 +18,7 @@
 <table>
   <tr>
     <th width=150>Name</th>
-	<th width=150>Brewery</th>
+	<th width=300>Brewery</th>
     <th width=100>Price</th>
     <th></th>
     <th></th>
@@ -27,9 +30,11 @@
     <td><%= link_to item.beer.name, item.beer %></td>
 	<td><%= link_to item.beer.brewery.name, item.beer.brewery %></td>
     <td><%= number_to_currency(item.price) %></td>
+   <% if logged_in? && @bar.has_permission?(current_user) %>
     <td><%= link_to 'Show', item %></td>
     <td><%= link_to 'Edit', edit_beer_item_path(item) %></td>
     <td><%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete %></td>
+   <% end %>
   </tr>
 <% end %>
 </table>

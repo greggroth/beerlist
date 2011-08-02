@@ -1,4 +1,7 @@
 class Bar < ActiveRecord::Base
+	validates_presence_of :name
+	validates_length_of :zip, :is => 5
+	validates_length_of :state, :is => 2, :message => "should be in the abbreviated form (i.e. GA or CO)"
 
 	# has_many :bar_permissions
 	# has_many :users, :through => :bar_permissions
@@ -15,7 +18,8 @@ class Bar < ActiveRecord::Base
 	end
 
 	def admins
-	  @admins ||=BarPermission.find_all_by_bar_id(self.id)
+		ind = BarPermission.find(:all, :conditions => (bar_id=self.id), :select=> "user_id").map(&:user_id)
+	    @admins ||= User.find(ind)
 	end
 
 	def is_followed?(applicant)
@@ -23,8 +27,9 @@ class Bar < ActiveRecord::Base
 	  users.exists?(:id => applicant.id)
 	end
 
-	# def followers
-	#  @followers ||=BarFollowing.find_all_by_bar_id(self.id)
-	# end
+	def followers_email
+	  # @followers ||=BarFollowing.find_all_by_bar_id(self.id)
+	  @followers ||= self.users.find(:all, :select => "email").map(&:email)
+	end
 
 end

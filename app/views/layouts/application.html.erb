@@ -15,9 +15,9 @@
 		<%= link_to "Beers", beers_path %> | 
 		<%= link_to "Bars", bars_path %> | 
 		<%= link_to "Breweries", breweries_path %> |
-		<% if BarPermission.exists?(user_id = current_user) %>        
+	   <% unless current_user.admin_bars.empty? %>        
 			<%= link_to "New Item", new_beer_item_path %> |
-		<% end %>
+	   <% end %>
         <%= link_to "Edit Password", edit_user_path(current_user) %> |
         <%= link_to "Logout", logout_path %>
       <% else %>

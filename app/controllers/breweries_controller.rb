@@ -1,4 +1,6 @@
 class BreweriesController < ApplicationController
+  before_filter :authenticate, :except => [:index, :show]
+
   # GET /breweries
   # GET /breweries.xml
   def index
@@ -16,6 +18,7 @@ class BreweriesController < ApplicationController
     @brewery = Brewery.find(params[:id])
 	@beers = @brewery.beers.all
 	@beer_items = BeerItem.where("brewery_id = ?", params[:id])
+    # @bar_count = @beers.count('bars', :distict => true)
 
     respond_to do |format|
       format.html # show.html.erb

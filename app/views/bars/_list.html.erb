@@ -1,11 +1,11 @@
 <% if logged_in? %>
-<% if not current_user.bars.empty? %> 
+<% unless current_user.bars.empty? %> 
 <h2>Following</h2><br />
 <table>
   <tr align="left">
 	<th width=20></th>
-    <th width=120>Name</th>
-	<th width=200>Address</th>
+    <th width=200>Name</th>
+	<th width=250>Address</th>
     <th width=100>Zip</th>
     <th></th>
     <th></th>
@@ -49,13 +49,17 @@
 <% end %>
 <% end %>
 
-<h2>All Bars</h2> <br />
+<h2>All Bars</h2> 
+<% unless logged_in? %>
+	<%= link_to "log in", login_path %> or <%= link_to "create", new_user_path %> and account to follow your favorite bars<br />
+<% end %>
+<br />
 
 <table>
   <tr align="left">
 	<th width=20></th>
-    <th width=120>Name</th>
-	<th width=200>Address</th>
+    <th width=200>Name</th>
+	<th width=250>Address</th>
     <th width=100>Zip</th>
     <th></th>
     <th></th>

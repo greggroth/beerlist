@@ -1,13 +1,7 @@
 <%= form_for(@beer) do |f| %>
   <% if @beer.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@beer.errors.count, "error") %> prohibited this beer from being saved:</h2>
-
-      <ul>
-      <% @beer.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+      <h2><%= error_messages_for @beer, :header_message => "Whoops!", :message => "Please address the following:"%></h2>
     </div>
   <% end %>
 

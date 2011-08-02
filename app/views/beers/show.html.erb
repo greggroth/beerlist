@@ -1,9 +1,12 @@
-<p id="notice"><%= notice %></p>
-
 <h1> <%= @beer.name %> </h1>
 <div class="brewerylink">
   	<%= link_to @beer.brewery.name, @beer.brewery %>
 </div>
+
+<p>
+  <b>Being served at
+  <%= pluralize(@beer.bars.count, "bar") %> </b>
+</p>
 
 <p>
   <b>Description:</b>

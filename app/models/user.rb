@@ -37,7 +37,8 @@ class User < ActiveRecord::Base
 	end
 
 	def admin_bars
-	   @admin_bars ||=BarPermission.find_by_user_id(self.id)
+	   ind = BarPermission.find(:all, :conditions => ["user_id=?",self.id], :select=> "bar_id").map(&:bar_id)
+	   @admin_bars = Bar.find(ind).sort_by(&:name)
 	end
 
 	def self.authenticate(email, password)

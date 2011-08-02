@@ -2,10 +2,8 @@
 
 <table>
   <tr align="left">
-    <th width=220>Name</th>
-	<th width=200>Address</th>
-    <th width=75>Zip</th>
-	<th width=75>State</th>
+    <th width=250>Name</th>
+	<th width=250>Location</th>
     <th></th>
     <th></th>
     <th></th>
@@ -14,11 +12,15 @@
 <% @breweries.each do |brewery| %>
   <tr>
     <td><%= link_to brewery.name, brewery %></td>
-	<td><%= brewery.address %></td>
-    <td><%= brewery.zip %></td>
-    <td><%= brewery.state %></td>
+   <% if brewery.citystate %>
+    <td><%= brewery.citystate %></td>
+   <% else %>
+    <td></td>
+   <% end %>
+   <% if logged_in? && current_user.id == 1 %>
     <td><%= link_to 'Edit', edit_brewery_path(brewery) %></td>
     <td><%= link_to 'Destroy', brewery, :confirm => 'Are you sure?', :method => :delete %></td>
+   <% end %>
   </tr>
 <% end %>
 </table>

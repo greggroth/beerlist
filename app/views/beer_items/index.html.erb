@@ -4,11 +4,13 @@
 You've stumbled on the best thing to happen to the Atlanta beer scene since Brickstore opened.  This is your gateway to to beers and bars around the Atlanta area.  Use this site to find the best deal on that special beer you've been looking for or just check to see if the bar around the corner has a new one on tap.
 </p>
 
+<div id="itemlist">
+<h3>Latest Additions</h3>
 <table>
   <tr>
-    <th align="left">Beer</th>
-    <th align="left">Bar</th>
-    <th align="left">Price</th>
+    <th align="left" width=200>Beer</th>
+    <th align="left" width=250>Bar</th>
+    <th align="left" width=100>Price</th>
     <th></th>
     <th></th>
     <th></th>
@@ -16,9 +18,9 @@ You've stumbled on the best thing to happen to the Atlanta beer scene since Bric
 
 <% @beer_items.each do |beer_item| %>
   <tr>
-    <td width=150><%= link_to beer_item.beer.name, beer_item.beer %></td>
-    <td width=150><%= link_to beer_item.bar.name, beer_item.bar %></td>
-    <td width=100><%= number_to_currency(beer_item.price) %></td>
+    <td><%= link_to beer_item.beer.name, beer_item.beer %></td>
+    <td><%= link_to beer_item.bar.name, beer_item.bar %></td>
+    <td><%= number_to_currency(beer_item.price) %></td>
 	<% if beer_item.bar.has_permission?(current_user) %>
 	  <span class='actions'>    
 		<td><%= link_to 'Edit', edit_beer_item_path(beer_item) %></td>
@@ -28,6 +30,6 @@ You've stumbled on the best thing to happen to the Atlanta beer scene since Bric
   </tr>
 <% end %>
 </table>
-
+</div>
 <br />
 

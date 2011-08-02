@@ -1,4 +1,6 @@
 class BeersController < ApplicationController
+  before_filter :authenticate, :except => [:index, :show]
+
   # GET /beers
   # GET /beers.xml
   def index
