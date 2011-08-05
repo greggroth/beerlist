@@ -27,7 +27,7 @@ end
 # GET /beer_items/new
 # GET /beer_items/new.xml
 def new
-	if BarPermission.exists?(user_id = current_user)
+	if BarPermission.where("user_id = ?", current_user.id).exists?
    		@beer_item = BeerItem.new
 	else
 		redirect_to beer_items_path

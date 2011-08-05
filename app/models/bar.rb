@@ -1,13 +1,12 @@
 class Bar < ActiveRecord::Base
 	validates_presence_of :name
-	validates_length_of :zip, :is => 5
-	validates_length_of :state, :is => 2, :message => "should be in the abbreviated form (i.e. GA or CO)"
+	validates_length_of :zip, :is => 5, :allow_blank => true
+	validates_length_of :state, :is => 2, :allow_blank => true, :message => "should be in the abbreviated form (i.e. GA or CO)"
 
-	# has_many :bar_permissions
-	# has_many :users, :through => :bar_permissions
-	has_many :beer_items
+	has_many :bar_permissions, :dependent => :destroy
+	has_many :beer_items, :dependent => :destroy
 	has_many :beers, :through => :beer_items
-	has_many :bar_followings
+	has_many :bar_followings, :dependent => :destroy
 	has_many :users, :through => :bar_followings
 
 
@@ -18,7 +17,8 @@ class Bar < ActiveRecord::Base
 	end
 
 	def admins
-		ind = BarPermission.find(:all, :conditions => (bar_id=self.id), :select=> "user_id").map(&:user_id)
+		# ind = BarPermission.find(:all, :conditions => (bar_id=self.id), :select=> "user_id").map(&:user_id)
+	    ind = self.bar_permissions.collect { |t| t.user_id }
 	    @admins ||= User.find(ind)
 	end
 

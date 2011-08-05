@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110802195005) do
+ActiveRecord::Schema.define(:version => 20110802225853) do
 
   create_table "bar_followings", :force => true do |t|
     t.timestamp "created_at"
@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(:version => 20110802195005) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "city"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   create_table "bars_users", :id => false, :force => true do |t|

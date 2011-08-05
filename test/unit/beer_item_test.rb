@@ -36,7 +36,7 @@ class BeerItemTest < ActiveSupport::TestCase
    	assert beer_item.errors[:bar_id].any?
    	assert beer_item.errors[:price].any?
    	assert_equal ["can't be blank","can't be blank"], beer_item.errors[:beer_id]
-   	assert_equal ["can't be blank"], beer_item.errors[:bar_id]
+   	assert_equal ["can't be blank","can't be blank"], beer_item.errors[:bar_id]
    	assert_equal ["can't be blank"], beer_item.errors[:price]
    	assert !beer_item.save
    end
