@@ -3,13 +3,18 @@ class UsersController < ApplicationController
   before_filter :authenticate, :only => [:edit, :update]  
 
   def new
-    @user = User.new
+  	if signup_allowed?
+    	@user = User.new
+    else
+    	redirect_to beer_items_path, :notice => 'Beta signups limit reached.'
+    end
   end
   
   def create
     @user = User.new(params[:user])
     if @user.save
-      redirect_to beer_items_path, :notice => 'User successfully added.'
+      session[:user_id] = @user.id
+      redirect_to beer_items_path, :notice => 'New user successfully added.'
     else
       render :action => 'new'
     end

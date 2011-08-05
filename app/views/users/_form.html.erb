@@ -1,15 +1,9 @@
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
-  <div id="errorExplanation">
-    <h2><%= pluralize(@user.errors.count, "error") %>
-prohibited this user from being saved:</h2>
-    <ul>
-    <% @user.errors.full_messages.each do |msg| %>
-       <li><%= msg %></li>
-    <% end %>
-    </ul>
+  	<div id="error_explanation">
+      <h2><%= error_messages_for @user, :header_message => "Whoops!", :message => "Please address the following:"%></h2>
     </div>
-    <% end %>
+  <% end %>
     
     <p>This website is currently in beta.  I appologize for an errors you may encounter. </p>
 

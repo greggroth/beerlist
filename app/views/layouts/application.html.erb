@@ -20,11 +20,15 @@
 	   <% end %>
         <%= link_to "Edit Password", edit_user_path(current_user) %> |
         <%= link_to "Logout", logout_path %>
-      <% else %>
+      <% else %>  
 		<%= link_to "Beers", beers_path %> | 
 		<%= link_to "Bars", bars_path %> | 
 		<%= link_to "Breweries", breweries_path %> |
-		<%= link_to "New User", new_user_path %> |
+	  <% if signup_allowed? %>
+		<%= link_to "Signup", new_user_path %> |
+	  <% else %>
+	    Beta Testing Full |
+	  <% end %>
         <%= link_to "Login", login_path %>
       <% end %>
     </div>

@@ -29,9 +29,15 @@ class ApplicationController < ActionController::Base
       redirect_to login_path, :notice => "Please log in to continue" and return false
     end
 
-	def follow(b_id, u_id)
-		BarFollowing.new(:bar_id=>b_id, :user_id=>u_id)
-	end
+	# def follow(b_id, u_id)
+	#	BarFollowing.create(:bar_id=>b_id, :user_id=>u_id)
+	# end
+	# 	helper_method :follow
 	
-	helper_method :follow
+	def signup_allowed?
+		return User.count <= 5
+	end
+	helper_method :signup_allowed?
+	
+
 end
