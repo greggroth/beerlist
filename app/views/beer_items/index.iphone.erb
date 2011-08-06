@@ -1,10 +1,155 @@
 <div id="home">
 	<div class="toolbar">
-		<h1>BeerList Home</h1>
+		<h1>AtlBeerList</h1>
 	</div>
-		<ul class="edgetoedge">
-			<li><a href="#bars">Bars</a></li>
-			<li><a href="#beers">Beers</a></li>
-			<li><%= link_to "Breweries", breweries_path %></li>
+	<br /><br /> <br />
+		<ul class="rounded">
+			<li class="arrow"><a href="#bars">Bars</a></li>
+			<li class="arrow"><a href="#beers">Beers</a></li>
+			<!--- <li class="arrow"><a href="#breweries">Breweries</a></li> --->
 		</ul>
 </div>
+
+<div id="bars">
+	<div class="toolbar">
+		<h1>Bars</h1>
+		<a class="button back" href="#">Back</a>
+	</div>
+	<ul class="edgetoedge">
+	  <% Bar.find(:all, :order => "name ASC").each do |t| %>
+  			<li><a href="#<%= t.name.parameterize %>"><%= t.name %></a></li>
+	  <% end %>
+	</ul>
+</div>
+
+<div id="beers">
+	<div class="toolbar">
+		<h1>Beers</h1>
+		<a class="button back" href="#">Back</a>
+	</div>
+	<ul class="edgetoedge">
+	  <% Beer.find(:all, :order => "name ASC").each do |t| %>
+  			<li><a href="#<%= t.name.parameterize %>"><%= t.name %></a></li>
+	  <% end %>
+	</ul>
+</div>
+
+<div id="breweries">
+	<div class="toolbar">
+		<h1>Breweries</h1>
+		<a class="button back" href="#">Back</a>
+	</div>
+	<ul class="edgetoedge">
+	  <% Brewery.find(:all, :order => "name ASC").each do |t| %>
+  			<li><a href="#<%= t.name.parameterize %>"><%= t.name %></a></li>
+	  <% end %>
+	</ul>
+</div>
+
+<!--- All of the bar pages -->
+<% Bar.find(:all, :order => "name ASC").each do |t| %>
+	<div id="<%= t.name.parameterize %>">
+		<div class="toolbar">
+			<h1><%= t.name %></h1>
+			<a class="button back" href="#">Back</a>
+		</div>
+		<p>
+		  <b>Address:</b>
+		  <p><%= t.address %></p>
+		  <p><%= t.city %> <%= t.state %></p>
+		  <p><%= t.zip %></p>
+		</p>
+		<br />
+		
+		<% unless t.description.empty? %>		
+		<p>
+		  <b>Description:</b>
+		  <%= t.description %>
+		</p>
+		<br />
+		<% end %>
+		
+		<b>Beers:</b> <br />
+		<table>
+		  <tr>
+			<th width=150 align="left">Name</th>
+			<th width=100 align="left">Price</th>
+		  </tr>
+		
+		<% BeerItem.find(:all, :conditions => ["bar_id = ?",t.id]).each do |item| %>
+		  <tr>
+			<td><%= item.beer.name %></td>
+			<td><%= number_to_currency(item.price) %></td>
+		  </tr>
+		<% end %>
+		</table>
+	</div>
+<% end %>
+
+<!--- All of the beer pages -->
+<% Beer.find(:all, :order => "name ASC").each do |t| %>
+	<div id="<%= t.name.parameterize %>">
+		<div class="toolbar">
+			<h1><%= t.name %></h1>
+			<a class="button back" href="#">Back</a>
+		</div>
+		<b><a href="#<%= t.brewery.name.parameterize %>"></a></b>
+		<p>
+		  <b>Being served at
+		  <%= pluralize(t.bars.count, "bar") %> </b>
+		</p>
+		
+		<p>
+		  <b>Description:</b>
+		  <%= t.description %>
+		</p>
+		
+		<p>
+		  <b>ABV:</b>
+		  <%= number_to_percentage t.abv, :precision => 1 %> 
+		</p>
+		
+		<p>
+		  <b>Volume:</b>
+		  <%= t.volume %> 
+			<% if not t.volume.nil? %>
+				<%= t.volunit %>
+			<% end %>
+		</p>
+		<br />
+		<table>
+		  <tr>
+			<th width=150 align="left">Bar</th>
+			<th width=100 align="left">Price</th>
+			<th width=100 align="left">ABD (oz)</th>
+		  </tr>
+		<% BeerItem.find(:all, :conditions => ["beer_id = ?", t.id]).each do |item| %>
+			<tr>
+			<td><%= item.bar.name %></td>
+			<td><%= number_to_currency(item.price) %></td>
+			   <% unless item.beer.abv.nil? || item.beer.volume.nil? %>
+				  <% case t.volunit %>
+					<% when 'oz' %>
+						<td><%= sprintf("%.3f",(item.beer.abv*item.beer.volume)/(100*item.price)) %> </td>
+					<% when 'ml' %>
+						<td><%= sprintf("%.3f",(item.beer.abv*item.beer.volume*0.03381)/(100*item.price)) %> </td>
+					<% when 'cl' %>
+						<td><%= sprintf("%.3f",(item.beer.abv*item.beer.volume*0.3381)/(100*item.price)) %> </td>
+				  <% end %>
+		   	    <% end %>
+		  </tr>
+		<% end %>
+		</table>
+	</div>
+<% end %>
+
+<!--- All of the breweries pages -->
+<% Brewery.find(:all, :order => "name ASC").each do |t| %>
+	<div id="<%= t.name.parameterize %>">
+		<div class="toolbar">
+			<h1><%= t.name %></h1>
+			<a class="button back" href="#">Back</a>
+		</div>
+		<p>Still to come!</p>
+	</div>
+<% end %>

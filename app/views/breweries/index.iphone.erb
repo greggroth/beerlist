@@ -1,5 +1,10 @@
-<% Brewery.all.each do |t| %>
-  <li><%= link_to t.name, t %></li>
-<% end %>
+<div id="breweries">
+		<h1>Breweries</h1>
+	<ul class="edgetoedge">
+		<% Brewery.all.each do |t| %>
+		  <li><%= link_to t.name, t %></li>
+		<% end %>
+	</ul>
+</div>
 
 
