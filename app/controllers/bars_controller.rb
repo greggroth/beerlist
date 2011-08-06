@@ -8,6 +8,7 @@ class BarsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
+      format.iphone { render :format => false }
       format.xml  { render :xml => @bars }
     end
   end
@@ -21,6 +22,7 @@ class BarsController < ApplicationController
 	@beer_items = BeerItem.alphabetical.where("bar_id = ?", params[:id])
 
     respond_to do |format|
+      format.iphone { render :format => false }
       format.html # show.html.erb
       format.xml  { render :xml => @bar }
     end

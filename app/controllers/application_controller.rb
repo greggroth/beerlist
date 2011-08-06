@@ -1,5 +1,16 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  before_filter :adjust_format_for_iphone
+  
+  private
+  	def adjust_format_for_iphone
+  		request.format = :iphone if iphone_request?
+  	end
+  	
+  	def iphone_request?
+  		return (request.subdomains.first == "iphone" || params[:format] == "iphone")
+  	end
+  	
 
   protected
     # Returns the currently logged in user or nil if there isn't one
@@ -39,5 +50,21 @@ class ApplicationController < ActionController::Base
 	end
 	helper_method :signup_allowed?
 	
+	def self.responder
+		MobileResponder
+	end
+end
 
+class MobileResponder < ActionController::Responder
+
+	def to_format
+		super
+	rescue ActiveView::MissingTemplate => e
+		if request.format == "iphone"
+			navigation_behavior(e)
+		else
+			raise unless resourceful?
+			api_behavior(e)
+		end
+	end
 end
