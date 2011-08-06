@@ -2,9 +2,11 @@
 <html>
 <head>
   <title>BeerList</title>
-  <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/application.css"></style>
+  <!-- <link rel="stylesheet" type="text/css" media="screen" href="stylsheets/application.css"></style>
   <script type="text/javascript" src="javascripts/rails.js"</script>
-  <script type="text/javascript" src="javascripts/prototype.js"</script>
+  <script type="text/javascript" src="javascripts/prototype.js"</script> -->
+  <%= stylesheet_link_tag "application.css" %>
+  <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 </head>
 <body>
@@ -35,6 +37,11 @@
     </div>
   </div>
   <div id="main">
+  	<% if iphone_user_agent? %>
+  		<div id="message">
+			Using an iPhone? <a href="http://iphone.atlbeerlist.com/">Use the optimised version</a>.
+		</div>
+	<% end %>
 
     <%= content_tag(:p, notice, :class => 'notice') if notice.present? %>
     <%= content_tag(:p, alert, :class => 'alert') if alert.present? %>

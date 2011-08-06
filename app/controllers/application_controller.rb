@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :adjust_format_for_iphone
   
+  
   private
   	def adjust_format_for_iphone
   		request.format = :iphone if iphone_request?
@@ -10,7 +11,6 @@ class ApplicationController < ActionController::Base
   	def iphone_request?
   		return (request.subdomains.first == "iphone" || params[:format] == "iphone")
   	end
-  	
 
   protected
     # Returns the currently logged in user or nil if there isn't one

@@ -4,4 +4,9 @@ module ApplicationHelper
   def submit_or_cancel(form, name='Cancel')
     form.submit + " or " + link_to(name, 'javascript:history.go(-1);', :class => 'cancel')
   end
+  
+  # Request from an iPhone or iPod touch? (Mobile Safari user agent)
+	def iphone_user_agent?
+	  request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(Mobile\/.+Safari)/]
+	end
 end

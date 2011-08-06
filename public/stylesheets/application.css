@@ -253,3 +253,9 @@ a:hover {
 #select {
   margin-left: 10px;
 }
+
+#message {
+  text-align: center;
+  padding: 25px 50px;
+  font-size: 20px;
+}

@@ -8,7 +8,7 @@ def index
 
    respond_to do |format|
 	format.html
-    format.iphone { render :format => false }
+    # format.iphone { render :format => false }
 	format.xml { render :xml => @beer_items }
    end
 end
@@ -20,7 +20,7 @@ def show
 
    respond_to do |format|
 	format.html
-	format.iphone { render :layout => false }
+	# format.iphone { render :layout => false }
 	format.xml { render :xml => @beer_item }
    end
 end
