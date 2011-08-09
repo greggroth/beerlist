@@ -1,16 +1,19 @@
 <h1>Breweries</h1>
 
+<div class="itemlist" id="brewery_itemlist">
 <table>
+ <thead>
   <tr align="left">
     <th width=250>Name</th>
 	<th width=250>Location</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th width=50></th>
+    <th width=50></th>
   </tr>
+ </thead>
+ <tbody>
 
 <% @breweries.each do |brewery| %>
-  <tr>
+  <tr id="breweries/<%= brewery.id %>">
     <td><%= link_to brewery.name, brewery %></td>
    <% if brewery.citystate %>
     <td><%= brewery.citystate %></td>
@@ -20,10 +23,15 @@
    <% if logged_in? && current_user.id == 1 %>
     <td><%= link_to 'Edit', edit_brewery_path(brewery) %></td>
     <td><%= link_to 'Destroy', brewery, :confirm => 'Are you sure?', :method => :delete %></td>
+   <% else %>
+   	<td />
+   	<td />
    <% end %>
   </tr>
 <% end %>
+ </tbody>
 </table>
+</div>
 
 <br />
 <div align="left"><%= link_to 'New Brewery', new_brewery_path %></div>

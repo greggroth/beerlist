@@ -14,8 +14,9 @@
   <%= @bar.description %>
 </p>
 
-<div id="itemlist">
+<div class="itemlist">
 <table>
+<thead>
   <tr>
     <th width=150>Name</th>
 	<th width=300>Brewery</th>
@@ -24,7 +25,8 @@
     <th></th>
     <th></th>
   </tr>
-
+</thead>
+<tbody>
 <% @beer_items.each do |item| %>
   <tr>
     <td><%= link_to item.beer.name, item.beer %></td>
@@ -34,9 +36,14 @@
     <td><%= link_to 'Show', item %></td>
     <td><%= link_to 'Edit', edit_beer_item_path(item) %></td>
     <td><%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete %></td>
+   <% else %>
+    <td />
+    <td />
+    <td />
    <% end %>
   </tr>
 <% end %>
+</tbody>
 </table>
 </div>
 

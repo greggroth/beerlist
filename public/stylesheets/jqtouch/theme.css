@@ -546,11 +546,13 @@ body {
 }
 /* @end */
 input[type='submit'] {
+    position: absolute;
     -webkit-border-radius: 4px;
     background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(238,238,238,1)), to(rgba(156,158,160,1)));
     border: 1px outset black;
     display: block;
     font-size: inherit;
     font-weight: inherit;
-    padding: 10px;
+    padding: 8px 30px;
+    right: 110px; 
 }

@@ -4,12 +4,9 @@
 You've stumbled on the best thing to happen to the Atlanta beer scene since Brickstore opened.  This is your gateway to to beers and bars around the Atlanta area.  Use this site to find the best deal on that special beer you've been looking for or just check to see if the bar around the corner has a new one on tap.
 </p>
 <h3>WARNING:</h3><p> Currently, listings are not accurate.  This is still under testing.  Check back in the future for the real deal.</p>
-<!-- <p id="disclaimer"> Disclaimer task</p> -->
-<div class="greenLine" />
-<div class="itemlist">
-<h2>Latest Additions</h2>
+<div id="itemlist">
+<h3>Latest Additions</h3>
 <table>
-<thead>
   <tr>
     <th align="left" width=200>Beer</th>
     <th align="left" width=250>Bar</th>
@@ -18,20 +15,20 @@ You've stumbled on the best thing to happen to the Atlanta beer scene since Bric
     <th></th>
     <th></th>
   </tr>
-</thead>
-<tbody>
+
 <% @beer_items.each do |beer_item| %>
   <tr>
     <td><%= link_to beer_item.beer.name, beer_item.beer %></td>
     <td><%= link_to beer_item.bar.name, beer_item.bar %></td>
     <td><%= number_to_currency(beer_item.price) %></td>
 	<% if beer_item.bar.has_permission?(current_user) %>
+	  <span class='actions'>    
 		<td><%= link_to 'Edit', edit_beer_item_path(beer_item) %></td>
 	    <td><%= link_to 'Destroy', beer_item, :confirm => 'Are you sure?', :method => :delete %></td>
+	  </span>
 	<% end %>
   </tr>
 <% end %>
-</tbody>
 </table>
 </div>
 <br />

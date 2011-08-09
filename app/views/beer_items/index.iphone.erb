@@ -1,9 +1,37 @@
-<div id="home">
+<!--
+<div id="login">
 	<div class="toolbar">
 		<h1>AtlBeerList</h1>
 	</div>
 	<br /><br /> <br />
+	<form>
+		<ul class="edit rounded">
+			<li><input type="text" name="username" placeholder="User Name" id="username" /></li>
+			<li><input type="password" name="password" placeholder="Password" id="password" /></li>
+		</ul>
+			<a href="#home" style="margin: 10px;" class="bigButton flip">Login</a>
+	</form>
+</div>
+-->
+
+<div id="home">
+	<div class="toolbar">
+		<h1>AtlBeerList</h1>
+		<% if logged_in? %>
+			<!-- <a href="/logout/" class="button flip" rel="external">Logout</a> -->
+			<!-- <%= link_to "Logout", logout_path, :class => "button flip", :rel => "external" %> -->
+		<% else %>
+			<!-- <a href="/login/" class="button flip" rel="external">Login</a> -->
+			<!-- <%= link_to "Login", login_path, :class => "button flip", :rel => "external" %> -->
+		<% end %>
+	</div>
+	<br />
+	<% if logged_in? %>
+		<p>Welcome, <%= current_user.email %> 
+	<% end %>
+	<br />
 		<ul class="rounded">
+			<!--- <li class="arrow"><a href="#bars">Bars</a></li> --->
 			<li class="arrow"><a href="#bars">Bars</a></li>
 			<li class="arrow"><a href="#beers">Beers</a></li>
 			<!--- <li class="arrow"><a href="#breweries">Breweries</a></li> --->
@@ -47,6 +75,7 @@
 </div>
 
 <!--- All of the bar pages -->
+
 <% Bar.find(:all, :order => "name ASC").each do |t| %>
 	<div id="<%= t.name.parameterize %>">
 		<div class="toolbar">
@@ -85,6 +114,7 @@
 		</table>
 	</div>
 <% end %>
+
 
 <!--- All of the beer pages -->
 <% Beer.find(:all, :order => "name ASC").each do |t| %>

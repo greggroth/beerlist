@@ -1,7 +1,10 @@
 <% if logged_in? %>
 <% unless current_user.bars.empty? %> 
-<h2>Following</h2><br />
-<table>
+
+<div class="itemlist">
+<h2 id="followingBars-toggleButton">Following</h2>
+<table id="followed-bars">
+ <thead>
   <tr align="left">
 	<th width=20></th>
     <th width=200>Name</th>
@@ -10,6 +13,8 @@
     <th></th>
     <th></th>
   </tr>
+ </thead>
+ <tbody>
 <% current_user.bars.find(:all, :order=>"name ASC").each do |f| %>
   <tr>
 	<td>
@@ -39,23 +44,25 @@
 		    <td><%= link_to 'Destroy', f, :confirm => 'Are you sure?', :method => :delete %></td>
 		</span>
 	<% else %>
-		<td> </td>
-		<td> </td>
+		<td />
+		<td />
 	<% end %>
   </tr>
 <% end %>
+ </tbody>
 </table> 
-<br />
 <% end %>
 <% end %>
-
-<h2>All Bars</h2> 
+</div>
+<!-- ALL BARS -->
+<div class="itemlist">
+<h2 id="allBars-toggleButton">All Bars</h2> 
 <% unless logged_in? %>
-	<%= link_to "log in", login_path %> or <%= link_to "create", new_user_path %> and account to follow your favorite bars<br />
+	<p><%= link_to "log in", login_path %> or <%= link_to "create", new_user_path %> and account to follow your favorite bars</p>
 <% end %>
 <br />
-
-<table>
+<table id="all-bars">
+ <thead>
   <tr align="left">
 	<th width=20></th>
     <th width=200>Name</th>
@@ -64,7 +71,8 @@
     <th></th>
     <th></th>
   </tr>
-  
+ </thead>
+ <tbody>
 <% Bar.find(:all, :order=>"name ASC").each do |f| %>
   <tr>
 	<td>
@@ -99,5 +107,5 @@
 	<% end %>
   </tr>
 <% end %>
-
+ </tbody>
 </table>

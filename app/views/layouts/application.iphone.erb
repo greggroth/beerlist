@@ -5,22 +5,25 @@
     <meta id="viewport" name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <title>Beer List</title>
-	<script type="text/javascript" src="javascripts/jquery-1.4.2.js"></script>
+	<script type="text/javascript" src="javascripts/jquery-1.4.2.min.js"></script>
 	<script type="text/javascript" src="javascripts/jqtouch.js"</script>
 	<link rel="stylesheet" type="text/css" media="screen" href="stylesheets/jqtouch/jqtouch.css"></style>
 	<link rel="stylesheet" type="text/css" media="screen" href="stylesheets/jqtouch/theme.css"></style>
 	<script type="text/javascript">
 		$.jQTouch({
-    			icon: 'jqtouch.png',
+    			/* icon: 'jqtouch.png', */
    			 	statusBar: 'black-translucent'
+   			 	/* formSelector: false */
 			});
  	</script>
 
 </head>
 <body>
-	<div id="jqt">
-    <%= yield %>
-    </div>
+	<%= content_tag(:p, notice, :class => 'notice') if notice.present? %>
+    <%= content_tag(:p, alert, :class => 'alert') if alert.present? %>
 
+	<div id="jqt">
+    	<%= yield %>
+    </div>
 </body>
 </html>

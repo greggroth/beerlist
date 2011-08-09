@@ -1,4 +1,11 @@
-	<li>item 1</li>
-	<li>item 2</li>
-	<li>item 3</li>
-
+<div id="bars">
+	<div class="toolbar">
+		<h1>Bars 2</h1>
+		<a class="button back" href="#">Back</a>
+	</div>
+	<ul class="edgetoedge">
+	  <% @bars.each do |t| %>
+  			<li><%= link_to t.name, t %></li>
+	  <% end %>
+	</ul>
+</div>

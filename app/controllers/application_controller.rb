@@ -1,14 +1,22 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :adjust_format_for_iphone
-  
+  # before_filter :iphone_login_required
+
   
   private
   	def adjust_format_for_iphone
   		request.format = :iphone if iphone_request?
   	end
   	
-  	def iphone_request?
+  	def iphone_login_required
+		if iphone_request?
+		  logger.debug "IPHONE_LOGIN_REQUIRED"
+		  redirect_to login_path unless logged_in?
+		end
+	end
+	
+	def iphone_request?
   		return (request.subdomains.first == "iphone" || params[:format] == "iphone")
   	end
 

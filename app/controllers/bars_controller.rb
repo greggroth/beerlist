@@ -8,6 +8,7 @@ class BarsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
+      format.iphone { render :layout => false }
       format.xml  { render :xml => @bars }
     end
   end
@@ -16,12 +17,11 @@ class BarsController < ApplicationController
   # GET /bars/1.xml
   def show
     @bar = Bar.find(params[:id])
-	# @beer_items = BeerItem.where("bar_id = ?", params[:id])
-	# @beer_items = BeerItem.find(:all, :conditions => ["bar_id = ?", params[:id]], :include => [:beer, :bar], :order => "beers.name")
 	@beer_items = BeerItem.alphabetical.where("bar_id = ?", params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
+      format.iphone { render :layout => false }
       format.xml  { render :xml => @bar }
     end
   end

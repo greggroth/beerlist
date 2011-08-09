@@ -1,46 +1,37 @@
-<h1><%= @bar.name %></h1>
-
-<h3> Pouring <%= pluralize(@bar.beers.count, "beer") %> </h3> <br />
-
-<p>
-  <p><%= @bar.address %></p>
-  <p><%= @bar.city %> <%= @bar.state %></p>
-  <p><%= @bar.zip %></p>
-</p>
-
-
-<p>
-  <b>Description:</b>
-  <%= @bar.description %>
-</p>
-
-<div id="itemlist">
-<table>
-  <tr>
-    <th width=150>Name</th>
-	<th width=300>Brewery</th>
-    <th width=100>Price</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @beer_items.each do |item| %>
-  <tr>
-    <td><%= link_to item.beer.name, item.beer %></td>
-	<td><%= link_to item.beer.brewery.name, item.beer.brewery %></td>
-    <td><%= number_to_currency(item.price) %></td>
-   <% if logged_in? && @bar.has_permission?(current_user) %>
-    <td><%= link_to 'Show', item %></td>
-    <td><%= link_to 'Edit', edit_beer_item_path(item) %></td>
-    <td><%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete %></td>
-   <% end %>
-  </tr>
-<% end %>
-</table>
-</div>
-
-<% if @bar.has_permission? current_user %>
-	<%= link_to 'Edit', edit_bar_path(@bar) %> |
-<% end %>
-<%= link_to 'Back', :back %>
+<!--- All of the bar pages -->
+<!-- <div id="<%= @bar.name.parameterize %>"> -->
+	<div class="toolbar">
+		<h1><%= @bar.name %></h1>
+		<a class="button back" href="#">Back</a>
+	</div>
+	<p>
+	  <b>Address:</b>
+	  <p><%= @bar.address %></p>
+	  <p><%= @bar.city %> <%= @bar.state %></p>
+	  <p><%= @bar.zip %></p>
+	</p>
+	<br />
+	
+	<% unless @bar.description.empty? %>		
+	<p>
+	  <b>Description:</b>
+	  <%= @bar.description %>
+	</p>
+	<br />
+	<% end %>
+	
+	<b>Beers:</b> <br />
+	<table>
+	  <tr>
+		<th width=150 align="left">Name</th>
+		<th width=100 align="left">Price</th>
+	  </tr>
+	
+	<% @beer_items.each do |item| %>
+	  <tr>
+		<td><%= item.beer.name %></td>
+		<td><%= number_to_currency(item.price) %></td>
+	  </tr>
+	<% end %>
+	</table>
+<!-- </div> -->

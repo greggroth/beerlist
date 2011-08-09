@@ -1,6 +1,8 @@
 <h1>Beers</h1>
 
+<div class="itemlist">
 <table>
+<thead>
   <tr align="left">
     <th width=150>Name</th>
 	<th width=250>Brewery</th>
@@ -8,7 +10,8 @@
     <th></th>
     <th></th>
   </tr>
-
+</thead>
+<tbody>
 <% @beers.each do |beer| %>
   <tr>
     <td><%= link_to beer.name, beer %></td>
@@ -20,8 +23,9 @@
     <% end %>
   </tr>
 <% end %>
+</tbody>
 </table>
-
+</div>
 <br />
 
 <%= link_to 'New Beer', new_beer_path %>
