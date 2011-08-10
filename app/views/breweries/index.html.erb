@@ -1,6 +1,11 @@
 <h1>Breweries</h1>
 
-<div class="itemlist" id="brewery_itemlist">
+<% if logged_in? %>
+	<div align="left"><%= link_to 'New Brewery', new_brewery_path %></div>
+	<br />
+<% end %>
+
+<div class="itemlist expandable_itemlist">
 <table>
  <thead>
   <tr align="left">
@@ -34,6 +39,6 @@
 </div>
 
 <br />
-<div align="left"><%= link_to 'New Brewery', new_brewery_path %></div>
+
 
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>BeerList</title>
+  <title>Atlanta Beer List</title>
   <!-- <link rel="stylesheet" type="text/css" media="screen" href="stylsheets/application.css"></style>
   <script type="text/javascript" src="javascripts/rails.js"</script>
   <script type="text/javascript" src="javascripts/prototype.js"</script> -->
@@ -17,31 +17,43 @@
 </head>
 <body>
 
-<div id="header">
-    <h1><%= link_to "The Atlanta Beer List", root_path %><div class="beta">beta</div> </h1>
+ <div id="header">
+   <h1><%= link_to "ABL", root_path %><span id="beta">beta</span> </h1>
     <div id="user_bar">
+     <ul>
       <% if logged_in? %>
-		<%= link_to "Beers", beers_path %> | 
-		<%= link_to "Bars", bars_path %> | 
-		<%= link_to "Breweries", breweries_path %> |
+		<li><%= link_to "Beers", beers_path %></li>
+		<li>|</li>
+		<li><%= link_to "Bars", bars_path %></li>
+		<li>|</li>
+		<li><%= link_to "Breweries", breweries_path %></li>
+		<li>|</li>
 	   <% unless current_user.admin_bars.empty? %>        
-			<%= link_to "New Item", new_beer_item_path %> |
+			<li><%= link_to "New Item", new_beer_item_path %></li>
+			<li>|</li>
 	   <% end %>
-        <%= link_to "Edit Password", edit_user_path(current_user) %> |
-        <%= link_to "Logout", logout_path %>
+        <li><%= link_to "Edit Password", edit_user_path(current_user) %></li>
+        <li>|</li>
+        <li><%= link_to "Logout", logout_path %></li>
       <% else %>  
-		<%= link_to "Beers", beers_path %> | 
-		<%= link_to "Bars", bars_path %> | 
-		<%= link_to "Breweries", breweries_path %> |
+		<li><%= link_to "Beers", beers_path %></li>
+		<li>|</li>
+		<li><%= link_to "Bars", bars_path %></li>
+		<li>|</li>
+		<li><%= link_to "Breweries", breweries_path %></li>
+		<li>|</li>
 	  <% if signup_allowed? %>
-		<%= link_to "Signup", new_user_path %> |
+		<li><%= link_to "Signup", new_user_path %></li>
+		<li>|</li>
 	  <% else %>
-	    Beta Testing Full |
+	    <li>Beta Testing Full</li>
+	    <li>|</li>
 	  <% end %>
-        <%= link_to "Login", login_path %>
+        <li><%= link_to "Login", login_path %></li>
       <% end %>
+     </ul>
     </div>
-  </div>
+ </div>
   <div id="main">
   	<% if iphone_user_agent? %>
   		<div id="message">

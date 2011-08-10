@@ -46,15 +46,21 @@ $(document).ready(function() {
 		  $(this).animate({paddingBottom: '-=15px'}, 200);
 		});
 	
-// Show details
-	$('#brewery_itemlist.itemlist tbody tr').click(function() {
+// Show details (Brewery Page)
+	$('.itemlist.expandable_itemlist tbody tr').click(function() {
 		var url = $(this).attr('id') + " .itemlist";
+		$('.itemlist tbody > tr').fadeTo(500,1);        // get all of the rows back to full opacity
+		
 		//alert($(this).next().is('tr#brew-row'))
-		if ($(this).next().is('tr#brew-row')) {
+		
+		if ($(this).next().is('tr#brew-row')) {         // Clicked to Close
 			$('.itemlist tbody > #brew-row').remove().fadeOut("fast");
-		} else {
-			$('.itemlist tbody > .brew-desc').remove().fadeOut("fast");
-			$('<tr id="brew-row"><td colspan="5" class="brew-desc"></td></tr>').insertAfter(this);
+			$(this).removeClass('bordered');
+		} else {                                        // Clicked to Open
+			 // $(this).addClass('zebra');
+			$('.itemlist tbody #brew-row').remove().fadeOut("fast");
+			$('<tr id="brew-row"><td colspan="6" class="brew-desc"></td></tr>').insertAfter(this);
+			$('.itemlist tbody tr:not(#brew-row)').not(this).fadeTo(500,0.2);
 			$('.brew-desc').html('loading...').load(url);
 		}
 	});

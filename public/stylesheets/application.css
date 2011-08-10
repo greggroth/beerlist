@@ -50,11 +50,31 @@ a:hover {
   color:#333333;
   padding: 15px 0;
   height: 35px;
+  margin-left:auto;
+  margin-right:auto;
+  font-size: 10px;
 }
 
-#header #user_bar {
-  float: right;
-  font-size: 10px;
+#user_bar {
+	float: right;
+}
+
+#user_bar ul {
+	list-style-type: none;
+}
+
+#user_bar li {
+	float: left;
+	text-align: center;
+	padding-left: 0px;
+	padding-right: 0px;
+	margin-left: 5px;
+	margin-right: 5px;
+	font-size: 11px;
+}
+
+#user_bar li a {
+
 }
 
 .greenLine {
@@ -85,9 +105,10 @@ a:hover {
 }
 
 #header h1 {
+  padding-left: 15px;
   padding-top: 14px;
   float: left;
-  font-size: 30px;
+  font-size: 36px;
 }
 
 #header h1 a{
@@ -105,8 +126,10 @@ a:hover {
   float: right;
 }
 
-.beta {
-  margin-left: 310px;
+#beta {
+  /* margin-left: 310px; */
+  padding-left:5px;
+  vertical-align: -10px;
   font-size: 16px;
 }
 
@@ -128,6 +151,7 @@ a:hover {
 #main table, td {
   margin: 0;
   border-collapse: collapse;
+  empty-cells: show;
 }
 
 #main form {
@@ -170,6 +194,7 @@ a:hover {
 
 #main form .following {
   padding-top: 5px;
+  padding-left: 3px;
   clear: both;
 }
 
@@ -273,7 +298,7 @@ a:hover {
 }
 
 .zebra { 
-  background-color: #dddddd;
+  background-color: #F0F0F0;
   margin: 0px;
 }
 
@@ -290,5 +315,11 @@ a:hover {
 
 .brew-desc {
   padding-left: 20px;
-  background-color: #E8E8E8;
+  background-color: #F0F0F0;
+}
+
+.bordered {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #000000;
 }

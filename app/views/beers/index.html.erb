@@ -1,25 +1,27 @@
 <h1>Beers</h1>
 
-<div class="itemlist">
+<div class="itemlist expandable_itemlist">
 <table>
 <thead>
   <tr align="left">
     <th width=150>Name</th>
 	<th width=250>Brewery</th>
     <th width=120>Pouring at . . .</th>
-    <th></th>
-    <th></th>
+    <th width=60></th>
+    <th width=60></th>
   </tr>
 </thead>
 <tbody>
 <% @beers.each do |beer| %>
-  <tr>
+  <tr  id="beers/<%= beer.id %>">
     <td><%= link_to beer.name, beer %></td>
 	<td><%= link_to beer.brewery.name, beer.brewery %></td>
     <td><%= beer.bars.count %> bars</td>
     <td><%= link_to 'Edit', edit_beer_path(beer) %></td>
     <% if logged_in? && current_user.id == 1 %>
-    <td><%= link_to 'Destroy', beer, :confirm => 'Are you sure?', :method => :delete %></td>
+    	<td><%= link_to 'Destroy', beer, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% else %>
+    	<td />
     <% end %>
   </tr>
 <% end %>
