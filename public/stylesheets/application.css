@@ -328,3 +328,7 @@ a:hover {
   border-width: 1px;
   border-color: #000000;
 }
+
+.active {
+  background-color: #CFECEC;
+}
