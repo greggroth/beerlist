@@ -5,8 +5,7 @@
 	<br />
 <% end %>
 
-<div class="itemlist expandable_itemlist">
-<table>
+<table id="expanding_brewery_list" class="expandable_itemlist">
  <thead>
   <tr align="left">
     <th width=250>Name</th>
@@ -18,7 +17,7 @@
  <tbody>
 
 <% @breweries.each do |brewery| %>
-  <tr id="breweries/<%= brewery.id %>">
+  <tr id="<%= brewery.id %>" title="breweries/<%= brewery.id %>">
     <td><%= link_to brewery.name, brewery %></td>
    <% if brewery.citystate %>
     <td><%= brewery.citystate %></td>
@@ -33,10 +32,15 @@
    	<td />
    <% end %>
   </tr>
+  <tr>
+  	<td colspan="4" id="itemdesc-<%= brewery.id %>" class="itemdesc">
+  		<p></p>
+  	</td>
+  </tr>
 <% end %>
  </tbody>
 </table>
-</div>
+
 
 <br />
 

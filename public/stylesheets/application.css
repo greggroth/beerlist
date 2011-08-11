@@ -148,7 +148,12 @@ a:hover {
   margin-bottom: 12px;
 }
 
+#main table {
+	width: 100%;
+}
+
 #main table, td {
+  
   margin: 0;
   border-collapse: collapse;
   empty-cells: show;
@@ -315,7 +320,7 @@ a:hover {
 
 .brew-desc {
   padding-left: 20px;
-  background-color: #F0F0F0;
+  background-color: #FFFFFF;
 }
 
 .bordered {

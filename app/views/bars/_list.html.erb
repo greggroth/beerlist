@@ -2,9 +2,8 @@
 <% unless current_user.bars.empty? %> 
 
 <!-- FIOLLOWED BARS -->
-<div class="itemlist expandable_itemlist">
 <h2 id="followingBars-toggleButton">Following</h2>
-<table id="followed-bars">
+<table id="expanding_followed_bars_list" class="expandable_itemlist">
  <thead>
   <tr align="left">
 	<th width=20></th>
@@ -17,7 +16,7 @@
  </thead>
  <tbody>
 <% current_user.bars.find(:all, :order=>"name ASC").each do |f| %>
-  <tr id="bars/<%= f.id %>">
+  <tr id="<%= f.id %>" title="bars/<%= f.id %>">
 	<td>
 	<div id="follow_form">
 	<% if logged_in? %>
@@ -49,20 +48,24 @@
 		<td />
 	<% end %>
   </tr>
+  <tr>
+  	<td colspan="4" id="itemdesc-<%= f.id %>" class="itemdesc">
+  		<p></p>
+  	</td>
+  </tr>
 <% end %>
  </tbody>
 </table> 
 <% end %>
 <% end %>
-</div>
+
 <!-- ALL BARS -->
-<div class="itemlist expandable_itemlist">
 <h2 id="allBars-toggleButton">All Bars</h2> 
 <% unless logged_in? %>
 	<p><%= link_to "log in", login_path %> or <%= link_to "create", new_user_path %> and account to follow your favorite bars</p>
 <% end %>
 <br />
-<table id="all-bars">
+<table id="expanding_all_bars_list" class="expandable_itemlist">
  <thead>
   <tr align="left">
 	<th width=20></th>
@@ -75,7 +78,7 @@
  </thead>
  <tbody>
 <% Bar.find(:all, :order=>"name ASC").each do |f| %>
-  <tr id="bars/<%= f.id %>">
+  <tr id="<%= f.id %>" title="bars/<%= f.id %>">
 	<td>
 	<div id="follow_form">
 	<% if logged_in? %>
@@ -106,6 +109,11 @@
 		<td> </td>
 		<td> </td>
 	<% end %>
+  </tr>
+  <tr>
+  	<td colspan="4" id="itemdesc-<%= f.id %>" class="itemdesc">
+  		<p></p>
+  	</td>
   </tr>
 <% end %>
  </tbody>

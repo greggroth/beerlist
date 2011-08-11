@@ -6,17 +6,17 @@ You've stumbled on the best thing to happen to the Atlanta beer scene since Bric
 <h3>WARNING:</h3><p> Currently, listings are not accurate.  This is still under testing.  Check back in the future for the real deal.</p>
 <!-- <p id="disclaimer"> Disclaimer task</p> -->
 <div class="greenLine" />
-<div class="itemlist">
+
 <h2>Latest Additions</h2>
-<table>
+<table id="expanding_beer_item_list" class="itemlist">
 <thead>
   <tr>
     <th align="left" width=200>Beer</th>
-    <th align="left" width=250>Bar</th>
+    <th align="left" width=200>Bar</th>
     <th align="left" width=100>Price</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th width=50></th>
+    <th width=50></th>
+    <th width=50></th>
   </tr>
 </thead>
 <tbody>
@@ -28,11 +28,20 @@ You've stumbled on the best thing to happen to the Atlanta beer scene since Bric
 	<% if beer_item.bar.has_permission?(current_user) %>
 		<td><%= link_to 'Edit', edit_beer_item_path(beer_item) %></td>
 	    <td><%= link_to 'Destroy', beer_item, :confirm => 'Are you sure?', :method => :delete %></td>
+	<% else %>
+		<td />
+		<td />
 	<% end %>
   </tr>
+  <!--
+  <tr>
+  	<td colspan="4" id="itemdesc-<%= beer_item.id %>" class="itemdesc">
+  		<p></p>
+  	</td>
+  </tr>-->
 <% end %>
 </tbody>
 </table>
-</div>
+
 <br />
 
