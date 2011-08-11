@@ -47,6 +47,7 @@ $(document).ready(function() {
 		});
 	
 // Show details (Brewery Page)
+	$('<p>Click on a row to see more details</p>').insertBefore('.expandable_itemlist');
 	$('.itemlist.expandable_itemlist tbody tr').click(function() {
 		var url = $(this).attr('id') + " .itemlist";
 		$('.itemlist tbody > tr').fadeTo(500,1);        // get all of the rows back to full opacity
