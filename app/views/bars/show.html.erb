@@ -14,7 +14,48 @@
   <%= @bar.description %>
 </p>
 
+<div class="greenLine" />
+
 <div class="itemlist">
+<% unless @recent_beer_items.empty? %>
+<h2>Added in the last week</h2>
+<!-- RECENT BEERS -->
+<table>
+<thead>
+  <tr>
+    <th width=150>Name</th>
+	<th width=300>Brewery</th>
+    <th width=100>Price</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+</thead>
+<tbody>
+<% @recent_beer_items.each do |item| %>
+  <tr>
+    <td><%= link_to item.beer.name, item.beer %></td>
+	<td><%= link_to item.beer.brewery.name, item.beer.brewery %></td>
+    <td><%= number_to_currency(item.price) %></td>
+   <% if logged_in? && @bar.has_permission?(current_user) %>
+    <td><%= link_to 'Show', item %></td>
+    <td><%= link_to 'Edit', edit_beer_item_path(item) %></td>
+    <td><%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete %></td>
+   <% else %>
+    <td />
+    <td />
+    <td />
+   <% end %>
+  </tr>
+<% end %>
+</tbody>
+</table>
+<br />
+<% end %>
+
+
+<!-- ALl BEERS -->
+<h2>All Beers</h2>
 <table>
 <thead>
   <tr>
@@ -46,6 +87,7 @@
 </tbody>
 </table>
 </div>
+
 
 <% if @bar.has_permission? current_user %>
 	<%= link_to 'Edit', edit_bar_path(@bar) %> |

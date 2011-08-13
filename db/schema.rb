@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110802225853) do
+ActiveRecord::Schema.define(:version => 20110813160752) do
 
   create_table "bar_followings", :force => true do |t|
     t.timestamp "created_at"
@@ -45,12 +45,15 @@ ActiveRecord::Schema.define(:version => 20110802225853) do
   end
 
   create_table "beer_items", :force => true do |t|
-    t.decimal   "price"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.integer   "beer_id"
-    t.integer   "bar_id"
-    t.integer   "user_id"
+    t.decimal  "price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "beer_id"
+    t.integer  "bar_id"
+    t.integer  "user_id"
+    t.decimal  "volume"
+    t.string   "volunit",    :default => "oz"
+    t.string   "pouring"
   end
 
   create_table "beers", :force => true do |t|

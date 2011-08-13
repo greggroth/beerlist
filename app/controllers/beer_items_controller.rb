@@ -7,6 +7,7 @@ before_filter :authenticate, :except => [:index, :show]
 # GET /beer_items.xml
 def index
    @beer_items = BeerItem.find(:all, :include => [:beer, :bar], :order => ('updated_at DESC'), :limit => 15)
+   # @recent_beer_items = @beer_items.find(:all, :conditions => ["updated_at < ?", 1.week.ago])
 
    respond_to do |format|
 	format.html

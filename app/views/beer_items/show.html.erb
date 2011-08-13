@@ -9,6 +9,11 @@
 </p>
 
 <p>
+  <b>Pouring:</b>
+  <%= number_to_human(@beer_item.volume, :units => {:unit => @beer_item.volunit}) %> <%= @beer_item.pouring %>
+</p>
+
+<p>
   <b>Price:</b>
   <%= number_to_currency(@beer_item.price) %>
 </p>

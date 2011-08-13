@@ -10,6 +10,10 @@
 		$(element).find("tr.odd").hover(function() {
 			$(this).toggleClass("active")
 		});
+		
+		$(element).find('a').click(function(e) {
+			e.stopPropagation()
+			});
 
         $(element).find("tr.odd").click(function() {
         	var url = $(this).attr('title') + " .itemlist";

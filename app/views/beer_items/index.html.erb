@@ -11,9 +11,10 @@ You've stumbled on the best thing to happen to the Atlanta beer scene since Bric
 <table id="expanding_beer_item_list" class="itemlist">
 <thead>
   <tr>
-    <th align="left" width=200>Beer</th>
-    <th align="left" width=200>Bar</th>
-    <th align="left" width=100>Price</th>
+    <th width=200>Beer</th>
+    <th width=200>Bar</th>
+    <th width=150>Pouring</th>
+    <th width=100>Price</th>
     <th width=50></th>
     <th width=50></th>
     <th width=50></th>
@@ -24,6 +25,11 @@ You've stumbled on the best thing to happen to the Atlanta beer scene since Bric
   <tr>
     <td><%= link_to beer_item.beer.name, beer_item.beer %></td>
     <td><%= link_to beer_item.bar.name, beer_item.bar %></td>
+    <% unless (beer_item.volume.nil? || beer_item.volunit.nil?) %>
+    <td><%= number_to_human(beer_item.volume, :units => {:unit => beer_item.volunit}) %> <%= beer_item.pouring %></td>
+    <% else %>
+    <td><%= beer_item.pouring %></td>
+    <% end %>
     <td><%= number_to_currency(beer_item.price) %></td>
 	<% if beer_item.bar.has_permission?(current_user) %>
 		<td><%= link_to 'Edit', edit_beer_item_path(beer_item) %></td>

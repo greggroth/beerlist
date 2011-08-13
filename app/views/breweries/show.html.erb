@@ -31,6 +31,7 @@
   <tr>
     <th width=200>Beer</th>
 	<th width=200>Bar</th>
+	<th width=150>Pouring</th>
     <th width=100>Price</th>
     <th></th>
     <th></th>
@@ -43,6 +44,7 @@
   <tr>
       <td><%= link_to item.beer.name, item.beer %></td>
 	  <td><%= link_to item.bar.name, item.bar %></td>
+      <td><%= number_to_human(item.volume, :units => {:unit => item.volunit}) %> <%= item.pouring %></td>
       <td><%= number_to_currency(item.price) %></td>
     <% if item.bar.has_permission?(current_user) %>
       <td><%= link_to 'Edit', edit_beer_item_path(item) %></td>
