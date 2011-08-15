@@ -6,12 +6,14 @@ class BarsController < ApplicationController
   def index
     if params[:search].present?
     	@bars = Bar.near(params[:search], 50, :order => :distance)
-    	@user_bars = current_user.bars.find(:all, :order=>"name ASC")
     else
     	@bars = Bar.find(:all, :order=>"name ASC")
-    	@user_bars = current_user.bars.find(:all, :order=>"name ASC")
     end
-
+    
+    if logged_in?
+		@user_bars = current_user.bars.find(:all, :order=>"name ASC")
+	end
+	
     respond_to do |format|
       format.html # index.html.erb
       format.iphone { render :layout => false }
