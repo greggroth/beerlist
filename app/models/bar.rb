@@ -1,5 +1,6 @@
 class Bar < ActiveRecord::Base
-	validates_presence_of :name
+	validates_presence_of :name, :address, :state, :zip, :city
+	
 	validates_length_of :zip, :is => 5, :allow_blank => true
 	validates_length_of :state, :is => 2, :allow_blank => true, :message => "should be in the abbreviated form (i.e. GA or CO)"
 
@@ -11,8 +12,7 @@ class Bar < ActiveRecord::Base
 
 	geocoded_by :full_address
 	
-	after_validation :geocode, :if => (:address_changed? || :zip_changed?)
-	
+	# after_validation :geocode, :if => (:address_changed? || :zip_changed?)
 	acts_as_gmappable
 	
 	def gmaps4rails_address

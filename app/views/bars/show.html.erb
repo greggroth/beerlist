@@ -20,7 +20,9 @@
 <p>
 	<b>Map:</b>
 <p>
-<%= gmaps("map_options" => { "detect_location" => true, "center_on_user" => false, "zoom" => 14, "auto_adjust" => true, "auto_zoom" => false}, "markers" => { "data" => @json }) %>
+<% if @bar.latitude.present? && @bar.longitude.present? %>
+	<%= gmaps("map_options" => { "detect_location" => true, "center_on_user" => false, "zoom" => 14, "auto_adjust" => true, "auto_zoom" => false}, "markers" => { "data" => @json }) %>
+<% end %>
 
 <div class="greenLine" />
 
