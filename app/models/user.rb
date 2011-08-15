@@ -39,6 +39,10 @@ class User < ActiveRecord::Base
 	   ind = self.bar_permissions.collect { |t| t.bar_id }
 	   @admin_bars = Bar.find(ind).sort_by(&:name)
 	end
+	
+	def is_a_bar_admin?
+		not(self.admin_bars.empty?)
+	end
 
 	def self.authenticate(email, password)
 	  user = find_by_email(email)

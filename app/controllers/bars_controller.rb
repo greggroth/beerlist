@@ -4,7 +4,13 @@ class BarsController < ApplicationController
   # GET /bars
   # GET /bars.xml
   def index
-    @bars = Bar.all
+    if params[:search].present?
+    	@bars = Bar.near(params[:search], 50, :order => :distance)
+    	@user_bars = current_user.bars.find(:all, :order=>"name ASC")
+    else
+    	@bars = Bar.find(:all, :order=>"name ASC")
+    	@user_bars = current_user.bars.find(:all, :order=>"name ASC")
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -19,6 +25,7 @@ class BarsController < ApplicationController
     @bar = Bar.find(params[:id])
 	@beer_items = BeerItem.alphabetical.where("bar_id = ?", params[:id])
 	@recent_beer_items = BeerItem.alphabetical.find(:all, :conditions => ["bar_id = ? AND beer_items.updated_at < ?", params[:id], 1.week.ago])
+	@json = @bar.to_gmaps4rails
 
     respond_to do |format|
       format.html # show.html.erb

@@ -1,8 +1,20 @@
 <h1>Bars</h1>
 
-<div id="bar_list">
-<%= render 'list' %>
+<div class="search">
+<%= form_tag bars_path, :method => :get do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search Near", :name => nil %>
+  </p>
+<% end %>
 </div>
+
+
+<div class="greenLine" />
+
+<!-- <div id="bar_list"> -->
+	<%= render 'list' %>
+<!-- </div> -->
 
 <%= link_to 'New Bar', new_bar_path %>
 

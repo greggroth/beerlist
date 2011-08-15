@@ -152,8 +152,11 @@ a:hover {
 	width: 100%;
 }
 
+#main table th {
+	align: left;
+}
+
 #main table, td {
-  
   margin: 0;
   border-collapse: collapse;
   empty-cells: show;
@@ -331,4 +334,8 @@ a:hover {
 
 .active {
   background-color: #CFECEC;
+}
+
+.search {
+  margin-bottom: 35px;
 }

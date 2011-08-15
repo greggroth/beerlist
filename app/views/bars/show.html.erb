@@ -8,11 +8,19 @@
   <p><%= @bar.zip %></p>
 </p>
 
+<% if @bar.description.present? %>
+	<p>
+		<b>Description:</b>
+		<%= @bar.description %>
+	</p>
+<% end %>
 
+<!--  <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@bar.latitude}%2C#{@bar.longitude}" %>
+-->
 <p>
-  <b>Description:</b>
-  <%= @bar.description %>
-</p>
+	<b>Map:</b>
+<p>
+<%= gmaps("map_options" => { "detect_location" => true, "center_on_user" => false, "zoom" => 14, "auto_adjust" => true, "auto_zoom" => false}, "markers" => { "data" => @json }) %>
 
 <div class="greenLine" />
 
@@ -32,6 +40,7 @@
   </tr>
 </thead>
 <tbody>
+
 <% @recent_beer_items.each do |item| %>
   <tr>
     <td><%= link_to item.beer.name, item.beer %></td>

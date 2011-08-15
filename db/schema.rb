@@ -27,16 +27,16 @@ ActiveRecord::Schema.define(:version => 20110813160752) do
   end
 
   create_table "bars", :force => true do |t|
-    t.string   "name"
-    t.string   "address"
-    t.string   "zip"
-    t.string   "state"
-    t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "city"
-    t.float    "latitude"
-    t.float    "longitude"
+    t.string    "name"
+    t.string    "address"
+    t.string    "zip"
+    t.string    "state"
+    t.text      "description"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.string    "city"
+    t.float     "latitude"
+    t.float     "longitude"
   end
 
   create_table "bars_users", :id => false, :force => true do |t|
@@ -68,13 +68,13 @@ ActiveRecord::Schema.define(:version => 20110813160752) do
   end
 
   create_table "breweries", :force => true do |t|
-    t.string   "name"
-    t.string   "address"
-    t.string   "zip"
-    t.string   "state"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "city"
+    t.string    "name"
+    t.string    "address"
+    t.string    "zip"
+    t.string    "state"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.string    "city"
   end
 
   create_table "profiles", :force => true do |t|

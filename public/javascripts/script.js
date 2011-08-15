@@ -71,8 +71,12 @@ $(document).ready(function() {
 	});
 	*/
 
-	$('#expanding_brewery_list').jExpand();
-	$('#expanding_followed_bars_list').jExpand();
-	$('#expanding_all_bars_list').jExpand();
-		
+	// $('#expanding_brewery_list').jExpand();
+	// $('#expanding_followed_bars_list').jExpand();
+	// $('#expanding_all_bars_list').jExpand();
+	$('.expandable_itemlist').jExpand();
+	
+	// $.jqplot('chartdiv_1',  [[[1, 2],[3,5.12],[5,13.1],[7,33.6],[9,85.9],[11,219.9]]]);
+	// $.jqplot('chartdiv_2',  [[[1, 50],[3,5.12],[5,13.1],[7,33.6],[9,85.9],[11,219.9]]]);
+	
 	});

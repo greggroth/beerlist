@@ -1,0 +1,72 @@
+doctype html
+html
+	head
+  		title Atlanta Beer List
+  		= javascript_include_tag 'jquery-1.6.2.min.js', \
+  								 'jquery-ui-1.8.15.custom.min.js', \
+  								 'jExpand.js', \
+  								 'script.js', \
+  								 :defaults
+  		= stylesheet_link_tag 'application.css', \
+  							  'ui-lightness/jquery-ui-1.8.15.custom.css'
+
+	body
+
+ <div id="header">
+   <h1><%= link_to "ABL", root_path %><span id="beta">beta</span> </h1>
+    <div id="user_bar">
+     <ul>
+      <% if logged_in? %>
+		<li><%= link_to "Beers", beers_path %></li>
+		<li>|</li>
+		<li><%= link_to "Bars", bars_path %></li>
+		<li>|</li>
+		<li><%= link_to "Breweries", breweries_path %></li>
+		<li>|</li>
+	   <% unless current_user.admin_bars.empty? %>        
+			<li><%= link_to "New Item", new_beer_item_path %></li>
+			<li>|</li>
+	   <% end %>
+        <li><%= link_to "Edit Password", edit_user_path(current_user) %></li>
+        <li>|</li>
+        <li><%= link_to "Logout", logout_path %></li>
+      <% else %>  
+		<li><%= link_to "Beers", beers_path %></li>
+		<li>|</li>
+		<li><%= link_to "Bars", bars_path %></li>
+		<li>|</li>
+		<li><%= link_to "Breweries", breweries_path %></li>
+		<li>|</li>
+	  <% if signup_allowed? %>
+		<li><%= link_to "Signup", new_user_path %></li>
+		<li>|</li>
+	  <% else %>
+	    <li>Beta Testing Full</li>
+	    <li>|</li>
+	  <% end %>
+        <li><%= link_to "Login", login_path %></li>
+      <% end %>
+     </ul>
+    </div>
+ </div>
+  <div id="main">
+  	<% if iphone_user_agent? %>
+  		<div id="message">
+			Using an iPhone? <a href="http://iphone.atlbeerlist.com/">Use the optimised version</a>.
+		</div>
+	<% end %>
+	
+	<p id="no-script">In order to experience all of the great features of this site, you will need a browser that supports JavaScript.  Learn how to enable it for your browser <a href="http://www.google.com/support/bin/answer.py?answer=23852&hl=en">here</a>.</p>
+
+    <%= content_tag(:p, notice, :class => 'notice') if notice.present? %>
+    <%= content_tag(:p, alert, :class => 'alert') if alert.present? %>
+
+    <%= yield %>
+
+  </div>
+  <div id="footer">
+    Beer List:  Your Place for Beer Prices
+  </div>
+
+</body>
+</html>

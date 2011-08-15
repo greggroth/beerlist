@@ -1,0 +1,2 @@
+module BarOwnerHelper
+end

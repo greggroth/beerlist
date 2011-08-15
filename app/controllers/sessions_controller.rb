@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   
   def new 
   	respond_to do |format|
-  		logger.debug "is doing the format thingy"
+  		# logger.debug "is doing the format thingy"
 		format.html
 		# format.iphone { render :format => false }
 		format.xml { render :xml => @beer_items }

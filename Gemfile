@@ -8,6 +8,7 @@ gem 'rails', '3.0.9'
 gem 'sqlite3'
 gem 'geocoder'
 gem 'slim'
+gem 'gmaps4rails'
 
 # Use unicorn as the web server
 # gem 'unicorn'

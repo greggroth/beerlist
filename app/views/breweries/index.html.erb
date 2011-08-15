@@ -17,7 +17,7 @@
  <tbody>
 
 <% @breweries.each do |brewery| %>
-  <tr id="<%= brewery.id %>" title="breweries/<%= brewery.id %>">
+  <tr id="<%= brewery.id %>" item_url="breweries/<%= brewery.id %>">
     <td><%= link_to brewery.name, brewery %></td>
    <% if brewery.citystate %>
     <td><%= brewery.citystate %></td>
@@ -40,8 +40,6 @@
 <% end %>
  </tbody>
 </table>
-
-
 <br />
 
 

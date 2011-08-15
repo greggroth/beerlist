@@ -9,6 +9,24 @@ class Bar < ActiveRecord::Base
 	has_many :bar_followings, :dependent => :destroy
 	has_many :users, :through => :bar_followings
 
+	geocoded_by :full_address
+	
+	after_validation :geocode, :if => (:address_changed? || :zip_changed?)
+	
+	acts_as_gmappable
+	
+	def gmaps4rails_address
+	  #describe how to retrieve the address from your model, if you use directly a db column, you can dry your code, see wiki
+	  "#{self.address}, #{self.zip}, #{self.state}" 
+	end
+	
+	def gmaps4rails_infowindow
+		"<p><b>#{self.name}</b></p><p>#{self.address}, #{self.zip}  #{self.state}</p>" 
+	end
+	
+	def gmaps4rails_title
+		"#{self.name}"
+	end
 
 	def has_permission?(owner)
 	  return false unless owner.is_a? User
@@ -27,9 +45,27 @@ class Bar < ActiveRecord::Base
 	  users.exists?(:id => applicant.id)
 	end
 
-	def followers_email
+	def followers_emails
 	  # @followers ||=BarFollowing.find_all_by_bar_id(self.id)
-	  @followers ||= self.users.find(:all, :select => "email").map(&:email)
+	  # @followers ||= self.users.find(:all, :select => "email").map(&:email)
+	  self.users.find(:all, :select => "email").map(&:email)
 	end
+	
+	def recent_followers
+	  self.users.find(:all, :conditions => ["bar_followings.created_at > ?", 1.month.ago])
+	end
+	
+	def followers_histogram_data
 
+	  followers_histogram_data = Array.new(51)
+	  51.times do |n|
+	  	followers_histogram_data[n] = [n.week.ago, self.users.find(:all, :conditions => ["bar_followings.created_at > ?", n.week.ago]).count]
+	  end
+	  followers_histogram_data
+	end
+	
+	def full_address
+		self.address + ", " + self.zip
+	end
+	
 end

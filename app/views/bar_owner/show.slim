@@ -1,0 +1,22 @@
+br
+h2 You're in charge:
+br
+
+table.itemlist
+	thead
+		tr
+			th
+			th Number of Followers
+			th New Followers in the past month
+	tbody
+	- @bars.each do |f|
+		tr
+			td = link_to f.name, edit_bar_path(f.id)
+			td = f.followers_emails.count
+			td = f.recent_followers.count
+		tr
+			td colspan="3"
+				p 
+				  div id="chartdiv_#{f.id}" style="height:400px;width:700px;"
+				script
+				  | $.jqplot('chartdiv_#{f.id}',  #{{f.followers_histogram_data.to_json}} );

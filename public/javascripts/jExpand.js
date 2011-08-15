@@ -16,7 +16,10 @@
 			});
 
         $(element).find("tr.odd").click(function() {
-        	var url = $(this).attr('title') + " .itemlist";
+        	var url = $(this).attr('item_url') + " .itemlist";
+        	// var url = e.target.item_url + " .itemlist";
+        	//alert(e.target.id)
+        	
         	var item_id = "#itemdesc-" + $(this).attr('id');
         	
         	$(this).next("tr").toggle();
