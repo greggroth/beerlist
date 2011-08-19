@@ -2,20 +2,36 @@ br
 h2 You're in charge of
 br
 
-table.chart_list
+table.manager_list
 	thead
 		tr
 			th
 			th
 			th
+			th
 	tbody
 	- @bars.each do |f|
-		tr
+		tr.heading
 			td = link_to f.name, edit_bar_path(f.id)
 			td = "#{number_to_human(f.followers_emails.count)} followers"
 			td = "#{number_to_human(f.recent_followers.count)} new followers in the past month"
 			td
 				div.arrow
-		tr
+		tr.chart
 			td colspan="4"
-				div id="chartdiv_#{f.id}" class="chart {chartdata: #{f.followers_data}}" style="height:400px;width:700px;"
+				div id="chartdiv_#{f.id}" class="chart {chartdata: #{f.followers_data}}" style="height:300px;width:700px;"
+		tr.beeritems
+			td colspan="4"
+				table
+					thead
+						tr
+							th Beer
+							th Price
+							th Featured
+					tbody
+					- f.beer_items.each do |item|
+						tr
+							td = item.beer.name
+							td = number_to_currency(item.price)
+							td = item.featured ? 'yes':'no'
+							

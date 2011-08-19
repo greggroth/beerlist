@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110815184431) do
+ActiveRecord::Schema.define(:version => 20110819175240) do
 
   create_table "bar_followings", :force => true do |t|
     t.timestamp "created_at"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(:version => 20110815184431) do
     t.decimal  "volume"
     t.string   "volunit",    :default => "oz"
     t.string   "pouring"
+    t.boolean  "featured"
   end
 
   create_table "beers", :force => true do |t|

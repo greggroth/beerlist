@@ -1,4 +1,4 @@
-/* DO NOT MODIFY. This file was compiled Fri, 19 Aug 2011 16:36:13 GMT from
+/* DO NOT MODIFY. This file was compiled Fri, 19 Aug 2011 19:17:49 GMT from
  * /Users/Greggory/Programing/beerlist/app/coffeescripts/script.coffee
  */
 
@@ -33,13 +33,17 @@
       });
     });
     /*  Expanding Itemlist */
-    $('.expandable_itemlist, .chart_list').find("tr:odd").addClass("odd").hover(function(e) {
+    $('.expandable_itemlist').find('tr:odd').addClass('odd').hover(function(e) {
       return $(e.target).closest('tr').toggleClass("active");
     });
-    $('.expandable_itemlist, .chart_list').find("tbody tr:nth-child(4n+1)").addClass('zebra');
-    $('.expandable_itemlist, .chart_list').find("tr:not(.odd)").hide();
-    $('.expandable_itemlist, .chart_list').find("tr:first-child").show();
-    $('.expandable_itemlist, .chart_list').find('a').click(function(e) {
+    $('.manager_list:not(.beeritems)').find('tr:nth-child(3n+1)').addClass('odd').hover(function(e) {
+      return $(e.target).closest('tr').toggleClass("active");
+    });
+    $('.expandable_itemlist').find('tbody tr:nth-child(4n+1)').addClass('zebra');
+    $('.manager_list').find('tbody tr.heading:odd').addClass('zebra');
+    $('.expandable_itemlist, .manager_list').find('tr:not(.odd)').hide();
+    $('.expandable_itemlist, .manager_list').find('tr:first-child').show();
+    $('.expandable_itemlist, .manager_list').find('a').click(function(e) {
       return $(e.target).stopPropagation();
     });
     $('.expandable_itemlist').find('tr.odd').click(function(e) {
@@ -48,8 +52,9 @@
         return $('#itemdesc-' + $(e.target).closest('tr').attr('id')).children('div').css('border', 'solid thin #E8E8E8').html('loading...').load($(e.target).closest('tr').attr('item_url') + ' .itemlist').show();
       }
     });
-    return $('.chart_list').find('tr.odd').click(function() {
-      return $(this).next('tr').toggle($(this).find('.arrow').toggleClass('up'));
+    /*  Expanding Chartlist (some things are also handled in the above secion)  */
+    return $('.manager_list').find('tr.odd').click(function() {
+      return $(this).nextAll('tr.chart:first, tr.beeritems:first').toggle($(this).find('.arrow').toggleClass('up'));
     });
   });
   return;

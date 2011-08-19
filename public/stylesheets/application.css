@@ -153,7 +153,7 @@ a:hover {
 }
 
 #main table th {
-	align: left;
+	text-align: left;
 }
 
 #main table, td {
@@ -161,6 +161,7 @@ a:hover {
   border-collapse: collapse;
   empty-cells: show;
 }
+
 
 #main form {
   text-align: left;
@@ -366,4 +367,9 @@ div.arrow {
 
 div.up { 
 	background-position:0px 0px;
+}
+
+table.manager_list tr.beeritems {
+	background: white;
+	border: solid thin #E8E8E8;
 }
