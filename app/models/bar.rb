@@ -55,13 +55,22 @@ class Bar < ActiveRecord::Base
 	  self.users.find(:all, :conditions => ["bar_followings.created_at > ?", 1.month.ago])
 	end
 	
-	def followers_histogram_data
+	def followers_data
 
-	  followers_histogram_data = Array.new(51)
+	  followers_histogram_data = Array.new
 	  51.times do |n|
-	  	followers_histogram_data[n] = [n.week.ago, self.users.find(:all, :conditions => ["bar_followings.created_at > ?", n.week.ago]).count]
+	  	followers_histogram_data.push [n.week.ago.strftime("%Y-%m-%d"), self.users.find(:all, :conditions => ["bar_followings.created_at < ?", n.week.ago]).count]
 	  end
-	  followers_histogram_data
+	  return followers_histogram_data.to_json
+	end
+	
+	def followers_data_csv
+
+	  followers_histogram_data = Array.new
+	  51.times do |n|
+	  	followers_histogram_data.push [n.week.ago.strftime("%Y-%m-%d"), self.users.find(:all, :conditions => ["bar_followings.created_at < ?", n.week.ago]).count]
+	  end
+	  return followers_histogram_data.join ','
 	end
 	
 	def full_address

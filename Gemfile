@@ -9,6 +9,9 @@ gem 'sqlite3'
 gem 'geocoder'
 gem 'slim'
 gem 'gmaps4rails'
+gem 'coffee-script'
+gem 'therubyracer', :require => false
+gem 'barista'
 
 # Use unicorn as the web server
 # gem 'unicorn'

@@ -1,12 +1,13 @@
 class BeerItemsController < ApplicationController
-
+helper_method :sort_column, :sort_direction
 before_filter :authenticate, :except => [:index, :show]
 
 
 # GET /beer_items/
 # GET /beer_items.xml
 def index
-   @beer_items = BeerItem.find(:all, :include => [:beer, :bar], :order => ('updated_at DESC'), :limit => 15)
+  @beer_items = BeerItem.order(sort_column + " " + sort_direction)
+   # @beer_items = BeerItem.find(:all, :include => [:beer, :bar], :order => ('updated_at DESC'), :limit => 15)
    # @recent_beer_items = @beer_items.find(:all, :conditions => ["updated_at < ?", 1.week.ago])
 
    respond_to do |format|
@@ -94,5 +95,13 @@ def destroy
     end
 end
 
+private
+def sort_column
+  BeerItem.column_names.include?(params[:sort]) ? params[:sort] :"created_at"
+end
+
+def sort_direction
+  %w[asc desc].include?(params[:direction]) ? params[:direction] :"asc"
+end
 
 end

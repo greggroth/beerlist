@@ -339,3 +339,31 @@ a:hover {
 .search {
   margin-bottom: 35px;
 }
+
+/*
+th .current {
+	background:transparent;
+	padding-left: 20px;
+}
+
+th .asc {
+	background:transparent url(../images/arrows.png) no-repeat scroll 0px 0px;
+	padding-left: 20px;
+}
+
+th .desc {
+	background:transparent url(../images/arrows.png) no-repeat scroll 0px -16px;
+	padding-left: 20px;
+}
+*/
+
+div.arrow { 
+	background:transparent url(../images/arrows.png) no-repeat scroll 0px -16px; 
+	width:16px; 
+	height:16px; 
+	display:block;
+}
+
+div.up { 
+	background-position:0px 0px;
+}
