@@ -31,7 +31,7 @@ class Bar < ActiveRecord::Base
 	def has_permission?(owner)
 	  return false unless owner.is_a? User
 	  # users.exists?(owner.id)
-	  BarPermission.exists?(:user_id => owner.id, :bar_id => self.id)
+	  # BarPermission.exists?(:user_id => owner.id, :bar_id => self.id)
 	end
 
 	def admins

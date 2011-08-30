@@ -24,7 +24,7 @@ class BeerItem < ActiveRecord::Base
  
 	def notify_item_create_sucess
 	  puts "New beer listing added successfully"
-    end
+  end
 
 	def breweryid
 	  beer.brewery.id

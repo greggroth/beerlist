@@ -1,4 +1,4 @@
-/* DO NOT MODIFY. This file was compiled Fri, 19 Aug 2011 19:17:49 GMT from
+/* DO NOT MODIFY. This file was compiled Tue, 30 Aug 2011 04:17:51 GMT from
  * /Users/Greggory/Programing/beerlist/app/coffeescripts/script.coffee
  */
 
@@ -44,7 +44,7 @@
     $('.expandable_itemlist, .manager_list').find('tr:not(.odd)').hide();
     $('.expandable_itemlist, .manager_list').find('tr:first-child').show();
     $('.expandable_itemlist, .manager_list').find('a').click(function(e) {
-      return $(e.target).stopPropagation();
+      return e.stopPropagation();
     });
     $('.expandable_itemlist').find('tr.odd').click(function(e) {
       $(e.target).closest('tr').next('tr').toggle();

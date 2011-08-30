@@ -7,10 +7,9 @@
   <%= javascript_include_tag :defaults %>
   <%= javascript_include_tag "application", "/javascripts/jquery-1.6.2.min.js" %>
   <%= javascript_include_tag "application", "/javascripts/coffeescripts/script.js" %>
-  <%= javascript_include_tag "application", "/javascripts/jquery-ui-1.8.15.custom.min.js" %>
+  <%= javascript_include_tag "application", "/javascripts/jquery-ui-1.8.16.custom.min.js" %>
   <%= javascript_include_tag "application", "/javascripts/jquery.jqplot.js" %>
   <%= javascript_include_tag "application", "/javascripts/jqplot_plugins/jqplot.dateAxisRenderer.min.js" %>
-  <%= javascript_include_tag "application", "/javascripts/jExpand.js" %>
   <%= javascript_include_tag "application", "/javascripts/jquery.metadata.js"%>
   <%= csrf_meta_tag %>
   <%= yield :head %>
@@ -36,7 +35,7 @@
 		 <% end %>
 	        <li><%= link_to "Edit Password", edit_user_path(current_user) %></li>
 	        <li>|</li>
-	        <li><%= link_to "Logout", logout_path %></li>
+	        <li><%= link_to "Logout", logout_path, :id=>'logout' %></li>
       <% else %>
 		 <% if signup_allowed? %>
 			<li><%= link_to "Signup", new_user_path %></li>

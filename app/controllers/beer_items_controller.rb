@@ -22,33 +22,41 @@ end
 def show
    @beer_item = BeerItem.find(params[:id])
 
-   respond_to do |format|
-	format.html
-	format.xml { render :xml => @beer_item }
-   end
+  respond_to do |format|
+	  format.html
+  	format.xml { render :xml => @beer_item }
+  end
 end
 
 # GET /beer_items/new
 # GET /beer_items/new.xml
 def new
-	if BarPermission.where("user_id = ?", current_user.id).exists?
-   		@beer_item = BeerItem.new
-	else
-		redirect_to beer_items_path
-	end
+  @beer_item = BeerItem.new
+  
+  respond_to do |format|
+	  format.html
+  	format.xml { render :xml => @beer_item }
+  end
+   
+  # if BarPermission.where("user_id = ?", current_user.id).exists?
+  #       @beer_item = BeerItem.new
+  # else
+  #   redirect_to beer_items_path, :notice => 'You do not have permission to create a listing'
+  # end
 end
 
 # POST /beer_items
 # POST /beer_items.xml
 def create
    @beer_item = current_user.beer_items.new(params[:beer_item])
+   
    respond_to do |format|
      if @beer_item.save
-	format.html { redirect_to(beer_items_path, :notice => 'New listing added') }
-	format.xml { render :xml => @beer_item, :status => :created, :location => @beer_item }
+	    format.html { redirect_to(beer_items_path, :notice => 'New listing added') }
+    	format.xml { render :xml => @beer_item, :status => :created, :location => @beer_item }
      else
-	format.html { render :action => "new" }
-	format.xml { render :xml => @beer_item.errors, :status => :unprocessable_entity }
+	    format.html { render :action => "new" }
+    	format.xml { render :xml => @beer_item.errors, :status => :unprocessable_entity }
      end
    end
 end
@@ -58,9 +66,9 @@ def edit
    # @beer_item = current_user.beer_items.find(params[:id])
 	@beer_item = BeerItem.find(params[:id])
 
-	if not @beer_item.bar.has_permission?(current_user)
-		redirect_to(beer_items_path)
-	end
+  # unless @beer_item.bar.has_permission?(current_user)
+  #   redirect_to(beer_items_path)
+  # end
 end
 
 # PUT /beer_items/1

@@ -5,9 +5,9 @@ You've stumbled on the best thing to happen to the Atlanta beer scene since Bric
 </p>
 <h3>WARNING:</h3><p> Currently, listings are not accurate.  This is still under testing.  Check back in the future for the real deal.</p>
 <!-- <p id="disclaimer"> Disclaimer task</p> -->
-<div class="greenLine" />
+<div class="greenLine"></div>
 
-<h2>Latest Additions</h2>
+<h2 id="latest_additions">Latest Additions</h2><p id="new_item"><%= link_to "New Item", new_beer_item_path %></p>
 <table id="expanding_beer_item_list" class="itemlist">
 <thead>
   <tr>
@@ -16,35 +16,30 @@ You've stumbled on the best thing to happen to the Atlanta beer scene since Bric
     <th width=150><%= sortable "volume", "Pouring" %></th>
     <th width=100><%= sortable "price" %></th>
     <th width=50></th>
-    <th width=50></th>
-    <th width=50></th>
   </tr>
 </thead>
 <tbody>
-<% @beer_items.each do |beer_item| %>
+<% @beer_items.each do |f| %>
   <tr>
-    <td><%= link_to beer_item.beer.name, beer_item.beer %></td>
-    <td><%= link_to beer_item.bar.name, beer_item.bar %></td>
-    <% unless (beer_item.volume.nil? || beer_item.volunit.nil?) %>
-    <td><%= number_to_human(beer_item.volume, :units => {:unit => beer_item.volunit}) %> <%= beer_item.pouring %></td>
+    <td><%= link_to f.beer.name, f.beer %></td>
+    <td><%= link_to f.bar.name, f.bar %></td>
+    <% unless (f.volume.nil? || f.volunit.nil?) %>
+       	<td><%= number_to_human(f.volume, :units => {:unit => f.volunit}) %> <%= f.pouring %></td>
     <% else %>
-    <td><%= beer_item.pouring %></td>
+    	<td><%= f.pouring %></td>
     <% end %>
-    <td><%= number_to_currency(beer_item.price) %></td>
-	<% if beer_item.bar.has_permission?(current_user) %>
-		<td><%= link_to 'Edit', edit_beer_item_path(beer_item) %></td>
-	    <td><%= link_to 'Destroy', beer_item, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= number_to_currency(f.price) %></td>
+	<!-- 
+	<% if f.bar.has_permission?(current_user) %>
+		<td><%= link_to 'Edit', edit_beer_item_path(f) %></td>
+	    <td><%= link_to 'Destroy', f, :confirm => 'Are you sure?', :method => :delete %></td>
 	<% else %>
 		<td />
 		<td />
 	<% end %>
+	-->
+	<td><%= link_to 'Details', f %></td>
   </tr>
-  <!--
-  <tr>
-  	<td colspan="4" id="itemdesc-<%= beer_item.id %>" class="itemdesc">
-  		<p></p>
-  	</td>
-  </tr>-->
 <% end %>
 </tbody>
 </table>

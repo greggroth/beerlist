@@ -11,8 +11,8 @@
   </div>
  
   <div class="field">
-     <%= f.label :name %><br />
-     <%= collection_select :beer_item, :bar_id, current_user.admin_bars, :id, :name %><br />
+     <%= f.label "Bar Name" %><br />
+     <%= collection_select :beer_item, :bar_id, Bar.order('name ASC'), :id, :name %><br />
   </div>
   
   <div class="field">
@@ -31,6 +31,6 @@
   </div>
   
   <div class="actions">
-    <%= submit_or_cancel(f) %>
+    <%= submit_or_cancel f, "Submit" %>
   </div>
 <% end %>

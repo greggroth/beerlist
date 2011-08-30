@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   	if signup_allowed?
     	@user = User.new
     else
-    	redirect_to beer_items_path, :notice => 'Beta signups limit reached.'
+    	redirect_to root_path, :notice => 'Beta signups limit reached.'
     end
   end
   
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       session[:user_id] = @user.id
-      redirect_to beer_items_path, :notice => 'New user successfully added.'
+      redirect_to root_path, :notice => 'New user successfully added.'
     else
       render :action => 'new'
     end
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update_attributes(params[:user])
-      redirect_to beer_items_path, :notice => 'Updated user information successfully.'
+      redirect_to root_path, :notice => 'Updated user information successfully.'
     else
       render :action => 'edit'
     end

@@ -30,7 +30,7 @@ $(document).ready ->
 	$('.expandable_itemlist, .manager_list').find('tr:not(.odd)').hide()
 	$('.expandable_itemlist, .manager_list').find('tr:first-child').show()
 	$('.expandable_itemlist, .manager_list').find('a').click (e) ->
-		$(e.target).stopPropagation()
+		e.stopPropagation()
 		
 	$('.expandable_itemlist').find('tr.odd').click (e) ->
     $(e.target).closest('tr').next('tr').toggle()

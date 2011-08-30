@@ -31,7 +31,6 @@ table.manager_list
 					tbody
 					- f.beer_items.each do |item|
 						tr
-							td = item.beer.name
-							td = number_to_currency(item.price)
-							td = item.featured ? 'yes':'no'
+							- form_for item do |bar_part|
+								td = bar_part.text_field :beer_id
 							

@@ -91,7 +91,7 @@ a:hover {
   font-size: 11px;
 }
 
-.itemlist h2 {
+.itemlist  {
   padding: 10px 0;
 }
 
@@ -372,4 +372,15 @@ div.up {
 table.manager_list tr.beeritems {
 	background: white;
 	border: solid thin #E8E8E8;
+}
+
+#latest_additions {
+	display: inline-block;
+}
+
+#new_item {
+	display: inline-block;
+	text-align: right;
+	float: right;
+	margin-left: 10px;
 }
