@@ -1,5 +1,4 @@
 $(document).ready ->
-	$('#no-script').remove()
 	$('.itemlist tbody tr:nth-child(odd)').addClass('zebra')
 	$('#user_bar a').hover(  
 		-> 

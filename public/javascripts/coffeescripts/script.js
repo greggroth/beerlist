@@ -1,10 +1,9 @@
-/* DO NOT MODIFY. This file was compiled Tue, 30 Aug 2011 04:17:51 GMT from
+/* DO NOT MODIFY. This file was compiled Tue, 30 Aug 2011 14:04:07 GMT from
  * /Users/Greggory/Programing/beerlist/app/coffeescripts/script.coffee
  */
 
 (function() {
   $(document).ready(function() {
-    $('#no-script').remove();
     $('.itemlist tbody tr:nth-child(odd)').addClass('zebra');
     $('#user_bar a').hover(function() {
       $(this).animate({
