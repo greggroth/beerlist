@@ -19,8 +19,7 @@
   <%= number_to_currency(@beer_item.price) %>
 </p>
 
+<%= link_to 'Edit', edit_beer_item_path(@beer_item) %> | <%= link_to 'Destroy', @beer_item, :method => :delete %>
 
-<% if @beer_item.bar.has_permission? current_user %>
-	<%= link_to 'Edit', edit_beer_item_path(@beer_item) %> |
-<% end %>
-<%= link_to 'Back', :back %>
+<br />
+<%= link_to 'Back', beer_items_path %>

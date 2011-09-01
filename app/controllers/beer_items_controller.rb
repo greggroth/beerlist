@@ -6,14 +6,11 @@ before_filter :authenticate, :except => [:index, :show]
 # GET /beer_items/
 # GET /beer_items.xml
 def index
-  @beer_items = BeerItem.order(sort_column + " " + sort_direction)
-   # @beer_items = BeerItem.find(:all, :include => [:beer, :bar], :order => ('updated_at DESC'), :limit => 15)
-   # @recent_beer_items = @beer_items.find(:all, :conditions => ["updated_at < ?", 1.week.ago])
-
+   @beer_items = BeerItem.find(:all, :include => [:beer,:bar], :order => [sort_column + " " + sort_direction])
    respond_to do |format|
-	format.html
-    # format.iphone { render :layout => false }
-	format.xml { render :xml => @beer_items }
+	  format.html
+      # format.iphone { render :layout => false }
+  	format.xml { render :xml => @beer_items }
    end
 end
 
@@ -52,7 +49,7 @@ def create
    
    respond_to do |format|
      if @beer_item.save
-	    format.html { redirect_to(beer_items_path, :notice => 'New listing added') }
+	    format.html { redirect_to(beer_items_path, :notice => "Beer listing added #{undo_link}") }
     	format.xml { render :xml => @beer_item, :status => :created, :location => @beer_item }
      else
 	    format.html { render :action => "new" }
@@ -78,8 +75,8 @@ def update
 	@beer_item = BeerItem.find(params[:id])
    
    respond_to do |format|
-	if @beer_item.update_attributes(params[:beer_item]) && @beer_item.bar.has_permission?(current_user)
-	  format.html { redirect_to(@beer_item, :notice => 'Entry was sucesfully updated') }
+	if @beer_item.update_attributes(params[:beer_item])
+	  format.html { redirect_to(@beer_item, :notice => "Beer listing updated #{undo_link}") }
 	  format.xml { head :ok }
 	else
 	  format.html { render :action => "edit" }
@@ -94,7 +91,7 @@ def destroy
 	if @beer_item.bar.has_permission?(current_user)
     		@beer_item.destroy
 	else
-		redirect_to beer_items_path
+		redirect_to beer_items_path, :notice => "Beer listing removed #{undo_link}"
 	end
 
     respond_to do |format|
@@ -104,12 +101,16 @@ def destroy
 end
 
 private
-def sort_column
-  BeerItem.column_names.include?(params[:sort]) ? params[:sort] :"created_at"
-end
+  def sort_column
+    (BeerItem.column_names.include?(params[:sort]) || "beers.name" || "bars.name") ? params[:sort] :"created_at"
+  end
 
-def sort_direction
-  %w[asc desc].include?(params[:direction]) ? params[:direction] :"asc"
-end
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] :"asc"
+  end
+
+  def undo_link
+    view_context.button_to("undo", revert_version_path(@beer_item.versions.scoped.last), :method => :post )
+  end
 
 end

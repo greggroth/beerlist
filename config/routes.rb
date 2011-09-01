@@ -1,6 +1,8 @@
 Beerlist::Application.routes.draw do
   root :to => "beer_items#index"
 
+  post "/versions/:id/revert" => "versions#revert", :as => "revert_version"
+  
   resources :beer_items
   resources :bars do
 	member do
@@ -17,7 +19,7 @@ Beerlist::Application.routes.draw do
    match '/logout' => "sessions#destroy", :as => "logout"
 
   match '/bar_owner/' => "bar_owner#show"
-
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

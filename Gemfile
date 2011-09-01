@@ -12,6 +12,7 @@ gem 'gmaps4rails'
 gem 'coffee-script'
 gem 'therubyracer', :require => false
 gem 'barista'
+gem 'paper_trail'
 
 gem 'rspec-rails', :group => [:test, :development]
 group :test do

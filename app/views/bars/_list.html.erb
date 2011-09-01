@@ -18,7 +18,7 @@
 <% @user_bars.each do |f| %>
   <tr id="<%= f.id %>" item_url="bars/<%= f.id %>">
 	<td>
-	<div id="follow_form">
+	<div class="follow_form">
 	<% if logged_in? %>
 		<% if f.is_followed? current_user %>
 			<%= form_for current_user.bar_followings.find_by_bar_id(f.id),
@@ -82,7 +82,7 @@
 <% @bars.each do |f| %>
   <tr id="<%= f.id %>" item_url="bars/<%= f.id %>">
 	<td>
-	<div id="follow_form">
+	<div class="follow_form">
 	<% if logged_in? %>
 		<% if f.is_followed? current_user %>
 			<%= form_for current_user.bar_followings.find_by_bar_id(f.id),

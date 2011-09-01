@@ -2,8 +2,8 @@ module ApplicationHelper
   # Creates a submit button with the given name with a cancel link
   # Accepts two arguments: Form object and the cancel link name
   
-  def submit_or_cancel(form, button_name = 'Submit', name='Cancel')
-    form.submit(button_name) + " or " + link_to(name, 'javascript:history.go(-1);', :class => 'cancel')
+  def submit_or_cancel(form, button_name = 'Submit', link_name='Cancel')
+    form.submit(button_name) + " or " + link_to(link_name, 'javascript:history.go(-1);', :class => 'cancel')
   end
   
   # Request from an iPhone or iPod touch? (Mobile Safari user agent)

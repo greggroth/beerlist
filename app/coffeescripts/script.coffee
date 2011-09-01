@@ -30,6 +30,9 @@ $(document).ready ->
 	$('.expandable_itemlist, .manager_list').find('tr:first-child').show()
 	$('.expandable_itemlist, .manager_list').find('a').click (e) ->
 		e.stopPropagation()
+	$('.expandable_itemlist, .manager_list').find('div.follow_form').click (e) ->
+		e.stopPropagation()
+	
 		
 	$('.expandable_itemlist').find('tr.odd').click (e) ->
     $(e.target).closest('tr').next('tr').toggle()
@@ -40,6 +43,11 @@ $(document).ready ->
 	$('.manager_list').find('tr.odd').click -> \
     $(this).nextAll('tr.chart:first, tr.beeritems:first').toggle \
 		$(this).find('.arrow').toggleClass('up')
+		
+  ###  Detail/Edit Links visible on hover ###
+	$('a.action_link').hide()
+	$('tr').hover ->
+		$(this).find('a.action_link').toggle()
 
 return
 	

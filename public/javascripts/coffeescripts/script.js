@@ -1,4 +1,4 @@
-/* DO NOT MODIFY. This file was compiled Tue, 30 Aug 2011 14:04:07 GMT from
+/* DO NOT MODIFY. This file was compiled Wed, 31 Aug 2011 16:16:47 GMT from
  * /Users/Greggory/Programing/beerlist/app/coffeescripts/script.coffee
  */
 
@@ -45,6 +45,9 @@
     $('.expandable_itemlist, .manager_list').find('a').click(function(e) {
       return e.stopPropagation();
     });
+    $('.expandable_itemlist, .manager_list').find('div.follow_form').click(function(e) {
+      return e.stopPropagation();
+    });
     $('.expandable_itemlist').find('tr.odd').click(function(e) {
       $(e.target).closest('tr').next('tr').toggle();
       if ($(e.target).closest('tr').next('tr').is(':visible')) {
@@ -52,8 +55,13 @@
       }
     });
     /*  Expanding Chartlist (some things are also handled in the above secion)  */
-    return $('.manager_list').find('tr.odd').click(function() {
+    $('.manager_list').find('tr.odd').click(function() {
       return $(this).nextAll('tr.chart:first, tr.beeritems:first').toggle($(this).find('.arrow').toggleClass('up'));
+    });
+    /*  Detail/Edit Links visible on hover */
+    $('a.action_link').hide();
+    return $('tr').hover(function() {
+      return $(this).find('a.action_link').toggle();
     });
   });
   return;

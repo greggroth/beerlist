@@ -4,18 +4,19 @@
 You've stumbled on the best thing to happen to the Atlanta beer scene since Brickstore opened.  This is your gateway to to beers and bars around the Atlanta area.  Use this site to find the best deal on that special beer you've been looking for or just check to see if the bar around the corner has a new one on tap.
 </p>
 <h3>WARNING:</h3><p> Currently, listings are not accurate.  This is still under testing.  Check back in the future for the real deal.</p>
-<!-- <p id="disclaimer"> Disclaimer task</p> -->
+
 <div class="greenLine"></div>
 
 <h2 id="latest_additions">Latest Additions</h2><p id="new_item"><%= link_to "New Item", new_beer_item_path %></p>
 <table id="expanding_beer_item_list" class="itemlist">
 <thead>
   <tr>
-    <th width=200>Beer</th>
-    <th width=200>Bar</th>
+    <th width=200><%= sortable "beers.name", "Beer" %></th>
+    <th width=200><%= sortable "bars.name", "Bar" %></th>
     <th width=150><%= sortable "volume", "Pouring" %></th>
     <th width=100><%= sortable "price" %></th>
     <th width=50></th>
+	<th width=50></th>
   </tr>
 </thead>
 <tbody>
@@ -29,16 +30,8 @@ You've stumbled on the best thing to happen to the Atlanta beer scene since Bric
     	<td><%= f.pouring %></td>
     <% end %>
     <td><%= number_to_currency(f.price) %></td>
-	<!-- 
-	<% if f.bar.has_permission?(current_user) %>
-		<td><%= link_to 'Edit', edit_beer_item_path(f) %></td>
-	    <td><%= link_to 'Destroy', f, :confirm => 'Are you sure?', :method => :delete %></td>
-	<% else %>
-		<td />
-		<td />
-	<% end %>
-	-->
-	<td><%= link_to 'Details', f %></td>
+	<td><%= link_to 'Details', f , :class => 'action_link' %></td>
+	<td><%= link_to 'Edit', edit_beer_item_path(f) , :class => 'action_link'%></td>
   </tr>
 <% end %>
 </tbody>

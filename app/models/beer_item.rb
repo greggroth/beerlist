@@ -8,6 +8,8 @@ class BeerItem < ActiveRecord::Base
 	belongs_to :beer
 	belongs_to :user
 	belongs_to :brewery
+	
+	has_paper_trail
 
 	after_create :notify_item_create_sucess
 
@@ -29,6 +31,14 @@ class BeerItem < ActiveRecord::Base
 	def breweryid
 	  beer.brewery.id
 	end
+	
+	def beer_name
+	  self.beer.name
+  end
+  
+  def bar_name
+    bar.name
+  end
 
 
 end
