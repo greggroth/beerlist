@@ -64,6 +64,7 @@ GEM
       thor (~> 0.14.6)
     guard-rspec (0.4.2)
       guard (>= 0.4.0)
+    haml (3.1.2)
     i18n (0.5.0)
     json_pure (1.5.3)
     launchy (2.0.4)
@@ -115,6 +116,7 @@ GEM
       railties (~> 3.0)
       rspec (~> 2.6.0)
     rubyzip (0.9.4)
+    sass (3.1.7)
     selenium-webdriver (2.5.0)
       childprocess (>= 0.2.1)
       ffi (>= 1.0.7)
@@ -146,10 +148,12 @@ DEPENDENCIES
   geocoder
   gmaps4rails
   guard-rspec
+  haml
   launchy
   paper_trail
   rails (= 3.0.9)
   rspec-rails
+  sass
   slim
   sqlite3
   therubyracer

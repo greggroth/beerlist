@@ -8,13 +8,13 @@ You've stumbled on the best thing to happen to the Atlanta beer scene since Bric
 <div class="greenLine"></div>
 
 <h2 id="latest_additions">Latest Additions</h2><p id="new_item"><%= link_to "New Item", new_beer_item_path %></p>
-<table id="expanding_beer_item_list" class="itemlist">
+<table id="sorted_beer_item_list" class="itemlist">
 <thead>
   <tr>
-    <th width=200><%= sortable "beers.name", "Beer" %></th>
-    <th width=200><%= sortable "bars.name", "Bar" %></th>
-    <th width=150><%= sortable "volume", "Pouring" %></th>
-    <th width=100><%= sortable "price" %></th>
+    <th width=200><%= sortable "beers.name", "Beer" %> <span class="asc"></span></th>
+    <th width=200><%= sortable "bars.name", "Bar" %> <span class="asc"></span></th>
+    <th width=150><%= sortable "volume", "Pouring" %> <span class="asc"></span></th>
+    <th width=100><%= sortable "price" %> <span class="asc"></span></th>
     <th width=50></th>
 	<th width=50></th>
   </tr>

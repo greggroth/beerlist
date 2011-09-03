@@ -48,6 +48,9 @@ $(document).ready ->
 	$('a.action_link').hide()
 	$('tr').hover ->
 		$(this).find('a.action_link').toggle()
-
+		
+	###  Up/Down sort arrows ###
+	$('#sorted_beer_item_list a').click ->
+		$(this).parent('th').find('.arrow').toggleClass('asc current')
 return
 	

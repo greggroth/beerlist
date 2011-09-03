@@ -13,6 +13,8 @@ gem 'coffee-script'
 gem 'therubyracer', :require => false
 gem 'barista'
 gem 'paper_trail'
+gem 'sass'
+gem 'haml'
 
 gem 'rspec-rails', :group => [:test, :development]
 group :test do

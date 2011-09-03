@@ -1,268 +1,195 @@
-* { 
-  margin: 0 auto;
-}
+/* orange: #FF813C */
+* {
+  margin: 0 auto; }
 
-body { 
-  background-color: #fff; 
-  color: #333;
-}
+body {
+  background-color: #fff;
+  color: #333; }
 
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
-  font-size:   13px;
+  font-size: 13px;
   line-height: 18px;
-  margin: 0px;
-}
-
+  margin: 0px; }
 
 pre {
   background-color: #eee;
   padding: 10px;
-  font-size: 11px;
-}
+  font-size: 11px; }
 
 p {
-  padding: 5px;
-}
+  padding: 5px; }
 
 a {
-  color:#D95E16;
-  padding:0 2px;
-  text-decoration:none;
-}
+  color: #e67e00;
+  padding: 0 2px;
+  text-decoration: none; }
+  a:hover {
+    background-color: #ff8c00;
+    color: #FFFFFF; }
 
-a:hover {
-  background-color:#FF813C;
-  color:#FFFFFF;
-}
+.notice {
+  color: green; }
 
-.notice { color: green; }
-.alert  { color: red; }
+.alert {
+  color: red; }
 
 #header, #main, #footer {
-  width: 800px;
-}
+  width: 800px; }
 
 #header {
-  font-family:"Myriad Web Pro",Helvetica,Arial,sans-serif;
+  font-family: "Myriad Web Pro",Helvetica,Arial,sans-serif;
   letter-spacing: 1px;
   border-bottom: 5px solid #333333;
-  color:#333333;
+  color: #333333;
   padding: 15px 0;
   height: 35px;
-  margin-left:auto;
-  margin-right:auto;
-  font-size: 10px;
-}
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 10px; }
 
 #user_bar {
-	float: right;
-}
-
-#user_bar ul {
-	list-style-type: none;
-}
-
-#user_bar li {
-	float: left;
-	text-align: center;
-	padding-left: 0px;
-	padding-right: 0px;
-	margin-left: 5px;
-	margin-right: 5px;
-	font-size: 11px;
-}
-
-#user_bar li a {
-
-}
+  float: right; }
+  #user_bar ul {
+    list-style-type: none; }
+  #user_bar li {
+    float: left;
+    text-align: center;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: 11px; }
 
 .greenLine {
   border-top: 5px solid #556B2F;
-  padding: 5px;
-}
+  padding: 5px; }
 
 .itemlist {
   /* border-top: 5px solid #556B2F; */
-  clear:both;
+  clear: both;
   /* margin-top: 10px; */
   padding: 5px 0;
   text-align: left;
-  font-size: 11px;
-}
-
-.itemlist  {
-  padding: 10px 0;
-}
+  font-size: 11px; }
 
 #footer {
   border-top: 5px solid #C1C1C1;
   margin-top: 10px;
-  clear:both;
+  clear: both;
   padding: 10px 0;
   text-align: center;
-  font-size: 11px;
-}
+  font-size: 11px; }
 
 #header h1 {
   padding-left: 15px;
   padding-top: 14px;
   float: left;
-  font-size: 36px;
-}
-
-#header h1 a{
-  color: black;
-}
-
-#header h1 a:hover {
-  background-color: white;
-  color: black;
-  border-bottom: 4px solid #ccc;
-}
-
-
+  font-size: 36px; }
+  #header h1 a {
+    color: black; }
+    #header h1 a:hover {
+      background-color: white;
+      color: black;
+      border-bottom: 4px solid #ccc; }
 #header p {
-  float: right;
-}
+  float: right; }
 
 #beta {
   /* margin-left: 310px; */
-  padding-left:5px;
+  padding-left: 5px;
   vertical-align: -10px;
-  font-size: 16px;
-}
+  font-size: 16px; }
 
 #main h1 {
   font-size: 24px;
   color: black;
   padding: 10px 0;
   border-bottom: 1px solid #bbb;
-  margin-bottom: 10px;
-}
+  margin-bottom: 10px; }
+#main table {
+  width: 100%;
+  margin: 0;
+  border-collapse: collapse;
+  empty-cells: show; }
+  #main table th {
+    text-align: left; }
+#main form {
+  text-align: left; }
+  #main form br {
+    display: none;
+    float: left; }
+  #main form label {
+    width: 150px;
+    display: block;
+    text-align: right;
+    padding-right: 10px;
+    float: left;
+    line-height: 21px;
+    vertical-align: center;
+    background-color: #F0F0F0;
+    border: 2px solid #ccc;
+    margin-right: 10px; }
+  #main form label.check_box_label {
+    width: auto;
+    display: inline;
+    text-align: right;
+    padding-right: 10px;
+    line-height: 21px;
+    vertical-align: center;
+    background-color: #FFF;
+    border: none; }
+  #main form .field, #main form .actions {
+    padding-top: 10px;
+    clear: both; }
+  #main form .following {
+    padding-top: 5px;
+    padding-left: 3px;
+    clear: both; }
+  #main form input[type=text], #main form input[type=password], #main form textarea {
+    float: left;
+    font-size: 14px;
+    width: 250px;
+    padding: 2px;
+    border: 2px solid #ccc; }
+  #main form input[type=checkbox] {
+    margin: 4px;
+    float: left; }
+  #main form textarea {
+    height: 150px; }
+  #main form input[type=submit] {
+    margin-left: 15px;
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px; }
+  #main form .fieldWithErrors label {
+    border: 2px solid red;
+    margin-right: 0px; }
+  #main form .fieldWithErrors input, #main form .fieldWithErrors textarea {
+    width: 250px;
+    border: 2px solid red; }
+#main h3 {
+  padding-top: 10px;
+  height: 20px; }
+  #main h3 .actions {
+    display: none;
+    font-weight: normal;
+    font-size: 10px; }
+  #main h3:hover .actions {
+    display: inline; }
 
 .brewerylink {
   font-size: 15px;
   text-align: left;
   margin-top: 0px;
-  margin-bottom: 12px;
-}
-
-#main table {
-	width: 100%;
-}
-
-#main table th {
-	text-align: left;
-}
-
-#main table, td {
-  margin: 0;
-  border-collapse: collapse;
-  empty-cells: show;
-}
-
-
-#main form {
-  text-align: left;
-}
-
-#main form br {
-  display: none;
-  float: left;
-}
-
-#main form label {
-  width: 150px;
-  display: block;
-  text-align: right;
-  padding-right: 10px;
-  float: left;
-  line-height: 21px;
-  vertical-align: center;
-  background-color: #F0F0F0;
-  border: 2px solid #ccc;
-  margin-right: 10px;
-}
-
-#main form label.check_box_label {
-  width: auto;
-  display: inline;
-  text-align: right;
-  padding-right: 10px;
-  line-height: 21px;
-  vertical-align: center;
-  background-color: #FFF;  
-  border: none;
-}
-
-#main form .field, #main form .actions {
-  padding-top: 10px;
-  clear: both;
-}
-
-#main form .following {
-  padding-top: 5px;
-  padding-left: 3px;
-  clear: both;
-}
-
-#main form input[type=text], #main form input[type=password], #main form textarea {
-  float: left;
-  font-size: 14px;
-  width: 250px;
-  padding: 2px;
-  border: 2px solid #ccc;
-}
-
-#main form input[type=checkbox] {
-  margin: 4px;
-  float: left;
-}
-
-#main form textarea {
-  height: 150px;
-}
-
-#main form input[type=submit] {
-  margin-left: 15px;
-  float:left;
-  margin-right: 10px;
-  margin-bottom: 10px;
-}
-
-#main h3 {
-  padding-top: 10px;
-  height: 20px;
-}
-
-#main h3 .actions{
-  display:none;
-  font-weight: normal;
-  font-size: 10px;
-}
-
-#main h3:hover .actions{
-  display: inline;
-}
+  margin-bottom: 12px; }
 
 .fieldWithErrors {
-  display:table;
-  float:left;
-  margin:0;
-  width:100px;
-  margin-right: 10px;
-}
-
-#main form .fieldWithErrors label{
-  border: 2px solid red;
-  margin-right: 0px;
-}
-
-#main form .fieldWithErrors input, #main form .fieldWithErrors  textarea{
-  width: 250px;
-  border: 2px solid red;
-}
+  display: table;
+  float: left;
+  margin: 0;
+  width: 100px;
+  margin-right: 10px; }
 
 #errorExplanation {
   width: 413px;
@@ -271,110 +198,90 @@ a:hover {
   padding-bottom: 12px;
   margin-bottom: 20px;
   background-color: #f0f0f0;
-  margin: 0;
-}
-
-#errorExplanation h2 {
-  text-align: left;
-  font-weight: bold;
-  padding: 5px 5px 5px 15px;
-  font-size: 12px;
-  margin: -7px;
-  background-color: #c00;
-  color: #fff;
-}
-
-#errorExplanation p {
-  color: #333;
-  margin-bottom: 0;
-  padding: 5px;
-  margin: 0;
-}
-
-#errorExplanation ul li {
-  font-size: 12px;
-  list-style: square;
-}
+  margin: 0; }
+  #errorExplanation h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    background-color: #c00;
+    color: #fff; }
+  #errorExplanation p {
+    color: #333;
+    margin-bottom: 0;
+    padding: 5px;
+    margin: 0; }
+  #errorExplanation ul li {
+    font-size: 12px;
+    list-style: square; }
 
 #select {
-  margin-left: 10px;
-}
+  margin-left: 10px; }
 
 #message {
   text-align: center;
   padding: 25px 50px;
-  font-size: 20px;
-}
+  font-size: 20px; }
 
-.zebra { 
+.zebra {
   background-color: #F0F0F0;
-  margin: 0px;
-}
+  margin: 0px; }
 
 #disclaimer {
   color: blue;
-  background-color: #E8E8E8;
-}
+  background-color: #E8E8E8; }
 
 .brew-desc {
   padding-left: 20px;
-  background-color: #FFFFFF;
-}
+  background-color: #FFFFFF; }
 
 .bordered {
   border-style: solid;
   border-width: 1px;
-  border-color: #000000;
-}
+  border-color: #000000; }
 
 .active {
-  background-color: #CFECEC;
-}
+  background-color: #CFECEC; }
 
 .search {
-  margin-bottom: 35px;
-}
+  margin-bottom: 35px; }
 
-/*
-th .current {
-	background:transparent;
-	padding-left: 20px;
-}
+#sorted_beer_item_list th .current {
+  background: transparent;
+  padding-left: 20px; }
+#sorted_beer_item_list th .asc {
+  background: transparent url(../images/arrows.png) no-repeat scroll 0px 0px;
+  padding-bottom: 2px;
+  display: block; }
+#sorted_beer_item_list th .desc {
+  background: transparent url(../images/arrows.png) no-repeat scroll 0px -16px;
+  padding-bottom: 2px;
+  display: block; }
+#sorted_beer_item_list th a {
+  color: black; }
+  #sorted_beer_item_list th a:hover {
+    background-color: white;
+    color: #e67e00; }
 
-th .asc {
-	background:transparent url(../images/arrows.png) no-repeat scroll 0px 0px;
-	padding-left: 20px;
-}
+div.arrow, span.arrow {
+  background: transparent url(../images/arrows.png) no-repeat scroll 0px -16px;
+  width: 16px;
+  height: 16px;
+  display: block; }
 
-th .desc {
-	background:transparent url(../images/arrows.png) no-repeat scroll 0px -16px;
-	padding-left: 20px;
-}
-*/
-
-div.arrow { 
-	background:transparent url(../images/arrows.png) no-repeat scroll 0px -16px; 
-	width:16px; 
-	height:16px; 
-	display:block;
-}
-
-div.up { 
-	background-position:0px 0px;
-}
+div.up, span.up {
+  background-position: 0px 0px; }
 
 table.manager_list tr.beeritems {
-	background: white;
-	border: solid thin #E8E8E8;
-}
+  background: white;
+  border: solid thin #E8E8E8; }
 
 #latest_additions {
-	display: inline-block;
-}
+  display: inline-block; }
 
 #new_item {
-	display: inline-block;
-	text-align: right;
-	float: right;
-	margin-left: 10px;
-}
+  display: inline-block;
+  text-align: right;
+  float: right;
+  margin-left: 10px; }

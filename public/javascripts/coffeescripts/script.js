@@ -1,4 +1,4 @@
-/* DO NOT MODIFY. This file was compiled Wed, 31 Aug 2011 16:16:47 GMT from
+/* DO NOT MODIFY. This file was compiled Sat, 03 Sep 2011 19:22:09 GMT from
  * /Users/Greggory/Programing/beerlist/app/coffeescripts/script.coffee
  */
 
@@ -60,8 +60,12 @@
     });
     /*  Detail/Edit Links visible on hover */
     $('a.action_link').hide();
-    return $('tr').hover(function() {
+    $('tr').hover(function() {
       return $(this).find('a.action_link').toggle();
+    });
+    /*  Up/Down sort arrows */
+    return $('#sorted_beer_item_list a').click(function() {
+      return $(this).parent('th').find('.arrow').toggleClass('asc current');
     });
   });
   return;
