@@ -4,6 +4,8 @@ class Brewery < ActiveRecord::Base
 	validates_length_of :state, :is => 2, :message => "should be in the abbreviated form (i.e. GA or CO)", :allow_blank => true
 	validates_uniqueness_of :name
 	
+	has_paper_trail
+	
 	has_many :beers
 	# has_many :beer_items, :through => :beers
 	

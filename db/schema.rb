@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110830235245) do
+ActiveRecord::Schema.define(:version => 20110906221332) do
 
   create_table "bar_followings", :force => true do |t|
     t.timestamp "created_at"
@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(:version => 20110830235245) do
     t.string    "hashed_password"
     t.timestamp "created_at"
     t.timestamp "updated_at"
+    t.string    "name"
   end
 
   create_table "versions", :force => true do |t|

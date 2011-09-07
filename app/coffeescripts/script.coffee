@@ -18,8 +18,9 @@ $(document).ready ->
 			})
 
 	###  Expanding Itemlist ###
-	$('.expandable_itemlist').find('tr:odd').addClass('odd').hover (e) ->
-		$(e.target).closest('tr').toggleClass("active")
+	$('.expandable_itemlist').find('tr:odd').addClass('odd').hover (e) -> \
+		$(e.target).closest('tr').toggleClass("active") \
+		$(e.target).closest('tr').find('a.action_link').toggle()
 	$('.manager_list:not(.beeritems)').find('tr:nth-child(3n+1)').addClass('odd').hover (e) ->
 		$(e.target).closest('tr').toggleClass("active")
 		
@@ -34,10 +35,10 @@ $(document).ready ->
 		e.stopPropagation()
 	
 		
-	$('.expandable_itemlist').find('tr.odd').click (e) ->
-    $(e.target).closest('tr').next('tr').toggle()
-   	if $(e.target).closest('tr').next('tr').is(':visible')
-   		$('#itemdesc-' + $(e.target).closest('tr').attr('id')).children('div').css('border','solid thin #E8E8E8').html('loading...').load($(e.target).closest('tr').attr('item_url') + ' .itemlist').show()
+	$('.expandable_itemlist').find('tr.odd').click ->
+    $(this).closest('tr').next('tr').toggle()
+   	if $(this).closest('tr').next('tr').is(':visible')
+   		$('#itemdesc-' + $(this).closest('tr').attr('id')).children('div').css('border','solid thin #E8E8E8').html('loading...').load($(this).closest('tr').attr('item_url') + ' .itemlist').show()
 	
 	###  Expanding Chartlist (some things are also handled in the above secion)  ###
 	$('.manager_list').find('tr.odd').click -> \

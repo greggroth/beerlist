@@ -2,6 +2,10 @@ class UsersController < ApplicationController
 
   before_filter :authenticate, :only => [:edit, :update]  
 
+  def show
+    logged_in? ? @user = current_user : redirect_to(root_path)
+  end
+
   def new
   	if signup_allowed?
     	@user = User.new

@@ -8,6 +8,10 @@
     <p>This website is currently in beta.  I appologize for an errors you may encounter. </p>
 
     <div class="field">
+      <%= f.label :name %><br />
+      <%= f.text_field :name %>
+    </div>
+		<div class="field">
       <%= f.label :email %><br />
       <%= f.text_field :email %>
     </div>
@@ -20,6 +24,6 @@
        <%= f.password_field :password_confirmation %>
     </div>
     <div class="actions">
-      <%= submit_or_cancel f, "Signup" %>
+      <%= submit_or_cancel f, "Submit" %>
     </div>
    <% end %>

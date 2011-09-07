@@ -15,7 +15,7 @@ class BeersController < ApplicationController
   # GET /beers/1
   # GET /beers/1.xml
   def show
-    @beer = Beer.find(params[:id])
+  @beer = Beer.find(params[:id])
 	@beer_items = BeerItem.ordered.where("beer_id = ?", params[:id])
 
     respond_to do |format|

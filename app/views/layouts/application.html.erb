@@ -4,8 +4,7 @@
   <title>Atlanta Beer List</title>
 
   <%= stylesheet_link_tag "application.css", "jquery.jqplot.min.css", "ui-lightness/jquery-ui-1.8.15.custom.css" %>
-  <%= javascript_include_tag :defaults %>
-  <%= javascript_include_tag "application", "/javascripts/jquery-1.6.2.min.js" %>
+  <%= javascript_include_tag "jquery.min.js" %>
   <%= javascript_include_tag "/javascripts/coffeescripts/script.js" %>
   <%= javascript_include_tag "/javascripts/jquery-ui-1.8.16.custom.min.js" %>
   <%= javascript_include_tag "/javascripts/jquery.jqplot.js" %>
@@ -41,13 +40,17 @@
 		<li><%= link_to "Breweries", breweries_path %></li>
 		<li>|</li>
       <% if logged_in? %>	
-	   	<% unless current_user.admin_bars.empty? %>      
-			<li><%= link_to "Manage Bars", bar_owner_path %></li>
-			<li>|</li>
-		 <% end %>
-	        <li><%= link_to "Edit Password", edit_user_path(current_user) %></li>
-	        <li>|</li>
+		   	<% unless current_user.admin_bars.empty? %>      
+				<li><%= link_to "Manage Bars", bar_owner_path %></li>
+				<li>|</li>
+			 <% end %>
+					<li><%= link_to "Profile", profile_path %> (<%= link_to "edit", edit_user_path(current_user) %>) </li>
+					<li>|</li>
+				<% unless current_user.name.nil?%>
+					<li>Welcome, <%= current_user.name %> (<%= link_to "Logout", logout_path, :id=>'logout' %>)</li>
+				<% else %>
 	        <li><%= link_to "Logout", logout_path, :id=>'logout' %></li>
+				<% end %>
       <% else %>
 		 <% if signup_allowed? %>
 			<li><%= link_to "Signup", new_user_path %></li>
@@ -70,13 +73,13 @@
 
     <%= content_tag(:p, raw(notice), :class => 'notice') if notice.present? %>
     <%= content_tag(:p, alert, :class => 'alert') if alert.present? %>
-
+		<br />
     <%= yield %>
 
   </div>
   <div id="footer">
     <%= yield :scripts %>
-    Beer List:  Your Place for Beer Prices
+    Atlanta Beer List:  Your Place for Beer Prices
   </div>
 
 </body>

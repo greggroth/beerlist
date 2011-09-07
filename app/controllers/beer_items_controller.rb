@@ -114,7 +114,7 @@ private
   end
 
   def undo_link
-    view_context.button_to("undo", revert_version_path(@beer_item.versions.scoped.last), :method => :post )
+    view_context.button_to("undo", revert_version_path(@beer_item.versions.scoped.last), :id => "undo_button")
   end
 
 end

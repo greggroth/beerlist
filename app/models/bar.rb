@@ -4,6 +4,8 @@ class Bar < ActiveRecord::Base
 	validates_length_of :zip, :is => 5, :allow_blank => true
 	validates_length_of :state, :is => 2, :allow_blank => true, :message => "should be in the abbreviated form (i.e. GA or CO)"
 
+  has_paper_trail
+
 	has_many :bar_permissions, :dependent => :destroy
 	has_many :beer_items, :dependent => :destroy
 	has_many :beers, :through => :beer_items

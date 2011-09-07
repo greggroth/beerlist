@@ -13,6 +13,7 @@ Beerlist::Application.routes.draw do
   resources :beers 
   resources :breweries
   resources :users
+   match '/profile/' => "users#show", :as => "profile"
   resources :bar_followings, :only => [:create, :destroy]
   resource :session, :only => [:new, :create, :destroy]
    match '/login' => "sessions#new", :as => "login"

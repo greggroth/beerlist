@@ -1,4 +1,4 @@
-/* DO NOT MODIFY. This file was compiled Sat, 03 Sep 2011 19:22:09 GMT from
+/* DO NOT MODIFY. This file was compiled Tue, 06 Sep 2011 19:40:16 GMT from
  * /Users/Greggory/Programing/beerlist/app/coffeescripts/script.coffee
  */
 
@@ -33,7 +33,7 @@
     });
     /*  Expanding Itemlist */
     $('.expandable_itemlist').find('tr:odd').addClass('odd').hover(function(e) {
-      return $(e.target).closest('tr').toggleClass("active");
+      return $(e.target).closest('tr').toggleClass("active")($(e.target).closest('tr').find('a.action_link').toggle());
     });
     $('.manager_list:not(.beeritems)').find('tr:nth-child(3n+1)').addClass('odd').hover(function(e) {
       return $(e.target).closest('tr').toggleClass("active");
@@ -48,10 +48,10 @@
     $('.expandable_itemlist, .manager_list').find('div.follow_form').click(function(e) {
       return e.stopPropagation();
     });
-    $('.expandable_itemlist').find('tr.odd').click(function(e) {
-      $(e.target).closest('tr').next('tr').toggle();
-      if ($(e.target).closest('tr').next('tr').is(':visible')) {
-        return $('#itemdesc-' + $(e.target).closest('tr').attr('id')).children('div').css('border', 'solid thin #E8E8E8').html('loading...').load($(e.target).closest('tr').attr('item_url') + ' .itemlist').show();
+    $('.expandable_itemlist').find('tr.odd').click(function() {
+      $(this).closest('tr').next('tr').toggle();
+      if ($(this).closest('tr').next('tr').is(':visible')) {
+        return $('#itemdesc-' + $(this).closest('tr').attr('id')).children('div').css('border', 'solid thin #E8E8E8').html('loading...').load($(this).closest('tr').attr('item_url') + ' .itemlist').show();
       }
     });
     /*  Expanding Chartlist (some things are also handled in the above secion)  */
