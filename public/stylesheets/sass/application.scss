@@ -1,0 +1,404 @@
+$highlight-color: #FF8C00;
+
+/* orange: #FF813C */
+
+* { 
+  margin: 0 auto;
+}
+
+body { 
+  background-color: #fff; 
+  color: #333;
+}
+
+body, p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size:   13px;
+  line-height: 18px;
+  margin: 0px;
+}
+
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+p {
+  padding: 5px;
+}
+
+a {
+  color:darken($highlight-color, 5%);
+  padding:0 2px;
+  text-decoration:none;
+
+  &:hover {
+  background-color:$highlight-color;
+  color:#FFFFFF;
+	}
+}
+
+.notice { 
+	color: green; 
+}
+.alert { 
+	color: red; 
+}
+
+#header, #main, #footer {
+  width: 800px;
+}
+
+#header {
+  font-family:"Myriad Web Pro",Helvetica,Arial,sans-serif;
+  letter-spacing: 1px;
+  border-bottom: 5px solid #333333;
+  color:#333333;
+  padding: 15px 0;
+  height: 35px;
+  margin-left:auto;
+  margin-right:auto;
+  font-size: 10px;
+}
+
+#user_bar {
+	float: right;
+	
+	ul {
+		list-style-type: none;
+	}
+	
+	li {
+		float: left;
+		text-align: center;
+		padding-left: 0px;
+		padding-right: 0px;
+		margin-left: 2px;
+		margin-right: 2px;
+		font-size: 11px;
+	}
+}
+
+.greenLine {
+  border-top: 5px solid #556B2F;
+  padding: 5px;
+}
+
+.itemlist {
+  /* border-top: 5px solid #556B2F; */
+  clear:both;
+  /* margin-top: 10px; */
+  padding: 5px 0;
+  text-align: left;
+  font-size: 11px;
+}
+
+#footer {
+  border-top: 5px solid #C1C1C1;
+  margin-top: 10px;
+  clear:both;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 11px;
+}
+
+#header {
+	h1 {
+  padding-left: 15px;
+  padding-top: 14px;
+  float: left;
+  font-size: 36px;
+
+  	a {
+		  color: black;
+	
+		  &:hover {
+			  background-color: white;
+			  color: black;
+			  border-bottom: 4px solid #ccc;
+			}
+		}	
+	}
+	
+	p {
+	  float: right;
+	}
+}
+
+
+#beta {
+  /* margin-left: 310px; */
+  padding-left:5px;
+  vertical-align: -10px;
+  font-size: 16px;
+}
+
+
+#main {
+	h1 {
+	  font-size: 24px;
+	  color: black;
+	  padding: 10px 0;
+	  border-bottom: 1px solid #bbb;
+	  margin-bottom: 10px;
+	}
+	
+	table {
+		width: 100%;
+		margin: 0;
+		border-collapse: collapse;
+		empty-cells: show;
+		
+		th {
+			text-align: left;
+		}
+
+	}
+	
+	form {
+	  text-align: left;
+	
+		br {
+		  display: none;
+		  float: left;
+		}
+		
+		label {
+		  width: 150px;
+		  display: block;
+		  text-align: right;
+		  padding-right: 10px;
+		  float: left;
+		  line-height: 21px;
+		  vertical-align: center;
+		  background-color: #F0F0F0;
+		  border: 2px solid #ccc;
+		  margin-right: 10px;
+		}
+		
+		label.check_box_label {
+		  width: auto;
+		  display: inline;
+		  text-align: right;
+		  padding-right: 10px;
+		  line-height: 21px;
+		  vertical-align: center;
+		  background-color: #FFF;  
+		  border: none;
+		}
+		
+		.field, .actions {
+		  padding-top: 10px;
+		  clear: both;
+		}
+		
+		.following {
+		  padding-top: 5px;
+		  padding-left: 3px;
+		  clear: both;
+		}
+		
+		input#undo_button {
+			display: inline;
+			float: left;
+		}
+		
+		input[type=text], input[type=password], textarea {
+		  float: left;
+		  font-size: 14px;
+		  width: 250px;
+		  padding: 2px;
+		  border: 2px solid #ccc;
+		}
+		
+		input[type=checkbox] {
+		  margin: 4px;
+		  float: left;
+		}
+
+		textarea {
+		  height: 150px;
+		}
+
+		input[type=submit] {
+		  margin-left: 15px;
+		  float:left;
+		  margin-right: 10px;
+		  margin-bottom: 10px;
+		}
+		
+		.fieldWithErrors label{
+		  border: 2px solid red;
+		  margin-right: 0px;
+		}
+
+		.fieldWithErrors input, .fieldWithErrors textarea{
+		  width: 250px;
+		  border: 2px solid red;
+		}
+	}
+	
+	h3 {
+	  padding-top: 10px;
+	  height: 20px;
+	
+		.actions{
+		  display:none;
+		  font-weight: normal;
+		  font-size: 10px;
+		}
+		
+		&:hover .actions {
+		display: inline;
+		}
+	}	  
+}
+
+.brewerylink {
+  font-size: 15px;
+  text-align: left;
+  margin-top: 0px;
+  margin-bottom: 12px;
+}
+
+
+.fieldWithErrors {
+  display:table;
+  float:left;
+  margin:0;
+  width:100px;
+  margin-right: 10px;
+}
+
+
+
+#errorExplanation {
+  width: 413px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  margin: 0;
+
+	h2 {
+	  text-align: left;
+	  font-weight: bold;
+	  padding: 5px 5px 5px 15px;
+	  font-size: 12px;
+	  margin: -7px;
+	  background-color: #c00;
+	  color: #fff;
+	}
+	
+	p {
+	  color: #333;
+	  margin-bottom: 0;
+	  padding: 5px;
+	  margin: 0;
+	}
+	
+	ul li {
+	  font-size: 12px;
+	  list-style: square;
+	}
+}
+
+
+#select {
+  margin-left: 10px;
+}
+
+#message {
+  text-align: center;
+  padding: 25px 50px;
+  font-size: 20px;
+}
+
+.zebra { 
+  background-color: #F0F0F0;
+  margin: 0px;
+}
+
+#disclaimer {
+  color: blue;
+  background-color: #E8E8E8;
+}
+
+.brew-desc {
+  padding-left: 20px;
+  background-color: #FFFFFF;
+}
+
+.bordered {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #000000;
+}
+
+.active {
+  background-color: #CFECEC;
+}
+
+.search {
+  margin-bottom: 35px;
+}
+
+#sorted_beer_item_list th {
+	.current {
+		background:transparent;
+		padding-left: 20px;
+	}
+	
+	.asc {
+		background:transparent url(../images/arrows.png) no-repeat scroll 0px 0px;
+		padding-bottom: 2px;
+		display:block;
+	}
+	
+	.desc {
+		background:transparent url(../images/arrows.png) no-repeat scroll 0px -16px;
+		padding-bottom: 2px;
+		display:block;
+	}
+	
+	a {
+		color: black;
+		
+		&:hover {
+			background-color: white;
+			color: darken($highlight-color,5%);
+		}
+	}
+}
+
+
+div.arrow, span.arrow { 
+	background:transparent url(../images/arrows.png) no-repeat scroll 0px -16px; 
+	width:16px; 
+	height:16px; 
+	display:block;
+}
+
+div.up, span.up { 
+	background-position:0px 0px;
+}
+
+table.manager_list tr.beeritems {
+	background: white;
+	border: solid thin #E8E8E8;
+}
+
+#latest_additions {
+	display: inline-block;
+}
+
+#new_item {
+	display: inline-block;
+	text-align: right;
+	float: right;
+	margin-left: 10px;
+}
+

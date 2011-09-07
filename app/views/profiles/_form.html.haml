@@ -1,0 +1,14 @@
+= form_for @profile do |f|
+	.field
+		= f.label :name
+		%br
+		= f.text_field :name
+		
+	.field
+		= f.label :birthday
+		%br
+		= f.text_field :birthday
+	.actions
+		= f.submit
+		
+%br

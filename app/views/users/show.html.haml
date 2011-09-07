@@ -1,0 +1,7 @@
+- unless @user.name.nil?
+	%h2 Welcome, #{@user.name}! 
+
+%h3{:id=>"allBars-toggleButton"} Bar's you're following:
+
+%br
+= render 'barlist'

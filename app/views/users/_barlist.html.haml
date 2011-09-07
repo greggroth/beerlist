@@ -1,0 +1,21 @@
+
+%table{:id=>"expanding_followed_bars_list", :class=>"expandable_itemlist"}
+	%thead
+		%tr{:align=>"left"}
+			%th{:width=>200} Name
+			%th{:width=>250} Address
+			%th{:width=>100} Zip
+			%th{:width=>100}
+	%tbody
+		- @user.bars.each do |f|
+			%tr{:id=>"#{f.id}", :item_url=>"../bars/#{f.id}"}
+				%td= link_to(f.name, f)
+				%td= f.address
+				%td= f.zip
+				%td
+			-#	
+				%td
+					= link_to "Unfollow", current_user.bar_followings.find_by_bar_id(f.id), :method => :delete, :class => "action_link"
+			%tr
+				%td{:colspan=>"4", :id=>"itemdesc-#{f.id}", :class=>"itemdesc"}
+					%div
