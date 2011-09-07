@@ -17,7 +17,7 @@ describe "BeerItems" do
     fill_in "Price", :with => "4.00"
     click_button "Submit"
     current_path.should eq(beer_items_path)
-    page.should have_content "New listing added"
+    page.should have_content "Beer listing added"
   end
   
   it "views beer item listing" do

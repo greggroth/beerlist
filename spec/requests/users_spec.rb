@@ -5,10 +5,11 @@ describe User do
   it "create a new user" do
     visit root_path
     click_link "Signup"
+    fill_in "Name", :with => 'Harry'
     fill_in "Email", :with => 'new_user@test.com'
     fill_in "Password", :with => '1234'
     fill_in "Password confirmation", :with => '1234'
-    click_button "Signup"
+    click_button "Submit"
     current_path.should eq(root_path)
     page.should have_content("New user successfully added.")
   end
