@@ -1,4 +1,4 @@
-/* DO NOT MODIFY. This file was compiled Thu, 08 Sep 2011 19:11:09 GMT from
+/* DO NOT MODIFY. This file was compiled Thu, 08 Sep 2011 19:37:48 GMT from
  * /Users/Greggory/Programing/beerlist/app/coffeescripts/script.coffee
  */
 
@@ -77,7 +77,7 @@ Application.format_expandable_itemlist = function(x) {
   $(x).find('tr.odd').click(function() {
     $(this).closest('tr').next('tr').toggle();
     if ($(this).closest('tr').next('tr').is(':visible')) {
-      return $('#itemdesc-' + $(this).closest('tr').attr('id')).children('div').css('border', 'solid thin #E8E8E8').html('loading...').load($(this).closest('tr').attr('item_url') + ' .itemlist').show();
+      return $('#itemdesc-' + $(this).closest('tr').attr('id')).children('div').css('border', 'solid thin #E8E8E8').html('loading...').load($(this).closest('tr').attr('item_url') + ' .itemlist');
     }
   });
 };

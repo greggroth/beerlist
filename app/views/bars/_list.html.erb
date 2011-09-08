@@ -16,7 +16,7 @@
  </thead>
  <tbody>
 <% current_user.bars.each do |f| %>
-  <tr id="<%= f.id %>" item_url="bars/<%= f.id %>">
+  <tr id="following-<%= f.id %>" item_url="bars/<%= f.id %>">
 	<td>
 	<div class="follow_form">
 	<% if user_signed_in? %>
@@ -49,7 +49,7 @@
 	<% end %>
   </tr>
   <tr>
-  	<td colspan="6" id="itemdesc-<%= f.id %>" class="itemdesc">
+  	<td colspan="6" id="itemdesc-following-<%= f.id %>" class="itemdesc">
   		<div></div>
   	</td>
   </tr>
@@ -80,7 +80,7 @@
  </thead>
  <tbody>
 <% @bars.each do |f| %>
-  <tr id="<%= f.id %>" item_url="bars/<%= f.id %>">
+  <tr id="all-<%= f.id %>" item_url="bars/<%= f.id %>">
 	<td>
 	<div class="follow_form">
 	<% if user_signed_in? %>
@@ -113,7 +113,7 @@
 	<% end %>
   </tr>
   <tr>
-  	<td colspan="6" id="itemdesc-<%= f.id %>" class="itemdesc">
+  	<td colspan="6" id="itemdesc-all-<%= f.id %>" class="itemdesc">
   		<div></div>
   	</td>
   </tr>

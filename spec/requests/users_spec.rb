@@ -30,7 +30,29 @@ describe User do
     page.should have_content("Signed out successfully.")
   end
   
-  it " follows a new bar" do
+  it " attempts login with invalid password" do
+    user = FactoryGirl.create(:user)
+    
+    visit root_path
+    click_link "Login"
+    fill_in "Email", :with => user.email
+    fill_in "Password", :with => "1234"
+    click_button "Sign in"
+    current_path.should eq(new_user_session_path)
+    page.should have_content "Invalid email or password."
+  end
+  
+  it " attempts login with invalid e-mail" do
+    visit root_path
+    click_link "Login"
+    fill_in "Email", :with => "invalid@email.com"
+    fill_in "Password", :with => "1234567"
+    click_button "Sign in"
+    current_path.should eq(new_user_session_path)
+    page.should have_content "Invalid email or password."
+  end
+  
+  it " follows a new bar" do       ###  Needs to be finished  ####
     user = FactoryGirl.create(:user)
     FactoryGirl.create(:bar)
     

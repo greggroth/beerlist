@@ -68,5 +68,5 @@ Application.format_expandable_itemlist = (x) ->
 	$(x).find('tr.odd').click ->
     $(this).closest('tr').next('tr').toggle()
    	if $(this).closest('tr').next('tr').is(':visible')
-   		$('#itemdesc-' + $(this).closest('tr').attr('id')).children('div').css('border','solid thin #E8E8E8').html('loading...').load($(this).closest('tr').attr('item_url') + ' .itemlist').show()
+   		$('#itemdesc-' + $(this).closest('tr').attr('id')).children('div').css('border','solid thin #E8E8E8').html('loading...').load($(this).closest('tr').attr('item_url') + ' .itemlist')
 	return
