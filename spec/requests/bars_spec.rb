@@ -13,7 +13,7 @@ describe "Bars" do
     user = FactoryGirl.create(:user)
     fill_in "Email", :with => user.email
     fill_in "Password", :with => user.password
-    click_button "Login"
+    click_button "Sign in"
     
     visit bars_path
     bar = FactoryGirl.create(:bar)
@@ -25,6 +25,5 @@ describe "Bars" do
     fill_in "bar_state", :with => bar.state
     click_button "Create Bar"
     page.should have_content "Bar was successfully created."
-  end
-    
+  end  
 end

@@ -1,3 +1,5 @@
+window.Application ||= {}
+
 $(document).ready ->
 	$('.itemlist tbody tr:nth-child(odd)').addClass('zebra')
 	$('#user_bar a').hover(  
@@ -17,29 +19,18 @@ $(document).ready ->
 			series:[{lineWidth: 4, showMarker: false}]
 			})
 
-	###  Expanding Itemlist ###
-	$('.expandable_itemlist').find('tr:odd').addClass('odd').hover (e) -> \
-		$(e.target).closest('tr').toggleClass("active") \
-		$(e.target).closest('tr').find('a.action_link').toggle()
+	###  Manager_list ###
 	$('.manager_list:not(.beeritems)').find('tr:nth-child(3n+1)').addClass('odd').hover (e) ->
 		$(e.target).closest('tr').toggleClass("active")
-		
-	$('.expandable_itemlist').find('tbody tr:nth-child(4n+1)').addClass('zebra')
 	$('.manager_list').find('tbody tr.heading:odd').addClass('zebra')
 	
-	$('.expandable_itemlist, .manager_list').find('tr:not(.odd)').hide()
-	$('.expandable_itemlist, .manager_list').find('tr:first-child').show()
-	$('.expandable_itemlist, .manager_list').find('a').click (e) ->
+	$('.manager_list').find('tr:not(.odd)').hide()
+	$('.manager_list').find('tr:first-child').show()
+	$('.manager_list').find('a').click (e) ->
 		e.stopPropagation()
-	$('.expandable_itemlist, .manager_list').find('div.follow_form').click (e) ->
+	$('.manager_list').find('div.follow_form').click (e) ->
 		e.stopPropagation()
-	
-		
-	$('.expandable_itemlist').find('tr.odd').click ->
-    $(this).closest('tr').next('tr').toggle()
-   	if $(this).closest('tr').next('tr').is(':visible')
-   		$('#itemdesc-' + $(this).closest('tr').attr('id')).children('div').css('border','solid thin #E8E8E8').html('loading...').load($(this).closest('tr').attr('item_url') + ' .itemlist').show()
-	
+			
 	###  Expanding Chartlist (some things are also handled in the above secion)  ###
 	$('.manager_list').find('tr.odd').click -> \
     $(this).nextAll('tr.chart:first, tr.beeritems:first').toggle \
@@ -53,5 +44,29 @@ $(document).ready ->
 	###  Up/Down sort arrows ###
 	$('#sorted_beer_item_list a').click ->
 		$(this).parent('th').find('.arrow').toggleClass('asc current')
-return
+		
+	###  Test function ###
+	Application.format_expandable_itemlist('.expandable_itemlist')
+
+	return
 	
+Application.format_expandable_itemlist = (x) ->
+	###  Expandable Itemlist ###
+	$(x).find('tr:odd').addClass('odd').hover (e) -> \
+		$(e.target).closest('tr').toggleClass("active"); \
+		$(e.target).closest('tr').find('a.action_link').toggle()
+		
+	$(x).find('tbody tr:nth-child(4n+1)').addClass('zebra')
+	
+	$(x).find('tr:not(.odd)').hide()
+	$(x).find('tr:first-child').show()
+	$(x).find('a').click (e) ->
+		e.stopPropagation()
+	$(x).find('div.follow_form').click (e) ->
+		e.stopPropagation()
+	
+	$(x).find('tr.odd').click ->
+    $(this).closest('tr').next('tr').toggle()
+   	if $(this).closest('tr').next('tr').is(':visible')
+   		$('#itemdesc-' + $(this).closest('tr').attr('id')).children('div').css('border','solid thin #E8E8E8').html('loading...').load($(this).closest('tr').attr('item_url') + ' .itemlist').show()
+	return

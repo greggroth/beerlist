@@ -48,7 +48,7 @@
     <td><%= link_to item.beer.name, item.beer %></td>
 	<td><%= link_to item.beer.brewery.name, item.beer.brewery %></td>
     <td><%= number_to_currency(item.price) %></td>
-   <% if logged_in? && @bar.has_permission?(current_user) %>
+   <% if user_signed_in? && @bar.has_permission?(current_user) %>
     <td><%= link_to 'Show', item %></td>
     <td><%= link_to 'Edit', edit_beer_item_path(item) %></td>
     <td><%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete %></td>
@@ -84,7 +84,7 @@
     <td><%= link_to item.beer.name, item.beer %></td>
 	<td><%= link_to item.beer.brewery.name, item.beer.brewery %></td>
     <td><%= number_to_currency(item.price) %></td>
-   <% if logged_in? && @bar.has_permission?(current_user) %>
+   <% if user_signed_in? && @bar.has_permission?(current_user) %>
     <td><%= link_to 'Show', item %></td>
     <td><%= link_to 'Edit', edit_beer_item_path(item) %></td>
     <td><%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete %></td>

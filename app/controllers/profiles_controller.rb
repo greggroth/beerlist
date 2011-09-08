@@ -1,7 +1,7 @@
 class ProfilesController < ApplicationController
 
   def show
-    if logged_in?
+    if user_signed_in?
       @profile = Profile.find_by_user_id(current_user)
       @user_bars = current_user.bars
     else
@@ -10,11 +10,11 @@ class ProfilesController < ApplicationController
   end
 
   def new
-    logged_in? ? @profile = Profile.new : redirect_to(root_path)
+    user_signed_in? ? @profile = Profile.new : redirect_to(root_path)
   end
   
   def edit
-    if logged_in?
+    if user_signed_in?
       @profile = Profile.find_by_user_id(current_user)
       if @profile.nil?
         @profile = Profile.new
@@ -40,7 +40,7 @@ class ProfilesController < ApplicationController
   end
   
   def update
-    logged_in? ? @profile = Profile.find_by_user_id(current_user) : redirect_to(root_path)
+    user_signed_in? ? @profile = Profile.find_by_user_id(current_user) : redirect_to(root_path)
     if @profile.update_attributes(params[:profile])
       redirect_to root_path, :notice => 'Profile updated.'
     else

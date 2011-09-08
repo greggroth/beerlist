@@ -11,7 +11,7 @@ class BeerItem < ActiveRecord::Base
 	
 	has_paper_trail
 
-	after_create :notify_item_create_sucess
+	# after_create :notify_item_create_sucess
 
 	scope :published, where("beer_items.created_at IS NOT NULL")
 	scope :recent, lambda { published.where("beer_items.created_at > ?", 1.week.ago.to_date) }

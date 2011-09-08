@@ -11,7 +11,7 @@ class BarOwnerController < ApplicationController
   end
   
   def show
-  	if logged_in? && current_user.is_a_bar_admin?
+  	if user_signed_in? && current_user.is_a_bar_admin?
   		@bars = current_user.admin_bars
   		
   		respond_to do |format|

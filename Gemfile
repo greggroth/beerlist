@@ -16,6 +16,7 @@ gem 'paper_trail'
 gem 'sass'
 gem 'haml'
 gem 'jquery-rails'
+gem 'devise'
 
 gem 'rspec-rails', :group => [:test, :development]
 group :test do

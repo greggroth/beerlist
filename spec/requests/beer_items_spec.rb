@@ -10,7 +10,7 @@ describe "BeerItems" do
     click_link "Login"
     fill_in "Email", :with => user.email
     fill_in "Password", :with => user.password
-    click_button "Login"
+    click_button "Sign in"
     
     visit new_beer_item_path
     fill_in "Volume", :with => "12"
@@ -30,7 +30,7 @@ describe "BeerItems" do
     click_link "Login"
     fill_in "Email", :with => user.email
     fill_in "Password", :with => user.password
-    click_button "Login"
+    click_button "Sign in"
     
     click_link "Details"
     page.should have_content "Details"

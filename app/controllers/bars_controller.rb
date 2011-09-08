@@ -1,5 +1,5 @@
 class BarsController < ApplicationController
-  before_filter :authenticate, :except => [:index, :show]
+  before_filter :authenticate_user!, :except => [:index, :show]
 
   # GET /bars
   # GET /bars.xml
@@ -10,9 +10,9 @@ class BarsController < ApplicationController
     	@bars = Bar.find(:all, :order=>"name ASC")
     end
     
-    if logged_in?
-		@user_bars = current_user.bars.find(:all, :order=>"name ASC")
-	end
+    if user_signed_in?
+		  @user_bars = current_user.bars.find(:all)
+	  end
 	
     respond_to do |format|
       format.html # index.html.erb
@@ -97,20 +97,19 @@ class BarsController < ApplicationController
     @bar.destroy
 
     respond_to do |format|
-      format.html { redirect_to(bars_url) }
+      format.html { redurect_to bars_path }
       format.xml  { head :ok }
     end
   end	
 
   def follow
     @bar_following = current_user.BarFollowing.new(:bar_id=>@bar.id)
-
-	redirect_to bars_path
-
-    # respond_to do |format|
-    #  format.html # new.html.erb
-    #  format.xml  { render :xml => @bar }
-    # end
+	  if user_signed_in?
+		  @user_bars = current_user.bars.find(:all)
+		  logger.debug @user_bars
+	  end
+	  
+	  render :action => "index"
   end
 
 end

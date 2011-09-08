@@ -17,7 +17,7 @@
 <div id="home">
 	<div class="toolbar">
 		<h1>AtlBeerList</h1>
-		<% if logged_in? %>
+		<% if user_signed_in? %>
 			<!-- <a href="/logout/" class="button flip" rel="external">Logout</a> -->
 			<!-- <%= link_to "Logout", logout_path, :class => "button flip", :rel => "external" %> -->
 		<% else %>
@@ -26,7 +26,7 @@
 		<% end %>
 	</div>
 	<br />
-	<% if logged_in? %>
+	<% if user_signed_in? %>
 		<p>Welcome, <%= current_user.email %> 
 	<% end %>
 	<br />

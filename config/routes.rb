@@ -1,23 +1,25 @@
 Beerlist::Application.routes.draw do
+  devise_for :users
+
   root :to => "beer_items#index"
 
   post "/versions/:id/revert" => "versions#revert", :as => "revert_version"
   
   resources :beer_items
   resources :bars do
-	member do
-		get :bar_followings, :users
-		post 'follow'
-	end
+  	member do
+  		get :bar_followings, :users
+  		post 'follow'
+  	end
   end
   resources :beers 
   resources :breweries
-  resources :users
-   match '/profile/' => "users#show", :as => "profile"
+  # resources :users
+  #  match '/profile/' => "users#show", :as => "profile"
   resources :bar_followings, :only => [:create, :destroy]
-  resource :session, :only => [:new, :create, :destroy]
-   match '/login' => "sessions#new", :as => "login"
-   match '/logout' => "sessions#destroy", :as => "logout"
+  # resource :session, :only => [:new, :create, :destroy]
+  #  match '/login' => "sessions#new", :as => "login"
+  #  match '/logout' => "sessions#destroy", :as => "logout"
 
   match '/bar_owner/' => "bar_owner#show"
   

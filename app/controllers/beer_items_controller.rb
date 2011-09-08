@@ -1,6 +1,6 @@
 class BeerItemsController < ApplicationController
 helper_method :sort_column, :sort_direction
-before_filter :authenticate, :except => [:index, :show]
+before_filter :authenticate_user!, :except => [:index, :show]
 
 
 # GET /beer_items/

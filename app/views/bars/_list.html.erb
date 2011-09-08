@@ -1,4 +1,4 @@
-<% if logged_in? %>
+<% if user_signed_in? %>
 <% unless current_user.bars.empty? %> 
 
 <!-- FOLLOWED BARS -->
@@ -15,11 +15,11 @@
   </tr>
  </thead>
  <tbody>
-<% @user_bars.each do |f| %>
+<% current_user.bars.each do |f| %>
   <tr id="<%= f.id %>" item_url="bars/<%= f.id %>">
 	<td>
 	<div class="follow_form">
-	<% if logged_in? %>
+	<% if user_signed_in? %>
 		<% if f.is_followed? current_user %>
 			<%= form_for current_user.bar_followings.find_by_bar_id(f.id),
              		:html => { :method => :delete },
@@ -63,8 +63,8 @@
 
 <!-- ALL BARS -->
 <h2 id="allBars-toggleButton">All Bars</h2> 
-<% unless logged_in? %>
-	<p><%= link_to "log in", login_path %> or <%= link_to "create", new_user_path %> and account to follow your favorite bars</p>
+<% unless user_signed_in? %>
+	<p><%= link_to "log in", new_user_session_path %> or <%= link_to "create", new_user_registration_path %> an account to follow your favorite bars</p>
 <% end %>
 <br />
 <table id="expanding_all_bars_list" class="expandable_itemlist">
@@ -83,17 +83,17 @@
   <tr id="<%= f.id %>" item_url="bars/<%= f.id %>">
 	<td>
 	<div class="follow_form">
-	<% if logged_in? %>
+	<% if user_signed_in? %>
 		<% if f.is_followed? current_user %>
 			<%= form_for current_user.bar_followings.find_by_bar_id(f.id),
              		:html => { :method => :delete },
              		:remote => true do |h| %>
-  				<div class="following"><%= image_submit_tag "full_circle.png" %></div>
+  				<div class="following"><%= image_submit_tag "full_circle.png", :id => "unfollow_button" %></div>
 			<% end %>
 		<% else %>
 			<%= form_for current_user.bar_followings.build(:bar_id => f.id), :remote => true do |g| %>
 				<div><%= g.hidden_field :bar_id %></div>
-  				<div class="following"><%= image_submit_tag "empty_circle.png" %></div>
+  				<div class="following"><%= image_submit_tag "empty_circle.png", :id => "follow_button" %></div>
 			<% end %>
 		<% end %>
 	<% end %>

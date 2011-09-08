@@ -1,28 +1,19 @@
-require 'digest'
 class User < ActiveRecord::Base
-	attr_accessor :password
-	
-	validates :name, :length => { :within => 1..25 }
-	
-	validates :email, :uniqueness => true,
-			  :length => { :within => 5..50 },
-			  :format => { :with => /^[^@][\w.-]+@[\w.-]+[.][a-z]{2,4}$/i }
-	validates :password, :confirmation => true,
-			     :length => { :within => 4..20 },
-			     :presence => true,
-			     :if => :password_required?
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
 
-	has_one :profile, :dependent => :destroy
+  # Setup accessible (or protected) attributes for your model
+  attr_accessible :email, :password, :password_confirmation, :remember_me
+	# attr_accessor :password
+
+	# has_one :profile, :dependent => :destroy
 	has_many :beer_items 
 	has_many :bar_permissions, :dependent => :destroy
 	has_many :bar_followings, :dependent => :destroy
 	has_many :bars, :through => :bar_followings
 
-	before_save :encrypt_new_password
-
-	# def followed_bars
-	#  @followed_bars ||=BarFollowing.find_by_user_id(self.id)
-	# end
 
 	def is_following?(bar)
 		bars.exists?(bar)
@@ -45,27 +36,4 @@ class User < ActiveRecord::Base
 	def is_a_bar_admin?
 		not(self.admin_bars.empty?)
 	end
-
-	def self.authenticate(email, password)
-	  user = find_by_email(email)
-	  return user if user && user.authenticated?(password)
-	end
-
-	def authenticated?(password)
-	  self.hashed_password == encrypt(password)
-	end
-
-	protected
-	  def encrypt_new_password
-		return if password.blank?
-		self.hashed_password = encrypt(password)
-	  end
-
-	  def password_required?
-		hashed_password.blank? || password.present?
-	  end
-
-	  def encrypt(string)
-		Digest::SHA1.hexdigest(string)
-	  end
 end

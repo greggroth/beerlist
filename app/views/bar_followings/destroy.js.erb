@@ -1,1 +1,2 @@
-$("bar_list").update("<%= escape_javascript(render('bars/list')) %>")
+$("#bar_list").html("<%= escape_javascript(render("bars/list")) %>");
+Application.format_expandable_itemlist('.expandable_itemlist');
