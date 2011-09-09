@@ -253,7 +253,29 @@ a {
 		&:hover .actions {
 		display: inline;
 		}
+	}
+	
+	#iphone-message {
+	  text-align: center;
+	  padding: 25px 50px;
+	  font-size: 20px;
 	}	  
+	
+	#announcement {
+		text-align: center;
+		padding: 25px 50px;
+		font-size: 25px;
+	}
+}
+
+#announcement-image {
+	position: absolute;
+	align: left;
+	left: 100px;
+	down: 20px;
+	z-index: -1;
+	height: 62px;
+	width: 120px;
 }
 
 .brewerylink {
@@ -311,11 +333,7 @@ a {
   margin-left: 10px;
 }
 
-#message {
-  text-align: center;
-  padding: 25px 50px;
-  font-size: 20px;
-}
+
 
 .zebra { 
   background-color: #F0F0F0;

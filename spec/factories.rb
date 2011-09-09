@@ -11,6 +11,7 @@ FactoryGirl.define do
     zip "30316"
     state "GA"
     city "Atlanta"
+    url "http://www.test.com/"
   end
   
   factory :beer do
@@ -19,19 +20,20 @@ FactoryGirl.define do
     brewery_id '1'
   end
   
-  factory :beer_item do
-    beer_id '1'
-    bar_id '1'
-    user_id '1'
-    price '4.00'
-    volume '12'
-  end
-  
   factory :brewery do
     sequence(:name) { |n| "brewery#{n}" }
     address "1234 Flat Shoals Avenue Southeast"
     zip "30316"
     state "GA"
     city "Atlanta"
+    url "http://www.test.com/"
+  end
+  
+  factory :beer_item do
+    # beer_id '1'
+    # bar_id '1'
+    # user_id '1'
+    price '4.00'
+    volume '12'
   end
 end

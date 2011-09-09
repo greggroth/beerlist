@@ -1,9 +1,6 @@
 <h1>Breweries</h1>
 
-<% if user_signed_in? %>
-	<div align="left"><%= link_to 'New Brewery', new_brewery_path %></div>
-	<br />
-<% end %>
+<p>Hint:  Click on a row to view the beer list for a bar!</p>
 
 <table id="expanding_brewery_list" class="expandable_itemlist">
  <thead>
@@ -41,6 +38,8 @@
  </tbody>
 </table>
 <br />
+
+<div align="left"><%= link_to 'Add Brewery', new_brewery_path %></div>
 
 
 

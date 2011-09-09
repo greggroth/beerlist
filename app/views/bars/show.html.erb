@@ -6,6 +6,7 @@
   <p><%= @bar.address %></p>
   <p><%= @bar.city %> <%= @bar.state %></p>
   <p><%= @bar.zip %></p>
+	<p><%= link_to_unless @bar.url.nil?, "Website", @bar.url %></p>
 </p>
 
 <% if @bar.description.present? %>

@@ -53,9 +53,9 @@ class BarsController < ApplicationController
   def edit
     @bar = Bar.find(params[:id])
 
-	if not @bar.has_permission?(current_user)
-		redirect_to(@bar)
-	end
+  # unless @bar.has_permission?(current_user)
+  #   redirect_to(@bar)
+  # end
   end
 
   # POST /bars
@@ -80,7 +80,7 @@ class BarsController < ApplicationController
     @bar = Bar.find(params[:id])
 
     respond_to do |format|
-      if @bar.update_attributes(params[:bar]) && @bar.has_permission?(current_user)
+      if @bar.update_attributes(params[:bar])
         format.html { redirect_to(@bar, :notice => 'Bar was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -94,7 +94,12 @@ class BarsController < ApplicationController
   # DELETE /bars/1.xml
   def destroy
     @bar = Bar.find(params[:id])
-    @bar.destroy
+    
+    if current_user.has_permission?(@bar.id)
+      @bar.destroy
+    else
+      redirect_to @bar, :notice => "You do not have permission to remove this bar"
+    end
 
     respond_to do |format|
       format.html { redurect_to bars_path }

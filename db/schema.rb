@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110907193918) do
+ActiveRecord::Schema.define(:version => 20110909183023) do
 
   create_table "bar_followings", :force => true do |t|
     t.timestamp "created_at"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20110907193918) do
     t.float     "latitude"
     t.float     "longitude"
     t.boolean   "gmaps"
+    t.string    "url"
   end
 
   create_table "bars_users", :id => false, :force => true do |t|
@@ -78,6 +79,7 @@ ActiveRecord::Schema.define(:version => 20110907193918) do
     t.timestamp "created_at"
     t.timestamp "updated_at"
     t.string    "city"
+    t.string    "url"
   end
 
   create_table "profiles", :force => true do |t|

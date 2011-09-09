@@ -3,23 +3,10 @@
 <h3><%= pluralize(@brewery.beers.length, "beer") %> being brewed</h3> <br />
 
 <p>
-  <b>Address:</b>
-  <%= @brewery.address %>
-</p>
-
-<p>
-  <b>Zip:</b>
-  <%= @brewery.zip %>
-</p>
-
-<p>
-  <b>City:</b>
-  <%= @brewery.city %>
-</p>
-
-<p>
-  <b>State:</b>
-  <%= @brewery.state %>
+	<p><%= @brewery.address %></p>
+	<p><%= @brewery.city %> <%= @brewery.state %></p>
+	<p><%= @brewery.zip %></p>
+	<p><%= link_to_unless @brewery.url.nil?, "Website", @brewery.url %></p>
 </p>
 
 <%= link_to 'Edit', edit_brewery_path(@brewery) %> |
