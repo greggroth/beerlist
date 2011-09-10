@@ -29,6 +29,11 @@ FactoryGirl.define do
     url "http://www.test.com/"
   end
   
+  factory :beer_style do
+    sequence(:name) { |n| "style#{n}"}
+    description "test description"
+  end
+
   factory :beer_item do
     # beer_id '1'
     # bar_id '1'

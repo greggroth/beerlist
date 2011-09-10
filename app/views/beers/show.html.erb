@@ -1,6 +1,13 @@
-<h1> <%= @beer.name %> </h1>
+<h1> 
+	<%= @beer.name %> 
+	<% unless @beer.beer_style.nil? %>
+		<span id="beer-style">
+			<%= @beer.beer_style.name %>
+		</span>
+	<% end %>
+</h1>
 <div class="brewerylink">
-  	<%= link_to @beer.brewery.name, @beer.brewery %>
+  <%= link_to @beer.brewery.name, @beer.brewery %>
 </div>
 
 <p>

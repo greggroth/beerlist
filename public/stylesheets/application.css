@@ -9,7 +9,7 @@ body {
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
-  line-height: 18px;
+  /* line-height: 18px; */
   margin: 0px; }
 
 pre {
@@ -42,11 +42,27 @@ a {
   letter-spacing: 1px;
   border-bottom: 5px solid #333333;
   color: #333333;
-  padding: 15px 0;
+  padding: 20px 0;
   height: 35px;
   margin-left: auto;
   margin-right: auto;
   font-size: 10px; }
+  #header h1 {
+    padding-left: 15px;
+    padding-top: 2px;
+    float: left;
+    font-size: 36px; }
+    #header h1 a {
+      color: black;
+      background-color: white;
+      color: black;
+      border-bottom: 6px solid #ccc; }
+      #header h1 a:hover {
+        background-color: white;
+        color: black;
+        border-bottom: 6px solid #ff8c00; }
+  #header p {
+    float: right; }
 
 #user_bar {
   float: right; }
@@ -62,7 +78,7 @@ a {
     font-size: 11px; }
 
 .greenLine {
-  border-top: 5px solid #556B2F;
+  border-top: 5px solid #556b2f;
   padding: 5px; }
 
 .itemlist {
@@ -81,20 +97,6 @@ a {
   text-align: center;
   font-size: 11px; }
 
-#header h1 {
-  padding-left: 15px;
-  padding-top: 14px;
-  float: left;
-  font-size: 36px; }
-  #header h1 a {
-    color: black; }
-    #header h1 a:hover {
-      background-color: white;
-      color: black;
-      border-bottom: 4px solid #ccc; }
-#header p {
-  float: right; }
-
 #beta {
   /* margin-left: 310px; */
   padding-left: 5px;
@@ -106,7 +108,12 @@ a {
   color: black;
   padding: 10px 0;
   border-bottom: 1px solid #bbb;
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+  width: 800px; }
+  #main h1 span#beer-style {
+    float: right;
+    font-size: 18px;
+    color: #556b2f; }
 #main table {
   width: 100%;
   margin: 0;
@@ -300,3 +307,24 @@ table.manager_list tr.beeritems {
   text-align: right;
   float: right;
   margin-left: 10px; }
+
+div#abl_icon {
+  width: 210px;
+  text-align: center;
+  margin: 0 auto;
+  height: 95px;
+  padding-top: 220px;
+  font-family: "Myriad Web Pro",Helvetica,Arial,sans-serif;
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-size: 48px;
+  background-color: white;
+  color: black;
+  border-bottom: 14px solid #ccc; }
+
+p#coming_notice {
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 20px;
+  font-size: 16px;
+  font-family: "Myriad Web Pro",Helvetica,Arial,sans-serif; }

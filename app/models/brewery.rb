@@ -10,7 +10,6 @@ class Brewery < ActiveRecord::Base
 	has_paper_trail
 	
 	has_many :beers
-	# has_many :beer_items, :through => :beers
 	
 	def citystate
 		return false unless (city != nil && state != nil)

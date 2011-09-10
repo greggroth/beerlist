@@ -45,8 +45,16 @@ $(document).ready ->
 	$('#sorted_beer_item_list a').click ->
 		$(this).parent('th').find('.arrow').toggleClass('asc current')
 		
-	###  Test function ###
+	###  format expanding itemlist function ###
 	Application.format_expandable_itemlist('.expandable_itemlist')
+
+	###  add notice for beer_item edit ###
+	$('#beer_item_pouring_notice').hide()
+	$('#beer_item_pouring').change ->
+		if $(this).val() == 'pitcher'
+			$('#beer_item_pouring_notice').show()
+		else
+			$('#beer_item_pouring_notice').hide()
 
 	return
 	

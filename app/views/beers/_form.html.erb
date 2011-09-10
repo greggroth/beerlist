@@ -16,6 +16,11 @@
   </div>
 
   <div class="field">
+     <%= f.label "Style" %><br />
+     <%= collection_select :beer, :beer_style_id, BeerStyle.order('name ASC'), :id, :name %>
+  </div>
+
+  <div class="field">
 	<%= f.label 'ABV' %><br />
 	<%= f.text_field :abv %>
   </div>

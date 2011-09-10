@@ -1,4 +1,6 @@
 $highlight-color: #FF8C00;
+$green: #556B2F;
+
 
 /* orange: #FF813C */
 
@@ -14,7 +16,7 @@ body {
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size:   13px;
-  line-height: 18px;
+  /* line-height: 18px; */
   margin: 0px;
 }
 
@@ -35,8 +37,8 @@ a {
   text-decoration:none;
 
   &:hover {
-  background-color:$highlight-color;
-  color:#FFFFFF;
+	  background-color:$highlight-color;
+	  color:#FFFFFF;
 	}
 }
 
@@ -52,15 +54,39 @@ a {
 }
 
 #header {
-  font-family:"Myriad Web Pro",Helvetica,Arial,sans-serif;
-  letter-spacing: 1px;
-  border-bottom: 5px solid #333333;
-  color:#333333;
-  padding: 15px 0;
-  height: 35px;
-  margin-left:auto;
-  margin-right:auto;
-  font-size: 10px;
+	font-family:"Myriad Web Pro",Helvetica,Arial,sans-serif;
+	letter-spacing: 1px;
+	border-bottom: 5px solid #333333;
+	color:#333333;
+	padding: 20px 0;
+	height: 35px;
+	margin-left:auto;
+	margin-right:auto;
+	font-size: 10px;
+
+	h1 {
+	  padding-left: 15px;
+	  padding-top: 2px;
+	  float: left;
+	  font-size: 36px;
+
+  	a {
+		  color: black;
+		  background-color: white;
+		  color: black;
+		  border-bottom: 6px solid #ccc;
+	
+		  &:hover {
+			  background-color: white;
+			  color: black;
+			  border-bottom: 6px solid $highlight-color;
+			}
+		}	
+	}
+	
+	p {
+	  float: right;
+	}
 }
 
 #user_bar {
@@ -82,7 +108,7 @@ a {
 }
 
 .greenLine {
-  border-top: 5px solid #556B2F;
+  border-top: 5px solid $green;
   padding: 5px;
 }
 
@@ -104,28 +130,7 @@ a {
   font-size: 11px;
 }
 
-#header {
-	h1 {
-  padding-left: 15px;
-  padding-top: 14px;
-  float: left;
-  font-size: 36px;
 
-  	a {
-		  color: black;
-	
-		  &:hover {
-			  background-color: white;
-			  color: black;
-			  border-bottom: 4px solid #ccc;
-			}
-		}	
-	}
-	
-	p {
-	  float: right;
-	}
-}
 
 
 #beta {
@@ -143,6 +148,13 @@ a {
 	  padding: 10px 0;
 	  border-bottom: 1px solid #bbb;
 	  margin-bottom: 10px;
+		width: 800px;
+	
+		span#beer-style {
+			float: right;
+			font-size: 18px;
+			color: $green;
+		}
 	}
 	
 	table {
@@ -192,6 +204,9 @@ a {
 		.field, .actions {
 		  padding-top: 10px;
 		  clear: both;
+		
+			#beer_item_pouring_notice {
+			}
 		}
 		
 		.following {
@@ -418,5 +433,28 @@ table.manager_list tr.beeritems {
 	text-align: right;
 	float: right;
 	margin-left: 10px;
+}
+
+div#abl_icon {
+	width: 210px;
+	text-align: center;
+	margin: 0 auto;
+	height: 95px;
+	padding-top: 220px;
+  font-family: "Myriad Web Pro",Helvetica,Arial,sans-serif;
+	font-weight: bold;
+	letter-spacing: 1px;
+	font-size: 48px;
+	background-color: white;
+  color: black;
+  border-bottom: 14px solid #ccc;
+}
+
+p#coming_notice {
+	text-align: center;
+	margin: 0 auto;
+	padding-top: 20px;
+	font-size: 16px;
+	font-family: "Myriad Web Pro",Helvetica,Arial,sans-serif;
 }
 
