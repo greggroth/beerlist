@@ -1,5 +1,5 @@
-/* DO NOT MODIFY. This file was compiled Sat, 10 Sep 2011 15:52:12 GMT from
- * /Users/Greggory/Programing/beerlist/app/coffeescripts/script.coffee
+/* DO NOT MODIFY. This file was compiled Sun, 11 Sep 2011 15:43:20 GMT from
+ * /Users/Greggory/Programing/beerlist/app/assets/javascripts/script.coffee
  */
 
 (function() {

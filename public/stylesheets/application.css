@@ -42,7 +42,7 @@ a {
   letter-spacing: 1px;
   border-bottom: 5px solid #333333;
   color: #333333;
-  padding: 20px 0;
+  padding: 20px 0px;
   height: 35px;
   margin-left: auto;
   margin-right: auto;
@@ -50,6 +50,7 @@ a {
   #header h1 {
     padding-left: 15px;
     padding-top: 2px;
+    margin-bottom: 20px;
     float: left;
     font-size: 36px; }
     #header h1 a {
@@ -63,6 +64,10 @@ a {
         border-bottom: 6px solid #ff8c00; }
   #header p {
     float: right; }
+  #header #beta {
+    padding-left: 5px;
+    vertical-align: -10px;
+    font-size: 16px; }
 
 #user_bar {
   float: right; }
@@ -96,12 +101,6 @@ a {
   padding: 10px 0;
   text-align: center;
   font-size: 11px; }
-
-#beta {
-  /* margin-left: 310px; */
-  padding-left: 5px;
-  vertical-align: -10px;
-  font-size: 16px; }
 
 #main h1 {
   font-size: 24px;

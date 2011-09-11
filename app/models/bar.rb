@@ -27,7 +27,7 @@ class Bar < ActiveRecord::Base
 	end
 	
 	def gmaps4rails_infowindow
-		"<p><b>#{self.name}</b></p><p>#{self.address}, #{self.zip}  #{self.state}</p>" 
+		"<p><b>#{self.name}</b></p><p>#{self.address}, #{self.zip}  #{self.state}</p><p><a href=#{self.url}>#{self.url}</a></p>"
 	end
 	
 	def gmaps4rails_title

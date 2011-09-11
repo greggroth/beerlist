@@ -5,11 +5,16 @@
 
   <%= stylesheet_link_tag "application.css", "jquery.jqplot.min.css", "ui-lightness/jquery-ui-1.8.15.custom.css" %>
   <%= javascript_include_tag "jquery.min.js" %>
-  <%= javascript_include_tag "coffeescripts/script.js" %>
+  <%= javascript_include_tag "script.js" %>
   <%= javascript_include_tag "jquery-ui-1.8.16.custom.min.js" %>
   <%= javascript_include_tag "jquery.jqplot.js" %>
   <%= javascript_include_tag "jqplot_plugins/jqplot.dateAxisRenderer.min.js" %>
   <%= javascript_include_tag "jquery.metadata.js" %>
+	<%= javascript_include_tag "gmaps4rails/gmaps4rails.base.js" %>
+	<%= javascript_include_tag "gmaps4rails/gmaps4rails.googlemaps.js" %>
+	<%= javascript_include_tag "gmaps4rails/gmaps4rails.bing.js" %>
+	<%= javascript_include_tag "gmaps4rails/gmaps4rails.mapquest.js" %>
+	<%= javascript_include_tag "gmaps4rails/gmaps4rails.openlayers.js" %>
 	<%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 	<script type="text/javascript">
@@ -60,7 +65,7 @@
     </div>
  </div>
 
-<%= image_tag "comingsoon_eav.png", :id => "announcement-image" %>
+<!-- <%= image_tag "comingsoon_eav.png", :id => "announcement-image" %> -->
 
  <div id="main">
  	<% if iphone_user_agent? %>
