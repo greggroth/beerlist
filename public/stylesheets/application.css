@@ -338,6 +338,11 @@ div#abl_icon {
   color: black;
   border-bottom: 14px solid #ccc; }
 
+div#abl_about {
+  text-align: center;
+  font-family: "Myriad Web Pro",Helvetica,Arial,sans-serif;
+  margin: 8px auto; }
+
 p#coming_notice {
   text-align: center;
   margin: 0 auto;
