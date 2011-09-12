@@ -3,15 +3,12 @@
 <h3><%= pluralize(@brewery.beers.length, "beer") %> being brewed</h3> <br />
 
 <p>
-	<p><%= @brewery.address %></p>
-	<p><%= @brewery.city %> <%= @brewery.state %></p>
-	<p><%= @brewery.zip %></p>
-	<p><%= link_to_unless @brewery.url.nil?, "Website", @brewery.url %></p>
+	<%= @brewery.address %><br>
+	<%= @brewery.city %> <%= @brewery.state %><br>
+	<%= @brewery.zip %><br>
+	<%= !@brewery.url.nil? ? link_to("Website", @brewery.url) : "" %>
 </p>
 
-<%= link_to 'Edit', edit_brewery_path(@brewery) %> |
-<%= link_to 'Back', :back %>
-<br />
 <br />
 <div class="greenLine" />
 
@@ -20,8 +17,10 @@
 <thead>
   <tr>
     <th width=200>Beer</th>
-	<th width=200>Bar</th>
-	<th width=150>Pouring</th>
+		<th width=200>Bar</th>
+		<th width=150>Pouring</th>
+		<th width=80>ABV</th>
+		<th width=80 class="abd-table-heading">ABD</th>
     <th width=100>Price</th>
     <th></th>
     <th></th>
@@ -33,9 +32,24 @@
 <% beer.beer_items.each do |item| %>
   <tr>
       <td><%= link_to item.beer.name, item.beer %></td>
-	  <td><%= link_to item.bar.name, item.bar %></td>
+	  	<td><%= link_to item.bar.name, item.bar %></td>
       <td><%= number_to_human(item.volume, :units => {:unit => item.volunit}) %> <%= item.pouring %></td>
-      <td><%= number_to_currency(item.price) %></td>
+			<td><%= number_to_percentage beer.abv, :precision => 1 %></td>
+
+			<% unless (beer.abv.nil? || item.volume.nil? || item.price.nil?) %>
+				<% case item.volunit %>
+					<% when 'oz' %>
+						<td><%= sprintf("%.3f",(beer.abv*item.volume)/(100*item.price)) %> </td>
+					<% when 'ml' %>
+						<td><%= sprintf("%.3f",(beer.abv*item.volume*0.03381)/(100*item.price)) %> </td>
+					<% when 'cl' %>
+						<td><%= sprintf("%.3f",(beer.abv*item.volume*0.3381)/(100*item.price)) %> </td>
+				<% end %>
+			<% else %>
+				<td></td>
+			<% end %>
+
+			<td><%= number_to_currency(item.price) %></td>
     <% if item.bar.has_permission?(current_user) %>
       <td><%= link_to 'Edit', edit_beer_item_path(item) %></td>
       <td><%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete %></td>
@@ -50,3 +64,7 @@
 </tbody>
 </table>
 </div>
+
+<br>
+<%= link_to 'Edit', edit_brewery_path(@brewery) %> |
+<%= link_to 'Back', :back %>

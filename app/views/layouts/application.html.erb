@@ -3,9 +3,9 @@
 <head>
   <title>Atlanta Beer List</title>
 
-  <%= stylesheet_link_tag "application.css", "jquery.jqplot.min.css", "ui-lightness/jquery-ui-1.8.15.custom.css" %>
-  <%= javascript_include_tag "jquery.min.js" %>
-  <%= javascript_include_tag "script.js" %>
+  <%= stylesheet_link_tag "application.css", "jquery.jqplot.min.css", "ui-lightness/jquery-ui-1.8.15.custom.css", "jquery.qtip.min.css" %>
+	<%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag "jquery.min.js", "jquery.qtip.min.js" %>
   <%= javascript_include_tag "jquery-ui-1.8.16.custom.min.js" %>
   <%= javascript_include_tag "jquery.jqplot.js" %>
   <%= javascript_include_tag "jqplot_plugins/jqplot.dateAxisRenderer.min.js" %>
@@ -15,7 +15,8 @@
 	<%= javascript_include_tag "gmaps4rails/gmaps4rails.bing.js" %>
 	<%= javascript_include_tag "gmaps4rails/gmaps4rails.mapquest.js" %>
 	<%= javascript_include_tag "gmaps4rails/gmaps4rails.openlayers.js" %>
-	<%= javascript_include_tag :defaults %>
+	<%= javascript_include_tag "script.js" %>
+
   <%= csrf_meta_tag %>
 	<script type="text/javascript">
 

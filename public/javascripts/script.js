@@ -1,4 +1,4 @@
-/* DO NOT MODIFY. This file was compiled Mon, 12 Sep 2011 05:15:18 GMT from
+/* DO NOT MODIFY. This file was compiled Mon, 12 Sep 2011 18:41:35 GMT from
  * /Users/Greggory/Programing/beerlist/app/assets/javascripts/script.coffee
  */
 
@@ -76,12 +76,19 @@
       } else {
         $('#toggle-map-link a').html('Hide Map');
       }
-      return $('.map_container').toggle();
+      return $('.map_container').toggle('blind');
     });
     /*  Sorting Options */
     $('#adv-searching').hide();
     $('#adv-searching-button').click(function() {
-      return $('div#adv-searching').toggle();
+      return $('div#adv-searching').toggle('blind');
+    });
+    /* qtip for abd */
+    $('.abd-table-heading').qtip({
+      content: 'Alcohol by Dollar.  Similar to abv except this also takes into account the price and volume to indicate what the best deals are.  The higher the number, the more alcohol you get for your money.',
+      position: {
+        target: 'mouse'
+      }
     });
   });
   Application.format_expandable_itemlist = function(x) {
@@ -100,12 +107,15 @@
     });
     $(x).find('tr.odd').click(function() {
       $(this).closest('tr').next('tr').toggle();
+      console.log($(this).closest('tr').next('tr').find('div.itemlist').size());
       if ($(this).closest('tr').next('tr').is(':visible')) {
-        return $('#itemdesc-' + $(this).closest('tr').attr('id')).children('div').css({
-          'border': 'solid thin #E8E8E8',
-          'border-radius': '10px',
-          'padding-left': '5px'
-        }).html('loading...').load($(this).closest('tr').attr('item_url') + ' .itemlist');
+        if ($(this).closest('tr').next('tr').find('div.itemlist').size() === 0) {
+          return $('#itemdesc-' + $(this).closest('tr').attr('id')).children('div').css({
+            'border': 'solid thin #E8E8E8',
+            'border-radius': '10px',
+            'padding-left': '5px'
+          }).html('loading...').load($(this).closest('tr').attr('item_url') + ' .itemlist');
+        }
       }
     });
   };

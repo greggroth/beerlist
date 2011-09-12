@@ -32,10 +32,10 @@
 <thead>
   <tr>
     <th width=150>Bar</th>
-	<th width=150>Address</th>
+	  <th width=150>Address</th>
     <th width=100>Price</th>
-    <td width=150>Pouring</th>
-	<th width=100>ABD (oz)</th>
+    <th width=150>Pouring</th>
+	  <th width=100 class="abd-table-heading">ABD (oz)</th>
     <th></th>
     <th></th>
   </tr>
@@ -53,17 +53,18 @@
    <% end %>
    
    <% unless (item.beer.abv.nil? || item.volume.nil? || item.price.nil?) %>
-	<% case item.volunit %>
-	<% when 'oz' %>
-		<td><%= sprintf("%.3f",(@beer.abv*item.volume)/(100*item.price)) %> </td>
-	<% when 'ml' %>
-		<td><%= sprintf("%.3f",(@beer.abv*item.volume*0.03381)/(100*item.price)) %> </td>
-	<% when 'cl' %>
-		<td><%= sprintf("%.3f",(@beer.abv*item.volume*0.3381)/(100*item.price)) %> </td>
-	<% end %>
-   <% else %>
-	<td></td>
-   <% end %>
+		<% case item.volunit %>
+			<% when 'oz' %>
+				<td><%= sprintf("%.3f",(@beer.abv*item.volume)/(100*item.price)) %> </td>
+			<% when 'ml' %>
+				<td><%= sprintf("%.3f",(@beer.abv*item.volume*0.03381)/(100*item.price)) %> </td>
+			<% when 'cl' %>
+				<td><%= sprintf("%.3f",(@beer.abv*item.volume*0.3381)/(100*item.price)) %> </td>
+		<% end %>
+	 <% else %>
+		<td></td>
+	 <% end %>
+	
    <% if item.bar.has_permission?(current_user) %>
     <td><%= link_to 'Edit', edit_beer_item_path(item) %></td>
     <td><%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete %></td>
@@ -76,7 +77,6 @@
 </tbody>
 </table>
 </div>
-
 
 <%= link_to 'Edit', edit_beer_path(@beer) %> |
 <%= link_to 'Back', :back %>

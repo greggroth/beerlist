@@ -62,13 +62,20 @@ $(document).ready ->
 			$('#toggle-map-link a').html('Show Map')
 		else
 			$('#toggle-map-link a').html('Hide Map')
-		$('.map_container').toggle()
+		$('.map_container').toggle('blind')
 
 	###  Sorting Options ###
 	$('#adv-searching').hide()
 	$('#adv-searching-button').click ->
-		$('div#adv-searching').toggle()
+		$('div#adv-searching').toggle('blind')
 		
+	### qtip for abd ###
+	$('.abd-table-heading').qtip({
+		content: 'Alcohol by Dollar.  Similar to abv except this also takes into account the price and volume to indicate what the best deals are.  The higher the number, the more alcohol you get for your money.'
+		position: {
+			target: 'mouse'
+		}
+	})
 
 	return
 	
@@ -88,8 +95,10 @@ Application.format_expandable_itemlist = (x) ->
 	$(x).find('div.follow_form').click (e) ->
 		e.stopPropagation()
 	
-	$(x).find('tr.odd').click ->
-    $(this).closest('tr').next('tr').toggle()
+	$(x).find('tr.odd').click -> \
+    $(this).closest('tr').next('tr').toggle(); \
+		console.log($(this).closest('tr').next('tr').find('div.itemlist').size()); \
    	if $(this).closest('tr').next('tr').is(':visible')
-   		$('#itemdesc-' + $(this).closest('tr').attr('id')).children('div').css({'border':'solid thin #E8E8E8','border-radius':'10px','padding-left':'5px'}).html('loading...').load($(this).closest('tr').attr('item_url') + ' .itemlist')
+			if $(this).closest('tr').next('tr').find('div.itemlist').size()==0
+   			$('#itemdesc-' + $(this).closest('tr').attr('id')).children('div').css({'border':'solid thin #E8E8E8','border-radius':'10px','padding-left':'5px'}).html('loading...').load($(this).closest('tr').attr('item_url') + ' .itemlist')
 	return
