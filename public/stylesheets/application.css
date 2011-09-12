@@ -195,6 +195,22 @@ a {
   text-align: center;
   padding: 25px 50px;
   font-size: 25px; }
+#main #adv-searching {
+  border: 2px solid #f0f0f0;
+  border-radius: 10px;
+  background: white;
+  float: left;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 30px;
+  padding: 4px;
+  width: 200px;
+  vertical-align: center; }
+  #main #adv-searching .searchable_option {
+    margin-left: 15px; }
+  #main #adv-searching #search_submit_btn {
+    margin-left: 20px;
+    float: right; }
 
 #announcement-image {
   position: absolute;

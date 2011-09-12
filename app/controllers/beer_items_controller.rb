@@ -6,7 +6,14 @@ before_filter :authenticate_user!, :except => [:index, :show]
 # GET /beer_items/
 # GET /beer_items.xml
 def index
-   @beer_items = BeerItem.find(:all, :include => [:beer,:bar], :order => [sort_column + " " + sort_direction])
+   # @beer_items = BeerItem.find(:all, :include => [:beer,:bar], :order => [sort_column + " " + sort_direction])
+   
+   @search = BeerItem.search do
+     fulltext params[:search_by_pouring]
+   end
+   
+   @beer_items = @search.results
+   
    respond_to do |format|
 	  format.html
       # format.iphone { render :layout => false }

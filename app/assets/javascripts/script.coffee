@@ -56,11 +56,19 @@ $(document).ready ->
 		else
 			$('#beer_item_pouring_notice').hideide()
 			
-	###  Show/Hide Google Map              ###
-	###$('div#bar-show-gmap').hide()        
+	###  Show/Hide Google Map              ###      
 	$('#toggle-map-link a').click ->
-		$('div#bar-show-gmap').toggle() 
-	###	
+		if $('#toggle-map-link a').html() == 'Hide Map'
+			$('#toggle-map-link a').html('Show Map')
+		else
+			$('#toggle-map-link a').html('Hide Map')
+		$('.map_container').toggle()
+
+	###  Sorting Options ###
+	$('#adv-searching').hide()
+	$('#adv-searching-button').click ->
+		$('div#adv-searching').toggle()
+
 	return
 	
 	

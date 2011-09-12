@@ -4,9 +4,21 @@
 You've stumbled on the best thing to happen to the Atlanta beer scene since Brickstore opened.  This is your gateway to to beers and bars around the Atlanta area.  Use this site to find the best deal on that special beer you've been looking for or just check to see if the bar around the corner has a new one on tap.
 </p>
 <h3>WARNING:</h3><p> Currently, listings are not accurate.  This is still under testing.  Check back in the future for the real deal.</p>
-
 <div class="greenLine"></div>
 
+<div id="adv-searching-button"><a>Advanced Search</a></div>
+<div id="adv-searching">
+	<%= form_tag beer_items_path, :method => :get do %>
+	  <p>
+			Pouring:
+			<%= select_tag "search_by_pouring", options_for_select([["draught","draught"],["bottle","bottle"],["can","can"],["pitcher", "pitcher"],["cask pour","cask pour"]],params[:search_by_pouring]), :include_blank=>true, :class => "searchable_option", :id => "pouring-select", :onchange => "this.form.submit();" %>   
+			<!-- <%= text_field_tag :search, params[:search] %> -->
+	    <!-- <%= submit_tag "Search", :name => nil %> -->
+	  </p>
+	<% end %>
+</div>
+
+<br style="clear:both">
 <h2 id="latest_additions">Latest Additions</h2><p id="new_item"><%= link_to "Add a listing", new_beer_item_path %></p>
 <table id="sorted_beer_item_list" class="itemlist">
 <thead>

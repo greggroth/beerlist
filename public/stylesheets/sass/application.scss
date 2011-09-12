@@ -1,6 +1,6 @@
 $highlight-color: #FF8C00;
 $green: #556B2F;
-
+$gray: #F0F0F0;
 
 /* orange: #FF813C */
 
@@ -277,6 +277,28 @@ a {
 		text-align: center;
 		padding: 25px 50px;
 		font-size: 25px;
+	}
+	
+	#adv-searching {
+		border: 2px solid $gray;
+		border-radius: 10px;
+		background: white;
+		float: left;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		margin-left:30px;
+		padding: 4px;
+		width: 200px;
+		vertical-align: center;
+		
+		.searchable_option {
+			margin-left: 15px;
+		}
+		
+		#search_submit_btn {
+			margin-left: 20px;
+			float: right;
+		}
 	}
 }
 

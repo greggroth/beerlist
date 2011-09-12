@@ -1,4 +1,4 @@
-/* DO NOT MODIFY. This file was compiled Mon, 12 Sep 2011 00:42:34 GMT from
+/* DO NOT MODIFY. This file was compiled Mon, 12 Sep 2011 04:48:51 GMT from
  * /Users/Greggory/Programing/beerlist/app/assets/javascripts/script.coffee
  */
 
@@ -70,10 +70,19 @@
       }
     });
     /*  Show/Hide Google Map              */
-    /*$('div#bar-show-gmap').hide()        
-    	$('#toggle-map-link a').click ->
-    		$('div#bar-show-gmap').toggle() 
-    	*/
+    $('#toggle-map-link a').click(function() {
+      if ($('#toggle-map-link a').html() === 'Hide Map') {
+        $('#toggle-map-link a').html('Show Map');
+      } else {
+        $('#toggle-map-link a').html('Hide Map');
+      }
+      return $('.map_container').toggle();
+    });
+    /*  Sorting Options */
+    $('#adv-searching').hide();
+    $('#adv-searching-button').click(function() {
+      return $('div#adv-searching').toggle();
+    });
   });
   Application.format_expandable_itemlist = function(x) {
     /*  Expandable Itemlist */    $(x).find('tr:odd').addClass('odd').hover(function(e) {

@@ -23,17 +23,15 @@
 <!--  <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@bar.latitude}%2C#{@bar.longitude}" %>
 -->
 
-<!-- <p id="toggle-map-link">
-	<a><b>Show/Hide Map</b></a>
-<p> -->
+
 	
-<div id="bar-show-gmap">
-	<% if @bar.latitude.present? && @bar.longitude.present? %>
+
+<% if @bar.latitude.present? && @bar.longitude.present? %>
+	<p id="toggle-map-link">
+		<a>Hide Map</a>
+	<p>
 		<%= gmaps("map_options" => { "detect_location" => true, "center_on_user" => false, "zoom" => 14, "auto_adjust" => true, "auto_zoom" => false}, "markers" => { "data" => @json }) %>
-	<% else %>
-		Map not available
-	<% end %>
-</div>
+<% end %>
 
 <br>
 <% if @bar.has_permission? current_user %>

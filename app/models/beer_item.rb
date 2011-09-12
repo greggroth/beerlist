@@ -10,6 +10,10 @@ class BeerItem < ActiveRecord::Base
 	belongs_to :brewery
 	
 	has_paper_trail
+	
+	searchable do
+	  text :pouring
+  end
 
 	# after_create :notify_item_create_sucess
 
