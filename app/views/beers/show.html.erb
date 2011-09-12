@@ -52,7 +52,7 @@
    	<td><%= item.pouring %></td>
    <% end %>
    
-   <% unless (item.beer.abv.nil? || item.volume.nil? || item.price.nil?) %>
+   <% unless (@beer.abv.nil? || item.volume.nil? || item.price.nil?) %>
 		<% case item.volunit %>
 			<% when 'oz' %>
 				<td><%= sprintf("%.3f",(@beer.abv*item.volume)/(100*item.price)) %> </td>

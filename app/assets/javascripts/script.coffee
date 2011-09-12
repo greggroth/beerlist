@@ -73,8 +73,17 @@ $(document).ready ->
 	$('.abd-table-heading').qtip({
 		content: 'Alcohol by Dollar.  Similar to abv except this also takes into account the price and volume to indicate what the best deals are.  The higher the number, the more alcohol you get for your money.'
 		position: {
+			my: 'bottom left'
+			at: 'top right'
 			target: 'mouse'
-		}
+			adjust: {
+						x: 10
+						y: -10
+					}
+				}
+		style: {
+		      classes: 'ui-tooltip-light ui-tooltip-shadow'
+				}
 	})
 
 	return

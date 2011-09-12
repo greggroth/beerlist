@@ -82,6 +82,8 @@ GEM
       thor (~> 0.14)
     json_pure (1.5.4)
       spruz (~> 0.2.8)
+    kaminari (0.12.4)
+      rails (>= 3.0.0)
     launchy (2.0.5)
       addressable (~> 2.2.6)
     libv8 (3.3.10.2)
@@ -198,6 +200,7 @@ DEPENDENCIES
   guard-rspec
   haml
   jquery-rails
+  kaminari
   launchy
   paper_trail
   pg

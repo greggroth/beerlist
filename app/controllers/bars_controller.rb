@@ -5,9 +5,9 @@ class BarsController < ApplicationController
   # GET /bars.xml
   def index
     if params[:search].present?
-    	@bars = Bar.near(params[:search], 50, :order => :distance)
+    	@bars = Bar.near(params[:search], 50, :order => :distance).page(params[:page]).per(50)
     else
-    	@bars = Bar.find(:all, :order=>"name ASC")
+    	@bars = Bar.order("name ASC").page(params[:page]).per(25)
     end
     
     if user_signed_in?

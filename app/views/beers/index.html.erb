@@ -5,7 +5,7 @@
 <thead>
   <tr align="left">
     <th width=150>Name</th>
-	<th width=250>Brewery</th>
+	  <th width=250>Brewery</th>
     <th width=120>Pouring at . . .</th>
     <th width=50></th>
     <th width=50></th>
@@ -26,4 +26,5 @@
 </div>
 <br />
 
-<%= link_to 'New Beer', new_beer_path %>
+<%= link_to 'New Beer', new_beer_path %><br>
+<%= paginate @beers %>

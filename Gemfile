@@ -18,6 +18,7 @@ gem 'haml'
 gem 'jquery-rails'
 gem 'devise'
 gem 'sunspot_rails'
+gem 'kaminari'
 
 gem 'rspec-rails', :group => [:test, :development]
 group :test do

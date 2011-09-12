@@ -4,8 +4,8 @@ class BeersController < ApplicationController
   # GET /beers
   # GET /beers.xml
   def index
-    @beers = Beer.find(:all, :order => "name ASC")
-
+    @beers = Beer.order('name ASC').page(params[:page]).per(25)
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @beers }
@@ -16,8 +16,8 @@ class BeersController < ApplicationController
   # GET /beers/1.xml
   def show
   @beer = Beer.find(params[:id])
-	@beer_items = BeerItem.ordered.where("beer_id = ?", params[:id])
-
+  @beer_items = BeerItem.find(:all, :conditions => ["beer_id = ?",params[:id]], :order => "price ASC" )
+  
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @beer }

@@ -1,4 +1,4 @@
-/* DO NOT MODIFY. This file was compiled Mon, 12 Sep 2011 18:41:35 GMT from
+/* DO NOT MODIFY. This file was compiled Mon, 12 Sep 2011 21:10:13 GMT from
  * /Users/Greggory/Programing/beerlist/app/assets/javascripts/script.coffee
  */
 
@@ -87,7 +87,16 @@
     $('.abd-table-heading').qtip({
       content: 'Alcohol by Dollar.  Similar to abv except this also takes into account the price and volume to indicate what the best deals are.  The higher the number, the more alcohol you get for your money.',
       position: {
-        target: 'mouse'
+        my: 'bottom left',
+        at: 'top right',
+        target: 'mouse',
+        adjust: {
+          x: 10,
+          y: -10
+        }
+      },
+      style: {
+        classes: 'ui-tooltip-light ui-tooltip-shadow'
       }
     });
   });
