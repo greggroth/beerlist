@@ -6,12 +6,18 @@ You've stumbled on the best thing to happen to the Atlanta beer scene since Bric
 <h3>WARNING:</h3><p> Currently, listings are not accurate.  This is still under testing.  Check back in the future for the real deal.</p>
 <div class="greenLine"></div>
 
-<div id="adv-searching-button"><a>Advanced Search</a></div>
+
+<div id="adv-searching-button"><a>Advanced Search</a> 
+	<% unless params[:search_by_pouring].nil? %>
+		<span id="reset_search">(<%= link_to "reset", root_path %>)</span>
+	<% end %>
+</div>
+
 <div id="adv-searching">
 	<%= form_tag beer_items_path, :method => :get do %>
 	  <p>
 			Pouring:
-			<%= select_tag "search_by_pouring", options_for_select([["draught","draught"],["bottle","bottle"],["can","can"],["pitcher", "pitcher"],["cask pour","cask pour"]],params[:search_by_pouring]), :include_blank=>true, :class => "searchable_option", :id => "pouring-select", :onchange => "this.form.submit();" %>   
+			<%= select_tag "search_by_pouring", options_for_select([["draught","draught"],["bottle","bottle"],["can","can"],["pitcher", "pitcher"],["cask pour","cask pour"]],params[:search_by_pouring]), :prompt => "Select...", :class => "searchable_option", :id => "pouring-select", :onchange => "this.form.submit();" %>   
 			<!-- <%= text_field_tag :search, params[:search] %> -->
 	    <!-- <%= submit_tag "Search", :name => nil %> -->
 	  </p>

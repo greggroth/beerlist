@@ -68,6 +68,7 @@ $(document).ready ->
 	$('#adv-searching').hide()
 	$('#adv-searching-button').click ->
 		$('div#adv-searching').toggle()
+		
 
 	return
 	
@@ -90,5 +91,5 @@ Application.format_expandable_itemlist = (x) ->
 	$(x).find('tr.odd').click ->
     $(this).closest('tr').next('tr').toggle()
    	if $(this).closest('tr').next('tr').is(':visible')
-   		$('#itemdesc-' + $(this).closest('tr').attr('id')).children('div').css('border','solid thin #E8E8E8').html('loading...').load($(this).closest('tr').attr('item_url') + ' .itemlist')
+   		$('#itemdesc-' + $(this).closest('tr').attr('id')).children('div').css({'border':'solid thin #E8E8E8','border-radius':'10px','padding-left':'5px'}).html('loading...').load($(this).closest('tr').attr('item_url') + ' .itemlist')
 	return

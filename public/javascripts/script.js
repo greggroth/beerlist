@@ -1,4 +1,4 @@
-/* DO NOT MODIFY. This file was compiled Mon, 12 Sep 2011 04:48:51 GMT from
+/* DO NOT MODIFY. This file was compiled Mon, 12 Sep 2011 05:15:18 GMT from
  * /Users/Greggory/Programing/beerlist/app/assets/javascripts/script.coffee
  */
 
@@ -101,7 +101,11 @@
     $(x).find('tr.odd').click(function() {
       $(this).closest('tr').next('tr').toggle();
       if ($(this).closest('tr').next('tr').is(':visible')) {
-        return $('#itemdesc-' + $(this).closest('tr').attr('id')).children('div').css('border', 'solid thin #E8E8E8').html('loading...').load($(this).closest('tr').attr('item_url') + ' .itemlist');
+        return $('#itemdesc-' + $(this).closest('tr').attr('id')).children('div').css({
+          'border': 'solid thin #E8E8E8',
+          'border-radius': '10px',
+          'padding-left': '5px'
+        }).html('loading...').load($(this).closest('tr').attr('item_url') + ' .itemlist');
       }
     });
   };
