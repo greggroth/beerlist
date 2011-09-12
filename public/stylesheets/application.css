@@ -83,6 +83,7 @@ a {
     font-size: 11px; }
 
 .greenLine {
+  clear: both;
   border-top: 5px solid #556b2f;
   padding: 5px; }
 

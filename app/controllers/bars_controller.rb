@@ -26,7 +26,7 @@ class BarsController < ApplicationController
   def show
   @bar = Bar.find(params[:id])
 	@beer_items = BeerItem.alphabetical.where("bar_id = ?", params[:id])
-	@recent_beer_items = BeerItem.alphabetical.find(:all, :conditions => ["bar_id = ? AND beer_items.updated_at < ?", params[:id], 1.week.ago])
+	@recent_beer_items = BeerItem.alphabetical.find(:all, :conditions => ["bar_id = ? AND beer_items.updated_at > ?", params[:id], 1.week.ago])
 	if @bar.latitude.present? && @bar.longitude.present?
 		@json = @bar.to_gmaps4rails
 	end

@@ -2,11 +2,15 @@
 
 <h3> Pouring <%= pluralize(@bar.beers.count, "beer") %> </h3> <br />
 
+<%= render "bars_beer_items" %>
+<div class="greenLine" />
+
+
 <p>
-  <p><%= @bar.address %></p>
-  <p><%= @bar.city %> <%= @bar.state %></p>
-  <p><%= @bar.zip %></p>
-	<p><%= link_to_unless @bar.url.nil?, "Website", @bar.url %></p>
+  <%= @bar.address %><br>
+  <%= @bar.city %> <%= @bar.state %><br>
+  <%= @bar.zip %><br>
+	<%= !@bar.url.nil? ? link_to("Website", @bar.url) : "" %>
 </p>
 
 <% if @bar.description.present? %>
@@ -18,89 +22,20 @@
 
 <!--  <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@bar.latitude}%2C#{@bar.longitude}" %>
 -->
-<p>
-	<b>Map:</b>
-<p>
-<% if @bar.latitude.present? && @bar.longitude.present? %>
-	<%= gmaps("map_options" => { "detect_location" => true, "center_on_user" => false, "zoom" => 14, "auto_adjust" => true, "auto_zoom" => false}, "markers" => { "data" => @json }) %>
-<% end %>
 
-<div class="greenLine" />
-
-<div class="itemlist">
-<% unless @recent_beer_items.empty? %>
-<h2>Added in the last week</h2>
-<!-- RECENT BEERS -->
-<table>
-<thead>
-  <tr>
-    <th width=150>Name</th>
-	<th width=300>Brewery</th>
-    <th width=100>Price</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-</thead>
-<tbody>
-
-<% @recent_beer_items.each do |item| %>
-  <tr>
-    <td><%= link_to item.beer.name, item.beer %></td>
-	<td><%= link_to item.beer.brewery.name, item.beer.brewery %></td>
-    <td><%= number_to_currency(item.price) %></td>
-   <% if user_signed_in? && @bar.has_permission?(current_user) %>
-    <td><%= link_to 'Show', item %></td>
-    <td><%= link_to 'Edit', edit_beer_item_path(item) %></td>
-    <td><%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete %></td>
-   <% else %>
-    <td />
-    <td />
-    <td />
-   <% end %>
-  </tr>
-<% end %>
-</tbody>
-</table>
-<br />
-<% end %>
-
-
-<!-- ALl BEERS -->
-<h2>All Beers</h2>
-<table>
-<thead>
-  <tr>
-    <th width=150>Name</th>
-	<th width=300>Brewery</th>
-    <th width=100>Price</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-</thead>
-<tbody>
-<% @beer_items.each do |item| %>
-  <tr>
-    <td><%= link_to item.beer.name, item.beer %></td>
-	<td><%= link_to item.beer.brewery.name, item.beer.brewery %></td>
-    <td><%= number_to_currency(item.price) %></td>
-   <% if user_signed_in? && @bar.has_permission?(current_user) %>
-    <td><%= link_to 'Show', item %></td>
-    <td><%= link_to 'Edit', edit_beer_item_path(item) %></td>
-    <td><%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete %></td>
-   <% else %>
-    <td />
-    <td />
-    <td />
-   <% end %>
-  </tr>
-<% end %>
-</tbody>
-</table>
+<!-- <p id="toggle-map-link">
+	<a><b>Show/Hide Map</b></a>
+<p> -->
+	
+<div id="bar-show-gmap">
+	<% if @bar.latitude.present? && @bar.longitude.present? %>
+		<%= gmaps("map_options" => { "detect_location" => true, "center_on_user" => false, "zoom" => 14, "auto_adjust" => true, "auto_zoom" => false}, "markers" => { "data" => @json }) %>
+	<% else %>
+		Map not available
+	<% end %>
 </div>
 
-
+<br>
 <% if @bar.has_permission? current_user %>
 	<%= link_to 'Edit', edit_bar_path(@bar) %> |
 <% end %>

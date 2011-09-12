@@ -54,9 +54,15 @@ $(document).ready ->
 		if $(this).val() == 'pitcher'
 			$('#beer_item_pouring_notice').show()
 		else
-			$('#beer_item_pouring_notice').hide()
-
+			$('#beer_item_pouring_notice').hideide()
+			
+	###  Show/Hide Google Map              ###
+	###$('div#bar-show-gmap').hide()        
+	$('#toggle-map-link a').click ->
+		$('div#bar-show-gmap').toggle() 
+	###	
 	return
+	
 	
 Application.format_expandable_itemlist = (x) ->
 	###  Expandable Itemlist ###

@@ -1,4 +1,4 @@
-/* DO NOT MODIFY. This file was compiled Sun, 11 Sep 2011 15:43:20 GMT from
+/* DO NOT MODIFY. This file was compiled Mon, 12 Sep 2011 00:42:34 GMT from
  * /Users/Greggory/Programing/beerlist/app/assets/javascripts/script.coffee
  */
 
@@ -66,9 +66,14 @@
       if ($(this).val() === 'pitcher') {
         return $('#beer_item_pouring_notice').show();
       } else {
-        return $('#beer_item_pouring_notice').hide();
+        return $('#beer_item_pouring_notice').hideide();
       }
     });
+    /*  Show/Hide Google Map              */
+    /*$('div#bar-show-gmap').hide()        
+    	$('#toggle-map-link a').click ->
+    		$('div#bar-show-gmap').toggle() 
+    	*/
   });
   Application.format_expandable_itemlist = function(x) {
     /*  Expandable Itemlist */    $(x).find('tr:odd').addClass('odd').hover(function(e) {

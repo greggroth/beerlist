@@ -52,13 +52,8 @@
 			 <% end %>
 					<li>Welcome, <%= current_user.email %> (<%= link_to "Logout", destroy_user_session_path, :id=>'logout', :method => :delete %>)</li>
       <% else %>
-		 		<% if signup_allowed? %>
 					<li><%= link_to "Signup", new_user_registration_path %></li>
 					<li>|</li>
-				<% else %>
-					<li>Beta Testing Full</li>
-					<li>|</li>
-				<% end %>
         <li><%= link_to "Login", new_user_session_path %></li>
       <% end %>
      </ul>
