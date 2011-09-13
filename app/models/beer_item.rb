@@ -11,9 +11,9 @@ class BeerItem < ActiveRecord::Base
 	
 	has_paper_trail
 	
-	searchable do
-	  text :pouring
-  end
+  # searchable do
+  #   text :pouring
+  #   end
 
 	# after_create :notify_item_create_sucess
 

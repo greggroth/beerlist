@@ -17,7 +17,7 @@ gem 'sass'
 gem 'haml'
 gem 'jquery-rails'
 gem 'devise'
-gem 'sunspot_rails'
+# gem 'sunspot_rails'
 gem 'kaminari'
 
 gem 'rspec-rails', :group => [:test, :development]
