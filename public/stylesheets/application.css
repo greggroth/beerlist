@@ -28,6 +28,12 @@ a {
     background-color: #ff8c00;
     color: #FFFFFF; }
 
+a.no_hover_background {
+  padding: 0 2px;
+  text-decoration: none; }
+  a.no_hover_background:hover {
+    background-color: white; }
+
 #header, #main, #footer {
   width: 800px; }
 
