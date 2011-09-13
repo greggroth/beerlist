@@ -185,9 +185,11 @@ a.no_hover_background {
 		  float: left;
 		  line-height: 21px;
 		  vertical-align: center;
-		  background-color: #F0F0F0;
-		  border: 2px solid #ccc;
-		  margin-right: 10px;
+		  /* background-color: #F0F0F0; */
+		  border-bottom: 2px solid #ccc;
+			border-right: 2px solid #ccc;
+			margin-left: 40px;
+		  margin-right: 20px;
 		}
 		
 		label.check_box_label {
@@ -205,8 +207,15 @@ a.no_hover_background {
 		  padding-top: 10px;
 		  clear: both;
 		
-			#beer_item_pouring_notice {
+			select {
+				margin-top: 3px;
+				margin-left: 10px;
 			}
+		}
+		
+		.actions {
+			margin-top: 40px;
+			margin-left: 140px;
 		}
 		
 		.following {
@@ -220,17 +229,25 @@ a.no_hover_background {
 			float: left;
 		}
 		
+		input#zip-search {
+	  	float: left;
+	  	font-size: 14px;		
+			width: 60px;
+			padding: 2px;
+		  border: 2px solid #ccc;
+		}
+		
 		input[type=text], input[type=password], textarea {
 		  float: left;
 		  font-size: 14px;
-		  width: 250px;
+		  width: 200px;
 		  padding: 2px;
 		  border: 2px solid #ccc;
 		}
 		
 		input[type=checkbox] {
 		  margin: 4px;
-		  float: left;
+		  /* float: right; */
 		}
 
 		textarea {
@@ -290,6 +307,10 @@ a.no_hover_background {
 		text-align: center;
 		padding: 25px 50px;
 		font-size: 25px;
+	}
+	
+	.submit-search-button {
+		margin-top: 3px;
 	}
 	
 	#adv-searching {
@@ -495,4 +516,6 @@ p#coming_notice {
 	font-size: 16px;
 	font-family: "Myriad Web Pro",Helvetica,Arial,sans-serif;
 }
+
+
 

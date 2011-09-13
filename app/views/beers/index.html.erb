@@ -1,5 +1,23 @@
 <h1>Beers</h1>
 
+<%= form_tag beers_path, :method => :get do %>
+  <p>
+    <%= text_field_tag :search, params[:search], :size => 20 %>
+    <%= submit_tag "Search", :name => nil, :class => "submit-search-button" %>
+		<div>
+			<% if params[:search].present? || params[:zip].present? %>
+				<%= link_to('Clear Search', beers_path) %>
+			<% end %>
+		</div>
+	</p>
+<% end %>
+
+<% if params[:search].present? %>
+	<p>
+		Found <%= pluralize(@beers.count, 'beer') %>
+	</p>
+<% end %>
+
 <div class="itemlist">
 <table>
 <thead>

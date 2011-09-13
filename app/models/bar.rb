@@ -9,6 +9,14 @@ class Bar < ActiveRecord::Base
   validates_format_of :zip, :with => /\A\d{5}([\-]\d{4})?\Z/, :allow_blank => true
   
   has_paper_trail
+  include Tanker
+  
+  tankit 'index' do
+    indexes :name
+  end
+  
+  after_save :update_tank_indexes
+  after_destroy :delete_tank_indexes
 
 	has_many :bar_permissions, :dependent => :destroy
 	has_many :beer_items, :dependent => :destroy

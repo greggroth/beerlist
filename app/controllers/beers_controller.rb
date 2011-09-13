@@ -4,7 +4,11 @@ class BeersController < ApplicationController
   # GET /beers
   # GET /beers.xml
   def index
-    @beers = Beer.order('name ASC').page(params[:page]).per(25)
+    if params[:search].present?
+      @beers = Beer.search_tank(params[:search])
+    else
+      @beers = Beer.order('name ASC').page(params[:page]).per(25)
+    end
     
     respond_to do |format|
       format.html # index.html.erb

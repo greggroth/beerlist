@@ -4,10 +4,20 @@ class BarsController < ApplicationController
   # GET /bars
   # GET /bars.xml
   def index
+    
+    ##  There has to be a better way!
     if params[:search].present?
-    	@bars = Bar.near(params[:search], 50, :order => :distance).page(params[:page]).per(50)
+      if params[:zip].present?
+        @bars = Bar.near(params[:zip], 50, :order => :distance).search_tank(params[:search])
+      else
+        @bars = Bar.search_tank(params[:search])
+      end
     else
-    	@bars = Bar.order("name ASC").page(params[:page]).per(25)
+      if params[:zip].present?
+        @bars = Bar.near(params[:zip], 50, :order => :distance).page(params[:page]).per(50)
+      else
+        @bars = Bar.order("name ASC").page(params[:page]).per(25)
+      end
     end
     
     if user_signed_in?

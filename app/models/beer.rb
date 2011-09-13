@@ -4,6 +4,15 @@ class Beer < ActiveRecord::Base
 
   has_paper_trail
 
+  include Tanker
+  
+  tankit 'index' do
+    indexes :name
+  end
+  
+  after_save :update_tank_indexes
+  after_destroy :delete_tank_indexes
+
 	belongs_to :brewery
 	belongs_to :beer_style
 	has_many :beer_items, :dependent => :destroy

@@ -40,5 +40,6 @@ FactoryGirl.define do
     # user_id '1'
     price '4.00'
     volume '12'
+    volunit 'oz'
   end
 end

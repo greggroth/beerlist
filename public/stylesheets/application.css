@@ -134,9 +134,11 @@ a.no_hover_background {
     float: left;
     line-height: 21px;
     vertical-align: center;
-    background-color: #F0F0F0;
-    border: 2px solid #ccc;
-    margin-right: 10px; }
+    /* background-color: #F0F0F0; */
+    border-bottom: 2px solid #ccc;
+    border-right: 2px solid #ccc;
+    margin-left: 40px;
+    margin-right: 20px; }
   #main form label.check_box_label {
     width: auto;
     display: inline;
@@ -149,6 +151,12 @@ a.no_hover_background {
   #main form .field, #main form .actions {
     padding-top: 10px;
     clear: both; }
+    #main form .field select, #main form .actions select {
+      margin-top: 3px;
+      margin-left: 10px; }
+  #main form .actions {
+    margin-top: 40px;
+    margin-left: 140px; }
   #main form .following {
     padding-top: 5px;
     padding-left: 3px;
@@ -156,15 +164,21 @@ a.no_hover_background {
   #main form input#undo_button {
     display: inline;
     float: left; }
+  #main form input#zip-search {
+    float: left;
+    font-size: 14px;
+    width: 60px;
+    padding: 2px;
+    border: 2px solid #ccc; }
   #main form input[type=text], #main form input[type=password], #main form textarea {
     float: left;
     font-size: 14px;
-    width: 250px;
+    width: 200px;
     padding: 2px;
     border: 2px solid #ccc; }
   #main form input[type=checkbox] {
     margin: 4px;
-    float: left; }
+    /* float: right; */ }
   #main form textarea {
     height: 150px; }
   #main form input[type=submit] {
@@ -201,6 +215,8 @@ a.no_hover_background {
   text-align: center;
   padding: 25px 50px;
   font-size: 25px; }
+#main .submit-search-button {
+  margin-top: 3px; }
 #main #adv-searching {
   border: 2px solid #f0f0f0;
   border-radius: 10px;

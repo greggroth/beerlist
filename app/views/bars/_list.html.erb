@@ -62,7 +62,8 @@
 
 
 <!-- ALL BARS -->
-<h2 id="allBars-toggleButton">All Bars</h2> 
+<h2 id="allBars-toggleButton">All Bars</h2>
+<br>
 <% unless user_signed_in? %>
 	<p><%= link_to "log in", new_user_session_path %> or <%= link_to "create", new_user_registration_path %> an account to follow your favorite bars</p>
 <% end %>

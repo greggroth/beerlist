@@ -2,7 +2,7 @@ class BeerItem < ActiveRecord::Base
 	validates_presence_of :beer_id
 	validates_presence_of :bar_id
 	validates_presence_of :price
-	validates :beer_id, :uniqueness => { :scope => [:bar_id, :volume, :pouring], :message => "and bar combination already exists." }
+	validates :beer_id, :uniqueness => { :scope => [:bar_id, :volume, :volunit, :pouring], :message => "and bar combination already exists." }
 
 	belongs_to :bar
 	belongs_to :beer

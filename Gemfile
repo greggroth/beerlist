@@ -18,6 +18,8 @@ gem 'haml'
 gem 'jquery-rails'
 gem 'devise'
 # gem 'sunspot_rails'
+# gem 'indextank'
+gem 'tanker'
 gem 'kaminari'
 
 gem 'rspec-rails', :group => [:test, :development]
