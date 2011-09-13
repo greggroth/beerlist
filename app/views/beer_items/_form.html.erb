@@ -22,7 +22,7 @@
   
   <div class="field">
     <%= f.label :pouring %><br />
-    <%= select_tag :beer_item, :pouring, options_for_select([["draught","draught"],["bottle","bottle"],["can","can"],["pitcher", "pitcher"],["cask pour","cask pour"]], @beer_item.pouring)%>
+    <%= select "beer_item", "pouring", options_for_select([["draught","draught"],["bottle","bottle"],["can","can"],["pitcher", "pitcher"],["cask pour","cask pour"]], @beer_item.pouring) %>
 		<div id="beer_item_pouring_notice">Note: a standard pitcher is 64 oz</div>
   </div>
 

@@ -42,12 +42,7 @@ a {
 	}
 }
 
-.notice { 
-	color: green; 
-}
-.alert { 
-	color: red; 
-}
+
 
 #header, #main, #footer {
   width: 800px;
@@ -272,6 +267,16 @@ a {
 	  padding: 25px 50px;
 	  font-size: 20px;
 	}	  
+	
+	.notice { 
+		color: green; 
+		text-align: left;
+	}
+	
+	.alert { 
+		color: red; 
+		text-align: left;
+	}
 	
 	#announcement {
 		text-align: center;

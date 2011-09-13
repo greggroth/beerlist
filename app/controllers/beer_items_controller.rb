@@ -100,16 +100,19 @@ end
 def destroy
    # @beer_item = current_user.beer_items.find(params[:id])
 	@beer_item = BeerItem.find(params[:id])
-	if @beer_item.bar.has_permission?(current_user)
-    		@beer_item.destroy
-	else
-		redirect_to beer_items_path, :notice => "Beer listing removed #{undo_link}"
-	end
+	
+  # if @beer_item.bar.has_permission?(current_user)
+  #     @beer_item.destroy
+  # else
+  #   redirect_to beer_items_path, :notice => "Beer listing removed #{undo_link}"
+  # end
+  @beer_item.destroy
+  redirect_to beer_items_path, :notice => "Beer listing removed #{undo_link}"
 
-    respond_to do |format|
-      format.html { redirect_to(beer_items_path) }
-      format.xml { head :ok }
-    end
+    # respond_to do |format|
+    #   format.html { redirect_to(beer_items_path) }
+    #   format.xml { head :ok }
+    # end
 end
 
 private
@@ -126,7 +129,7 @@ private
   end
 
   def undo_link
-    view_context.button_to("undo", revert_version_path(@beer_item.versions.scoped.last), :id => "undo_button")
+    view_context.link_to("undo", revert_version_path(@beer_item.versions.scoped.last), :id => "undo_button", :method => :post)
   end
 
 end
