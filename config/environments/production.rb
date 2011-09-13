@@ -51,4 +51,14 @@ Beerlist::Application.configure do
   
   #  For devise
   config.action_mailer.default_url_options = { :host => 'atlbeerlist.com' }
+  
+  ActionMailer::Base.smtp_settings = {
+    :user_name => "greggroth",
+    :password => "on750273",
+    :domain => "atlbeerlist.com",
+    :address => "smtp.sendgrid.net",
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
 end
