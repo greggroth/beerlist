@@ -20,7 +20,7 @@ def index
    # @beer_items = @search.results
    
    respond_to do |format|
-	  format.html
+	  format.html 
       # format.iphone { render :layout => false }
   	format.xml { render :xml => @beer_items }
    end
