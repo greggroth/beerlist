@@ -75,7 +75,7 @@ class BarsController < ApplicationController
 
     respond_to do |format|
       if @bar.save
-        format.html { redirect_to(@bar, :notice => 'Bar was successfully created.') }
+        format.html { redirect_to(bars_path, :notice => 'Bar was successfully created.') }
         format.xml  { render :xml => @bar, :status => :created, :location => @bar }
       else
         format.html { render :action => "new" }

@@ -7,6 +7,7 @@
   <tr align="left">
     <th width=250>Name</th>
 	  <th width=250>Location</th>
+		<th width=100>Beers</th>
     <th width=50></th>
     <th width=50></th>
   </tr>
@@ -21,6 +22,7 @@
    <% else %>
     <td></td>
    <% end %>
+	 <td><%= brewery.beers.count %></td>
    <% if user_signed_in? && current_user.id == 1 %>
     <td><%= link_to 'Edit', edit_brewery_path(brewery), :class => "action_link" %></td>
     <td><%= link_to 'Destroy', brewery, :method => :delete, :class => "action_link" %></td>

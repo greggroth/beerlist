@@ -1,0 +1,5 @@
+The Earl - Schlitz Gusto
+Beer - Black Label
+Beer/Brewery - Pilsner Urquel
+
+Check adding beer wthout brewery

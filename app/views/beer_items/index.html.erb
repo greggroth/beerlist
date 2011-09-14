@@ -35,9 +35,10 @@
 <thead>
   <tr>
     <th width=200><%= sortable "beers.name", "Beer" %> <span class="asc"></span></th>
-    <th width=200><%= sortable "bars.name", "Bar" %> <span class="asc"></span></th>
-    <th width=150><%= sortable "volume", "Pouring" %> <span class="asc"></span></th>
-    <th width=100><%= sortable "price" %> <span class="asc"></span></th>
+    <th width=150><%= sortable "bars.name", "Bar" %> <span class="asc"></span></th>
+    <th width=120><%= sortable "volume", "Pouring" %> <span class="asc"></span></th>
+    <th width=80><%= sortable "price" %> <span class="asc"></span></th>
+		<th width=150><%= sortable "created_at", "Added"%><span class="desc"></span></th>
     <th width=50></th>
 	<th width=50></th>
   </tr>
@@ -53,6 +54,7 @@
     	<td><%= f.pouring %></td>
     <% end %>
     <td><%= number_to_currency(f.price) %></td>
+		<td><%= f.created_at.strftime('%m/%d/%Y') %></td>
 	<td><%= link_to 'Details', f , :class => 'action_link' %></td>
 	<td><%= link_to 'Edit', edit_beer_item_path(f) , :class => 'action_link'%></td>
   </tr>

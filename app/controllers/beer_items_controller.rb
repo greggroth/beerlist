@@ -8,9 +8,9 @@ before_filter :authenticate_user!, :except => [:index, :show]
 def index
   
   unless params[:search_by_pouring].nil?
-    @beer_items = BeerItem.find(:all, :include => [:beer,:bar], :conditions => ["pouring = ?", params[:search_by_pouring]], :order => [sort_column + " " + sort_direction])
+    @beer_items = BeerItem.find(:all, :include => [:beer,:bar], :conditions => ["pouring = ?", params[:search_by_pouring]], :order => [sort_column + " " + sort_direction], :limit => 25)
   else
-    @beer_items = BeerItem.find(:all, :include => [:beer,:bar], :order => [sort_column + " " + sort_direction])
+    @beer_items = BeerItem.find(:all, :include => [:beer,:bar], :order => [sort_column + " " + sort_direction], :limit => 25)
    end
    
    # @search = BeerItem.search do
@@ -125,7 +125,7 @@ private
   end
 
   def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] :"asc"
+    %w[asc desc].include?(params[:direction]) ? params[:direction] :"desc"
   end
 
   def undo_link

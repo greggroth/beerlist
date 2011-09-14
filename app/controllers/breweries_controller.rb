@@ -49,7 +49,7 @@ class BreweriesController < ApplicationController
 
     respond_to do |format|
       if @brewery.save
-        format.html { redirect_to(@brewery, :notice => 'Brewery was successfully created.') }
+        format.html { redirect_to(breweries_path, :notice => 'Brewery was successfully created.') }
         format.xml  { render :xml => @brewery, :status => :created, :location => @brewery }
       else
         format.html { render :action => "new" }

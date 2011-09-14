@@ -1,5 +1,5 @@
 class Beer < ActiveRecord::Base
-	validates_presence_of :name
+	validates_presence_of :name, :brewery_id
 	validates_uniqueness_of :name, :scope => :brewery_id, :message => " has already been added for this brewery"
 
   has_paper_trail
