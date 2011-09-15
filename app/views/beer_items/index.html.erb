@@ -39,9 +39,10 @@
   <tr>
     <th width=200><%= sortable "beers.name", "Beer" %> <span class="asc"></span></th>
     <th width=150><%= sortable "bars.name", "Bar" %> <span class="asc"></span></th>
+		<th widht=150>Style</th>
     <th width=120><%= sortable "volume", "Pouring" %> <span class="asc"></span></th>
     <th width=80><%= sortable "price" %> <span class="asc"></span></th>
-		<th width=150><%= sortable "created_at", "Added"%><span class="desc"></span></th>
+		<!-- <th width=150><%= sortable "created_at", "Added"%><span class="desc"></span></th> -->
     <th width=50></th>
 	<th width=50></th>
   </tr>
@@ -51,13 +52,14 @@
   <tr>
     <td><%= link_to f.beer.name, f.beer %></td>
     <td><%= link_to f.bar.name, f.bar %></td>
+		<td><%= f.beer.try(:beer_style) ? f.beer.beer_style.name : "" %></td>
     <% unless (f.volume.nil? || f.volunit.nil?) %>
        	<td><%= number_to_human(f.volume, :units => {:unit => f.volunit}) %> <%= f.pouring %></td>
     <% else %>
     	<td><%= f.pouring %></td>
     <% end %>
     <td><%= number_to_currency(f.price) %></td>
-		<td><%= f.created_at.strftime('%m/%d/%Y') %></td>
+		<!-- <td><%= f.created_at.strftime('%m/%d/%Y') %></td> -->
 	<td><%= link_to 'Details', f , :class => 'action_link' %></td>
 	<td><%= link_to 'Edit', edit_beer_item_path(f) , :class => 'action_link'%></td>
   </tr>
