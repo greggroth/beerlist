@@ -1,4 +1,5 @@
 class BarsController < ApplicationController
+  helper_method :sort_column, :sort_direction
   before_filter :authenticate_user!, :except => [:index, :show]
 
   # GET /bars
@@ -35,7 +36,27 @@ class BarsController < ApplicationController
   # GET /bars/1.xml
   def show
   @bar = Bar.find(params[:id])
-	@beer_items = BeerItem.alphabetical.where("bar_id = ?", params[:id])
+	
+	# @beer_items = BeerItem.alphabetical.where("bar_id = ?", params[:id])
+	
+	if params[:sort].nil?
+    @beer_items = BeerItem.find(:all, :include => [:bar, :beer], :conditions => ["bar_id = ?", params[:id]], :order => "price ASC" )
+  else
+    if params[:sort] == "abd"   # have to sort using a different method
+      logger.debug "ABD chosen"
+      hold = BeerItem.find(:all, :include => [:bar, :beer], :conditions => ["bar_id = ?", params[:id]])
+      if params[:direction] == "asc"
+        logger.debug "asc"
+        @beer_items = hold.sort_by { |e| e.abd }
+      else  #desc
+        logger.debug "desc"
+        @beer_items = hold.sort_by { |e| -e.abd }
+      end
+    else
+      @beer_items = BeerItem.find(:all, :include => [:bar, :beer], :conditions => ["bar_id = ?", params[:id]], :order => [sort_column + " " + sort_direction] )
+    end
+  end
+	
 	@recent_beer_items = BeerItem.alphabetical.find(:all, :conditions => ["bar_id = ? AND beer_items.updated_at > ?", params[:id], 1.week.ago])
 	if @bar.latitude.present? && @bar.longitude.present?
 		@json = @bar.to_gmaps4rails
@@ -129,7 +150,7 @@ class BarsController < ApplicationController
   
 private
   def sort_column
-    if (params[:sort] == "beers.name") || (params[:sort] == "bars.name") 
+    if (params[:sort] == "beers.name") || (params[:sort] == "beers.abv")
       return params[:sort]
     else
       BeerItem.column_names.include?(params[:sort]) ? params[:sort] :"created_at"
