@@ -1,6 +1,6 @@
 class AddPriceToBarsBeers < ActiveRecord::Migration
   def self.up
-    add_column :bars_beers, :price, :decimal
+    add_column :beer_items, :price, :decimal
   end
 
   def self.down
