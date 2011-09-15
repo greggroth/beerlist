@@ -44,5 +44,21 @@ class BeerItem < ActiveRecord::Base
     bar.name
   end
 
+  def abd
+    unless self.beer.abv.nil? || self.volume.nil? || self.price.nil?
+ 		  case self.volunit
+   			when 'oz'
+   				(self.beer.abv*self.volume)/(100*self.price)
+   			when 'ml'
+   				(self.beer.abv*self.volume*0.03381)/(100*self.price)
+   			when 'cl'
+   				(self.beer.abv*self.volume*0.3381)/(100*self.price)
+   		end
+   	else
+   	  return 0
+ 	  end
+  end
+    
+
 
 end

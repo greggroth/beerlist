@@ -28,14 +28,14 @@
 <div class="greenLine" />
 
 <div class="itemlist">
-<table>
+<table id="sorted_beer_item_list">
 <thead>
   <tr>
-    <th width=150>Bar</th>
+    <th width=150><%= sortable "bars.name", "Bar" %> <span class="asc"></span></th>
 	  <th width=150>Address</th>
-    <th width=100>Price</th>
-    <th width=150>Pouring</th>
-	  <th width=100 class="abd-table-heading">ABD (oz)</th>
+    <th width=100><%= sortable "price", "Price" %> <span class="asc"></span></th>
+    <th width=150><%= sortable "volume", "Pouring" %> <span class="asc"></span></th>
+	  <th width=100 class="abd-table-heading"><%= sortable "abd", "ABD (oz)" %> <span class="asc"></span></th>
     <th></th>
     <th></th>
   </tr>
@@ -52,7 +52,7 @@
    	<td><%= item.pouring %></td>
    <% end %>
    
-   <% unless (@beer.abv.nil? || item.volume.nil? || item.price.nil?) %>
+   <!-- <% unless (@beer.abv.nil? || item.volume.nil? || item.price.nil?) %>
 		<% case item.volunit %>
 			<% when 'oz' %>
 				<td><%= sprintf("%.3f",(@beer.abv*item.volume)/(100*item.price)) %> </td>
@@ -63,7 +63,10 @@
 		<% end %>
 	 <% else %>
 		<td></td>
-	 <% end %>
+	 <% end %> -->
+
+		<td><%= sprintf("%.3f",item.abd) %></td>
+
 	
    <% if item.bar.has_permission?(current_user) %>
     <td><%= link_to 'Edit', edit_beer_item_path(item) %></td>

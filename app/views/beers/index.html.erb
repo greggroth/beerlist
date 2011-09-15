@@ -34,7 +34,7 @@
   <tr  id="beers/<%= beer.id %>">
     <td><%= link_to beer.name, beer %></td>
 	<td><%= link_to beer.brewery.name, beer.brewery %></td>
-    <td><%= beer.bars.count %> bars</td>
+    <td><%= pluralize(beer.bars.count,"bar") %></td>
 	<td><%= link_to 'Details', beer, :class => 'action_link' %>
     <td><%= link_to 'Edit', edit_beer_path(beer), :class => 'action_link'  %></td>
   </tr>

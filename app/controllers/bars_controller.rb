@@ -126,5 +126,18 @@ class BarsController < ApplicationController
 	  
 	  render :action => "index"
   end
+  
+private
+  def sort_column
+    if (params[:sort] == "beers.name") || (params[:sort] == "bars.name") 
+      return params[:sort]
+    else
+      BeerItem.column_names.include?(params[:sort]) ? params[:sort] :"created_at"
+    end
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] :"desc"
+  end
 
 end

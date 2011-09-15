@@ -1,4 +1,5 @@
 class BeersController < ApplicationController
+  helper_method :sort_column, :sort_direction
   before_filter :authenticate_user!, :except => [:index, :show]
 
   # GET /beers
@@ -20,7 +21,24 @@ class BeersController < ApplicationController
   # GET /beers/1.xml
   def show
   @beer = Beer.find(params[:id])
-  @beer_items = BeerItem.find(:all, :conditions => ["beer_id = ?",params[:id]], :order => "price ASC" )
+  
+  if params[:sort].nil?
+    @beer_items = BeerItem.find(:all, :include => [:bar, :beer], :conditions => ["beer_id = ?",params[:id]], :order => "price ASC" )
+  else
+    if params[:sort] == "abd"   # have to sort using a different method
+      logger.debug "ABD chosen"
+      hold = BeerItem.find(:all, :include => [:bar, :beer], :conditions => ["beer_id = ?",params[:id]])
+      if params[:direction] == "asc"
+        logger.debug "asc"
+        @beer_items = hold.sort_by { |e| e.abd }
+      else  #desc
+        logger.debug "desc"
+        @beer_items = hold.sort_by { |e| -e.abd }
+      end
+    else
+      @beer_items = BeerItem.find(:all, :include => [:bar, :beer], :conditions => ["beer_id = ?",params[:id]], :order => [sort_column + " " + sort_direction] )
+    end
+  end
   
     respond_to do |format|
       format.html # show.html.erb
@@ -86,5 +104,22 @@ class BeersController < ApplicationController
       format.html { redirect_to(beers_url) }
       format.xml  { head :ok }
     end
+  end
+
+private
+  def sort_column
+    if (params[:sort] == "bars.name") || (params[:sort] == "abd")
+      return params[:sort]
+    else
+      BeerItem.column_names.include?(params[:sort]) ? params[:sort] :"created_at"
+    end
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] :"desc"
+  end
+
+  def undo_link
+    view_context.link_to("undo", revert_version_path(@beer_item.versions.scoped.last), :id => "undo_button", :method => :post)
   end
 end

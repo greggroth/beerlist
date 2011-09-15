@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Atlanta Beer List</title>
-
+	<%= favicon_link_tag "abl_64x64.ico" %>
   <%= stylesheet_link_tag "application.css", "jquery.jqplot.min.css", "ui-lightness/jquery-ui-1.8.15.custom.css", "jquery.qtip.min.css" %>
 	<%= javascript_include_tag :defaults %>
   <%= javascript_include_tag "jquery.min.js", "jquery.qtip.min.js" %>
@@ -81,7 +81,7 @@
     Atlanta Beer List:  The master beer list for Atlanta's bars.<br>
 		Send comments, suggestions or bugs to the <%= mail_to "admin@atlbeerlist.com", "admin" %>
 		<br><br>
-				<a href="http://www.facebook.com/pages/AtlBeerListcom/106072122833011" class="no_hover_background" target="_blank"><img src="images/facebook-icon.jpg" height="22px" width="22px" alt="Follow atlbeerlist on Twitter"/></a>
+				<%= link_to image_tag("facebook-icon.jpg", :height => "22px", :width => "22px"), "http://www.facebook.com/pages/AtlBeerListcom/106072122833011", :class => "no_hover_background", :target => "_blank" %>
 				<a href="http://www.twitter.com/atlbeerlist" class="no_hover_background" target="_blank"><img src="http://twitter-badges.s3.amazonaws.com/t_small-a.png" alt="Follow atlbeerlist on Twitter"/></a>
   </div>
 
