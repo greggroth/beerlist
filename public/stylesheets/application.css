@@ -1,4 +1,4 @@
-/* orange: #FF813C */
+/* orange: #FF813C or   #FF8C00*/
 * {
   margin: 0 auto; }
 
@@ -21,21 +21,22 @@ p {
   padding: 5px; }
 
 a {
-  color: #e67e00;
+  color: #002f5f;
   padding: 0 2px;
   text-decoration: none; }
   a:hover {
-    background-color: #ff8c00;
-    color: #FFFFFF; }
+    /* background-color:$highlight-color;
+    color:#FFFFFF; */
+    color: #b71234; }
 
 a.no_hover_background {
   padding: 0 2px;
   text-decoration: none; }
   a.no_hover_background:hover {
-    background-color: white; }
+    /* background-color:white; */ }
 
 #header, #main, #footer {
-  width: 800px; }
+  width: 850px; }
 
 #header {
   font-family: "Myriad Web Pro",Helvetica,Arial,sans-serif;
@@ -61,7 +62,7 @@ a.no_hover_background {
       #header h1 a:hover {
         background-color: white;
         color: black;
-        border-bottom: 6px solid #ff8c00; }
+        border-bottom: 6px solid #b71234; }
   #header p {
     float: right; }
   #header #beta {
@@ -109,7 +110,7 @@ a.no_hover_background {
   padding: 10px 0;
   border-bottom: 1px solid #bbb;
   margin-bottom: 10px;
-  width: 800px; }
+  width: 850px; }
   #main h1 span#beer-style {
     float: right;
     font-size: 18px;
@@ -322,7 +323,7 @@ a.no_hover_background {
   color: black; }
   #sorted_beer_item_list th a:hover {
     background-color: white;
-    color: #e67e00; }
+    color: #a0102d; }
 
 div.arrow, span.arrow {
   background: transparent url(../images/arrows.png) no-repeat scroll 0px -16px;

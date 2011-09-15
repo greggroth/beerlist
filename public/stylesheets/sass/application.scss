@@ -1,8 +1,9 @@
-$highlight-color: #FF8C00;
+$link-color: #002F5F;
+$highlight-color: #B71234;
 $green: #556B2F;
 $gray: #F0F0F0;
 
-/* orange: #FF813C */
+/* orange: #FF813C or   #FF8C00*/
 
 * { 
   margin: 0 auto;
@@ -32,13 +33,14 @@ p {
 }
 
 a {
-  color:darken($highlight-color, 5%);
+  color: $link-color;
   padding:0 2px;
   text-decoration:none;
 
   &:hover {
-	  background-color:$highlight-color;
-	  color:#FFFFFF;
+	  /* background-color:$highlight-color;
+	  color:#FFFFFF; */
+		color: $highlight-color;
 	}
 }
 
@@ -47,13 +49,13 @@ a.no_hover_background {
   text-decoration:none;
 
 	&:hover{
-		background-color:white;
+		/* background-color:white; */
 	}
 }
 
 
 #header, #main, #footer {
-  width: 800px;
+  width: 850px;
 }
 
 #header {
@@ -148,7 +150,7 @@ a.no_hover_background {
 	  padding: 10px 0;
 	  border-bottom: 1px solid #bbb;
 	  margin-bottom: 10px;
-		width: 800px;
+		width: 850px;
 	
 		span#beer-style {
 			float: right;
