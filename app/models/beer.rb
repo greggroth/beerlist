@@ -14,11 +14,6 @@ class Beer < ActiveRecord::Base
   tankit 'index' do
     indexes :name
     indexes :style
-    
-    # # you may also dynamically retrieve field data
-    # indexes :beer_styles do
-    #   beer_style.map {|s| s.name }
-    # end
   end
   
   
@@ -26,7 +21,7 @@ class Beer < ActiveRecord::Base
     if self.try(:beer_style)
       self.beer_style.name
     else
-      "n/a"
+      ""
     end
   end
   
