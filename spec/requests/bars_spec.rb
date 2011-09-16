@@ -43,7 +43,7 @@ describe "Bars" do
     fill_in "bar_url", :with => "http://www.bar-stop.com/"
     click_button "Create Bar"
     
-    current_path.should eq(bar_path(1))
+    current_path.should eq(bars_path)
     page.should have_content "Bar was successfully created."
   end
 

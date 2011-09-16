@@ -7,7 +7,7 @@ describe User do
     click_link "Signup"
     fill_in "Email", :with => 'new_user@test.com'
     fill_in "Password", :with => '123456'
-    fill_in "Password confirmation", :with => '123456'
+    fill_in "Confirm password", :with => '123456'
     click_button "Sign up"
     current_path.should eq(root_path)
     page.should have_content("Welcome! You have signed up successfully.")

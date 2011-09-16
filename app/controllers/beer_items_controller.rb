@@ -13,6 +13,10 @@ def index
     @beer_items = BeerItem.find(:all, :include => [:beer,:bar], :order => [sort_column + " " + sort_direction], :limit => 25)
    end
    
+   
+   
+   # @best_deals = BeerItem.all.sort_by { |e| -e.abd }.take(10)  #top 10 deals
+   
    # @search = BeerItem.search do
    #   fulltext params[:search_by_pouring]
    # end
