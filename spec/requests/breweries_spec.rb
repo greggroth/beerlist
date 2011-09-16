@@ -37,7 +37,7 @@ describe "Brewery" do
     fill_in "brewery_url", :with => "http://www.tester.com/"
     
     click_button "Create Brewery"
-    current_path.should eq(brewery_path(1))
+    current_path.should eq(breweries_path)
     page.should have_content "Brewery was successfully created."
   end
   
