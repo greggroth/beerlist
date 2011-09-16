@@ -2,24 +2,25 @@
 <html>
 <%= render :partial => "layouts/doc_header" %>
 <body>
-<div id="wrap">
 <%= render :partial => "layouts/page_header" %>
 
 <!-- <%= image_tag "comingsoon_eav.png", :id => "announcement-image" %> -->
 
- <div id="main">
- 	<% if iphone_user_agent? %>
- 		<div id="iphone-message">
-			Using an iPhone? <a href="http://iphone.atlbeerlist.com/">Use the optimized version</a>.
-		</div>
-	<% end %>
+  <div id="main">
+    <% if iphone_user_agent? %>
+      <div id="iphone-message">
+      Using an iPhone? <a href="http://iphone.atlbeerlist.com/">Use the optimized version</a>.
+      </div>
+    <% end %>
 
     <%= content_tag(:p, raw(notice), :class => 'notice') if notice.present? %>
     <%= content_tag(:p, alert, :class => 'alert') if alert.present? %>
-		<br />
+
+    <br />
     <%= yield %>
 
   </div>
+
 <%= render :partial => "layouts/footer" %>
 </div>
 </body>
