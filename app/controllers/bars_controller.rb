@@ -43,13 +43,10 @@ class BarsController < ApplicationController
     @beer_items = BeerItem.find(:all, :include => [:bar, :beer], :conditions => ["bar_id = ?", params[:id]], :order => "price ASC" )
   else
     if params[:sort] == "abd"   # have to sort using a different method
-      logger.debug "ABD chosen"
       hold = BeerItem.find(:all, :include => [:bar, :beer], :conditions => ["bar_id = ?", params[:id]])
       if params[:direction] == "asc"
-        logger.debug "asc"
         @beer_items = hold.sort_by { |e| e.abd }
       else  #desc
-        logger.debug "desc"
         @beer_items = hold.sort_by { |e| -e.abd }
       end
     else

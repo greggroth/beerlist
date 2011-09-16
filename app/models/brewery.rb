@@ -9,6 +9,15 @@ class Brewery < ActiveRecord::Base
 	
 	has_paper_trail
 	
+	include Tanker
+  
+  tankit 'index' do
+    indexes :name
+  end
+  
+  after_save :update_tank_indexes
+  after_destroy :delete_tank_indexes
+	
 	has_many :beers
 	
 	def citystate

@@ -1,5 +1,23 @@
 <h1>Breweries</h1>
 
+<%= form_tag breweries_path, :method => :get do %>
+  <p>
+    <%= text_field_tag :search, params[:search], :size => 20 %>
+    <%= submit_tag "Search", :name => nil, :class => "submit-search-button" %>
+		<div>
+			<% if params[:search].present? || params[:zip].present? %>
+				<%= link_to('Clear Search', beers_path) %>
+			<% end %>
+		</div>
+	</p>
+<% end %>
+
+<% if params[:search].present? %>
+	<p>
+		Found <%= pluralize(@breweries.count, 'brewery') %>
+	</p>
+<% end %>
+<br>
 <p>Hint:  Click on a row to view the beer list for a bar!</p>
 
 <table id="expanding_brewery_list" class="expandable_itemlist">
