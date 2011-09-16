@@ -1,65 +1,9 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Atlanta Beer List</title>
-	<%= favicon_link_tag "abl_64x64.ico" %>
-  <%= stylesheet_link_tag "application.css", "jquery.jqplot.min.css", "ui-lightness/jquery-ui-1.8.15.custom.css", "jquery.qtip.min.css" %>
-	<%= javascript_include_tag :defaults %>
-  <%= javascript_include_tag "jquery.min.js", "jquery.qtip.min.js" %>
-  <%= javascript_include_tag "jquery-ui-1.8.16.custom.min.js" %>
-  <%= javascript_include_tag "jquery.jqplot.js" %>
-  <%= javascript_include_tag "jqplot_plugins/jqplot.dateAxisRenderer.min.js" %>
-  <%= javascript_include_tag "jquery.metadata.js" %>
-	<%= javascript_include_tag "gmaps4rails/gmaps4rails.base.js" %>
-	<%= javascript_include_tag "gmaps4rails/gmaps4rails.googlemaps.js" %>
-	<%= javascript_include_tag "gmaps4rails/gmaps4rails.bing.js" %>
-	<%= javascript_include_tag "gmaps4rails/gmaps4rails.mapquest.js" %>
-	<%= javascript_include_tag "gmaps4rails/gmaps4rails.openlayers.js" %>
-	<%= javascript_include_tag "script.js" %>
-
-  <%= csrf_meta_tag %>
-	<script type="text/javascript">
-
-	  var _gaq = _gaq || [];
-	  _gaq.push(['_setAccount', 'UA-25428237-1']);
-	  _gaq.push(['_trackPageview']);
-
-	  (function() {
-	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	  })();
-
-	</script>
-
-  <%= yield :head %>
-</head>
+<%= render :partial => "layouts/doc_header" %>
 <body>
-
- <div id="header">
-   <h1><%= link_to "ABL", root_path %><span id="beta">beta</span> </h1>
-    <div id="user_bar">
-     <ul>
-		<li><%= link_to "Beers", beers_path %></li>
-		<li>-</li>
-		<li><%= link_to "Bars", bars_path %></li>
-		<li>-</li>
-		<li><%= link_to "Breweries", breweries_path %></li>
-		<li>|</li>
-      <% if user_signed_in? %>	
-		   	<% unless current_user.admin_bars.empty? %>      
-					<li><%= link_to "Manage Bars", bar_owner_path %></li>
-					<li>|</li>
-			 <% end %>
-					<li>Welcome, <%= current_user.email %> (<%= link_to "Logout", destroy_user_session_path, :id=>'logout', :method => :delete %>)</li>
-      <% else %>
-					<li><%= link_to "Signup", new_user_registration_path %></li>
-					<li>|</li>
-        <li><%= link_to "Login", new_user_session_path %></li>
-      <% end %>
-     </ul>
-    </div>
- </div>
+<div id="wrap">
+<%= render :partial => "layouts/page_header" %>
 
 <!-- <%= image_tag "comingsoon_eav.png", :id => "announcement-image" %> -->
 
@@ -76,14 +20,7 @@
     <%= yield %>
 
   </div>
-  <div id="footer">
-    <%= yield :scripts %>
-    Atlanta Beer List:  The master beer list for Atlanta's bars.<br>
-		Send comments, suggestions or bugs to the <%= mail_to "admin@atlbeerlist.com", "admin" %>
-		<br><br>
-				<%= link_to image_tag("facebook-icon.jpg", :height => "22px", :width => "22px"), "http://www.facebook.com/pages/AtlBeerListcom/106072122833011", :class => "no_hover_background", :target => "_blank" %>
-				<a href="http://www.twitter.com/atlbeerlist" class="no_hover_background" target="_blank"><img src="http://twitter-badges.s3.amazonaws.com/t_small-a.png" alt="Follow atlbeerlist on Twitter"/></a>
-  </div>
-
+<%= render :partial => "layouts/footer" %>
+</div>
 </body>
 </html>
