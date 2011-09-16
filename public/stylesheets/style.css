@@ -21,7 +21,6 @@ p {
 }
 a {
   color: #002f5f;
-  padding: 0 2px;
   text-decoration: none; 
 }
 a:hover {
@@ -448,4 +447,24 @@ div#title {
   background: url('/images/titleimg.png') no-repeat;
   height: 200px;
   width: 960px;
+}
+div#footerinfo {
+  width: 320px;
+}
+div#design {
+  width:35px;
+  float: left;
+  padding-right: 10px;
+  border-right: 1px solid #aaaaff;
+}
+div#footercomments {
+  text-align: left;
+  width: 270px;
+  float: right;
+}
+div#footer p {
+  font-size: 9pt !important;
+}
+div#social {
+  clear: both;
 }
