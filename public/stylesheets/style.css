@@ -423,7 +423,6 @@ div#wrap {
   -webkit-border-radius:0px 0px 25px 25px;
   border-radius:0px 0px 25px 25px;
   /*IE 7 AND 8 DO NOT SUPPORT BORDER RADIUS*/
-  
 }
 div#main {
   padding: 10px;
@@ -442,6 +441,7 @@ div#main {
 html {
   height: 100%;
   background: #333;
+  padding-bottom: 50px;
 }
 div#title {
   background: url('/images/titleimg.png') no-repeat;
