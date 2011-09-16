@@ -26,7 +26,7 @@
 <% @beers.each do |beer| %>
 	<tr>
 		<td><%= link_to beer.name, beer %></td>
-		<td><%= beer.try(:style) ? beer.style.name : "" %></td>
+		<td><%= beer.try(:beer_style) ? beer.beer_style.name : "" %></td>
 		<td><%= number_to_percentage beer.abv, :precision => 1 %></td>
 		<td><%= pluralize(beer.bars.count, "bar") %></td>
   </tr>

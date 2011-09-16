@@ -19,10 +19,10 @@
 		<h1>AtlBeerList</h1>
 		<% if user_signed_in? %>
 			<!-- <a href="/logout/" class="button flip" rel="external">Logout</a> -->
-			<!-- <%= link_to "Logout", logout_path, :class => "button flip", :rel => "external" %> -->
+			<!-- <%= link_to "Logout", destroy_user_session_path, :class => "button flip", :rel => "external" %> -->
 		<% else %>
 			<!-- <a href="/login/" class="button flip" rel="external">Login</a> -->
-			<!-- <%= link_to "Login", login_path, :class => "button flip", :rel => "external" %> -->
+			<!-- <%= link_to "Login", new_user_session_path, :class => "button flip", :rel => "external" %> -->
 		<% end %>
 	</div>
 	<br />
