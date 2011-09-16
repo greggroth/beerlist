@@ -415,10 +415,10 @@ p#coming_notice {
 }
 div#wrap {
 /*  background: url('/images/beerlist-bg.jpg') repeat-y; */
-  background: #FFD500;
+  background: #ffcc00 url('/images/wrapbg.png') no-repeat;
   width: 960px;
   height: 100%;
-  padding-top: 10px;
+  padding-top: 40px;
   -moz-border-radius:0px 0px 25px 25px;
   -webkit-border-radius:0px 0px 25px 25px;
   border-radius:0px 0px 25px 25px;
@@ -445,7 +445,7 @@ html {
 }
 div#title {
   background: url('/images/titleimg.png') no-repeat;
-  height: 200px;
+  height: 170px;
   width: 960px;
 }
 div#footerinfo {
