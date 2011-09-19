@@ -1,4 +1,5 @@
 <h1><%= @bar.name %></h1>
+
 <p>
   <%= @bar.address %><br>
   <%= @bar.city %> <%= @bar.state %><br>
@@ -6,10 +7,21 @@
 	<%= !@bar.url.nil? ? link_to("Website", @bar.url) : "" %>
 </p>
 
+<p id="toggle-map-link">
+	<a>Show Map</a>
+</p>
+
+<div id="gmap_popup_panel">
+	<a id="gmap_popup_panel_close">x</a>  
+	<% if @bar.latitude.present? && @bar.longitude.present? %>
+			<%= gmaps("map_options" => { "detect_location" => true, "center_on_user" => false, "zoom" => 14, "auto_adjust" => true, "auto_zoom" => false}, "markers" => { "data" => @json }) %>
+	<% end %>
+</div>
+
 <h3> Pouring <%= pluralize(@bar.beers.count, "beer") %> </h3> <br />
 
 <%= render "bars_beer_items" %>
-<div class="greenLine" />
+<div class="greenLine"></div>
 
 
 
@@ -23,15 +35,6 @@
 <!--  <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@bar.latitude}%2C#{@bar.longitude}" %>
 -->
 
-
-	
-
-<% if @bar.latitude.present? && @bar.longitude.present? %>
-	<p id="toggle-map-link">
-		<a>Hide Map</a>
-	<p>
-		<%= gmaps("map_options" => { "detect_location" => true, "center_on_user" => false, "zoom" => 14, "auto_adjust" => true, "auto_zoom" => false}, "markers" => { "data" => @json }) %>
-<% end %>
 
 <br>
 <% if @bar.has_permission? current_user %>

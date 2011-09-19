@@ -17,7 +17,8 @@ class BarsController < ApplicationController
       if params[:zip].present?
         @bars = Bar.near(params[:zip], 50, :order => :distance).page(params[:page]).per(50)
       else
-        @bars = Bar.order("name ASC").page(params[:page]).per(25)
+        # @bars = Bar.order("name ASC").
+        @bars = Bar.page(params[:page]).per(25)
       end
     end
     

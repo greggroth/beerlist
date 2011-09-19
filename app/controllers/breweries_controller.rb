@@ -5,9 +5,9 @@ class BreweriesController < ApplicationController
   # GET /breweries.xml
   def index
     if params[:search].present?
-      @breweries = Brewery.search_tank(params[:search])
+      @breweries = Brewery.includes(:beers).search_tank(params[:search])
     else
-      @breweries = Brewery.order("name ASC").page(params[:page]).per(25)
+      @breweries = Brewery.includes(:beers).order("name ASC").page(params[:page]).per(25)
     end
 
     respond_to do |format|

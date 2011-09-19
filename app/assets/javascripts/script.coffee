@@ -58,11 +58,22 @@ $(document).ready ->
 			
 	###  Show/Hide Google Map              ###      
 	$('#toggle-map-link a').click ->
-		if $('#toggle-map-link a').html() == 'Hide Map'
-			$('#toggle-map-link a').html('Show Map')
-		else
-			$('#toggle-map-link a').html('Hide Map')
-		$('.map_container').toggle('blind')
+		$('#gmap_popup_panel').css({'z-index':'1'})
+		
+	$('#gmap_popup_panel_close').click -> 
+		$('#gmap_popup_panel').css({'z-index':'-1'})
+	
+	### $('#gmap_popup_panel_close').qtip({
+		content: 'Close'
+		position: {
+			my: 'left center'
+			at: 'right center'
+			target: $('#gmap_popup_panel_close')
+		}
+		style: {
+		      classes: 'ui-tooltip-blue ui-tooltip-tipsy'
+				}
+	}) ###
 
 	###  Sorting Options ###
 	$('#adv-searching').hide()

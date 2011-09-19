@@ -21,6 +21,7 @@ gem 'devise'
 # gem 'indextank'
 gem 'tanker'
 gem 'kaminari'
+gem 'airbrake'
 
 gem 'rspec-rails', :group => [:test, :development]
 group :test do
@@ -34,6 +35,8 @@ group :production do
   # gems specifically for Heroku go here
   gem "pg"
 end
+
+# gem "bullet", :group => "development"
 
 # Gems used only for assets and not required
 # in production environments by default.

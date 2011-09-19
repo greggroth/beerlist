@@ -1,4 +1,4 @@
-/* DO NOT MODIFY. This file was compiled Mon, 12 Sep 2011 21:10:13 GMT from
+/* DO NOT MODIFY. This file was compiled Mon, 19 Sep 2011 23:44:46 GMT from
  * /Users/Greggory/Programing/beerlist/app/assets/javascripts/script.coffee
  */
 
@@ -71,13 +71,26 @@
     });
     /*  Show/Hide Google Map              */
     $('#toggle-map-link a').click(function() {
-      if ($('#toggle-map-link a').html() === 'Hide Map') {
-        $('#toggle-map-link a').html('Show Map');
-      } else {
-        $('#toggle-map-link a').html('Hide Map');
-      }
-      return $('.map_container').toggle('blind');
+      return $('#gmap_popup_panel').css({
+        'z-index': '1'
+      });
     });
+    $('#gmap_popup_panel_close').click(function() {
+      return $('#gmap_popup_panel').css({
+        'z-index': '-1'
+      });
+    });
+    /* $('#gmap_popup_panel_close').qtip({
+    		content: 'Close'
+    		position: {
+    			my: 'left center'
+    			at: 'right center'
+    			target: $('#gmap_popup_panel_close')
+    		}
+    		style: {
+    		      classes: 'ui-tooltip-blue ui-tooltip-tipsy'
+    				}
+    	}) */
     /*  Sorting Options */
     $('#adv-searching').hide();
     $('#adv-searching-button').click(function() {
