@@ -95,8 +95,6 @@ a.no_hover_background {
 .itemlist {
 	background: white;
 	position: relative;
-  border: 1px solid #556B2F;
-	border-radius: 8px;
   clear: both;
   padding: 5px 10px;
   text-align: left;
