@@ -60,6 +60,20 @@ class BeerItem < ActiveRecord::Base
  	  end
   end
     
+  def self.top_deals
+    hold = BeerItem.find(:all, :include => [:bar, :beer])
+    ordered = hold.sort_by { |e| -e.abd }
+    beer_id_check = []
+    results = []
 
-
+    i = 0
+    until results.count == 20   # find the first 10 unique items
+      unless beer_id_check.include? ordered.at(i).beer_id  #  if the beer_id hasn't already been used
+        results << ordered.at(i)
+        beer_id_check << ordered.at(i).beer_id
+      end
+      i += 1
+    end
+    return results
+  end
 end

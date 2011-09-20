@@ -8,10 +8,11 @@ before_filter :authenticate_user!, :except => [:index, :show]
 def index
   
   unless params[:search_by_pouring].nil?
-    @beer_items = BeerItem.find(:all, :include => [:beer,:bar], :conditions => ["pouring = ?", params[:search_by_pouring]], :order => [sort_column + " " + sort_direction], :limit => 25)
+    @best_deals = BeerItem.find(:all, :include => [:beer,:bar], :conditions => ["pouring = ?", params[:search_by_pouring]], :order => [sort_column + " " + sort_direction], :limit => 50)
   else
-    @beer_items = BeerItem.find(:all, :include => [:beer,:bar], :order => [sort_column + " " + sort_direction], :limit => 25)
-   end
+    # @beer_items = BeerItem.find(:all, :include => [:beer,:bar], :order => [sort_column + " " + sort_direction], :limit => 25)
+    @best_deals = BeerItem.top_deals
+  end
    
    
    
