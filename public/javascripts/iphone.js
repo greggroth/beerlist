@@ -1,0 +1,3 @@
+$.jQTouch({
+	statusBar: 'black-translucent'
+});

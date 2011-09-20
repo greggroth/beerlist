@@ -10,11 +10,6 @@ class BeersController < ApplicationController
     else
       @beers = Beer.includes(:beer_style,:brewery).order('name ASC').page(params[:page]).per(25)
     end
-    
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @beers }
-    end
   end
 
   # GET /beers/1
@@ -36,11 +31,6 @@ class BeersController < ApplicationController
       @beer_items = BeerItem.find(:all, :include => [:bar, :beer], :conditions => ["beer_id = ?",params[:id]], :order => [sort_column + " " + sort_direction] )
     end
   end
-  
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @beer }
-    end
   end
 
   # GET /beers/new

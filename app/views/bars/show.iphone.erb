@@ -1,37 +1,11 @@
-<!--- All of the bar pages -->
-<!-- <div id="<%= @bar.name.parameterize %>"> -->
-	<div class="toolbar">
-		<h1><%= @bar.name %></h1>
-		<a class="button back" href="#">Back</a>
-	</div>
-	<p>
-	  <b>Address:</b>
-	  <p><%= @bar.address %></p>
-	  <p><%= @bar.city %> <%= @bar.state %></p>
-	  <p><%= @bar.zip %></p>
-	</p>
-	<br />
-	
-	<% unless @bar.description.empty? %>		
-	<p>
-	  <b>Description:</b>
-	  <%= @bar.description %>
-	</p>
-	<br />
-	<% end %>
-	
-	<b>Beers:</b> <br />
-	<table>
-	  <tr>
-		<th width=150 align="left">Name</th>
-		<th width=100 align="left">Price</th>
-	  </tr>
-	
-	<% @beer_items.each do |item| %>
-	  <tr>
-		<td><%= item.beer.name %></td>
-		<td><%= number_to_currency(item.price) %></td>
-	  </tr>
-	<% end %>
-	</table>
-<!-- </div> -->
+<% content_for :title, @bar.name %>
+
+<h2>Beers:</h2>
+	<ul class="rounded">
+		<% for beer_item in @beer_items %>
+		<li class="arrow">
+			<%= link_to beer_item.beer.name, beer_item.beer %>
+			<small class="counter"><%= number_to_currency(beer_item.price) %></small>
+		</li>
+		<% end %>
+	</ul>

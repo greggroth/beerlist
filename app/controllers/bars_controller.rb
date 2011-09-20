@@ -85,11 +85,6 @@ class BarsController < ApplicationController
 		@json = @bar.to_gmaps4rails
 	end
 	
-    respond_to do |format|
-      format.html # show.html.erb
-      format.iphone { render :layout => false }
-      format.xml  { render :xml => @bar }
-    end
   end
 
   # GET /bars/new

@@ -23,12 +23,6 @@ def index
    # end
    # 
    # @beer_items = @search.results
-   
-   respond_to do |format|
-	  format.html 
-      # format.iphone { render :layout => false }
-  	format.xml { render :xml => @beer_items }
-   end
 end
 
 # GET /beer_items/1

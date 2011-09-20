@@ -1,0 +1,8 @@
+<% content_for :title, @brewery.name %>
+
+<h2>Beers</h2>
+	<ul class="rounded">
+		<% for beer in @beers %>
+			<li class="arrow"><%= link_to beer.name, beer %></li>
+		<% end %>
+	</ul>

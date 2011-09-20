@@ -9,25 +9,16 @@ class BreweriesController < ApplicationController
     else
       @breweries = Brewery.includes(:beers).order("name ASC").page(params[:page]).per(25)
     end
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @breweries }
-    end
   end
 
   # GET /breweries/1
   # GET /breweries/1.xml
   def show
     @brewery = Brewery.find(params[:id])
-	@beers = @brewery.beers.all
+	  @beers = @brewery.beers.all
 	# @beer_items = BeerItem.where("brewery_id = ?", params[:id])
     # @bar_count = @beers.count('bars', :distict => true)
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @brewery }
-    end
   end
 
   # GET /breweries/new

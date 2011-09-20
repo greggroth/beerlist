@@ -1,0 +1,15 @@
+<% content_for :title, @beer.name %>
+
+<h2>Brewed by:</h2>
+	<ul class="rounded">
+		<li><%= link_to @beer.brewery.name, @beer.brewery %></li>
+	</ul>
+
+<h2>Served At:</h2>
+	<ul class="rounded">
+	  <% for beer_item in @beer_items %>
+	    <li class="arrow">
+	      <%= link_to beer_item.bar.name, bar_path(beer_item.bar.id) %>
+	    </li>
+	  <% end %>
+	</ul>
