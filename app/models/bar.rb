@@ -13,6 +13,10 @@ class Bar < ActiveRecord::Base
   
   tankit 'index' do
     indexes :name
+    indexes :address
+    indexes :city
+    indexes :state
+    indexes :zip
   end
   
   after_save :update_tank_indexes

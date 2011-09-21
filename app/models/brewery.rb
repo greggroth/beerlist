@@ -16,6 +16,9 @@ class Brewery < ActiveRecord::Base
   
   tankit 'index' do
     indexes :name
+    indexes :zip
+    indexes :state
+    indexes :address
   end
   
   after_save :update_tank_indexes

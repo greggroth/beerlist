@@ -1,8 +1,6 @@
 Beerlist::Application.routes.draw do
   devise_for :users
 
-  root :to => "beer_items#index"
-
   post "/versions/:id/revert" => "versions#revert", :as => "revert_version"
   
   resources :beer_items
@@ -23,6 +21,7 @@ Beerlist::Application.routes.draw do
 
   match '/bar_owner/' => "bar_owner#show"
   
+  root :to => "beer_items#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -14,6 +14,7 @@ class Beer < ActiveRecord::Base
   tankit 'index' do
     indexes :name
     indexes :style
+    indexes :brewery_name
   end
   
   
@@ -23,6 +24,10 @@ class Beer < ActiveRecord::Base
     else
       ""
     end
+  end
+  
+  def brewery_name
+    self.brewery.name
   end
   
   
