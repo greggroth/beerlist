@@ -37,11 +37,6 @@ class BeersController < ApplicationController
   # GET /beers/new.xml
   def new
     @beer = Beer.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @beer }
-    end
   end
 
   # GET /beers/1/edit

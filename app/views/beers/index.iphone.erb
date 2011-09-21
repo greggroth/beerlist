@@ -1,5 +1,9 @@
 <% content_for :title, "Beers" %>
 
+<% if user_signed_in? %>
+	<ul class="rounded"><li class="arrow"><%= link_to "New Beer", new_beer_path %></li></ul>
+<% end %>
+
 <ul class="rounded">
 	<% for beer in @beers %>
 		<li class="arrow"><%= link_to beer.name, beer %></li>

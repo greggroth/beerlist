@@ -29,29 +29,19 @@ end
 # GET /beer_items/1.xml
 def show
    @beer_item = BeerItem.find(params[:id])
-
-  respond_to do |format|
-	  format.html
-  	format.xml { render :xml => @beer_item }
-  end
 end
 
 # GET /beer_items/new
 # GET /beer_items/new.xml
 def new
   @beer_item = BeerItem.new
-  
-  respond_to do |format|
-	  format.html
-  	format.xml { render :xml => @beer_item }
-  end
+end
    
   # if BarPermission.where("user_id = ?", current_user.id).exists?
   #       @beer_item = BeerItem.new
   # else
   #   redirect_to beer_items_path, :notice => 'You do not have permission to create a listing'
   # end
-end
 
 # POST /beer_items
 # POST /beer_items.xml

@@ -1,0 +1,10 @@
+<% content_for :title, "Sign In" %>
+
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+<ul>
+	<li><%= f.email_field :email, :placeholder => "E-mail" %></li>
+  <li><%= f.password_field :password, :placeholder => "Password" %></li>
+</ul>
+	<%= f.submit "Sign in" %>
+
+<% end %>

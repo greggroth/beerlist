@@ -1,11 +1,9 @@
-<div id="bars">
-	<div class="toolbar">
-		<h1>Bars 2</h1>
-		<a class="button back" href="#">Back</a>
-	</div>
-	<ul class="edgetoedge">
-	  <% @bars.each do |t| %>
-  			<li><%= link_to t.name, t %></li>
-	  <% end %>
-	</ul>
-</div>
+<% content_for :title, "Bars" %>
+
+<!-- <ul class="rounded"><li class="arrow"><%= link_to "New Bar", new_bar_path %></li></ul> -->
+
+<ul class="rounded">
+	<% for bar in @bars %>
+		<li class="arrow"><%= link_to bar.name, bar %></li>
+	<% end %>
+</ul>

@@ -10,6 +10,7 @@
 	  <% for beer_item in @best_deals %>
 	    <li class="arrow">
 	      <%= link_to beer_item.beer.name, beer_path(beer_item.beer.id) %>
+				<small class="counter"><%= sprintf("%.3f",beer_item.abd) %></small>
 	    </li>
 	  <% end %>
 	</ul>

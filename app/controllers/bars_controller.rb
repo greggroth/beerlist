@@ -25,12 +25,6 @@ class BarsController < ApplicationController
     if user_signed_in?
 		  @user_bars = current_user.bars.find(:all)
 	  end
-	
-    respond_to do |format|
-      format.html # index.html.erb
-      format.iphone { render :layout => false }
-      format.xml  { render :xml => @bars }
-    end
   end
 
   # GET /bars/1
@@ -91,11 +85,6 @@ class BarsController < ApplicationController
   # GET /bars/new.xml
   def new
     @bar = Bar.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @bar }
-    end
   end
 
   # GET /bars/1/edit
