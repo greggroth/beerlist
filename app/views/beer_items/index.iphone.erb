@@ -5,6 +5,12 @@
 	<li class="arrow"><%= link_to "Beers", beers_path %></li>
 </ul>
 
+<% if user_signed_in? %>
+	<ul class="rounded">
+		<li class="arrow"><%= link_to "Add a new listing", new_beer_item_path %></li>
+	</ul>
+<% end %>
+
 <h2>Best Deals</h2>
 	<ul class="rounded">
 	  <% for beer_item in @best_deals %>
@@ -14,5 +20,3 @@
 	    </li>
 	  <% end %>
 	</ul>
-
-<ul><li class="arrow"><%= link_to "New Item", new_beer_item_path %></li></ul>

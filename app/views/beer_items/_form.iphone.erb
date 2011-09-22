@@ -1,0 +1,20 @@
+<%= form_for(@beer_item) do |f| %>
+  <% if @beer_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= error_messages_for @beer_item, :header_message => "Whoops!", :message => "Please address the following:"%></h2>
+    </div>
+  <% end %>
+
+<ul class="rounded">
+  <li><%= collection_select :beer_item, :beer_id, Beer.order('name ASC'), :id, :name %></li>
+  <li><%= collection_select :beer_item, :bar_id, Bar.order('name ASC'), :id, :name %></li
+  <li><%= f.text_field :volume, :placeholder => "Volume" %></li>
+	<li><%= select :beer_item, :volunit, options_for_select([["oz","oz"],["ml","ml"],["cl","cl"]],@beer_item.volunit)%></li>
+  <li><%= select "beer_item", "pouring", options_for_select([["draught","draught"],["bottle","bottle"],["can","can"],["pitcher", "pitcher"],["cask pour","cask pour"]], @beer_item.pouring) %></li>
+	<li><%= f.text_field :price, :palceholder => "Price" %></li>
+</ul>
+<ul class="rounded">
+	<li><%= f.submit f, "Submit" %></li>
+</ul>
+
+<% end %>

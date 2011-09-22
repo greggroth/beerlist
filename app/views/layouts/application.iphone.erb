@@ -6,9 +6,11 @@
     <meta id="viewport" name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <title>Beer List</title>
-		<%= stylesheet_link_tag "jqtouch/jqtouch.css", "jqtouch/theme.css" %>
+		<%= stylesheet_link_tag "jqtouch/jqtouch.css", "jqtouch/theme.css", %>
+		<!-- <%= stylesheet_link_tag "jqtouch/jqt.bars.artspot.css", "jqtouch/jqt.listIndex.css", "jqtouch/bars_jqt/theme.css" %> -->
 		<%= javascript_include_tag :defaults %>
 		<%= javascript_include_tag "jquery-1.4.2.min.js", "jqtouch.js", "iphone.js" %>
+		<!-- <%= javascript_include_tag "jqt.bars/jqt.bars.js", "jqt.listIndex.js" %> -->
 </head>
 <body>
 	<div class="current">
@@ -23,15 +25,24 @@
       <%= yield(:toolbar) %>
     </div>
     
-    <% unless flash.empty? %>
-      <div class="info">
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
-      <% end %>
-      </div>
-    <% end %>
-  	<h2><%= current_user.email if user_signed_in? %></h2>
-    <%= yield %>
-  </div>
+    	<% unless flash.empty? %>
+	      <div class="info">
+				<p>This is currently in beta.  Updates will be coming soon.</p>
+	      <% flash.each do |name, msg| %>
+	        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+	      <% end %>
+	      </div>
+	    <% end %>
+	  	<h2><%= current_user.email if user_signed_in? %></h2>
+	    <%= yield %>
+
+		
+		<!-- <div id="tabbar" style="display:block">
+			<ul>
+				<li><%= link_to "Bars", bars_path %></li>
+				<li><%= link_to "Beers", beers_path %></li>
+			</ul>
+		</div> -->
+	</div>
 </body>
 </html>
