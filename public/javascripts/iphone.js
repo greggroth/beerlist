@@ -4,6 +4,14 @@ $(document).ready(function() {
 	var loading_message;
 	loarding_message = '<p id="loading-message">Loading...</p>';
 	
+	$('a.back').live('click', function() {
+		jQT.goBack();
+	});
+	
+	$('a.home').live('click', function() {
+		jQT.goTo('#beer_items_index', 'dissolve');
+	});
+	
 	$("a.button_bars_index").live("click", function() {
 		$("div#bars_index_container").html(loarding_message).load("/bars");
 		jQT.goTo('#bars_index', 'slideleft');
