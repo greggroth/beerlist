@@ -8,10 +8,13 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <title>Beer List</title>
 		<%= stylesheet_link_tag "jqtouch/jqtouch.css", "jqtouch/theme.css", "iphone.css" %>
-		<%= javascript_include_tag :defaults %>
-		<%= javascript_include_tag "jquery-1.4.2.min.js", "jqtouch.js", "iphone.js" %>
+
+		<%= javascript_include_tag "jquery-1.4.2.min.js", "jqtouch.js" %>
+		<%= javascript_include_tag "iphone.js"%>
 </head>
 <body>
+	<div id="jqt">
 	<%= yield %>
+	</div>
 </body>
 </html>
