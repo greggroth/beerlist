@@ -7,7 +7,7 @@
 	<ul class="rounded">
 	  <% for beer_item in @beer_items %>
 	    <li class="arrow">
-	      <a class="button_bars_show" bar-id="<%= beer_item.bar.id %>" href="#bars_show" bar-name="<%= beer_item.bar.name %>"><%= beer_item.bar.name %></a>
+	      <a class="button_bars_show" bar-id="<%= beer_item.bar.id %>" href="#bars_show" bar-name="<%= beer_item.bar.name %>"><%= truncate(beer_item.bar.name, :length => 20) %> (<%= number_to_human(beer_item.volume, :units => {:unit => beer_item.volunit}) %> <%= beer_item.pouring %>)</a>
 				<small class="counter"><%= number_to_currency(beer_item.price) %></small>
 	    </li>
 	  <% end %>

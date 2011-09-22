@@ -1,5 +1,8 @@
 <ul class="rounded">
 	<% for bar in @bars %>
-		<li class="arrow"><a class="button_bars_show" bar-id="<%= bar.id %>" href="#bars_show" bar-name="<%= bar.name %>"><%= bar.name %></a></li>
+		<li class="arrow">
+			<a class="button_bars_show" bar-id="<%= bar.id %>" href="#bars_show" bar-name="<%= bar.name %>"><%= bar.name %></a>
+			<small class="counter"><%= bar.beers.count %></small>
+		</li>
 	<% end %>
 </ul>
