@@ -6,7 +6,10 @@ $(document).ready(function() {
 	var loading_message;
 	loarding_message = '<p id="loading-message">Loading...</p>';
 	
+	console.log("IPHONE.JS LOADED OK")
+	
 	$('a.button_bars_index').live('click', function() {
+		console.log("ButtonBarsIndex clicked")
 		$('div#bars_index_container').html(loarding_message).load("/bars");
 	});
 	
@@ -40,4 +43,4 @@ $(document).ready(function() {
 		$('div#breweries_show .toolbar h1').html($(this).attr('brewery-name'));
 		$('div#breweries_show_container').html(loarding_message).load('/breweries/' + id);     //  Replace Title with brewery Name
 	});
-});
+}).call(this);
