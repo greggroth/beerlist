@@ -18,7 +18,11 @@ class BarsController < ApplicationController
         @bars = Bar.near(params[:zip], 50, :order => :distance).page(params[:page]).per(50)
       else
         # @bars = Bar.order("name ASC").
-        @bars = Bar.page(params[:page]).per(25)
+        if iphone_request?
+          @bars = Bar.includes(:beers).order("name ASC")
+        else
+          @bars = Bar.page(params[:page]).per(25)
+        end
       end
     end
     

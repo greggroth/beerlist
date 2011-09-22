@@ -1,10 +1,14 @@
-<% content_for :title, @bar.name %>
+<h3 style="margin-left: 20px">
+	<p><%= @bar.address %></p>
+	<p><%= @bar.zip %></p>
+	<p><%= link_to("Website", @bar.url) if @bar.url.present? %>
+</h3>
 
-<h2>Beers:</h2>
+<h2>Beers being served at <%= @bar.name %></h2>
 	<ul class="rounded">
 		<% for beer_item in @beer_items %>
 		<li class="arrow">
-			<%= link_to beer_item.beer.name, beer_item.beer %>
+			<a class="button_beers_show" beer-id="<%= beer_item.beer.id %>" href="#beers_show" beer-name="<%= beer_item.beer.name %>"><%= beer_item.beer.name %></a>
 			<small class="counter"><%= number_to_currency(beer_item.price) %></small>
 		</li>
 		<% end %>
