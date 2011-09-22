@@ -14,27 +14,37 @@ class BeersController < ApplicationController
         @beers = Beer.includes(:beer_style,:brewery).order('name ASC').page(params[:page]).per(25)
       end
     end
+    
+    respond_to do |format|
+	    format.html
+	    format.iphone { render :layout => false }
+	  end
   end
 
   # GET /beers/1
   # GET /beers/1.xml
   def show
-  @beer = Beer.find(params[:id])
+    @beer = Beer.find(params[:id])
   
-  if params[:sort].nil?
-    @beer_items = BeerItem.find(:all, :include => [:bar, :beer], :conditions => ["beer_id = ?",params[:id]], :order => "price ASC" )
-  else
-    if params[:sort] == "abd"   # have to sort using a different method
-      hold = BeerItem.find(:all, :include => [:bar, :beer], :conditions => ["beer_id = ?",params[:id]])
-      if params[:direction] == "asc"
-        @beer_items = hold.sort_by { |e| e.abd }
-      else  #desc
-        @beer_items = hold.sort_by { |e| -e.abd }
-      end
+    if params[:sort].nil?
+      @beer_items = BeerItem.find(:all, :include => [:bar, :beer], :conditions => ["beer_id = ?",params[:id]], :order => "price ASC" )
     else
-      @beer_items = BeerItem.find(:all, :include => [:bar, :beer], :conditions => ["beer_id = ?",params[:id]], :order => [sort_column + " " + sort_direction] )
+      if params[:sort] == "abd"   # have to sort using a different method
+        hold = BeerItem.find(:all, :include => [:bar, :beer], :conditions => ["beer_id = ?",params[:id]])
+        if params[:direction] == "asc"
+          @beer_items = hold.sort_by { |e| e.abd }
+        else  #desc
+          @beer_items = hold.sort_by { |e| -e.abd }
+        end
+      else
+        @beer_items = BeerItem.find(:all, :include => [:bar, :beer], :conditions => ["beer_id = ?",params[:id]], :order => [sort_column + " " + sort_direction] )
+      end
     end
-  end
+  
+    respond_to do |format|
+      format.html
+      format.iphone { render :layout => false }
+    end
   end
 
   # GET /beers/new

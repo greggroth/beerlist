@@ -29,6 +29,11 @@ end
 # GET /beer_items/1.xml
 def show
    @beer_item = BeerItem.find(params[:id])
+
+    respond_to do |format|
+	    format.html
+	    format.iphone { render :layout => false }
+	  end
 end
 
 # GET /beer_items/new

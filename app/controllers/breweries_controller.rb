@@ -19,6 +19,11 @@ class BreweriesController < ApplicationController
 	# @beer_items = BeerItem.where("brewery_id = ?", params[:id])
     # @bar_count = @beers.count('bars', :distict => true)
 
+	  respond_to do |format|
+	    format.html
+	    format.iphone { render :layout => false }
+	  end
+
   end
 
   # GET /breweries/new
