@@ -8,7 +8,11 @@ class BeersController < ApplicationController
     if params[:search].present?
       @beers = Beer.includes(:beer_style,:brewery).search_tank(params[:search])
     else
-      @beers = Beer.includes(:beer_style,:brewery).order('name ASC').page(params[:page]).per(25)
+      if iphone_request?
+        @beers = Beer.includes(:beer_style, :brewery).order('name ASC')
+      else
+        @beers = Beer.includes(:beer_style,:brewery).order('name ASC').page(params[:page]).per(25)
+      end
     end
   end
 

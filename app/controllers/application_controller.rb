@@ -10,13 +10,13 @@ class ApplicationController < ActionController::Base
   	end
   	
   	def iphone_login_required
-		if iphone_request?
-		  logger.debug "IPHONE_LOGIN_REQUIRED"
-		  redirect_to new_user_session_path unless user_logged_in?
-		end
-	end
+  		if iphone_request?
+  		  logger.debug "IPHONE_LOGIN_REQUIRED"
+  		  redirect_to new_user_session_path unless user_logged_in?
+  		end
+  	end
 	
-	def iphone_request?
+	  def iphone_request?
   		return (request.subdomains.first == "iphone" || params[:format] == "iphone")
   	end
 
