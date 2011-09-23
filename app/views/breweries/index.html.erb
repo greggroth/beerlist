@@ -1,6 +1,6 @@
 <h1>Breweries</h1>
 
-<%= form_tag breweries_path, :method => :get do %>
+<%= form_tag breweries_path, :method => :get, :remote => true do %>
   <p>
     <%= text_field_tag :search, params[:search], :size => 20 %>
     <%= submit_tag "Search", :name => nil, :class => "submit-search-button" %>
@@ -20,43 +20,9 @@
 <br>
 <p>Hint:  Click on a row to view the beer list for a bar!</p>
 
-<table id="expanding_brewery_list" class="expandable_itemlist">
- <thead>
-  <tr align="left">
-    <th width=250>Name</th>
-	  <th width=250>Location</th>
-		<th width=100>Beers</th>
-    <th width=50></th>
-    <th width=50></th>
-  </tr>
- </thead>
- <tbody>
-
-<% @breweries.each do |brewery| %>
-  <tr id="<%= brewery.id %>" item_url="breweries/<%= brewery.id %>">
-    <td><%= link_to brewery.name, brewery %></td>
-   <% if brewery.citystate %>
-    <td><%= brewery.citystate %></td>
-   <% else %>
-    <td></td>
-   <% end %>
-	 <td><%= brewery.beers.count %></td>
-   <% if user_signed_in? && current_user.id == 1 %>
-    <td><%= link_to 'Edit', edit_brewery_path(brewery), :class => "action_link" %></td>
-    <td><%= link_to 'Destroy', brewery, :method => :delete, :class => "action_link" %></td>
-   <% else %>
-   	<td />
-   	<td />
-   <% end %>
-  </tr>
-  <tr>
-  	<td colspan="4" id="itemdesc-<%= brewery.id %>" class="itemdesc">
-  		<div></div>
-  	</td>
-  </tr>
-<% end %>
- </tbody>
-</table>
+<div id="brewery_list_index">
+	<%= render 'brewery_list' %>
+</div>
 <br />
 
 <div align="left"><%= link_to 'Add Brewery', new_brewery_path %></div>

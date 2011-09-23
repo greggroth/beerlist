@@ -24,7 +24,7 @@
 		  <% for beer_item in @best_deals %>
 		    <li class="arrow">
 		      <!-- <%= link_to beer_item.beer.name, beer_path(beer_item.beer.id) %> -->
-					<a class="button_beer_items_show" bi-id="<%= beer_item.id %>"><%= beer_item.beer.name %></a>
+					<a class="button_beer_items_show" data-bi-id="<%= beer_item.id %>"><%= beer_item.beer.name %></a>
 					<small class="counter"><%= sprintf("%.3f",beer_item.abd) %></small>
 		    </li>
 		  <% end %>

@@ -15,7 +15,10 @@ class BeersController < ApplicationController
       end
     end
     
+    logger.debug "Hello Index!"
+    
     respond_to do |format|
+      format.js
 	    format.html
 	    format.iphone { render :layout => false }
 	  end

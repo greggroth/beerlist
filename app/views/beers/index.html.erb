@@ -1,6 +1,6 @@
 <h1>Beers</h1>
 
-<%= form_tag beers_path, :method => :get do %>
+<%= form_tag beers_path, :method => :get, :remote => true do %>
   <p>
     <%= text_field_tag :search, params[:search], :size => 20 %>
     <%= submit_tag "Search", :name => nil, :class => "submit-search-button" %>
@@ -18,31 +18,8 @@
 	</p>
 <% end %>
 
-<div class="itemlist">
-<table>
-<thead>
-  <tr align="left">
-    <th width=25%>Name</th>
-	  <th width=25%>Brewery</th>
-		<th width=20%>Style</th>
-    <th width=15%>Pouring at...</th>
-    <th width=8%></th>
-    <th width=6%></th>
-  </tr>
-</thead>
-<tbody>
-<% @beers.each do |beer| %>
-  <tr  id="beers/<%= beer.id %>">
-    <td><%= link_to beer.name, beer %></td>
-		<td><%= link_to beer.brewery.name, beer.brewery %></td>
-		<td><%= beer.try(:beer_style) ? beer.beer_style.name : "" %></td>
-    <td><%= pluralize(beer.bars.count,"bar") %></td>
-		<td><%= link_to 'Details', beer, :class => 'action_link' %>
-    <td><%= link_to 'Edit', edit_beer_path(beer), :class => 'action_link'  %></td>
-  </tr>
-<% end %>
-</tbody>
-</table>
+<div class="itemlist" id="beer_list_index">
+	<%= render "beers_list" %>
 </div>
 <br />
 

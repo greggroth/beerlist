@@ -1,13 +1,13 @@
 <h2>Brewed by:</h2>
 	<ul class="rounded">
-		<li class="arrow"><a class="button_breweries_show" brewery-id="<%= @beer.brewery.id %>" brewery-name="<%= @beer.brewery.name %>"><%= @beer.brewery.name %></a></li>
+		<li class="arrow"><a class="button_breweries_show" data-brewery-id="<%= @beer.brewery.id %>" data-breweryname="<%= @beer.brewery.name %>"><%= @beer.brewery.name %></a></li>
 	</ul>
 
 <h2>Served At:</h2>
 	<ul class="rounded">
 	  <% for beer_item in @beer_items %>
 	    <li class="arrow">
-	      <a class="button_bars_show" bar-id="<%= beer_item.bar.id %>" bar-name="<%= beer_item.bar.name %>"><%= truncate(beer_item.bar.name, :length => 16) %> (<%= number_to_human(beer_item.volume, :units => {:unit => beer_item.volunit}) %>)</a>
+	      <a class="button_bars_show" data-bar-id="<%= beer_item.bar.id %>" data-barname="<%= beer_item.bar.name %>"><%= truncate(beer_item.bar.name, :length => 16) %> (<%= number_to_human(beer_item.volume, :units => {:unit => beer_item.volunit}) %>)</a>
 				<small class="counter"><%= number_to_currency(beer_item.price) %></small>
 	    </li>
 	  <% end %>

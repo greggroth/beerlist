@@ -9,6 +9,12 @@ class BreweriesController < ApplicationController
     else
       @breweries = Brewery.includes(:beers).order("name ASC").page(params[:page]).per(25)
     end
+    
+    respond_to do |format|
+      format.js
+ 	    format.html
+ 	    format.iphone { render :layout => false }
+ 	  end
   end
 
   # GET /breweries/1

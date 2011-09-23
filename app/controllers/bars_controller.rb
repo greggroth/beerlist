@@ -31,6 +31,7 @@ class BarsController < ApplicationController
 	  end
 	  
 	  respond_to do |format|
+	    format.js
 	    format.html
 	    format.iphone { render :layout => false }
 	  end

@@ -2,8 +2,10 @@
   <title>Atlanta Beer List</title>
 	<%= favicon_link_tag "abl_64x64.ico" %>
   <%= stylesheet_link_tag "style.css", "jquery.jqplot.min.css", "ui-lightness/jquery-ui-1.8.15.custom.css", "jquery.qtip.min.css" %>
-	<%= javascript_include_tag :defaults %>
-  <%= javascript_include_tag "jquery.min.js", "jquery.qtip.min.js" %>
+	<!-- <%= javascript_include_tag :defaults %> -->
+  <%= javascript_include_tag "jquery.min.js" %>
+	<%= javascript_include_tag "jquery.rails.js" %>
+	<%= javascript_include_tag "jquery.qtip.min.js" %>
   <%= javascript_include_tag "jquery-ui-1.8.16.custom.min.js" %>
   <%= javascript_include_tag "jquery.jqplot.js" %>
   <%= javascript_include_tag "jqplot_plugins/jqplot.dateAxisRenderer.min.js" %>
