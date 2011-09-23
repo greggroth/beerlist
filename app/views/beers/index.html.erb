@@ -5,18 +5,14 @@
     <%= text_field_tag :search, params[:search], :size => 20 %>
     <%= submit_tag "Search", :name => nil, :class => "submit-search-button" %>
 		<div>
-			<% if params[:search].present? || params[:zip].present? %>
-				<%= link_to('Clear Search', beers_path) %>
-			<% end %>
+			<%= link_to('Clear Search', beers_path, :class => "search_results_found", :style => "display:none;") %>
 		</div>
 	</p>
 <% end %>
 
-<% if params[:search].present? %>
-	<p>
-		Found <%= pluralize(@beers.count, 'beer') %>
-	</p>
-<% end %>
+<p id="found_count" style="display:none;" class="search_results_found">
+	Found <%= pluralize(@beers.count, 'beer') %>
+</p>
 
 <div class="itemlist" id="beer_list_index">
 	<%= render "beers_list" %>

@@ -6,7 +6,7 @@
     <%= submit_tag "Search", :name => nil, :class => "submit-search-button" %>
 	</p>
 	
-	<div><a id="adv-searching-button">Sorting</a> 
+	<!-- <div><a id="adv-searching-button">Sorting</a> 
 		<% unless params[:search_by_pouring].nil? %>
 			<span id="reset_search">(<%= link_to "reset", root_path %>) </span>
 		<% end %>
@@ -21,15 +21,15 @@
 	    <%= text_field_tag :zip, params[:zip], :maxlength => 5, :size => 5, :id => "zip-search" %><br>
 	    <%= submit_tag "Sort by zip", :name => nil, :class => "submit-search-button" %>
   	</p>
-	</div>
+	</div> -->
+	
+	<%= link_to('Clear Search', bars_path, :class => "search_results_found", :style => "display:none;") %>
 <% end %>
 
 <br style="clear:both">
-<% if params[:search].present? %>
-	<p>
-		Found <%= pluralize(@bars.count, 'bar') %>
-	</p>
-<% end %>
+<p id="found_count" class="search_results_found" style="display:none;">
+	Found <%= pluralize(@bars.count, 'bar') %>
+</p>
 
 
 <p>Hint:  Click on a row to view the beer list for a bar!</p>

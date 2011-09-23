@@ -1,1 +1,3 @@
 $("#beer_list_index").html("<%= escape_javascript(render('beers_list')) %>");
+$("#found_count").html("Found <%= escape_javascript(pluralize(@beers.count, 'beer')) %>");
+$(".search_results_found").show();

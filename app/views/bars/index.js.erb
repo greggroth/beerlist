@@ -1,1 +1,3 @@
 $("#bar_list").html("<%= escape_javascript(render('list')) %>");
+$("#found_count").html("Found <%= escape_javascript(pluralize(@bars.count, 'bar')) %>");
+$(".search_results_found").show();
