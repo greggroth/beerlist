@@ -1,12 +1,3 @@
-<div>
-	<%= form_tag bar_path(@bar), :method => :get do %>
-	  <p>
-			View:
-			<%= select_tag "sort_by_pouring", options_for_select([["All","all"],["draught","draught"],["bottle","bottle"],["can","can"],["pitcher", "pitcher"],["cask pour","cask pour"]],params[:sort_by_pouring]), :class => "searchable_option", :id => "pouring-select", :onchange => "this.form.submit();" %>   
-	  </p>
-	<% end %>
-</div>
-
 <div class="itemlist">
 <% unless @recent_beer_items.empty? %>
 <h2>Added in the last week</h2>

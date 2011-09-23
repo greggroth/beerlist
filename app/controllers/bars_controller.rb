@@ -40,60 +40,60 @@ class BarsController < ApplicationController
   # GET /bars/1
   # GET /bars/1.xml
   def show
-  @bar = Bar.find(params[:id])
+    @bar = Bar.find(params[:id])
   
-	# @beer_items = BeerItem.alphabetical.where("bar_id = ?", params[:id])
+  	# @beer_items = BeerItem.alphabetical.where("bar_id = ?", params[:id])
 	
-  # if params[:sort].nil?
-  #   unless params[:search_by_pouring].nil?
-  #     @beer_items = Bar.find(:all, :include => [:beer,:beer_items], :conditions => ["pouring = ?", params[:search_by_pouring]], :order => "price ASC")
-  #     else
-  #       @beer_items = BeerItem.find(:all, :include => [:bar, :beer], :conditions => ["bar_id = ?", params[:id]], :order => "price ASC" )
-  #     end
-  #   else
-  #     if params[:sort] == "abd" && params[:search_by_pouring].nil?  # have to sort using a different method
-  #       hold = BeerItem.find(:all, :include => [:bar, :beer], :conditions => ["bar_id = ?", params[:id]])
-  #       if params[:direction] == "asc"
-  #         @beer_items = hold.sort_by { |e| e.abd }
-  #       else  #desc
-  #         @beer_items = hold.sort_by { |e| -e.abd }
-  #       end
-  #     else
-  #       @beer_items = BeerItem.find(:all, :include => [:bar, :beer], :conditions => ["bar_id = ?", params[:id]], :order => [sort_column + " " + sort_direction] )
-  #     end
-  #   end
+    # if params[:sort].nil?
+    #   unless params[:search_by_pouring].nil?
+    #     @beer_items = Bar.find(:all, :include => [:beer,:beer_items], :conditions => ["pouring = ?", params[:search_by_pouring]], :order => "price ASC")
+    #     else
+    #       @beer_items = BeerItem.find(:all, :include => [:bar, :beer], :conditions => ["bar_id = ?", params[:id]], :order => "price ASC" )
+    #     end
+    #   else
+    #     if params[:sort] == "abd" && params[:search_by_pouring].nil?  # have to sort using a different method
+    #       hold = BeerItem.find(:all, :include => [:bar, :beer], :conditions => ["bar_id = ?", params[:id]])
+    #       if params[:direction] == "asc"
+    #         @beer_items = hold.sort_by { |e| e.abd }
+    #       else  #desc
+    #         @beer_items = hold.sort_by { |e| -e.abd }
+    #       end
+    #     else
+    #       @beer_items = BeerItem.find(:all, :include => [:bar, :beer], :conditions => ["bar_id = ?", params[:id]], :order => [sort_column + " " + sort_direction] )
+    #     end
+    #   end
   
-  case params[:sort]
-  when nil
-    if params[:sort_by_pouring].nil? || params[:sort_by_pouring]=='all' # NIL NIL
-      logger.debug "Nil Nil"
-      @beer_items = BeerItem.find(:all, :include => [:bar, :beer], :conditions => ["bar_id = ?", params[:id]], :order => "price ASC" )
-    else                              # NIL !NIL
-      logger.debug "Nil !Nil"
-      @beer_items = BeerItem.find(:all, :include => [:beer,:bar], :conditions => ["pouring = ? AND bar_id = ?", params[:sort_by_pouring], params[:id]], :order => "price ASC")
+    case params[:sort]
+    when nil
+      if params[:sort_by_pouring].nil? || params[:sort_by_pouring]=='all' # NIL NIL
+        logger.debug "Nil Nil"
+        @beer_items = BeerItem.find(:all, :include => [:bar, :beer], :conditions => ["bar_id = ?", params[:id]], :order => "price ASC" )
+      else                              # NIL !NIL
+        logger.debug "Nil !Nil"
+        @beer_items = BeerItem.find(:all, :include => [:beer,:bar], :conditions => ["pouring = ? AND bar_id = ?", params[:sort_by_pouring], params[:id]], :order => "price ASC")
+      end
+    when 'abd'  # sorting will reset pouring type select
+      hold = BeerItem.find(:all, :include => [:bar, :beer], :conditions => ["bar_id = ?", params[:id]])
+       if params[:direction] == "asc"
+         @beer_items = hold.sort_by { |e| e.abd }
+       else  #desc
+         @beer_items = hold.sort_by { |e| -e.abd }
+       end
+    else        #  normal sorting
+      @beer_items = BeerItem.find(:all, :include => [:beer,:bar], :conditions => ["bar_id = ?", params[:id]], :order => [sort_column + " " + sort_direction])
     end
-  when 'abd'  # sorting will reset pouring type select
-    hold = BeerItem.find(:all, :include => [:bar, :beer], :conditions => ["bar_id = ?", params[:id]])
-     if params[:direction] == "asc"
-       @beer_items = hold.sort_by { |e| e.abd }
-     else  #desc
-       @beer_items = hold.sort_by { |e| -e.abd }
-     end
-  else        #  normal sorting
-    @beer_items = BeerItem.find(:all, :include => [:beer,:bar], :conditions => ["bar_id = ?", params[:id]], :order => [sort_column + " " + sort_direction])
-  end
   
 	
-	@recent_beer_items = BeerItem.alphabetical.find(:all, :conditions => ["bar_id = ? AND beer_items.updated_at > ?", params[:id], 1.week.ago])
-	if @bar.latitude.present? && @bar.longitude.present?
-		@json = @bar.to_gmaps4rails
-	end
+  	@recent_beer_items = BeerItem.alphabetical.find(:all, :conditions => ["bar_id = ? AND beer_items.updated_at > ?", params[:id], 1.week.ago])
+  	if @bar.latitude.present? && @bar.longitude.present?
+  		@json = @bar.to_gmaps4rails
+  	end
 	
-	respond_to do |format|
-    format.html
-    format.iphone { render :layout => false }
-  end
-	
+  	respond_to do |format|
+  	  format.js
+      format.html
+      format.iphone { render :layout => false }
+    end
   end
 
   # GET /bars/new

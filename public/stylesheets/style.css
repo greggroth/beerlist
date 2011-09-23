@@ -246,6 +246,13 @@ a.no_hover_background {
   padding: 25px 50px;
   font-size: 25px; 
 }
+
+#main #main-page-intro-text {
+	padding: 10px;
+}
+#main #best-deals-table-wrapper {
+	margin: 10px;
+}
 #main .submit-search-button {
   margin-top: 3px; 
 }

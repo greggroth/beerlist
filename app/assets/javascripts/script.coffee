@@ -79,6 +79,8 @@ $(document).ready ->
 	$('#adv-searching').hide()
 	$('#adv-searching-button').click ->
 		$('div#adv-searching').toggle('blind')
+	$('#reset_search').click (e) ->
+		e.stopPropagation()
 		
 	### qtip for abd ###
 	$('.abd-table-heading').qtip({

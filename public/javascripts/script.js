@@ -1,4 +1,4 @@
-/* DO NOT MODIFY. This file was compiled Mon, 19 Sep 2011 23:54:37 GMT from
+/* DO NOT MODIFY. This file was compiled Fri, 23 Sep 2011 21:03:24 GMT from
  * /Users/Greggory/Programing/beerlist/app/assets/javascripts/script.coffee
  */
 
@@ -95,6 +95,9 @@
     $('#adv-searching').hide();
     $('#adv-searching-button').click(function() {
       return $('div#adv-searching').toggle('blind');
+    });
+    $('#reset_search').click(function(e) {
+      return e.stopPropagation();
     });
     /* qtip for abd */
     $('.abd-table-heading').qtip({

@@ -1,42 +1,24 @@
-<p />
-<h2>Welcome Home</h2>
-<p>
-	<b>About us</b>  You've stumbled on the best thing to happen to the Atlanta beer scene since Brickstore opened.  This is your gateway to beers and bars around the Atlanta area.  Use this site to find the best deal on that special beer you've been looking for or just check to see if the bar around the corner has a new one on tap.
-</p>
-<p>
-	<b>Want to help?</b>  Have a bar you wish was listed?  Every user has the power to add and edit listings, however we understand that this may be more work than you're willing to undertake.  You can also help by <%= mail_to "admin@atlbeerlist.com", "sending me a website, pdf, or even a picture of a bars menu", :subject => "Bar Menu!!" %>.  Thank you!!
-</p>	
-<p>
-	Bars are constantly being added, so check back if you don't see what you're looking for.  If you'd like to hear about our updates, <%= link_to "follow us on twitter", "http://twitter.com/#!/atlbeerlist", :target => "_blank" %>.
-</p>
-<br>
-
-<!-- <h3>WARNING:</h3><p> Currently, listings are not accurate.  This is still under testing.  Check back in the future for the real deal.</p> -->
-<div class="greenLine"></div>
-
-
-<div id="adv-searching-button"><a>Advanced Search</a> 
-	<% unless params[:search_by_pouring].nil? %>
-		<span id="reset_search">(<%= link_to "reset", root_path %>)</span>
-	<% end %>
+<div id="main-page-intro-text">
+	<h2>Welcome Home</h2>
+	<p>
+		<b>About us:</b>  You've stumbled on the best thing to happen to the Atlanta beer scene since Brickstore opened.  This is your gateway to beers and bars around the Atlanta area.  Use this site to find the best deal on that special beer you've been looking for or just check to see if the bar around the corner has a new one on tap.
+	</p>
+	<p>
+		<b>Want to help?</b>  Have a bar you wish was listed?  Every user has the power to add and edit listings, however we understand that this may be more work than you're willing to undertake.  You can also help by <%= mail_to "admin@atlbeerlist.com", "sending me a website, pdf, or even a picture of a bars menu", :subject => "Bar Menu!!" %>.  Thank you!!
+	</p>	
+	<p>
+		Bars are constantly being added, so check back if you don't see what you're looking for.  If you'd like to hear about our updates, <%= link_to "follow us on twitter", "http://twitter.com/#!/atlbeerlist", :target => "_blank" %>.
+	</p>
 </div>
 
-<div id="adv-searching">
-	<%= form_tag beer_items_path, :method => :get do %>
-	  <p>
-			Pouring:
-			<%= select_tag "search_by_pouring", options_for_select([["draught","draught"],["bottle","bottle"],["can","can"],["pitcher", "pitcher"],["cask pour","cask pour"]],params[:search_by_pouring]), :prompt => "Select...", :class => "searchable_option", :id => "pouring-select", :onchange => "this.form.submit();" %>   
-			<!-- <%= text_field_tag :search, params[:search] %> -->
-	    <!-- <%= submit_tag "Search", :name => nil %> -->
-	  </p>
-	<% end %>
+<div id="best-deals-table-wrapper">
+	<h2>Top 20 Best Deals</h2>
+
+	<%= render 'advanced_search' %>
+	<br />
+	<div id="best_deals">
+		<%= render "best_deals" %>
+	</div>
 </div>
-
-<br style="clear:both">
-
-<div id="best_deals">
-	<%= render "best_deals" %>
-</div>
-
 <br />
 
