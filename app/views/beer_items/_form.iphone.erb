@@ -7,7 +7,7 @@
 
 <ul class="rounded">
   <li><%= collection_select :beer_item, :beer_id, Beer.order('name ASC'), :id, :name %></li>
-  <li><%= collection_select :beer_item, :bar_id, Bar.order('name ASC'), :id, :name %></li
+  <li><%= collection_select :beer_item, :bar_id, Bar.order('name ASC'), :id, :name %></li>
   <li><%= f.text_field :volume, :placeholder => "Volume" %></li>
 	<li><%= select :beer_item, :volunit, options_for_select([["oz","oz"],["ml","ml"],["cl","cl"]],@beer_item.volunit)%></li>
   <li><%= select "beer_item", "pouring", options_for_select([["draught","draught"],["bottle","bottle"],["can","can"],["pitcher", "pitcher"],["cask pour","cask pour"]], @beer_item.pouring) %></li>
