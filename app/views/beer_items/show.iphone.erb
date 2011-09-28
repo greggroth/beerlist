@@ -1,7 +1,7 @@
 <div data-role="header">
 	<a data-rel="back" data-icon="arrow-l">Back</a>
   <h1>View Listing</h1>
-	<% if user_signed_in? %>
+	<% unless user_signed_in? %>
 		<a data-icon="plus">Login</a>
 	<% else %>
 		<a data-icon="delete">Logout</a>
@@ -17,9 +17,10 @@
 		<li data-role="list-divider">Details</li>
 		<li><%= "#{@beer_item.volume} #{@beer_item.volunit} #{@beer_item.pouring} for #{number_to_currency(@beer_item.price)} (ABV: #{@beer_item.beer.abv}%, ABD: #{sprintf("%.3f",@beer_item.abd)})" %></li>
 	</ul>
-	
-	<fieldset class="ui-grid-a">
-		<div class="ui-block-a"><a href=<%= "/beer_items/#{@beer_item.id}/edit" %> type="button" data-theme="c">Edit</a></div>
-		<div class="ui-block-b"><a type="button" data-theme="c">Delete</a></div>	   
-	</fieldset>
+	<% if user_signed_in? %>
+		<fieldset class="ui-grid-a">
+			<div class="ui-block-a"><%= link_to "Edit", edit_beer_item_path(@beer_item), :"data-theme"=>"c", :type => "button" %></div>
+			<div class="ui-block-b"><a type="button" data-theme="c">Delete</a></div>	   
+		</fieldset>
+	<% end %>
 </div>

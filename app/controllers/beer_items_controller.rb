@@ -68,6 +68,7 @@ end
 def edit
    # @beer_item = current_user.beer_items.find(params[:id])
 	@beer_item = BeerItem.find(params[:id])
+	logger.debug("made it to the edit action")
 
   # unless @beer_item.bar.has_permission?(current_user)
   #   redirect_to(beer_items_path)
@@ -80,15 +81,17 @@ def update
    # @beer_item = current_user.beer_items.find(params[:id])
 	@beer_item = BeerItem.find(params[:id])
    
-   respond_to do |format|
-	if @beer_item.update_attributes(params[:beer_item])
-	  format.html { redirect_to(@beer_item, :notice => "Beer listing updated #{undo_link}") }
-	  format.xml { head :ok }
-	else
-	  format.html { render :action => "edit" }
-	  format.xml { render :xml => @article.errors, :status => :unprocessable_entry }
-	end
-   end
+  respond_to do |format|
+  	if @beer_item.update_attributes(params[:beer_item])
+  	  format.html { redirect_to(@beer_item, :notice => "Beer listing updated #{undo_link}") }
+  	  format.iphone { redirect_to(@beer_item, :notice => "Beer listing updated #{undo_link}") }
+  	  format.xml { head :ok }
+  	else
+  	  format.html { render :action => "edit" }
+  	  format.iphone { render :action => "edit" }
+  	  format.xml { render :xml => @article.errors, :status => :unprocessable_entry }
+  	end
+  end
 end
 
 def destroy

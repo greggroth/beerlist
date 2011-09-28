@@ -5,16 +5,30 @@
     </div>
   <% end %>
 
-<ul class="rounded">
-  <li><%= collection_select :beer_item, :beer_id, Beer.order('name ASC'), :id, :name %></li>
-  <li><%= collection_select :beer_item, :bar_id, Bar.order('name ASC'), :id, :name %></li>
-  <li><%= f.text_field :volume, :placeholder => "Volume" %></li>
-	<li><%= select :beer_item, :volunit, options_for_select([["oz","oz"],["ml","ml"],["cl","cl"]],@beer_item.volunit)%></li>
-  <li><%= select "beer_item", "pouring", options_for_select([["draught","draught"],["bottle","bottle"],["can","can"],["pitcher", "pitcher"],["cask pour","cask pour"]], @beer_item.pouring) %></li>
-	<li><%= f.text_field :price, :palceholder => "Price" %></li>
-</ul>
-<ul class="rounded">
-	<li><%= f.submit f, "Submit" %></li>
-</ul>
+	<div data-role="fieldcontain">
+		<%= label_tag 'beer_item_beer_id', 'Beer', :class => 'select' %>
+  	<%= collection_select :beer_item, :beer_id, Beer.order('name ASC'), :id, :name %>
+	</div>
+	<div data-role="fieldcontain">
+		<%= label_tag 'beer_item_bar_id', 'Bar' %>
+  	<%= collection_select :beer_item, :bar_id, Bar.order('name ASC'), :id, :name %>
+	</div>
+	<div data-role="fieldcontain">
+		<%= label_tag 'beer_item_volume', 'Volume' %>
+  	<%= f.text_field :volume, :placeholder => "Volume" %>
+	</div>
+	<div data-role="fieldcontain">
+		<%= label_tag 'beer_item_volunit', 'Volume Units' %>
+		<%= select :beer_item, :volunit, options_for_select([["oz","oz"],["ml","ml"],["cl","cl"]],@beer_item.volunit)%>
+  </div>
+	<div data-role="fieldcontain">
+		<%= label_tag 'beer_item_pouring', 'Pouring' %>
+		<%= select "beer_item", "pouring", options_for_select([["draught","draught"],["bottle","bottle"],["can","can"],["pitcher", "pitcher"],["cask pour","cask pour"]], @beer_item.pouring) %>
+	</div>
+	<div data-role="fieldcontain">
+		<%= label_tag 'beer_item_price', 'Price' %>
+		<%= f.text_field :price, :palceholder => "Price" %>
+	</div>
+<%= f.submit %>
 
 <% end %>

@@ -1,0 +1,13 @@
+<div data-role="header">
+	<a data-rel="back" data-icon="arrow-l">Back</a>
+  <h1>Edit Listing</h1>
+	<% if user_signed_in? %>
+		<a data-icon="plus">Login</a>
+	<% else %>
+		<a data-icon="delete">Logout</a>
+	<% end %>
+</div>
+
+<div data-role="content">
+	<%= render 'form' %>
+</div>
