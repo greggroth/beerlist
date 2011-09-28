@@ -1,26 +1,27 @@
-<div data-role="header">
-	<h1>Home</h1>
-	<% if user_signed_in? %>
-		<a data-icon="delete" class="ui-btn-right">Logout</a>
-		<a href="users/sign_out/" data-icon="plus" class="ui-btn-left">Listing</a>
-	<% else %>
-		<a href="users/sign_in/" data-transition="flip" data-icon="plus" class="ui-btn-right">Login</a>
-	<% end %>
-</div>
+<div data-role="page" id="beer_items_index">
 
-<div data-role="content">
-	<ul data-role="listview" data-inset="true" data-theme="d">
-		<li><%= link_to "Bars", bars_path %></li>
-		<li><%= link_to "Beers", beers_path %></li>
-		<li><%= link_to "Breweries", breweries_path %></li>
-	</ul>
-	<h1>Best Deals</h1>
-		<ul data-role="listview" data-inset="true" data-theme="d">
-		  <% for beer_item in @best_deals %>
-		    <li>
-		      <%= link_to beer_item.beer.name, beer_item %>
-					<div class="ui-li-count"><%= sprintf("%.3f",beer_item.abd) %></div>
-		    </li>
-		  <% end %>
-		</ul>
+	<div data-role="header">
+		<h1>Home</h1>
+		<%= render :partial => "layouts/login_or_logout" %>
+	</div>
+
+	<div data-role="content">
+		<!-- <ul data-role="listview" data-inset="true" data-theme="d">
+			<li><%= link_to "Bars", bars_path %></li>
+			<li><%= link_to "Beers", beers_path %></li>
+			<li><%= link_to "Breweries", breweries_path %></li>
+		</ul> -->
+		<h1>Best Deals</h1>
+			<ul data-role="listview" data-inset="true" data-theme="d">
+			  <% for beer_item in @best_deals %>
+			    <li>
+			      <%= link_to beer_item.beer.name, beer_item %>
+						<div class="ui-li-count"><%= sprintf("%.3f",beer_item.abd) %></div>
+			    </li>
+			  <% end %>
+			</ul>
+	</div>
+
+	<%= render :partial => "layouts/footer" %>
+
 </div>

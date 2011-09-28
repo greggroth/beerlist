@@ -10,11 +10,11 @@ class BreweriesController < ApplicationController
       @breweries = Brewery.includes(:beers).order("name ASC").page(params[:page]).per(25)
     end
     
-    respond_to do |format|
-      format.js
- 	    format.html
- 	    format.iphone { render :layout => false }
- 	  end
+    # respond_to do |format|
+    #   format.js
+    #       format.html
+    #       format.iphone { render :layout => false }
+    #     end
   end
 
   # GET /breweries/1
@@ -22,13 +22,13 @@ class BreweriesController < ApplicationController
   def show
     @brewery = Brewery.find(params[:id])
 	  @beers = @brewery.beers.all
-	# @beer_items = BeerItem.where("brewery_id = ?", params[:id])
+	  # @beer_items = BeerItem.where("brewery_id = ?", params[:id])
     # @bar_count = @beers.count('bars', :distict => true)
 
-	  respond_to do |format|
-	    format.html
-	    format.iphone { render :layout => false }
-	  end
+    # respond_to do |format|
+    #   format.html
+    #   format.iphone { render :layout => false }
+    # end
 
   end
 

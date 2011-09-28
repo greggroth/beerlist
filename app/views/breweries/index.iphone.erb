@@ -1,16 +1,17 @@
-<div data-role="page" id="beers_index" class="beers-page">
-	
+<div data-role="page" id="breweries_index" class="breweries-page">
+
 	<div data-role="header">
 		<a data-rel="back" data-icon="arrow-l">Back</a>
-	  <h1>Beers</h1>
+	  <h1>Breweries</h1>
 		<%= render :partial => "layouts/login_or_logout" %>
 	</div>
 
 	<div data-role="content">
 		<ul data-role="listview" data-theme="d" data-filter="true">
-			<% for beer in @beers %>
+			<% for brewery in @breweries %>
 				<li>
-					<%= link_to beer.name, beer %>
+					<%= link_to brewery.name, brewery %>
+					<div class="ui-li-count"><%= brewery.beers.count %></div>
 				</li>
 			<% end %>
 		</ul>
@@ -19,6 +20,3 @@
 	<%= render :partial => "layouts/footer" %>
 	
 </div>
-
-
-		

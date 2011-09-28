@@ -1,29 +1,31 @@
-<div data-role="header">
-	<a data-rel="back" data-icon="arrow-l">Back</a>
-  <h1><%= @beer.name %></h1>
-	<% unless user_signed_in? %>
-		<a data-icon="plus">Login</a>
-	<% else %>
-		<a data-icon="delete">Logout</a>
-	<% end %>
-</div>
+<div data-role="page" id="beers_show" class="beers-page">
 
-<div data-role="content">
-	<div data-role="collapsible">
-		<h3>Information</h3>
-			Brewery
-						<%= link_to @beer.brewery.name, brewery_path(@beer.brewery.id), :"data-role" => "button", :"data-icon" => "arrow-r", :"data-iconpos" => "right" %>
+	<div data-role="header">
+		<a data-rel="back" data-icon="arrow-l">Back</a>
+	  <h1><%= @beer.name %></h1>
+		<%= render :partial => "layouts/login_or_logout" %>
 	</div>
 
-	<h3>Served at:</h3>
-	<ul data-role="listview" data-inset="true" data-theme="d" data-filter="true">
-		<% for beer_item in @beer_items %>
-		<li>
-			<%= link_to truncate(beer_item.bar.name, :length => 16), beer_item %>
-			<div class="ui-li-count">
-				<%= "#{number_to_human(beer_item.volume, :units => {:unit => beer_item.volunit})},  #{number_to_currency(beer_item.price)}" %>
-			</div>
-		</li>
-		<% end %>
-	</ul>
+	<div data-role="content">
+		<div data-role="collapsible">
+			<h3>Information</h3>
+				Brewery
+							<%= link_to @beer.brewery.name, brewery_path(@beer.brewery.id), :"data-role" => "button", :"data-icon" => "arrow-r", :"data-iconpos" => "right" %>
+		</div>
+
+		<h3>Served at:</h3>
+		<ul data-role="listview" data-inset="true" data-theme="d">
+			<% for beer_item in @beer_items %>
+			<li>
+				<%= link_to truncate(beer_item.bar.name, :length => 16), beer_item %>
+				<div class="ui-li-count">
+					<%= "#{number_to_human(beer_item.volume, :units => {:unit => beer_item.volunit})},  #{number_to_currency(beer_item.price)}" %>
+				</div>
+			</li>
+			<% end %>
+		</ul>
+	</div>
+	
+	<%= render :partial => "layouts/footer" %>
+
 </div>

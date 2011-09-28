@@ -1,20 +1,22 @@
-<div data-role="header">
-	<a data-rel="back" data-icon="arrow-l">Back</a>
-  <h1>Bars</h1>
-	<% if user_signed_in? %>
-		<a data-icon="plus">Login</a>
-	<% else %>
-		<a data-icon="delete">Logout</a>
-	<% end %>
-</div>
+<div data-role="page" id="bars_index" class="bars-page">
 
-<div data-role="content">
-	<ul data-role="listview" data-theme="d" data-filter="true">
-		<% for bar in @bars %>
-			<li>
-				<%= link_to bar.name, bar %>
-				<div class="ui-li-count"><%= bar.beers.count %></div>
-			</li>
-		<% end %>
-	</ul>
+	<div data-role="header">
+		<a data-rel="back" data-icon="arrow-l">Back</a>
+	  <h1>Bars</h1>
+		<%= render :partial => "layouts/login_or_logout" %>
+	</div>
+
+	<div data-role="content">
+		<ul data-role="listview" data-theme="d" data-filter="true">
+			<% for bar in @bars %>
+				<li>
+					<%= link_to bar.name, bar %>
+					<div class="ui-li-count"><%= bar.beers.count %></div>
+				</li>
+			<% end %>
+		</ul>
+	</div>
+
+	<%= render :partial => "layouts/footer" %>
+	
 </div>

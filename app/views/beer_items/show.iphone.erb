@@ -1,26 +1,28 @@
-<div data-role="header">
-	<a data-rel="back" data-icon="arrow-l">Back</a>
-  <h1>View Listing</h1>
-	<% unless user_signed_in? %>
-		<a data-icon="plus">Login</a>
-	<% else %>
-		<a data-icon="delete">Logout</a>
-	<% end %>
-</div>
+<div data-role="page" id="beer_items_show">
 
-<div data-role="content">
-	<ul data-role="listview" data-inset="true" data-theme="d">
-		<li data-role="list-divider">Bar</li>
-		<li><%= link_to @beer_item.bar.name, @beer_item.bar %></li>
-		<li data-role="list-divider">Beer</li>
-		<li><%= link_to @beer_item.beer.name, @beer_item.beer %></li>
-		<li data-role="list-divider">Details</li>
-		<li><%= "#{@beer_item.volume} #{@beer_item.volunit} #{@beer_item.pouring} for #{number_to_currency(@beer_item.price)} (ABV: #{@beer_item.beer.abv}%, ABD: #{sprintf("%.3f",@beer_item.abd)})" %></li>
-	</ul>
-	<% if user_signed_in? %>
-		<fieldset class="ui-grid-a">
-			<div class="ui-block-a"><%= link_to "Edit", edit_beer_item_path(@beer_item), :"data-theme"=>"c", :type => "button" %></div>
-			<div class="ui-block-b"><a type="button" data-theme="c">Delete</a></div>	   
-		</fieldset>
-	<% end %>
+	<div data-role="header">
+		<a data-rel="back" data-icon="arrow-l">Back</a>
+	  <h1>View Listing</h1>
+		<%= render :partial => "layouts/login_or_logout" %>
+	</div>
+
+	<div data-role="content">
+		<ul data-role="listview" data-inset="true" data-theme="d">
+			<li data-role="list-divider">Bar</li>
+			<li><%= link_to @beer_item.bar.name, @beer_item.bar %></li>
+			<li data-role="list-divider">Beer</li>
+			<li><%= link_to @beer_item.beer.name, @beer_item.beer %></li>
+			<li data-role="list-divider">Details</li>
+			<li><%= "#{@beer_item.volume} #{@beer_item.volunit} #{@beer_item.pouring} for #{number_to_currency(@beer_item.price)} (ABV: #{@beer_item.beer.abv}%, ABD: #{sprintf("%.3f",@beer_item.abd)})" %></li>
+		</ul>
+		<% if user_signed_in? %>
+			<fieldset class="ui-grid-a">
+				<div class="ui-block-a"><%= link_to "Edit", edit_beer_item_path(@beer_item), :"data-theme"=>"c", :type => "button" %></div>
+				<div class="ui-block-b"><a type="button" data-theme="c">Delete</a></div>	   
+			</fieldset>
+		<% end %>
+	</div>
+	
+	<%= render :partial => "layouts/footer" %>
+
 </div>

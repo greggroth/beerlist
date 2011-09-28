@@ -1,3 +1,9 @@
-<% if user_signed_in? %>
-	Logged in as <%= current_user.email %>
-<% end %>
+<div data-role="footer" data-position="fixed">
+	<div data-role="navbar">
+		<ul>
+			<li><%= link_to "Bars", bars_path, :id => "footer-bars" %></li>
+			<li><%= link_to "Beers", beers_path, :id => "footer-beers" %></li>
+			<li><%= link_to "Breweries", breweries_path, :id => "footer-breweries" %></li>
+		</ul>
+	</div>
+</div>
