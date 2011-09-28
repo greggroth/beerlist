@@ -1,181 +1,176 @@
-<<<<<<< HEAD
-<% content_for :title, "Atl Beer List" %>
-
-<ul class="rounded">
-	<li class="arrow"><%= link_to "Bars", bars_path %></li>
-	<li class="arrow"><%= link_to "Beers", beers_path %></li>
-</ul>
-
-<% if user_signed_in? %>
-	<ul class="rounded">
-		<li class="arrow"><%= link_to "Add a new listing", new_beer_item_path %></li>
-	</ul>
-<% end %>
-
-<h2>Best Deals</h2>
-=======
-<div id="beer_items_index">
+<div id="login">
   <div class="toolbar">
-    <%= link_to "Home", root_path, :class => "back" unless current_page? root_path %>
-		<%= render "login_or_logout" %>
-    <h1>Home</h1>
+    <h1>Login</h1>
   </div>
 	
-	<% unless flash.empty? %>
-    <div class="info">
-    <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, :id => "flash_#{name}" %>
-    <% end %>
-    </div>
-  <% end %>
-	<h2><%= current_user.email if user_signed_in? %></h2>
-	
->>>>>>> iphone
-	<ul class="rounded">
-		<li class="arrow"><a class="button_bars_index" href="#bars_index">Bars</a></li>
-		<li class="arrow"><a class="button_beers_index" href="#beers_index">Beers</a></li>
-	</ul>
-<<<<<<< HEAD
-=======
-
-
-	<h2>Best Deals</h2>
-		<ul class="rounded">
-		  <% for beer_item in @best_deals %>
-		    <li class="arrow">
-		      <!-- <%= link_to beer_item.beer.name, beer_path(beer_item.beer.id) %> -->
-					<a class="button_beer_items_show" href="#beer_items_show" bi-id="<%= beer_item.id %>"><%= beer_item.beer.name %></a>
-					<small class="counter"><%= sprintf("%.3f",beer_item.abd) %></small>
-		    </li>
-		  <% end %>
-		</ul>
-
-	<ul><li class="arrow"><%= link_to "New Item", new_beer_item_path %></li></ul>
+	<div id="login_container">
+		Loading!
+	</div>
 </div>
 
+<div id="beer_items_new">
+	<div class="toolbar">
+		<a class="back">Back</a>
+		<a class="button home">Home</a>
+    <h1>New Listing</h1>
+  </div>
+
+	<div id="beer_items_new_container">
+		Loading!
+	</div>
+	<%= render "footer" %>
+</div>
+
+<div id="beer_items_edit">
+	<div class="toolbar">
+		<a class="back">Back</a>
+		<a class="button home">Home</a>
+    <h1>Edit Listing</h1>
+  </div>
+
+	<div id="beer_items_edit_container">
+		Loading!
+	</div>
+	<%= render "footer" %>
+</div>
+
+
+<!-- BAR STUFF -->
 <div id="bars_index">
   <div class="toolbar">
-    <%= link_to "Home", "#beer_items_index", :class => "back" %>
-		<%= render "login_or_logout" %>
+		<a class="back">Back</a>
+		<a class="button home">Home</a>
+		<!-- <%= render "login_or_logout" %> -->
     <h1>Bars</h1>
   </div>
 	
-	<% unless flash.empty? %>
+	<!-- <% unless flash.empty? %>
     <div class="info">
     <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, :id => "flash_#{name}" %>
     <% end %>
     </div>
-  <% end %>
-	<h2><%= current_user.email if user_signed_in? %></h2>
+  <% end %> -->
+	
+	<!-- <%= form_tag(bars_path, :method => :get, :remote => true, :id => "zip_search") do %>
+		<ul class="rounded">
+			<li><%= text_field_tag :zip, params[:zip], :size => 6, :placeholder => "Zip", :id => "zip_search_box" %></li>
+		</ul>
+		<%= submit_tag "Search", :name => nil, :class => "whiteButton" %>
+	<% end %> -->
 	
 	<div id="bars_index_container">
 		Loading!
 	</div>
+	<%= render "footer" %>
 </div>
 
 <div id="beers_index">
   <div class="toolbar">
-    <%= link_to "Home", "#beer_items_index", :class => "back" %>
-		<%= render "login_or_logout" %>
+    <a class="back">Back</a>
+		<a class="button home">Home</a>
+		<!-- <%= render "login_or_logout" %> -->
     <h1>Beers</h1>
   </div>
 	
-	<% unless flash.empty? %>
+	<!-- <% unless flash.empty? %>
     <div class="info">
     <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, :id => "flash_#{name}" %>
     <% end %>
     </div>
-  <% end %>
-	<h2><%= current_user.email if user_signed_in? %></h2>
+  <% end %> -->
 	
 	<div id="beers_index_container">
 		Loading!
 	</div>
+	<%= render "footer" %>
 </div>
 
 <div id="beer_items_show">
   <div class="toolbar">
-    <%= link_to "Home", "#beer_items_index", :class => "back" %>
-		<%= render "login_or_logout" %>
+    <a class="back">Back</a>
+		<a class="button home">Home</a>
+		<!-- <%= render "login_or_logout" %> -->
     <h1>Listing</h1>
   </div>
 	
-	<% unless flash.empty? %>
+	<!-- <% unless flash.empty? %>
     <div class="info">
     <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, :id => "flash_#{name}" %>
     <% end %>
     </div>
-  <% end %>
-	<h2><%= current_user.email if user_signed_in? %></h2>
+  <% end %> -->
 	
 	<div id="beer_items_show_container">
 		Loading!
 	</div>
+	<%= render "footer" %>
 </div>
 
 <div id="beers_show">
   <div class="toolbar">
-    <%= link_to "Home", "#beer_items_index", :class => "back" %>
-		<%= render "login_or_logout" %>
+    <a class="back">Back</a>
+		<a class="button home">Home</a>
+		<!-- <%= render "login_or_logout" %> -->
     <h1>Beers</h1>
   </div>
 	
-	<% unless flash.empty? %>
+	<!-- <% unless flash.empty? %>
     <div class="info">
     <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, :id => "flash_#{name}" %>
     <% end %>
     </div>
-  <% end %>
-	<h2><%= current_user.email if user_signed_in? %></h2>
+  <% end %> -->
 	
 	<div id="beers_show_container">
 		Loading!
 	</div>
+	<%= render "footer" %>
 </div>
 
 <div id="bars_show">
   <div class="toolbar">
-    <%= link_to "Home", "#beer_items_index", :class => "back" %>
-		<%= render "login_or_logout" %>
+    <a class="back">Back</a>
+		<a class="button home">Home</a>
+		<!-- <%= render "login_or_logout" %> -->
     <h1>View a bar</h1>
   </div>
 	
-	<% unless flash.empty? %>
+	<!-- <% unless flash.empty? %>
     <div class="info">
     <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, :id => "flash_#{name}" %>
     <% end %>
     </div>
-  <% end %>
-	<h2><%= current_user.email if user_signed_in? %></h2>
+  <% end %> -->
 	
 	<div id="bars_show_container">
 		Loading!
 	</div>
+	<%= render "footer" %>
 </div>
 
 <div id="breweries_show">
   <div class="toolbar">
-    <%= link_to "Home", "#beer_items_index", :class => "back" %>
-		<%= render "login_or_logout" %>
+    <a class="back">Back</a>
+		<a class="button home">Home</a>
+		<!-- <%= render "login_or_logout" %> -->
     <h1>View a brewery</h1>
   </div>
 	
-	<% unless flash.empty? %>
+	<!-- <% unless flash.empty? %>
     <div class="info">
     <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, :id => "flash_#{name}" %>
     <% end %>
     </div>
-  <% end %>
-	<h2><%= current_user.email if user_signed_in? %></h2>
+  <% end %> -->
 	
 	<div id="breweries_show_container">
 		Loading!
 	</div>
+	<%= render "footer" %>
 </div>
->>>>>>> iphone

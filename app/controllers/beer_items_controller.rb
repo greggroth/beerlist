@@ -30,10 +30,10 @@ end
 def show
    @beer_item = BeerItem.find(params[:id])
 
-    respond_to do |format|
-	    format.html
-	    format.iphone { render :layout => false }
-	  end
+    #     respond_to do |format|
+    #   format.html
+    #   format.iphone { render :layout => false }
+    # end
 end
 
 # GET /beer_items/new

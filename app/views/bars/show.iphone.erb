@@ -1,15 +1,37 @@
-<h3 style="margin-left: 20px">
-	<p><%= @bar.address %></p>
-	<p><%= @bar.zip %></p>
-	<p><%= link_to("Website", @bar.url) if @bar.url.present? %>
-</h3>
+<div data-role="header">
+	<a data-rel="back" data-icon="arrow-l">Back</a>
+  <h1><%= @bar.name %></h1>
+	<% if user_signed_in? %>
+		<a data-icon="plus">Login</a>
+	<% else %>
+		<a data-icon="delete">Logout</a>
+	<% end %>
+</div>
 
-<h2>Beers being served at <%= @bar.name %></h2>
-	<ul class="rounded">
+<div data-role="content">
+	<div data-role="collapsible">
+		<h3>Information</h3>
+			<dl>
+				<dt>Contact</dt>
+					<dd>
+						<%= @bar.address %><br />
+						<%= @bar.zip %><br />
+						<% if @bar.url.present? %>
+							<a href="#{@bar.url}">Website</a>
+						<% end %>
+					</dd>
+			</dl>
+	</div>
+
+	<h3>Beers:</h3>
+	<ul data-role="listview" data-inset="true" data-theme="d" data-filter="true">
 		<% for beer_item in @beer_items %>
-		<li class="arrow">
-			<a class="button_beers_show" data-beer-id="<%= beer_item.beer.id %>" data-beername="<%= beer_item.beer.name %>"><%= truncate(beer_item.beer.name, :length => 16) %> (<%= number_to_human(beer_item.volume, :units => {:unit => beer_item.volunit}) %>)</a>
-			<small class="counter"><%= number_to_currency(beer_item.price) %></small>
+		<li>
+			<%= link_to truncate(beer_item.beer.name, :length => 16), beer_item %>
+			<div class="ui-li-count">
+				<%= "#{number_to_human(beer_item.volume, :units => {:unit => beer_item.volunit})},  #{number_to_currency(beer_item.price)}" %>
+			</div>
 		</li>
 		<% end %>
 	</ul>
+</div>

@@ -4,17 +4,20 @@
 	<title>ATL Beer List</title>
 		<%= favicon_link_tag "abl_64x64.ico" %>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta id="viewport" name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
     <meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
     <title>Beer List</title>
-		<%= stylesheet_link_tag "jqtouch/jqtouch.css", "jqtouch/theme.css", "iphone.css" %>
-
-		<%= javascript_include_tag "jquery-1.4.2.min.js", "jqtouch.js" %>
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.css" />
+		<script src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.0b3/jquery.mobile-1.0b3.min.js"></script>
 		<%= javascript_include_tag "iphone.js"%>
 </head>
 <body>
-	<div id="jqt">
-	<%= yield %>
+	<div data-role="page">
+		<%= yield %>
+		<div data-role="footer">
+			<%= render :partial => "layouts/footer" %>
+		<div>
 	</div>
 </body>
 </html>

@@ -30,11 +30,11 @@ class BarsController < ApplicationController
 		  @user_bars = current_user.bars.find(:all)
 	  end
 	  
-	  respond_to do |format|
-	    format.js
-	    format.html
-	    format.iphone { render :layout => false }
-	  end
+    # respond_to do |format|
+    #   format.js
+    #   format.html
+    #   format.iphone { render :layout => false }
+    # end
   end
 
   # GET /bars/1
@@ -89,11 +89,11 @@ class BarsController < ApplicationController
   		@json = @bar.to_gmaps4rails
   	end
 	
-  	respond_to do |format|
-  	  format.js
-      format.html
-      format.iphone { render :layout => false }
-    end
+    # respond_to do |format|
+    #   format.js
+    #       format.html
+    #       format.iphone { render :layout => false }
+    #     end
   end
 
   # GET /bars/new

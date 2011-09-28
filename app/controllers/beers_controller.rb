@@ -17,11 +17,11 @@ class BeersController < ApplicationController
     
     logger.debug "Hello Index!"
     
-    respond_to do |format|
-      format.js
-	    format.html
-	    format.iphone { render :layout => false }
-	  end
+    # respond_to do |format|
+    #    format.js
+    #       format.html
+    #       format.iphone { render :layout => false }
+    #     end
   end
 
   # GET /beers/1
@@ -44,10 +44,10 @@ class BeersController < ApplicationController
       end
     end
   
-    respond_to do |format|
-      format.html
-      format.iphone { render :layout => false }
-    end
+    # respond_to do |format|
+    #   format.html
+    #   format.iphone { render :layout => false }
+    # end
   end
 
   # GET /beers/new
