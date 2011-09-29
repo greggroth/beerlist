@@ -1,0 +1,6 @@
+<% if user_signed_in? %>
+	<%= link_to "Logout", destroy_user_session_path, :id=>'logout', :method => :delete, :"data-icon" => "delete", :class => "ui-btn-right" %>
+<% else %>
+	<%= link_to "Signup", new_user_registration_path, :"data-transition" => "flip", :class => "ui-btn-left" %>
+	<a href="/users/sign_in" data-transition="flip" data-icon="plus" class="ui-btn-right">Login</a>
+<% end %>

@@ -7,7 +7,11 @@ class BreweriesController < ApplicationController
     if params[:search].present?
       @breweries = Brewery.includes(:beers).search_tank(params[:search])
     else
-      @breweries = Brewery.includes(:beers).order("name ASC").page(params[:page]).per(25)
+      if iphone_request?
+        @breweries = Brewery.includes(:beers).order("name ASC")
+      else
+        @breweries = Brewery.includes(:beers).order("name ASC").page(params[:page]).per(25)
+      end
     end
     
     # respond_to do |format|
@@ -37,10 +41,10 @@ class BreweriesController < ApplicationController
   def new
     @brewery = Brewery.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @brewery }
-    end
+    # respond_to do |format|
+    #   format.html # new.html.erb
+    #   format.xml  { render :xml => @brewery }
+    # end
   end
 
   # GET /breweries/1/edit
@@ -56,9 +60,11 @@ class BreweriesController < ApplicationController
     respond_to do |format|
       if @brewery.save
         format.html { redirect_to(breweries_path, :notice => 'Brewery was successfully created.') }
+        format.iphone { redirect_to(breweries_path, :notice => 'Brewery was successfully created.') }
         format.xml  { render :xml => @brewery, :status => :created, :location => @brewery }
       else
         format.html { render :action => "new" }
+        format.iphone { render :action => "new" }
         format.xml  { render :xml => @brewery.errors, :status => :unprocessable_entity }
       end
     end
@@ -72,9 +78,11 @@ class BreweriesController < ApplicationController
     respond_to do |format|
       if @brewery.update_attributes(params[:brewery])
         format.html { redirect_to(@brewery, :notice => 'Brewery was successfully updated.') }
+        format.iphone { redirect_to(@brewery) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
+        format.iphone { render :action => "edit" }
         format.xml  { render :xml => @brewery.errors, :status => :unprocessable_entity }
       end
     end

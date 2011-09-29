@@ -1,35 +1,34 @@
 <%= form_for(@brewery) do |f| %>
   <% if @brewery.errors.any? %>
     <div id="error_explanation">
-      <p><%= error_messages_for @brewery, :header_message => "Whoops!", :message => "Please address the following:"%></p>
+      <h2><%= error_messages_for @brewery, :header_message => "Whoops!", :message => "Please address the following:"%></h2>
     </div>
   <% end %>
 
-  <div class="field">
+	
+  <div data-role="fieldcontain">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
-  <div class="field">
+  <div data-role="fieldcontain">
     <%= f.label :address %><br />
     <%= f.text_field :address %>
   </div>
-  <div class="field">
+  <div data-role="fieldcontain">
     <%= f.label :city %><br />
     <%= f.text_field :city %>
   </div>
-  <div class="field">
+  <div data-role="fieldcontain">
     <%= f.label :state %><br />
     <%= f.text_field :state %>
   </div>
-  <div class="field">
+  <div data-role="fieldcontain">
     <%= f.label :zip %><br />
     <%= f.text_field :zip %>
   </div>
-  <div class="field">
+  <div data-role="fieldcontain">
     <%= f.label :url %><br />
     <%= f.text_field :url %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.submit %>
 <% end %>

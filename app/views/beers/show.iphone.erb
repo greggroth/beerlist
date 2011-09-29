@@ -12,6 +12,11 @@
 				Brewery
 							<%= link_to @beer.brewery.name, brewery_path(@beer.brewery.id), :"data-role" => "button", :"data-icon" => "arrow-r", :"data-iconpos" => "right" %>
 		</div>
+		
+		<% if user_signed_in? %>
+			<%= link_to "Edit Beer", edit_beer_path(@beer), :"data-role" => "button", :"data-inline" => "true" %>
+			<%= link_to "Add listing", new_beer_item_path, :"data-role" => "button", :"data-inline" => "true" %>
+		<% end %>
 
 		<h3>Served at:</h3>
 		<ul data-role="listview" data-inset="true" data-theme="d">

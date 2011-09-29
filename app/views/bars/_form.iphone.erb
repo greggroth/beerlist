@@ -1,0 +1,36 @@
+<%= form_for(@bar) do |f| %>
+  <% if @bar.errors.any? %>
+    <div id="error_explanation">
+      <p><%= error_messages_for @bar, :header_message => "Whoops!", :message => "Please address the following:"%></p>
+    </div>
+  <% end %>
+  <div  data-role="fieldcontain">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div data-role="fieldcontain">
+     <%= f.label "Address" %><br />
+     <%= f.text_field :address %>
+  </div>
+  <div data-role="fieldcontain">
+     <%= f.label "City" %><br />
+     <%= f.text_field :city %>
+  </div>
+  <div data-role="fieldcontain">
+     <%= f.label "State" %><br />
+     <%= f.text_field :state %>
+  </div>
+  <div data-role="fieldcontain">
+     <%= f.label "Zip" %><br />
+     <%= f.text_field :zip %>
+  </div>
+  <div data-role="fieldcontain">
+     <%= f.label "Url" %><br />
+     <%= f.text_field :url %>
+  </div>
+  <div data-role="fieldcontain">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <%= f.submit %>
+<% end %>

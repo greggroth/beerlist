@@ -18,7 +18,7 @@
 		<% if user_signed_in? %>
 			<fieldset class="ui-grid-a">
 				<div class="ui-block-a"><%= link_to "Edit", edit_beer_item_path(@beer_item), :"data-theme"=>"c", :type => "button" %></div>
-				<div class="ui-block-b"><a type="button" data-theme="c">Delete</a></div>	   
+				<div class="ui-block-b"><%= link_to "Remove", @beer_item, :method => :delete, :type => "button", :"data-theme" => "c" %></div>
 			</fieldset>
 		<% end %>
 	</div>

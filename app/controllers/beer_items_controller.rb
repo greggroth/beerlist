@@ -56,9 +56,11 @@ def create
    respond_to do |format|
      if @beer_item.save
 	    format.html { redirect_to(beer_items_path, :notice => "Beer listing added #{undo_link}") }
+	    format.iphone { redirect_to(@beer_item) }
     	format.xml { render :xml => @beer_item, :status => :created, :location => @beer_item }
      else
 	    format.html { render :action => "new" }
+	    format.iphone { render :action => "new" }
     	format.xml { render :xml => @beer_item.errors, :status => :unprocessable_entity }
      end
    end
@@ -84,7 +86,7 @@ def update
   respond_to do |format|
   	if @beer_item.update_attributes(params[:beer_item])
   	  format.html { redirect_to(@beer_item, :notice => "Beer listing updated #{undo_link}") }
-  	  format.iphone { redirect_to(@beer_item, :notice => "Beer listing updated #{undo_link}") }
+  	  format.iphone { redirect_to(@beer_item) }
   	  format.xml { head :ok }
   	else
   	  format.html { render :action => "edit" }
@@ -95,21 +97,17 @@ def update
 end
 
 def destroy
-   # @beer_item = current_user.beer_items.find(params[:id])
 	@beer_item = BeerItem.find(params[:id])
-	
-  # if @beer_item.bar.has_permission?(current_user)
-  #     @beer_item.destroy
-  # else
-  #   redirect_to beer_items_path, :notice => "Beer listing removed #{undo_link}"
-  # end
-  @beer_item.destroy
-  redirect_to beer_items_path, :notice => "Beer listing removed #{undo_link}"
+	@bar = @beer_item.bar
 
-    # respond_to do |format|
-    #   format.html { redirect_to(beer_items_path) }
-    #   format.xml { head :ok }
-    # end
+  @beer_item.destroy
+  # redirect_to beer_items_path, :notice => "Beer listing removed #{undo_link}"
+
+  respond_to do |format|
+    format.html { redirect_to(beer_items_path, :notice => "Beer listing removed #{undo_link}") }
+    format.iphone { redirect_to(@bar) }
+    format.xml { head :ok }
+  end
 end
 
 private

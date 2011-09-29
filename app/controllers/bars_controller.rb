@@ -119,9 +119,11 @@ class BarsController < ApplicationController
     respond_to do |format|
       if @bar.save
         format.html { redirect_to(bars_path, :notice => 'Bar was successfully created.') }
+        format.iphone { redirect_to(bars_path, :notice => 'Bar was successfully created.') }
         format.xml  { render :xml => @bar, :status => :created, :location => @bar }
       else
         format.html { render :action => "new" }
+        format.iphone { render :action => "new" }
         format.xml  { render :xml => @bar.errors, :status => :unprocessable_entity }
       end
     end
@@ -135,9 +137,11 @@ class BarsController < ApplicationController
     respond_to do |format|
       if @bar.update_attributes(params[:bar])
         format.html { redirect_to(@bar, :notice => 'Bar was successfully updated.') }
+        format.iphone { redirect_to(@bar, :notice => 'Bar was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit", :notice => 'Unable to edit' }
+        format.iphone { render :action => "edit", :notice => 'Unable to edit' }
         format.xml  { render :xml => @bar.errors, :status => :unprocessable_entity }
       end
     end

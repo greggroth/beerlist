@@ -25,7 +25,7 @@
 		<ul data-role="listview" data-inset="true" data-theme="d" data-filter="true">
 			<% for beer in @beers %>
 			<li>
-				<%= link_to truncate(beer.name, :length => 16), beer %>
+				<%= link_to truncate(beer.name, :length => 26), beer %>
 			</li>
 			<% end %>
 		</ul>

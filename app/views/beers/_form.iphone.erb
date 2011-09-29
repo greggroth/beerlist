@@ -1,11 +1,29 @@
 <%= form_for @beer do |f| %>
 	
-<ul class="rounded">
-	<li class="arrow"><%= f.text_field :name, :placeholder => "Name" %></li>
-	<li class="arrow"><%= collection_select :beer, :brewery_id, Brewery.order('name ASC'), :id, :name, {:include_blank => 'Select a Brewery'} %></li>
-	<li class="arrow"><%= collection_select :beer, :beer_style_id, BeerStyle.order('name ASC'), :id, :name, {:include_blank => 'Select a Style'} %></li>
-	<li class="arrow"><%= f.text_field :abv, :placeholder => "ABV" %></li>
-	<li><%= f.submit %></li>
-</ul>
+	<% if @beer.errors.any? %>
+    <div id="error_explanation">
+      <p><%= error_messages_for @beer_item, :header_message => "Whoops!", :message => "Please address the following:"%></p>
+    </div>
+  <% end %>
+	
+	<div data-role="fieldcontain">
+		<fieldset data-role="controlgroup" data-type="horizontal">
+			<legend>Name</legend>
+				<%= f.text_field :name, :placeholder => "Name" %>
+		</fieldset>
+		<fieldset data-role="controlgroup" data-type="horizontal">
+			<legend>Brewery</legend>
+				<%= collection_select :beer, :brewery_id, Brewery.order('name ASC'), :id, :name, {:include_blank => 'Select a Brewery'} %>
+		</fieldset>
+		<fieldset data-role="controlgroup" data-type="horizontal">
+			<legend>Style</legend>
+				<%= collection_select :beer, :beer_style_id, BeerStyle.order('name ASC'), :id, :name, {:include_blank => 'Select a Style'} %>
+		</fieldset>
+		<fieldset data-role="controlgroup" data-type="horizontal">
+			<legend>ABV</legend>
+				<%= f.text_field :abv, :placeholder => "ABV" %>
+		</fieldset>
+	</div>
+	<%= f.submit %>
 
 <% end %>

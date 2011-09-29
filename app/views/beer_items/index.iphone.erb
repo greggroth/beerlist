@@ -1,16 +1,18 @@
 <div data-role="page" id="beer_items_index">
 
 	<div data-role="header">
-		<h1>Home</h1>
+		<h1>ATL Beer List</h1>
 		<%= render :partial => "layouts/login_or_logout" %>
 	</div>
 
 	<div data-role="content">
-		<!-- <ul data-role="listview" data-inset="true" data-theme="d">
-			<li><%= link_to "Bars", bars_path %></li>
-			<li><%= link_to "Beers", beers_path %></li>
-			<li><%= link_to "Breweries", breweries_path %></li>
-		</ul> -->
+		<p>
+			Welcome to AtlBeerList.com!  Here you will find beer lists from bars across 
+			Atlanta, allowing you to check what's pouring before you get there and check
+			what's new.  Login or create an account by clicking the "Signup" button above to add 
+			and edit records to help others find deals too!
+		</p>
+
 		<h1>Best Deals</h1>
 			<ul data-role="listview" data-inset="true" data-theme="d">
 			  <% for beer_item in @best_deals %>

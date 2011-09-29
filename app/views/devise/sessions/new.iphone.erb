@@ -1,16 +1,20 @@
-<div data-role="header">
-	<a data-rel="back" data-icon="arrow-l">Back</a>
-  <h1>Login</h1>
-</div>
+<div data-role="page">
 
-<div data-role="content">
-	<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-		<!-- <ul data-role="listview" data-inset="true" data-theme="d">
-			<li><%= f.email_field :email, :placeholder => "E-mail" %></li>
-		  <li><%= f.password_field :password, :placeholder => "Password" %></li>
-		</ul> -->
-		<%= f.email_field :email, :placeholder => "E-mail" %>
-	  <%= f.password_field :password, :placeholder => "Password" %>
-		<%= f.submit "Sign in", :style => "float:right; margin-right: 30px" %>
-	<% end %>
+	<div data-role="header">
+		<a data-rel="back" data-icon="arrow-l">Back</a>
+	  <h1>Login</h1>
+	</div>
+
+	<div data-role="content">
+		<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+			<!-- <ul data-role="listview" data-inset="true" data-theme="d">
+				<li><%= f.email_field :email, :placeholder => "E-mail" %></li>
+			  <li><%= f.password_field :password, :placeholder => "Password" %></li>
+			</ul> -->
+			<%= f.email_field :email, :placeholder => "E-mail" %>
+		  <%= f.password_field :password, :placeholder => "Password" %>
+			<%= f.submit "Sign in", :style => "float:right; margin-right: 30px" %>
+		<% end %>
+	</div>
+
 </div>

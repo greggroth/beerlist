@@ -1,5 +1,6 @@
 class Beer < ActiveRecord::Base
 	validates_presence_of :name, :brewery_id
+	validates_numericality_of :abv
 	validates_uniqueness_of :name, :scope => :brewery_id, :message => " has already been added for this brewery"
 
   belongs_to :brewery

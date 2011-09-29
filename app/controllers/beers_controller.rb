@@ -69,9 +69,11 @@ class BeersController < ApplicationController
     respond_to do |format|
       if @beer.save
         format.html { redirect_to(beers_path, :notice => 'Beer was successfully created.') }
+        format.iphone { redirect_to(beers_path) }
         format.xml  { render :xml => @beer, :status => :created, :location => @beer }
       else
         format.html { render :action => "new" }
+        format.iphone { render :action => "new" }
         format.xml  { render :xml => @beer.errors, :status => :unprocessable_entity }
       end
     end
@@ -85,9 +87,11 @@ class BeersController < ApplicationController
     respond_to do |format|
       if @beer.update_attributes(params[:beer])
         format.html { redirect_to(@beer, :notice => 'Beer was successfully updated.') }
+        format.iphone { redirect_to(@beer) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
+        format.iphone { render :action => "edit" }
         format.xml  { render :xml => @beer.errors, :status => :unprocessable_entity }
       end
     end
@@ -101,6 +105,7 @@ class BeersController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(beers_url) }
+      format.iphone { redirect_to(beers_url) }
       format.xml  { head :ok }
     end
   end

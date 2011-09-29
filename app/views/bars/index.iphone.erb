@@ -17,6 +17,19 @@
 		</ul>
 	</div>
 
-	<%= render :partial => "layouts/footer" %>
+	<div data-role="footer" data-position="fixed">
+		<div data-role="navbar">
+			<ul>
+				<li><%= link_to "Home", beer_items_path, :id => "footer-home" %></li>
+				<% if user_signed_in? %>
+					<li><%= link_to "New Bar", new_bar_path %></li>
+				<% else %>
+					<li><%= link_to "Bars", bars_path, :id => "footer-bars" %></li>
+				<% end %>
+				<li><%= link_to "Beers", beers_path, :id => "footer-beers" %></li>
+				<li><%= link_to "Breweries", breweries_path, :id => "footer-breweries" %></li>
+			</ul>
+		</div>
+	</div>
 	
 </div>

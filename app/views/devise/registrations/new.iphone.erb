@@ -1,0 +1,31 @@
+<div data-role="page">
+
+	<div data-role="header">
+		<a data-rel="back" data-icon="arrow-l">Back</a>
+	  <h1>Create an Account</h1>
+	</div>
+	
+	<p>We will never share your information</p>
+
+	<div data-role="content">
+		<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+		  <%= devise_error_messages! %>
+
+
+			<%= f.label :email %>
+		  <%= f.email_field :email %>
+
+		  
+			<%= f.label :password %>
+		  <%= f.password_field :password %>
+
+		 
+			<%= f.label "confirm Password" %>
+		  <%= f.password_field :password_confirmation %>
+
+
+			<%= f.submit "Sign up" %>
+		<% end %>
+	</div>
+
+</div>

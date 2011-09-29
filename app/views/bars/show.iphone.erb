@@ -8,19 +8,21 @@
 
 	<div data-role="content">
 		<div data-role="collapsible">
-			<h3>Information</h3>
-				<dl>
-					<dt>Contact</dt>
-						<dd>
-							<%= @bar.address %><br />
-							<%= @bar.zip %><br />
-							<% if @bar.url.present? %>
-								<a href="#{@bar.url}">Website</a>
-							<% end %>
-						</dd>
-				</dl>
+			<h3>Address</h3>
+				<p>
+					<%= @bar.address %><br />
+					<%= @bar.zip %><br />
+					<% if @bar.url.present? %>
+						<a href="#{@bar.url}">Website</a>
+					<% end %>
+				</p>
 		</div>
-
+		
+		<% if user_signed_in? %>
+			<%= link_to "Edit Bar", edit_bar_path(@bar), :"data-role" => "button", :"data-inline" => "true" %>
+			<%= link_to "Add listing", new_beer_item_path, :"data-role" => "button", :"data-inline" => "true" %>
+		<% end %>
+		
 		<h3>Beers:</h3>
 		<ul data-role="listview" data-inset="true" data-theme="d" data-filter="true">
 			<% for beer_item in @beer_items %>

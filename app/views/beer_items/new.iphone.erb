@@ -1,3 +1,15 @@
-<% content_for :title, "New Beer Listing" %>
+<div data-role="page" id="beer_items_new">
 
-<%= render 'form' %>
+	<div data-role="header">
+		<a data-rel="back" data-icon="arrow-l">Back</a>
+		<h1>New Beer Item</h1>
+		<%= render :partial => "layouts/login_or_logout" %>
+	</div>
+
+	<div data-role="content">
+		<%= render 'form' %>
+	</div>
+	
+	<%= render :partial => "layouts/footer" %>
+
+</div>
