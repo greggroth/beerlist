@@ -7,11 +7,11 @@
 	</div>
 
 	<div data-role="content">
-		<div data-role="collapsible">
-			<h3>Information</h3>
+		<!-- <div data-role="collapsible">
+			<h3>Information</h3> -->
 				Brewery
 							<%= link_to @beer.brewery.name, brewery_path(@beer.brewery.id), :"data-role" => "button", :"data-icon" => "arrow-r", :"data-iconpos" => "right" %>
-		</div>
+		<!-- </div> -->
 		
 		<% if user_signed_in? %>
 			<%= link_to "Edit Beer", edit_beer_path(@beer), :"data-role" => "button", :"data-inline" => "true" %>
