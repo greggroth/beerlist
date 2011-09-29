@@ -2,6 +2,7 @@
 
 	<div data-role="header">
 		<h1>ATL Beer List</h1>
+		<%= link_to "Signup", new_user_registration_path, :"data-transition" => "flip", :class => "ui-btn-left" %>
 		<%= render :partial => "layouts/login_or_logout" %>
 	</div>
 
