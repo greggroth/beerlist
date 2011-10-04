@@ -4,3 +4,9 @@ BeerList
 Author:  Greggory Rothmeier (greggroth@gmail.com)
 
 Site to organize the hundreds of beer lists around Atlanta into one easy to navigate interface.  There are pages for viewing what beers a bar has, a page for each beer (including a list of all of the bars that beer is being served at, sorted by price), and a page for each brewery (including all of the beers/bars their beer is served at).  Much more to come.  This is only the beginning!!
+
+
+TO USE:
+  - Get the source from github
+  - Run "rake db:schema:load" to set up the database
+  - Run "rails s" to start local server and check things out (http://localhost.com:3000)
