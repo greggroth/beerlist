@@ -41,5 +41,6 @@ FactoryGirl.define do
     price '4.00'
     volume '12'
     volunit 'oz'
+    pouring 'draught'
   end
 end

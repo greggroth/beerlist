@@ -6,8 +6,12 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
-# bar1 = Bar.create :name => 'The Earl'
-# bar2 = Bar.create :name => 'Midway Pub'
+
+# bar1 = Bar.create :name => 'The Earl', 
+#                   :address => '123 Oak Ln',
+#                   :city => 'Atlanta', 
+#                   :state => 'GA',
+#                   :zip => '30316'
 # 
 # beer1 = Beer.create :name => 'Red Bridge'
 # beer2 = Beer.create :name => 'Blue Mood'
