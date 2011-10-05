@@ -15,7 +15,7 @@
     <th></th>
   </tr>
 </thead>
-<tbody>
+<tbody class="with-action-links">
 
 <% @recent_beer_items.each do |item| %>
   <tr>
@@ -31,10 +31,10 @@
 
     <td><%= number_to_currency(item.price) %></td>
 
-   	<% if user_signed_in? && @bar.has_permission?(current_user) %>
-	    <td><%= link_to 'Show', item %></td>
-	    <td><%= link_to 'Edit', edit_beer_item_path(item) %></td>
-	    <td><%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete %></td>
+   	<% if user_signed_in? %>
+	    <td><%= link_to 'Details', item, :class => "action_link" %></td>
+	    <td><%= link_to 'Edit', edit_beer_item_path(item), :class => "action_link" %></td>
+	    <td><%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete, :class => "action_link" %></td>
 	  <% else %>
 	    <td />
 	    <td />
@@ -53,17 +53,17 @@
 <table id="sorted_beer_item_list">
 <thead>
   <tr>
-    <th width=200><%= sortable "beers.name", "Name" %> <span class="asc"></span></th>
-		<th width=100><%= sortable "beers.abv", "ABV" %> <span class="asc"></span></th>
-		<th width=150><%= sortable "volume", "Pouring" %> <span class="asc"></span></th>
-		<th width=100 class="abd-table-heading"><%= sortable "abd", "ABD" %> <span class="asc"></span></th>
-		<th width=100><%= sortable "price", "Price" %> <span class="asc"></span></th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th width=25%><%= sortable "beers.name", "Name" %> <span class="asc"></span></th>
+		<th width=12%><%= sortable "beers.abv", "ABV" %> <span class="asc"></span></th>
+		<th width=18%><%= sortable "volume", "Pouring" %> <span class="asc"></span></th>
+		<th width=10% class="abd-table-heading"><%= sortable "abd", "ABD" %> <span class="asc"></span></th>
+		<th width=15%><%= sortable "price", "Price" %> <span class="asc"></span></th>
+    <th width=7%></th>
+    <th width=7%></th>
+    <th width=7%></th>
   </tr>
 </thead>
-<tbody>
+<tbody class="with-action-links">
 <% @beer_items.each do |item| %>
   <tr>		
 		<td><%= link_to item.beer.name, item.beer %></td>
@@ -79,10 +79,10 @@
 		
 		<td><%= number_to_currency(item.price) %></td>
 
-   <% if user_signed_in? && @bar.has_permission?(current_user) %>
-    <td><%= link_to 'Show', item %></td>
-    <td><%= link_to 'Edit', edit_beer_item_path(item) %></td>
-    <td><%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete %></td>
+   <% if user_signed_in? %>
+    <td><%= link_to 'Details', item, :class => "action_link" %></td>
+    <td><%= link_to 'Edit', edit_beer_item_path(item), :class => "action_link" %></td>
+    <td><%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete, :class => "action_link" %></td>
    <% else %>
     <td />
     <td />

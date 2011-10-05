@@ -18,6 +18,12 @@
   <b>Price:</b>
   <%= number_to_currency(@beer_item.price) %>
 </p>
+
+<p class="abd-info-needed">
+  <b>Alcohol by Dollar:</b>
+  <%= sprintf("%.3f",@beer_item.abd) %>
+</p>
+
 <br>
 
 <%= link_to 'Edit', edit_beer_item_path(@beer_item) %> | <%= link_to 'Destroy', @beer_item, :method => :delete %>

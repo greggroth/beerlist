@@ -1,7 +1,9 @@
 window.Application ||= {}
 
+### Test If Updates script.js ###
 $(document).ready ->
 	$('.itemlist tbody tr:nth-child(odd)').addClass('zebra')
+	###
 	$('#user_bar a').hover(  
 		-> 
 			$(this).animate({paddingBottom: '+=15px'}, 200)
@@ -10,6 +12,7 @@ $(document).ready ->
 			$(this).animate({paddingBottom: '-=15px'}, 200)
 			return
 		)
+	###
 		
 	### Generate Charts for /bar_owner ###
 	$('div.chart').each ->
@@ -20,6 +23,7 @@ $(document).ready ->
 			})
 
 	###  Manager_list ###
+	###
 	$('.manager_list:not(.beeritems)').find('tr:nth-child(3n+1)').addClass('odd').hover (e) ->
 		$(e.target).closest('tr').toggleClass("active")
 	$('.manager_list').find('tbody tr.heading:odd').addClass('zebra')
@@ -30,7 +34,8 @@ $(document).ready ->
 		e.stopPropagation()
 	$('.manager_list').find('div.follow_form').click (e) ->
 		e.stopPropagation()
-			
+	###
+	
 	###  Expanding Chartlist (some things are also handled in the above secion)  ###
 	$('.manager_list').find('tr.odd').click -> \
     $(this).nextAll('tr.chart:first, tr.beeritems:first').toggle \
@@ -38,8 +43,10 @@ $(document).ready ->
 		
   ###  Detail/Edit Links visible on hover ###
 	$('a.action_link').hide()
-	$('tr').hover ->
+	$('tbody.with-action-links > tr').hover ->
 		$(this).find('a.action_link').toggle()
+		$(this).toggleClass("active")
+				
 		
 	###  Up/Down sort arrows ###
 	$('#sorted_beer_item_list a').click ->
@@ -54,7 +61,7 @@ $(document).ready ->
 		if $(this).val() == 'pitcher'
 			$('#beer_item_pouring_notice').show()
 		else
-			$('#beer_item_pouring_notice').hideide()
+			$('#beer_item_pouring_notice').hide()
 			
 	###  Show/Hide Google Map              ###      
 	$('#toggle-map-link a').click ->
@@ -83,7 +90,7 @@ $(document).ready ->
 		e.stopPropagation()
 		
 	### qtip for abd ###
-	$('.abd-table-heading').qtip({
+	$('.abd-table-heading, .abd-info-needed').qtip({
 		content: 'Alcohol by Dollar.  Similar to abv except this also takes into account the price and volume to indicate what the best deals are.  The higher the number, the more alcohol you get for your money.'
 		position: {
 			my: 'bottom left'
