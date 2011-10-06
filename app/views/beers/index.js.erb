@@ -1,5 +1,5 @@
 $("#beer_list_index").html("<%= escape_javascript(render('beers_list')) %>");
-$('.itemlist tbody tr:nth-child(odd)').addClass('zebra')
-$("#beer-pagination").html("<%= escape_javascript(render('pagination')) %>");
+$('.itemlist tbody tr:nth-child(odd)').addClass('zebra');
+$("#beer-pagination").html('<%= escape_javascript(paginate(@beers, :remote => true).to_s) %>');
 $("#found_count").html("Found <%= escape_javascript(pluralize(@beers.count, 'beer')) %>");
 $(".search_results_found").show();

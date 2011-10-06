@@ -10,9 +10,7 @@
 	</p>
 <% end %>
 
-<p id="found_count" class="search_results_found" style="display:none;">
-	Found <%= pluralize(@breweries.count, 'brewery') %>
-</p>
+<p id="found_count" class="search_results_found"></p>
 
 <br>
 <p>Hint:  Click on a row to view the beer list for a bar!</p>
@@ -25,7 +23,7 @@
 <div align="left"><%= link_to 'Add Brewery', new_brewery_path %></div>
 <br>
 <div id="brewery-pagination">
-	<%= render 'pagination' %>
+	<%= paginate @breweries, :remote => true %>
 </div>
 
 

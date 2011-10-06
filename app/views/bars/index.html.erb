@@ -32,8 +32,6 @@
 
 <p>Hint:  Click on a row to view the beer list for a bar!</p>
 
-<div class="greenLine"></div>
-
 <div id="bar_list">
 	<% unless @user_bars.empty? %>
 		<h2 id="followingBars-toggleButton">Following</h2>
@@ -51,5 +49,5 @@
 <%= link_to 'New Bar', new_bar_path %>
 <br>
 <div id="bar-pagination">
-	<%= render 'pagination' %>
+	<%= paginate @bars, :remote => true %>
 </div>
