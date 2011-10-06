@@ -14,6 +14,9 @@ describe "BeerItems" do
   it "logs in and makes a new listing" do
     user = FactoryGirl.create(:user)
     
+    Bar.should have(:no).records
+    Beer.should have(:no).records
+    
     5.times do 
       FactoryGirl.create(:bar)
       FactoryGirl.create(:beer)

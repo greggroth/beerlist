@@ -7,8 +7,8 @@ FactoryGirl.define do
   end
   
   factory :bar do
-    name Forgery::Name.company_name
-    address Forgery::Address.street_address
+    sequence (:name){ |n| "bar_#{n}" }
+    sequence (:address) { |n| "#{n}123 Running Ln"}
     zip Forgery::Address.zip
     state Forgery::Address.state_abbrev
     city Forgery::Address.city
@@ -16,13 +16,14 @@ FactoryGirl.define do
   end
   
   factory :beer do
-    name Forgery::Name.company_name
+    sequence (:name){ |n| "beer_#{n}" }
     abv Forgery::Basic.number
-    brewery_id '1'
+    association :brewery
+    association :beer_style
   end
   
   factory :brewery do
-    name Forgery::Name.company_name
+    sequence (:name){ |n| "brewery_#{n}" }
     address Forgery::Address.street_address
     zip Forgery::Address.zip
     state Forgery::Address.state_abbrev
@@ -31,14 +32,14 @@ FactoryGirl.define do
   end
   
   factory :beer_style do
-    name Forgery::Name.company_name
+    sequence (:name){ |n| "style_#{n}" }
     description "test description"
   end
 
   factory :beer_item do
-    # beer_id '1'
-    # bar_id '1'
-    # user_id '1'
+    association :beer
+    association :bar
+    association :user
     price Forgery::Monetary.money
     volume Forgery::Basic.number
     volunit 'oz'
