@@ -24,7 +24,9 @@
 
 <div align="left"><%= link_to 'Add Brewery', new_brewery_path %></div>
 <br>
-<%= paginate @breweries %>
+<div id="brewery-pagination">
+	<%= render 'pagination' %>
+</div>
 
 
 

@@ -20,4 +20,6 @@
 <br />
 
 <%= link_to 'New Beer', new_beer_path %><br>
-<%= paginate @beers %>
+<div id="beer-pagination">
+	<%= render 'pagination' %>
+</div>

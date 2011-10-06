@@ -42,4 +42,6 @@
 
 <%= link_to 'New Bar', new_bar_path %>
 <br>
-<%= paginate @bars %>
+<div id="bar-pagination">
+	<%= render 'pagination' %>
+</div>

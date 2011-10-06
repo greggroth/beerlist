@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :user do
     pw = Forgery::Basic.password
-    email Forgery::Internet.email_address
+    sequence (:email){ |n| "user_#{n}@atlbeerlist.com" }
     password pw
     password_confirmation pw
   end

@@ -1,3 +1,4 @@
 $("#brewery_list_index").html("<%= escape_javascript(render('brewery_list')) %>");
+$("#brewery-pagination").html("<%= escape_javascript(render('pagination')) %>");
 $("#found_count").html("Found <%= escape_javascript(pluralize(@breweries.count, 'brewery')) %>");
 $(".search_results_found").show();
