@@ -7,22 +7,32 @@ class BarsController < ApplicationController
   def index
     
     ##  There has to be a better way!
+    # if params[:search].present?
+    #    if params[:zip].present?
+    #      @bars = Bar.near(params[:zip], 50, :order => :distance).search_tank(params[:search])
+    #    else
+    #      @bars = Bar.search_tank(params[:search])
+    #    end
+    #  else
+    #    if params[:zip].present?
+    #      @bars = Bar.near(params[:zip], 50, :order => :distance).page(params[:page]).per(50)
+    #    else
+    #      # @bars = Bar.order("name ASC").
+    #      if iphone_request?
+    #        @bars = Bar.includes(:beers).order("name ASC")
+    #      else
+    #        @bars = Bar.page(params[:page]).per(25)
+    #      end
+    #    end
+    #  end
+    
     if params[:search].present?
-      if params[:zip].present?
-        @bars = Bar.near(params[:zip], 50, :order => :distance).search_tank(params[:search])
-      else
-        @bars = Bar.search_tank(params[:search])
-      end
+      @bars = Bar.search_tank(params[:search])
     else
-      if params[:zip].present?
-        @bars = Bar.near(params[:zip], 50, :order => :distance).page(params[:page]).per(50)
+      if iphone_request?
+       @bars = Bar.includes(:beers).order("name ASC")
       else
-        # @bars = Bar.order("name ASC").
-        if iphone_request?
-          @bars = Bar.includes(:beers).order("name ASC")
-        else
-          @bars = Bar.page(params[:page]).per(25)
-        end
+       @bars = Bar.page(params[:page]).per(25)
       end
     end
     

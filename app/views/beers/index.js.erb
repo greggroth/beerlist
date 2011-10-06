@@ -1,4 +1,5 @@
 $("#beer_list_index").html("<%= escape_javascript(render('beers_list')) %>");
+Application.format_expandable_itemlist('.expandable_itemlist')
 $("#beer-pagination").html("<%= escape_javascript(render('pagination')) %>");
 $("#found_count").html("Found <%= escape_javascript(pluralize(@beers.count, 'beer')) %>");
 $(".search_results_found").show();
