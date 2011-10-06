@@ -1,0 +1,53 @@
+<table id="sorted_beer_item_list">
+<thead>
+  <tr>
+    <th width=150><%= sortable "bars.name", "Bar" %> <span class="asc"></span></th>
+	  <th width=150>Address</th>
+    <th width=100><%= sortable "price", "Price" %> <span class="asc"></span></th>
+    <th width=150><%= sortable "volume", "Pouring" %> <span class="asc"></span></th>
+	  <th width=100 class="abd-table-heading"><%= sortable "abd", "ABD (oz)" %> <span class="asc"></span></th>
+		<th></th>    
+		<th></th>
+    <th></th>
+  </tr>
+</thead>
+<tbody>
+<% @beer_items.each do |item| %>
+  <tr>
+    <td><%= link_to item.bar.name, item.bar %></td>
+	<td><%= item.bar.address %></td>
+    <td><%= number_to_currency(item.price) %></td>
+   <% unless (item.volume.nil? || item.pouring.nil?) %>
+    <td><%= number_to_human(item.volume, :units => {:unit => item.volunit}) %> <%= item.pouring %></td>
+   <% else %>
+   	<td><%= item.pouring %></td>
+   <% end %>
+   
+   <!-- <% unless (@beer.abv.nil? || item.volume.nil? || item.price.nil?) %>
+		<% case item.volunit %>
+			<% when 'oz' %>
+				<td><%= sprintf("%.3f",(@beer.abv*item.volume)/(100*item.price)) %> </td>
+			<% when 'ml' %>
+				<td><%= sprintf("%.3f",(@beer.abv*item.volume*0.03381)/(100*item.price)) %> </td>
+			<% when 'cl' %>
+				<td><%= sprintf("%.3f",(@beer.abv*item.volume*0.3381)/(100*item.price)) %> </td>
+		<% end %>
+	 <% else %>
+		<td></td>
+	 <% end %> -->
+
+		<td><%= sprintf("%.3f",item.abd) %></td>
+
+	
+   <% if user_signed_in? %>
+		<td><%= link_to 'Details', item, :class => "action_link" %></td>
+    <td><%= link_to 'Edit', edit_beer_item_path(item), :class => "action_link" %></td>
+    <td><%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete, :class => "action_link" %></td>
+   <% else %>
+    <td />
+    <td />
+   <% end %>
+  </tr>
+<% end %>
+</tbody>
+</table>

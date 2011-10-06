@@ -53,7 +53,7 @@ class BeersController < ApplicationController
   # GET /beers/new
   # GET /beers/new.xml
   def new
-    @beer = Beer.new
+    @beer = Beer.new(params[:beer])
   end
 
   # GET /beers/1/edit

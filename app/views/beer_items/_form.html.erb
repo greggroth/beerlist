@@ -7,12 +7,12 @@
 
   <div class="field">
      <%= f.label "Beer Name" %><br />
-     <%= collection_select :beer_item, :beer_id, Beer.order('name ASC'), :id, :name %>
+     <%= collection_select :beer_item, :beer_id, Beer.order('name ASC'), :id, :name, {:include_blank => 'Please Select'} %>
   </div>
  
   <div class="field">
      <%= f.label "Bar Name" %><br />
-     <%= collection_select :beer_item, :bar_id, Bar.order('name ASC'), :id, :name %><br />
+     <%= collection_select :beer_item, :bar_id, Bar.order('name ASC'), :id, :name, {:include_blank => 'Please Select'} %><br />
   </div>
   
   <div class="field">

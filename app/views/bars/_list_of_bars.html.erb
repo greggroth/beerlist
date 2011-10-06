@@ -1,0 +1,53 @@
+<table id="expanding_followed_bars_list" class="expandable_itemlist">
+ <thead>
+  <tr align="left">
+	  <th width=20></th>
+    <th width=200>Name</th>
+	  <th width=250>Address</th>
+    <th width=100>Zip</th>
+    <th width=60></th>
+    <th width=60></th>
+  </tr>
+ </thead>
+ <tbody>
+<% bars.each do |f| %>
+  <tr id="following-<%= f.id %>" item_url="bars/<%= f.id %>">
+	<td>
+	<div class="follow_form">
+	<% if user_signed_in? %>
+		<% if f.is_followed? current_user %>
+			<%= form_for current_user.bar_followings.find_by_bar_id(f.id),
+             		:html => { :method => :delete },
+             		:remote => true do |h| %>
+  				<div class="following"><%= image_submit_tag "full_circle.png" %></div>
+			<% end %>
+		<% else %>
+			<%= form_for current_user.bar_followings.build(:bar_id => f.id), :remote => true do |g| %>
+				<div><%= g.hidden_field :bar_id %></div>
+  				<div class="following"><%= image_submit_tag "empty_circle.png" %></div>
+			<% end %>
+		<% end %>
+	<% end %>
+	</div>
+	</td>
+    <td><%= link_to f.name, f %></td>
+	<td><%= f.address %></td>
+    <td><%= f.zip %></td>
+	<% if f.has_permission?(current_user) %>
+		<span class="actions">
+		    <td><%= link_to 'Edit', f, :action => :edit %>
+		    <td><%= link_to 'Destroy', f, :confirm => 'Are you sure?', :method => :delete %></td>
+		</span>
+	<% else %>
+		<td />
+		<td />
+	<% end %>
+  </tr>
+  <tr>
+  	<td colspan="6" id="itemdesc-following-<%= f.id %>" class="itemdesc">
+  		<div></div>
+  	</td>
+  </tr>
+<% end %>
+ </tbody>
+</table>

@@ -10,30 +10,10 @@
 </p>
 
 <br />
-<div class="greenLine" />
+<%= user_signed_in? ? link_to("Add a beer", new_beer_path(:beer => { :brewery_id => @brewery.id})) : "" %>
 
 <div class="itemlist">
-<table>
-<thead>
-  <tr>
-    <th width=200>Beer</th>
-		<th width=200>Style</th>
-		<th width=80>ABV</th>
-		<th width=80>Pouring at...</th>
-  </tr>
-</thead>
-<tbody>
-<% @beers.each do |beer| %>
-	<tr>
-		<td><%= link_to beer.name, beer %></td>
-		<td><%= beer.try(:beer_style) ? beer.beer_style.name : "" %></td>
-		<td><%= number_to_percentage beer.abv, :precision => 1 %></td>
-		<td><%= pluralize(beer.bars.count, "bar") %></td>
-  </tr>
-</tr>
-<% end %>
-</tbody>
-</table>
+	<%= render 'beers_list' %>
 </div>
 
 <br>
