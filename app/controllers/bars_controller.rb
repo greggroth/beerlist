@@ -28,8 +28,11 @@ class BarsController < ApplicationController
     
     if user_signed_in?
 		  @user_bars = current_user.bars.find(:all)
+		else
+		  @user_bars = []
 	  end
 	  
+	  logger.debug(@bars)
     # respond_to do |format|
     #   format.js
     #   format.html

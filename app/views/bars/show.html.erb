@@ -19,6 +19,7 @@
 </div>
 
 <h3> Pouring <%= pluralize(@bar.beers.count, "beer") %> </h3> <br />
+<%= user_signed_in? ? link_to("Add a new listing", new_beer_item_path(:beer_item => {:bar_id => @bar.id})) : "" %>
 
 <div>
 	<%= form_tag bar_path(@bar), :method => :get, :remote => true do %>
@@ -29,8 +30,14 @@
 	<% end %>
 </div>
 
-<div id="beer_item_list">
-	<%= render "bar_beer_items" %>
+<div id="beer_item_list" class="itemlist">
+	<% unless @recent_beer_items.empty? %>
+		<h2>Added in the last week</h2>
+		<%= render :partial => "items_list", :locals => { :items => @recent_beer_items }%>
+		<br />
+	<% end %>
+	<h2>All Beers</h2>
+	<%= render :partial => "items_list", :locals => { :items => @beer_items }%>
 </div>
 
 <div class="greenLine"></div>

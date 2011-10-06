@@ -19,7 +19,7 @@ end
 
 
 def new
-  @beer_item = BeerItem.new
+  @beer_item = BeerItem.new(params[:beer_item])
 end
    
 

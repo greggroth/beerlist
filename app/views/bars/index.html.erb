@@ -27,9 +27,7 @@
 <% end %>
 
 <br style="clear:both">
-<p id="found_count" class="search_results_found" style="display:none;">
-	Found <%= pluralize(@bars.count, 'bar') %>
-</p>
+<p id="found_count" class="search_results_found"></p>
 
 
 <p>Hint:  Click on a row to view the beer list for a bar!</p>
@@ -37,7 +35,17 @@
 <div class="greenLine"></div>
 
 <div id="bar_list">
-	<%= render 'list' %>
+	<% unless @user_bars.empty? %>
+		<h2 id="followingBars-toggleButton">Following</h2>
+		<%= render :partial => 'list_of_bars', :locals => { :bars => @user_bars } %>
+	<% end %>
+	<h2 id="allBars-toggleButton">All Bars</h2>
+	<br>
+	<% unless user_signed_in? %>
+		<p><%= link_to "log in", new_user_session_path %> or <%= link_to "create", new_user_registration_path %> an account to follow your favorite bars</p>
+	<% end %>
+	<br />
+	<%= render :partial => 'list_of_bars', :locals => { :bars => @bars } %>
 </div>
 
 <%= link_to 'New Bar', new_bar_path %>

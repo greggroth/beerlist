@@ -9,25 +9,25 @@ FactoryGirl.define do
   factory :bar do
     sequence (:name){ |n| "bar_#{n}" }
     sequence (:address) { |n| "#{n}123 Running Ln"}
-    zip Forgery::Address.zip
-    state Forgery::Address.state_abbrev
-    city Forgery::Address.city
+    zip {Forgery::Address.zip}
+    state {Forgery::Address.state_abbrev}
+    city {Forgery::Address.city}
     url "http://www.test.com/"
   end
   
   factory :beer do
     sequence (:name){ |n| "beer_#{n}" }
-    abv Forgery::Basic.number
+    abv {Forgery::Basic.number}
     association :brewery
     association :beer_style
   end
   
   factory :brewery do
     sequence (:name){ |n| "brewery_#{n}" }
-    address Forgery::Address.street_address
-    zip Forgery::Address.zip
-    state Forgery::Address.state_abbrev
-    city Forgery::Address.city
+    address {Forgery::Address.street_address}
+    zip {Forgery::Address.zip}
+    state {Forgery::Address.state_abbrev}
+    city {Forgery::Address.city}
     url "http://www.test.com/"
   end
   
@@ -40,8 +40,8 @@ FactoryGirl.define do
     association :beer
     association :bar
     association :user
-    price Forgery::Monetary.money
-    volume Forgery::Basic.number
+    price {Forgery::Monetary.money}
+    volume {Forgery::Basic.number}
     volunit 'oz'
     pouring 'draught'
   end
