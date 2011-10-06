@@ -1,5 +1,5 @@
 $("#brewery_list_index").html("<%= escape_javascript(render('brewery_list')) %>");
 Application.format_expandable_itemlist('.expandable_itemlist');
-$("#brewery-pagination").html("<%= escape_javascript(paginate(@breweries, :remote => true).to_s) %>");
+$("#brewery-pagination").html("<%= escape_javascript(paginate(@breweries).to_s) %>");
 $("#found_count").html("Found <%= escape_javascript(pluralize(@breweries.count, 'brewery')) %>");
 $(".search_results_found").show();
