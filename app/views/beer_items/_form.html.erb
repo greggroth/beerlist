@@ -7,7 +7,7 @@
 
   <div class="field">
      <%= f.label "Beer Name" %><br />
-     <%= collection_select :beer_item, :beer_id, Beer.order('name ASC'), :id, :name, {:include_blank => 'Please Select'} %>
+     <%= grouped_collection_select :beer_item, :beer_id, Brewery.order('name ASC'), :beers, :name, :id, :name %>
   </div>
  
   <div class="field">
