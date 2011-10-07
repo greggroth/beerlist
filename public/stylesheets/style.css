@@ -88,6 +88,11 @@ a.no_hover_background {
   margin-right: 2px;
   font-size: 11px; 
 }
+#user_bar div#site-search-bar {
+	float: right;
+	margin-top: 8px;
+	margin-right: 10px;
+}
 .greenLine {
   clear: both;
   padding: 5px; 

@@ -1,0 +1,12 @@
+<h1>Search Results</h1>
+
+<table>
+	<tbody>
+	<% @results.each do |r| %>
+		<tr>
+			<td><%= r.class %></td>
+			<td><%= link_to r.name, r %></td>
+		</tr>
+	<% end %>
+	</tbody>
+</table>
