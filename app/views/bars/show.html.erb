@@ -31,29 +31,15 @@
 </div>
 
 <div id="beer_item_list" class="itemlist">
-	<% unless @recent_beer_items.empty? %>
+	<!-- <% unless @recent_beer_items.empty? %>
 		<h2>Added in the last week</h2>
 		<%= render :partial => "items_list", :locals => { :items => @recent_beer_items }%>
 		<br />
 	<% end %>
 	<h2>All Beers</h2>
-	<%= render :partial => "items_list", :locals => { :items => @beer_items }%>
+	<%= render :partial => "items_list", :locals => { :items => @beer_items }%> -->
+	<%= render "items_by_style" %>
 </div>
-
-<div class="greenLine"></div>
-
-
-
-<!-- <% if @bar.description.present? %>
-	<p>
-		<b>Description:</b>
-		<%= @bar.description %>
-	</p>
-<% end %> -->
-
-<!--  <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@bar.latitude}%2C#{@bar.longitude}" %>
--->
-
 
 <br>
 <% if @bar.has_permission? current_user %>

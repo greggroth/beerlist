@@ -1,0 +1,5 @@
+<% @styles_grouped.each do |s| %>
+	<h1><%= s[0].nil? ? "Nothin" : s[0].name %></h1>
+	<br />
+	<%= render :partial => "items_list", :locals => { :items => s[1] } %>
+<% end %>

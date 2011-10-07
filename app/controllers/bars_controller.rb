@@ -42,7 +42,7 @@ class BarsController < ApplicationController
 		  @user_bars = []
 	  end
 	  
-	  logger.debug(@bars)
+	  
     # respond_to do |format|
     #   format.js
     #   format.html
@@ -54,27 +54,7 @@ class BarsController < ApplicationController
   # GET /bars/1.xml
   def show
     @bar = Bar.find(params[:id])
-  
-  	# @beer_items = BeerItem.alphabetical.where("bar_id = ?", params[:id])
-	
-    # if params[:sort].nil?
-    #   unless params[:search_by_pouring].nil?
-    #     @beer_items = Bar.find(:all, :include => [:beer,:beer_items], :conditions => ["pouring = ?", params[:search_by_pouring]], :order => "price ASC")
-    #     else
-    #       @beer_items = BeerItem.find(:all, :include => [:bar, :beer], :conditions => ["bar_id = ?", params[:id]], :order => "price ASC" )
-    #     end
-    #   else
-    #     if params[:sort] == "abd" && params[:search_by_pouring].nil?  # have to sort using a different method
-    #       hold = BeerItem.find(:all, :include => [:bar, :beer], :conditions => ["bar_id = ?", params[:id]])
-    #       if params[:direction] == "asc"
-    #         @beer_items = hold.sort_by { |e| e.abd }
-    #       else  #desc
-    #         @beer_items = hold.sort_by { |e| -e.abd }
-    #       end
-    #     else
-    #       @beer_items = BeerItem.find(:all, :include => [:bar, :beer], :conditions => ["bar_id = ?", params[:id]], :order => [sort_column + " " + sort_direction] )
-    #     end
-    #   end
+    @styles_grouped = BeerItem.find(:all, :include => :beer, :conditions => ["bar_id = ?", @bar.id]).group_by { |f| f.beer.beer_style }
   
     case params[:sort]
     when nil
