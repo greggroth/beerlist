@@ -41,13 +41,6 @@ class BarsController < ApplicationController
 		else
 		  @user_bars = []
 	  end
-	  
-	  logger.debug(@bars)
-    # respond_to do |format|
-    #   format.js
-    #   format.html
-    #   format.iphone { render :layout => false }
-    # end
   end
 
   # GET /bars/1
