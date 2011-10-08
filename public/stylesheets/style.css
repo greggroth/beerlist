@@ -127,7 +127,7 @@ a.no_hover_background {
 }
 #main table {
   width: 100%;
-  margin: 0;
+  margin: 0px;
   border-collapse: collapse;
   empty-cells: show; 
 }
@@ -239,12 +239,18 @@ a.no_hover_background {
   font-size: 20px; 
 }
 #main .notice {
-  color: green;
-  text-align: left; 
+  color: black;
+  text-align: center;
+ 	background: #F0F0F0 ;
+	border-radius: 9px;
+	margin: 0px 20%;
 }
 #main .alert {
   color: red;
-  text-align: left; 
+  text-align: center; 
+ 	background: #F0F0F0 ;
+	border-radius: 9px;
+	margin: 0px 20%;
 }
 #main #announcement {
   text-align: center;
