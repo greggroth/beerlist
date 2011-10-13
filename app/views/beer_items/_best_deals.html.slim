@@ -1,0 +1,27 @@
+table{id="sorted_beer_item_list" class="itemlist"}
+	thead
+		tr
+			th{width=200}	Name
+			th{width=230}	Bar
+			th{width=150} Style
+	    th{width=120} Pouring
+	    th{width=100 class="abd-table-heading"}	ABD
+	    th{width=80} Price
+	tbody
+		- for deal in @best_deals do
+			tr
+				td = link_to(deal.beer.name, deal.beer)
+		    td = link_to(deal.bar.name, deal.bar)
+				td = deal.beer.try(:beer_style) ? deal.beer.beer_style.name : ""
+		    td waste
+				td = sprintf("%.3f",f.abd)
+				td = number_to_currency(f.price)
+div
+	#{deal.pouring}
+div
+	#{number_to_human(deal.volume, :units => {:unit => deal.volunit})}
+div	
+	- unless (deal.volume.nil? || deal.volunit.nil?)
+		td Test
+	- else
+		td = f.pouring
