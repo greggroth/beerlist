@@ -1,0 +1,38 @@
+table id="expanding_followed_bars_list" class="expandable_itemlist"
+  thead
+    tr align="left"
+      th width=20
+      th width=200  Name
+      th width=250  Address
+      th width=100  Zip
+      th width=60
+      th width=60
+  tbody
+    - bars.each do |f|
+      tr id="following-#{f.id}" data-item-url="bars/#{f.id}"
+        td
+          div class="follow_form"
+            - if user_signed_in?
+              - if f.is_followed? current_user
+                = form_for current_user.bar_followings.find_by_bar_id(f.id), :html => { :method => :delete }, :remote => true do |h|
+                  div class="following"
+                    = image_submit_tag "full_circle.png"
+              - else
+                = form_for current_user.bar_followings.build(:bar_id => f.id), :remote => true do |g|
+                  div
+                    = g.hidden_field :bar_id
+                    div class="following"
+                      = image_submit_tag "empty_circle.png"
+        td = link_to f.name, f 
+        td = f.address
+        td = f.zip
+        - if f.has_permission?(current_user)
+          span class="actions"
+            td = link_to 'Edit', f, :action => :edit
+            td = link_to 'Destroy', f, :confirm => 'Are you sure?', :method => :delete
+        - else
+          td
+          td
+      tr
+        td colspan="6" id="itemdesc-following-#{f.id}" class="itemdesc"
+          div
