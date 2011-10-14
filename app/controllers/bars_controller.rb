@@ -5,27 +5,6 @@ class BarsController < ApplicationController
   # GET /bars
   # GET /bars.xml
   def index
-    
-    ##  There has to be a better way!
-    # if params[:search].present?
-    #    if params[:zip].present?
-    #      @bars = Bar.near(params[:zip], 50, :order => :distance).search_tank(params[:search])
-    #    else
-    #      @bars = Bar.search_tank(params[:search])
-    #    end
-    #  else
-    #    if params[:zip].present?
-    #      @bars = Bar.near(params[:zip], 50, :order => :distance).page(params[:page]).per(50)
-    #    else
-    #      # @bars = Bar.order("name ASC").
-    #      if iphone_request?
-    #        @bars = Bar.includes(:beers).order("name ASC")
-    #      else
-    #        @bars = Bar.page(params[:page]).per(25)
-    #      end
-    #    end
-    #  end
-    
     if params[:search].present?
       @bars = Bar.search_tank(params[:search])
     else
@@ -43,32 +22,9 @@ class BarsController < ApplicationController
 	  end
   end
 
-  # GET /bars/1
-  # GET /bars/1.xml
   def show
     @bar = Bar.find(params[:id])
-  
-  	# @beer_items = BeerItem.alphabetical.where("bar_id = ?", params[:id])
-	
-    # if params[:sort].nil?
-    #   unless params[:search_by_pouring].nil?
-    #     @beer_items = Bar.find(:all, :include => [:beer,:beer_items], :conditions => ["pouring = ?", params[:search_by_pouring]], :order => "price ASC")
-    #     else
-    #       @beer_items = BeerItem.find(:all, :include => [:bar, :beer], :conditions => ["bar_id = ?", params[:id]], :order => "price ASC" )
-    #     end
-    #   else
-    #     if params[:sort] == "abd" && params[:search_by_pouring].nil?  # have to sort using a different method
-    #       hold = BeerItem.find(:all, :include => [:bar, :beer], :conditions => ["bar_id = ?", params[:id]])
-    #       if params[:direction] == "asc"
-    #         @beer_items = hold.sort_by { |e| e.abd }
-    #       else  #desc
-    #         @beer_items = hold.sort_by { |e| -e.abd }
-    #       end
-    #     else
-    #       @beer_items = BeerItem.find(:all, :include => [:bar, :beer], :conditions => ["bar_id = ?", params[:id]], :order => [sort_column + " " + sort_direction] )
-    #     end
-    #   end
-  
+    
     case params[:sort]
     when nil
       if params[:sort_by_pouring].nil? || params[:sort_by_pouring]=='all' # NIL NIL
@@ -94,31 +50,17 @@ class BarsController < ApplicationController
   	if @bar.latitude.present? && @bar.longitude.present?
   		@json = @bar.to_gmaps4rails
   	end
-	
-    # respond_to do |format|
-    #   format.js
-    #       format.html
-    #       format.iphone { render :layout => false }
-    #     end
   end
 
-  # GET /bars/new
-  # GET /bars/new.xml
   def new
     @bar = Bar.new
   end
 
-  # GET /bars/1/edit
   def edit
     @bar = Bar.find(params[:id])
-
-  # unless @bar.has_permission?(current_user)
-  #   redirect_to(@bar)
-  # end
   end
 
-  # POST /bars
-  # POST /bars.xml
+
   def create
     @bar = Bar.new(params[:bar])
 
@@ -135,8 +77,6 @@ class BarsController < ApplicationController
     end
   end
 
-  # PUT /bars/1
-  # PUT /bars/1.xml
   def update
     @bar = Bar.find(params[:id])
 
@@ -153,8 +93,6 @@ class BarsController < ApplicationController
     end
   end
 
-  # DELETE /bars/1
-  # DELETE /bars/1.xml
   def destroy
     @bar = Bar.find(params[:id])
     
