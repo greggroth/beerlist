@@ -1,0 +1,31 @@
+= form_for(@brewery) do |f|
+  - if @brewery.errors.any?
+    div id="error_explanation"
+      p = error_messages_for @brewery, :header_message => "Whoops!", :message => "Please address the following:"
+  
+  div class="field"
+    = f.label :name
+    br
+    = f.text_field :name
+  div class="field"
+    = f.label :address
+    br
+    = f.text_field :address
+  div class="field"
+    = f.label :city
+    br
+    = f.text_field :city
+  div class="field"
+    = f.label :state
+    br
+    = f.text_field :state
+  div class="field"
+    = f.label :zip
+    br
+    = f.text_field :zip
+  div class="field"
+    = f.label :url
+    br
+    = f.text_field :url
+  div class="actions"
+    = f.submit

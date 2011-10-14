@@ -1,0 +1,23 @@
+h1  Breweries
+
+= form_tag breweries_path, :method => :get, :remote => true do
+  p
+    = text_field_tag :search, params[:search], :size => 20
+    = submit_tag "Search", :name => nil, :class => "submit-search-button"
+    div
+      = link_to('Clear Search', beers_path, :class => "search_results_found", :style => "display:none;")
+
+p id="found_count" class="search_results_found"
+
+br
+p Hint:  Click on a row to view the beer list for a bar!
+
+div id="brewery_list_index"
+  = render 'brewery_list'
+br
+
+div align="left"
+  = link_to 'Add Brewery', new_brewery_path 
+br
+div id="brewery-pagination"
+  = paginate @breweries, :remote => true

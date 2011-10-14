@@ -1,0 +1,16 @@
+doctype html
+html
+  = render :partial => "layouts/doc_header"
+  body
+    = render :partial => "layouts/page_header"
+    div id="wrap"
+      div id="main"
+        - if iphone_user_agent?
+          div id="iphone-message"
+            Using a mobile browser?
+            a href="http://m.atlbeerlist.com/" Use the optimized version of the site
+        = content_tag(:p, raw(notice), :class => 'notice') if notice.present?
+        = content_tag(:p, alert, :class => 'alert') if alert.present?
+        br
+        = yield
+      = render :partial => "layouts/footer"

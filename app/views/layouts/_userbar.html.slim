@@ -1,0 +1,21 @@
+div id="user_bar"
+  ul
+    li = link_to "Home", root_url
+    li -
+    li = link_to "Beers", beers_path
+    li -
+    li = link_to "Bars", bars_path
+    li -
+    li = link_to "Breweries", breweries_path
+    li |
+    - if user_signed_in?
+      li Welcome, #{current_user.email} (#{link_to "Logout", destroy_user_session_path, :id=>'logout', :method => :delete})
+    - else
+      li = link_to "Signup", new_user_registration_path
+      li |
+      li = link_to "Login", new_user_session_path
+  div id="site-search-bar"
+    = form_tag search_results_path, :method => :get do 
+      p
+        = text_field_tag :q, params[:q], :size => 20, :placeholder => "Search the site...", :id => "site_search_box"
+        = submit_tag "Search", :name => nil, :class => "submit-search-button"
