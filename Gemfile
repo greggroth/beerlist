@@ -7,7 +7,7 @@ gem 'rails', '3.1.0'
 
 gem 'sqlite3'
 gem 'geocoder'
-gem 'slim'
+gem "slim", "~> 1.0.3"
 gem 'gmaps4rails'
 gem 'coffee-script'
 gem 'therubyracer', :require => false
@@ -17,8 +17,6 @@ gem 'sass'
 gem 'haml'
 gem 'jquery-rails'
 gem 'devise'
-# gem 'sunspot_rails'
-# gem 'indextank'
 gem 'tanker'
 gem 'kaminari'
 gem 'airbrake'
