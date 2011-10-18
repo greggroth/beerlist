@@ -4,7 +4,6 @@ window.Application ||= {}
 $(document).ready ->
 	Application.format_normal_itemlist('.itemlist')
 	
-		
 	### Generate Charts for /bar_owner ###
 	$('div.chart').each ->
 		$.jqplot($(this).attr('id'), [$(this).metadata().chartdata], {

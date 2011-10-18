@@ -3,24 +3,15 @@ class BeerTracksController < ApplicationController
     
   def create
     current_user.drinks_it(params[:beer_track])
-    
-    @bar = Bar.find(params[:beer_track][:bar_id])          
-    @beer_item = BeerItem.find(:all, :conditions => ["beer_id = ? AND bar_id = ?", params[:beer_track][:beer_id], params[:beer_track][:bar_id]]).first
-    
-    respond_to do |format|
-  		format.html { redirect_to bar_path(@bar) }
-  		format.js
-  	end
+      
+    @beer_item = BeerItem.find(params[:beer_item_id])
   end
 
   def destroy
     bt = BeerTrack.find(params[:id])
     bt.destroy
-    
-    respond_to do |format|
-  		format.html { redirect_to bar_path(@bar) }
-  		format.js
-  	end
+
+    @beer_item = BeerItem.find(params[:beer_item_id])
   end
   
   

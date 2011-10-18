@@ -1,4 +1,4 @@
-/* DO NOT MODIFY. This file was compiled Tue, 18 Oct 2011 03:57:40 GMT from
+/* DO NOT MODIFY. This file was compiled Tue, 18 Oct 2011 14:43:50 GMT from
  * /Users/Greggory/Programing/beerlist/app/assets/javascripts/script.coffee
  */
 

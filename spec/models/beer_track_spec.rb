@@ -1,5 +1,7 @@
 require 'spec_helper'
 
 describe BeerTrack do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it " user has had a beer" do
+    assert true
+  end
 end

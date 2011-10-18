@@ -34,6 +34,7 @@ GEM
     airbrake (3.0.4)
       activesupport
       builder
+    ajaxful_rating (2.2.9)
     arel (2.2.1)
     barista (1.2.1)
       coffee-script (~> 2.2)
@@ -186,6 +187,7 @@ PLATFORMS
 
 DEPENDENCIES
   airbrake
+  ajaxful_rating
   barista
   capybara
   coffee-rails (~> 3.1.0)

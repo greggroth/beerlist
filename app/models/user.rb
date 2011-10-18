@@ -34,9 +34,7 @@ class User < ActiveRecord::Base
 	end
 	
 	def drinks_it(beer)
-	  logger.debug "drinks_it called"
 	  if beer.has_key?(:beer_id)
-	    logger.debug "and has the key"
 	    b = self.beer_tracks.new beer
 	    b.save
 	  end

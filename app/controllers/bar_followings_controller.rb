@@ -15,7 +15,7 @@ class BarFollowingsController < ApplicationController
     end
   
   	respond_to do |format|
-  		format.html	{ redirect_to bars_path }
+      format.html { redirect_to bars_path }
   		format.js
   	end
   end
@@ -35,7 +35,7 @@ class BarFollowingsController < ApplicationController
     end
   
   	respond_to do |format|
-  		format.html	{ redirect_to bars_path }
+      format.html { redirect_to bars_path }
   		format.js
   	end
   end
