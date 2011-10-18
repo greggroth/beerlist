@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
 	has_many :bar_permissions, :dependent => :destroy
 	has_many :bar_followings, :dependent => :destroy
 	has_many :bars, :through => :bar_followings
+	has_many :beer_tracks, :dependent => :destroy
+	has_many :beers, :through => :beer_tracks
 
 
 	def is_following?(bar)
@@ -25,6 +27,18 @@ class User < ActiveRecord::Base
 
 	def unfollow!(bar)
 		self.bar_followings.find_by_bar_id(bar).destroy
+	end
+	
+	def has_had?(beer)
+	  beers.exists?(beer)
+	end
+	
+	def drunk_it(beer)
+	  self.beers << beer
+	end
+	
+	def didnt_drink_it(beer)
+	 self.beer_tracks.find_by_beer_id(beer).destroy
 	end
 
 	def admin_bars
