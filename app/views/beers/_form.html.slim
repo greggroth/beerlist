@@ -1,4 +1,4 @@
-= form_for(@beer) do |f|
+= form_for(@beer, :html => { :class => "bigform" }) do |f|
   - if @beer.errors.any?
     div id="error_explanation"
       h2 = error_messages_for @beer, :header_message => "Whoops!", :message => "Please address the following:"

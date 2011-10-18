@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111018142124) do
+ActiveRecord::Schema.define(:version => 20111018164640) do
 
   create_table "bar_followings", :force => true do |t|
     t.timestamp "created_at"
@@ -99,6 +99,14 @@ ActiveRecord::Schema.define(:version => 20111018142124) do
     t.date      "birthday"
     t.timestamp "created_at"
     t.timestamp "updated_at"
+  end
+
+  create_table "ratings", :force => true do |t|
+    t.integer  "beer_id"
+    t.integer  "user_id"
+    t.integer  "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "sessions", :force => true do |t|

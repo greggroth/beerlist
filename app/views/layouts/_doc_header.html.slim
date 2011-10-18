@@ -13,6 +13,7 @@ head
   = javascript_include_tag "gmaps4rails/gmaps4rails.mapquest.js"
   = javascript_include_tag "gmaps4rails/gmaps4rails.openlayers.js"
   = javascript_include_tag "script.js"
+  = yield :scripts
   link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'
   = csrf_meta_tag
   javascript:

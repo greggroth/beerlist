@@ -7,6 +7,12 @@ class Beer < ActiveRecord::Base
 	belongs_to :beer_style
 	has_many :beer_items, :dependent => :destroy
 	has_many :bars, :through => :beer_items
+	
+	has_many :beer_tracks
+	has_many :fans, :through => :beer_tracks, :source => :user
+	
+	has_many :ratings
+	has_many :raters, :through => :ratings, :source => :user
   
   has_paper_trail
 
@@ -31,6 +37,10 @@ class Beer < ActiveRecord::Base
     if self.brewery.present?
       self.brewery.name
     end
+  end
+  
+  def average_rating
+    self.ratings.inject(0) { |sum, el| sum + el[:value] }.to_f / self.ratings.size
   end
   
   

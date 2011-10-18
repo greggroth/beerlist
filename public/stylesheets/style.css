@@ -141,7 +141,24 @@ a.no_hover_background {
   display: none;
   float: left; 
 }
-#main form label {
+#main form label.rating {
+	
+	
+}
+
+form.rating_ballot input#rating_submit { display: none; }
+form.rating_ballot input.rating_button { display: none; }
+form.rating_ballot label.rating { cursor: pointer; display: block; height: 25px; width: 25px; float: left; }
+form.rating_ballot label.rating span { display: none; }
+form.rating_ballot label.rating { background-image: url(../images/star.png); }
+form.rating_ballot label.rating.bright { 
+	background: transparent url(../images/star.png) no-repeat scroll 0px -25px; 
+} 
+form.rating_ballot label.rating.glow { 
+	background: transparent url(../images/star.png) no-repeat scroll 0px -50px;
+}
+
+#main form.bigform label {
   width: 150px;
   display: block;
   text-align: right;

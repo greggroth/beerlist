@@ -13,8 +13,12 @@ class User < ActiveRecord::Base
 	has_many :bar_permissions, :dependent => :destroy
 	has_many :bar_followings, :dependent => :destroy
 	has_many :bars, :through => :bar_followings
+	
 	has_many :beer_tracks, :dependent => :destroy
-	has_many :beers, :through => :beer_tracks
+	has_many :had_beers, :through => :beer_tracks, :source => :beer
+	
+	has_many :ratings
+	has_many :rated_beers, :through => :ratings, :source => :beer
 
 
 	def is_following?(bar)
