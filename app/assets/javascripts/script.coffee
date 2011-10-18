@@ -2,17 +2,8 @@ window.Application ||= {}
 
 ### Test If Updates script.js ###
 $(document).ready ->
-	$('.itemlist tbody tr:nth-child(odd)').addClass('zebra')
-	###
-	$('#user_bar a').hover(  
-		-> 
-			$(this).animate({paddingBottom: '+=15px'}, 200)
-			return
-		-> 
-			$(this).animate({paddingBottom: '-=15px'}, 200)
-			return
-		)
-	###
+	Application.format_normal_itemlist('.itemlist')
+	
 		
 	### Generate Charts for /bar_owner ###
 	$('div.chart').each ->
@@ -21,20 +12,6 @@ $(document).ready ->
 			axes:{xaxis:{renderer:$.jqplot.DateAxisRenderer}},
 			series:[{lineWidth: 4, showMarker: false}]
 			})
-
-	###  Manager_list ###
-	###
-	$('.manager_list:not(.beeritems)').find('tr:nth-child(3n+1)').addClass('odd').hover (e) ->
-		$(e.target).closest('tr').toggleClass("active")
-	$('.manager_list').find('tbody tr.heading:odd').addClass('zebra')
-	
-	$('.manager_list').find('tr:not(.odd)').hide()
-	$('.manager_list').find('tr:first-child').show()
-	$('.manager_list').find('a').click (e) ->
-		e.stopPropagation()
-	$('.manager_list').find('div.follow_form').click (e) ->
-		e.stopPropagation()
-	###
 	
 	###  Expanding Chartlist (some things are also handled in the above secion)  ###
 	$('.manager_list').find('tr.odd').click -> \
@@ -43,7 +20,7 @@ $(document).ready ->
 		
   ###  Detail/Edit Links visible on hover ###
 	$('a.action_link').hide()
-	$('tbody.with-action-links > tr').hover ->
+	$('tbody.with-action-links > tr').live 'hover', () ->
 		$(this).find('a.action_link').toggle()
 		$(this).toggleClass("active")
 				
@@ -129,4 +106,13 @@ Application.format_expandable_itemlist = (x) ->
    	if $(this).closest('tr').next('tr').is(':visible')
 			if $(this).closest('tr').next('tr').find('div.itemlist').size()==0
    			$('#itemdesc-' + $(this).closest('tr').attr('id')).children('div').css({'border':'solid thin #E8E8E8','border-radius':'10px','padding-left':'5px'}).html('loading...').load($(this).closest('tr').attr('data-item-url') + ' .itemlist')
+	return
+	
+Application.format_normal_itemlist = (x) ->
+	$(x).find('tbody tr:nth-child(odd)').addClass('zebra')
+	return
+	
+Application.reformat_bars_page = (x) ->
+	$(x).find('tbody tr:nth-child(odd)').addClass('zebra')
+	$('a.action_link').hide()
 	return

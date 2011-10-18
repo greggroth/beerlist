@@ -14,19 +14,7 @@ p id="found_count" class="search_results_found"
 p Hint:  Click on a row to view the beer list for a bar!
 
 div id="bar_list"
-  - unless @user_bars.empty?
-    h2 id="followingBars-toggleButton"  Following
-    = render :partial => 'list_of_bars', :locals => { :bars => @user_bars }
-    br
-  h2 id="allBars-toggleButton"  All Bars
-  - unless user_signed_in?
-    p
-      = link_to "log in", new_user_session_path
-      | or
-      = link_to "create", new_user_registration_path 
-      | an account to follow your favorite bars
-  br
-  = render :partial => 'list_of_bars', :locals => { :bars => @bars }
+  = render "bars"
 
 = link_to 'New Bar', new_bar_path
 br

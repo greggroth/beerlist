@@ -29,15 +29,20 @@ class User < ActiveRecord::Base
 		self.bar_followings.find_by_bar_id(bar).destroy
 	end
 	
-	def has_had?(beer)
+	def has_drunk?(beer)
 	  beers.exists?(beer)
 	end
 	
-	def drunk_it(beer)
-	  self.beers << beer
+	def drinks_it(beer)
+	  logger.debug "drinks_it called"
+	  if beer.has_key?(:beer_id)
+	    logger.debug "and has the key"
+	    b = self.beer_tracks.new beer
+	    b.save
+	  end
 	end
 	
-	def didnt_drink_it(beer)
+	def didnt_drink(beer)
 	 self.beer_tracks.find_by_beer_id(beer).destroy
 	end
 

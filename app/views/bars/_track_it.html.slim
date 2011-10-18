@@ -1,0 +1,12 @@
+- if user_signed_in?
+  - if current_user.has_drunk?(item.beer)
+    = form_for current_user.beer_tracks.find_by_beer_id(item.beer.id), :html => { :method => :delete }, :remote => true do |h|
+      div class="beer_tracking"
+        = image_submit_tag "full_circle.png"
+  - else
+    = form_for current_user.beer_tracks.build(:beer_id => item.beer.id, :bar_id => item.bar.id), :remote => true do |g|
+      div
+        = g.hidden_field :bar_id
+        = g.hidden_field :beer_id
+        div class="beer_tracking"
+          = image_submit_tag "empty_circle.png"

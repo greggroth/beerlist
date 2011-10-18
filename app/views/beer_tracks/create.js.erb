@@ -1,0 +1,1 @@
+$("#beer_tracker_form_<%= @beer_item.id %>").html("<%= escape_javascript(render(:partial => 'bars/track_it', :locals => { :item => @beer_item })) %>");

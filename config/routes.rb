@@ -18,6 +18,7 @@ Beerlist::Application.routes.draw do
   # match '/profile/' => "profiles#show", :as => "profile"
   match '/search/' => "search_results#index", :as => "search_results"
   resources :bar_followings, :only => [:create, :destroy]
+  resources :beer_tracks, :only => [:create, :destroy]
   # resource :session, :only => [:new, :create, :destroy]
   #  match '/login' => "sessions#new", :as => "login"
   #  match '/logout' => "sessions#destroy", :as => "logout"

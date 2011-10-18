@@ -1,7 +1,8 @@
 table id="sorted_beer_item_list"
   thead
     tr
-      th width="25%"
+      th width="5%"
+      th width="20%"
         = sortable "beers.name", "Name"
         span class="asc"
       th width="12%"
@@ -22,12 +23,14 @@ table id="sorted_beer_item_list"
   tbody class="with-action-links"
     - items.each do |item|
       tr	
+        td
+          div id="beer_tracker_form_#{item.id}"
+            = render :partial => "track_it", :locals => { :item => item }
         td = link_to item.beer.name, item.beer
         td = number_to_percentage item.beer.abv, :precision => 1
         - unless (item.volume.nil? || item.pouring.nil?)
           td 
-            = number_to_human(item.volume, :units => {:unit => item.volunit})
-            = item.pouring 
+            #{number_to_human(item.volume, :units => {:unit => item.volunit})} #{item.pouring}
         - else
           td = item.pouring
         td = sprintf("%.3f",item.abd) 

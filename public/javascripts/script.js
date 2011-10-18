@@ -1,4 +1,4 @@
-/* DO NOT MODIFY. This file was compiled Fri, 14 Oct 2011 17:59:23 GMT from
+/* DO NOT MODIFY. This file was compiled Tue, 18 Oct 2011 03:57:40 GMT from
  * /Users/Greggory/Programing/beerlist/app/assets/javascripts/script.coffee
  */
 
@@ -6,17 +6,7 @@
   window.Application || (window.Application = {});
   /* Test If Updates script.js */
   $(document).ready(function() {
-    $('.itemlist tbody tr:nth-child(odd)').addClass('zebra');
-    /*
-    	$('#user_bar a').hover(  
-    		-> 
-    			$(this).animate({paddingBottom: '+=15px'}, 200)
-    			return
-    		-> 
-    			$(this).animate({paddingBottom: '-=15px'}, 200)
-    			return
-    		)
-    	*/
+    Application.format_normal_itemlist('.itemlist');
     /* Generate Charts for /bar_owner */
     $('div.chart').each(function() {
       return $.jqplot($(this).attr('id'), [$(this).metadata().chartdata], {
@@ -34,26 +24,13 @@
         ]
       });
     });
-    /*  Manager_list */
-    /*
-    	$('.manager_list:not(.beeritems)').find('tr:nth-child(3n+1)').addClass('odd').hover (e) ->
-    		$(e.target).closest('tr').toggleClass("active")
-    	$('.manager_list').find('tbody tr.heading:odd').addClass('zebra')
-    	
-    	$('.manager_list').find('tr:not(.odd)').hide()
-    	$('.manager_list').find('tr:first-child').show()
-    	$('.manager_list').find('a').click (e) ->
-    		e.stopPropagation()
-    	$('.manager_list').find('div.follow_form').click (e) ->
-    		e.stopPropagation()
-    	*/
     /*  Expanding Chartlist (some things are also handled in the above secion)  */
     $('.manager_list').find('tr.odd').click(function() {
       return $(this).nextAll('tr.chart:first, tr.beeritems:first').toggle($(this).find('.arrow').toggleClass('up'));
     });
     /*  Detail/Edit Links visible on hover */
     $('a.action_link').hide();
-    $('tbody.with-action-links > tr').hover(function() {
+    $('tbody.with-action-links > tr').live('hover', function() {
       $(this).find('a.action_link').toggle();
       return $(this).toggleClass("active");
     });
@@ -145,5 +122,12 @@
         }
       }
     });
+  };
+  Application.format_normal_itemlist = function(x) {
+    $(x).find('tbody tr:nth-child(odd)').addClass('zebra');
+  };
+  Application.reformat_bars_page = function(x) {
+    $(x).find('tbody tr:nth-child(odd)').addClass('zebra');
+    $('a.action_link').hide();
   };
 }).call(this);
