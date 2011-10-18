@@ -20,7 +20,6 @@ gem 'devise'
 gem 'tanker'
 gem 'kaminari'
 gem 'airbrake'
-gem 'ajaxful_rating'
 
 group :test, :development do
   gem 'rspec-rails'
