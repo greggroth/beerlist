@@ -8,6 +8,7 @@ class RatingsController < ApplicationController
     @rating.user_id = current_user.id
     @dimension = params[:rating][:dimension]
     
+    
     if @rating.save
       respond_to do |format|
         format.html { redirect_to beer_path(@beer), :notice => "Rated!" }
@@ -20,7 +21,8 @@ class RatingsController < ApplicationController
     @beer = Beer.find(params[:beer_id])
     @dimension = params[:rating][:dimension]
     
-    @rating = @beer.ratings.where(["user_id = ? AND dimension = ?", current_user.id, @dimension]).first
+    @rating = Rating.find(params[:id])
+    # @rating = @beer.ratings.where(["user_id = ? AND dimension = ?", current_user.id, @dimension]).first
 
     
     logger.debug(params[:rating])

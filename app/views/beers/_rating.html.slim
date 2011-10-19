@@ -1,15 +1,13 @@
-= debug rating_ballot(dim)
-= form_for(rating_ballot(dim), :remote => true, :html => { :class => 'rating_ballot' }) do |f|
-    = f.label("value_1", content_tag(:span, '1'), {:class=>"rating", :id=>"1"})
-    = radio_button_tag("rating[value]", 1, current_user_rating(dim) == 1, :class => 'rating_button')
-    = f.label("value_2", content_tag(:span, '2'), {:class=>"rating", :id=>"2"})
-    = radio_button_tag("rating[value]", 2, current_user_rating(dim) == 2, :class => 'rating_button')
-    = f.label("value_3", content_tag(:span, '3'), {:class=>"rating", :id=>"3"})
-    = radio_button_tag("rating[value]", 3, current_user_rating(dim) == 3, :class => 'rating_button')
-    = f.label("value_4", content_tag(:span, '4'), {:class=>"rating", :id=>"4"})
-    = radio_button_tag("rating[value]", 4, current_user_rating(dim) == 4, :class => 'rating_button')
-    = f.label("value_5", content_tag(:span, '5'), {:class=>"rating", :id=>"5"})
-    = radio_button_tag("rating[value]", 5, current_user_rating(dim) == 5, :class => 'rating_button')
-
+= form_for(rating_ballot(dim), :remote => true, :html => { :class => 'rating_ballot', :id => "#{dim}_rating" }) do |f|
+    = label_tag("#{dim}_1", "", :class=>"rating", :id=>"1")
+    = radio_button_tag("rating[value]", 1, current_user_rating(dim) == 1, :class => 'rating_button', :id => "#{dim}_1")
+    = label_tag("#{dim}_2", "", :class=>"rating", :id=>"1")
+    = radio_button_tag("rating[value]", 2, current_user_rating(dim) == 2, :class => 'rating_button', :id => "#{dim}_2")
+    = label_tag("#{dim}_3", "", :class=>"rating", :id=>"1")
+    = radio_button_tag("rating[value]", 3, current_user_rating(dim) == 3, :class => 'rating_button', :id => "#{dim}_3")
+    = label_tag("#{dim}_4", "", :class=>"rating", :id=>"1")
+    = radio_button_tag("rating[value]", 4, current_user_rating(dim) == 4, :class => 'rating_button', :id => "#{dim}_4")
+    = label_tag("#{dim}_5", "", :class=>"rating", :id=>"1")
+    = radio_button_tag("rating[value]", 5, current_user_rating(dim) == 5, :class => 'rating_button', :id => "#{dim}_5")
     = hidden_field_tag("beer_id", @beer.id)
-    = hidden_field_tag("rating[dimension]", dim)
+    = f.hidden_field :dimension

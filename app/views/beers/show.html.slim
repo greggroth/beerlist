@@ -18,9 +18,13 @@ p
   = number_to_percentage @beer.abv, :precision => 1 
 p
   strong Rate:
-p Overall: #{render :partial => "beers/rating", :locals => { :dim => "overall" }}
-p Taste:  #{render :partial => "beers/rating", :locals => { :dim => "taste" }}
-p Smell:  #{render :partial => "beers/rating", :locals => { :dim => "smell" }}
+  div id="ratings_container"
+    - [:overall, :taste, :smell, :color, :feel].each do |category|
+      p 
+        #{category}
+        br
+        #{render :partial => "beers/rating", :locals => { :dim => category }}
+        br
 
 br
 = user_signed_in? ? link_to("Add a new listing", new_beer_item_path(:beer_item => { :beer_id => @beer.id })) : ""

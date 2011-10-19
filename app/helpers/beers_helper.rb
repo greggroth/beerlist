@@ -1,11 +1,11 @@
 module BeersHelper
 
-  def rating_ballot(dim = :overall)
+  def rating_ballot(dim)
     @rating = @beer.ratings.where(["user_id = ? and dimension = ?", current_user.id, dim]).first
     unless @rating.nil?
       @rating
     else
-      current_user.ratings.new :dimension => dim
+      @beer.ratings.new :dimension => dim, :user_id => current_user.id
     end
   end
   

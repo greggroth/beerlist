@@ -1,4 +1,4 @@
-/* DO NOT MODIFY. This file was compiled Wed, 19 Oct 2011 04:21:05 GMT from
+/* DO NOT MODIFY. This file was compiled Wed, 19 Oct 2011 18:46:03 GMT from
  * /Users/Greggory/Programing/beerlist/app/assets/javascripts/rating_ballot.coffee
  */
 
@@ -19,8 +19,7 @@
       return $(this).prevAll().andSelf().addClass("bright");
     });
     $('form.rating_ballot').change(function() {
-      return console.log($(this));
+      return $(this).submit();
     });
-    $(this).submit();
   });
 }).call(this);
