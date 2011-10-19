@@ -1,1 +1,1 @@
-$('table#rating').repalceWith("<%= escape_javascript(render :partial => 'beers/rating' ) %>");
+$('table#rating').replaceWith("<%= escape_javascript(render :partial => 'beers/rating', :locals => { :dim => @dimension} ) %>");

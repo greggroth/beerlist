@@ -1,13 +1,12 @@
-/* DO NOT MODIFY. This file was compiled Tue, 18 Oct 2011 19:05:39 GMT from
+/* DO NOT MODIFY. This file was compiled Wed, 19 Oct 2011 04:21:05 GMT from
  * /Users/Greggory/Programing/beerlist/app/assets/javascripts/rating_ballot.coffee
  */
 
 (function() {
-  $(function() {
+  $('form.rating_ballot').each(function() {
     var checkedId;
-    checkedId = $('form.rating_ballot > input:checked').attr('id');
-    $('form.rating_ballot > label[for=' + checkedId + ']').prevAll().andSelf().addClass('bright');
-    return console.log(checkedId);
+    checkedId = $(this).children('input:checked').attr('id');
+    return $(this).children('label[for=' + checkedId + ']').prevAll().andSelf().addClass('bright');
   });
   $(document).ready(function() {
     $('form.rating_ballot > label').hover((function() {
@@ -16,10 +15,12 @@
       return $(this).siblings().andSelf().removeClass('glow');
     }));
     $('form.rating_ballot > label').click(function() {
-      return $(this).siblings().removeClass("bright")($(this).prevAll().andSelf().addClass("bright"));
+      $(this).siblings().removeClass("bright");
+      return $(this).prevAll().andSelf().addClass("bright");
     });
-    return $('form.rating_ballot').change(function() {
-      return $('form.rating_ballot').submit();
+    $('form.rating_ballot').change(function() {
+      return console.log($(this));
     });
+    $(this).submit();
   });
 }).call(this);

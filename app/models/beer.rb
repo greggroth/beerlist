@@ -39,8 +39,9 @@ class Beer < ActiveRecord::Base
     end
   end
   
-  def average_rating
-    self.ratings.inject(0) { |sum, el| sum + el[:value] }.to_f / self.ratings.size
+  def average_rating(dimension)
+    ratings = self.ratings.find(:all, :conditions => ["dimension = ?", dimension])
+    ratings.inject(0) { |sum, el| sum + el[:value] }.to_f / ratings.size
   end
   
   

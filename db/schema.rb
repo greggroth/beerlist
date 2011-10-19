@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111018164640) do
+ActiveRecord::Schema.define(:version => 20111019022334) do
 
   create_table "bar_followings", :force => true do |t|
     t.timestamp "created_at"
@@ -107,6 +107,7 @@ ActiveRecord::Schema.define(:version => 20111018164640) do
     t.integer  "value"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "dimension"
   end
 
   create_table "sessions", :force => true do |t|
