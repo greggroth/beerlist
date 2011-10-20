@@ -7,9 +7,8 @@ def index
   unless params[:search_by_pouring].nil?
     @best_deals = BeerItem.find(:all, :include => [:beer,:bar], :conditions => ["pouring = ?", params[:search_by_pouring]], :order => [sort_column + " " + sort_direction], :limit => 50)
   else
-    # @beer_items = BeerItem.find(:all, :include => [:beer,:bar], :order => [sort_column + " " + sort_direction], :limit => 25)
     @best_deals = BeerItem.top_deals
-  end
+  end  
 end
 
 
@@ -30,11 +29,9 @@ def create
      if @beer_item.save
 	    format.html { redirect_to(beer_items_path, :notice => "Beer listing added #{undo_link}") }
 	    format.iphone { redirect_to(@beer_item) }
-    	format.xml { render :xml => @beer_item, :status => :created, :location => @beer_item }
      else
 	    format.html { render :action => "new" }
 	    format.iphone { render :action => "new" }
-    	format.xml { render :xml => @beer_item.errors, :status => :unprocessable_entity }
      end
    end
 end
@@ -52,11 +49,9 @@ def update
   	if @beer_item.update_attributes(params[:beer_item])
   	  format.html { redirect_to(@beer_item, :notice => "Beer listing updated #{undo_link}") }
   	  format.iphone { redirect_to(@beer_item) }
-  	  format.xml { head :ok }
   	else
   	  format.html { render :action => "edit" }
   	  format.iphone { render :action => "edit" }
-  	  format.xml { render :xml => @article.errors, :status => :unprocessable_entry }
   	end
   end
 end
@@ -70,7 +65,6 @@ def destroy
   respond_to do |format|
     format.html { redirect_to(beer_items_path, :notice => "Beer listing removed #{undo_link}") }
     format.iphone { redirect_to(@bar) }
-    format.xml { head :ok }
   end
 end
 
