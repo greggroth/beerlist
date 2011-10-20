@@ -7,8 +7,7 @@ html
       div id="main"
         - if iphone_user_agent?
           div id="iphone-message"
-            Using a mobile browser?
-            a href="http://m.atlbeerlist.com/" Use the optimized version of the site
+            | Using a mobile browser?  #{link_to "Use the optimized version of the site", "http://m.atlbeerlist.com/"}
         = content_tag(:p, raw(notice), :class => 'notice') if notice.present?
         = content_tag(:p, alert, :class => 'alert') if alert.present?
         br
