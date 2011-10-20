@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  before_filter :redirect_iphone_to_m
   before_filter :adjust_format_for_iphone
   # before_filter :iphone_login_required
   
@@ -13,10 +14,16 @@ class ApplicationController < ActionController::Base
   		  redirect_to new_user_session_path unless user_logged_in?
   		end
   	end
+  	
+  	def redirect_iphone_to_m
+  	  if request.subdomains.first == "iphone"
+  	    redirect_to "http://m.atlbeerlist.com/", :status => 301
+  	  end
+	  end
 	
 	  def iphone_request?
 	    logger.debug(request.subdomains.first)
-  		return (request.subdomains.first == "iphone" || params[:format] == "iphone" || request.subdomains.first == "m")
+  		return (request.subdomains.first == "m")
   	end
 
   protected

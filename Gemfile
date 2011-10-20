@@ -7,7 +7,7 @@ gem 'rails', '3.1.0'
 
 gem 'sqlite3'
 gem 'geocoder'
-gem 'slim'
+gem "slim", "~> 1.0.3"
 gem 'gmaps4rails'
 gem 'coffee-script'
 gem 'therubyracer', :require => false
@@ -17,15 +17,17 @@ gem 'sass'
 gem 'haml'
 gem 'jquery-rails'
 gem 'devise'
-# gem 'sunspot_rails'
-# gem 'indextank'
 gem 'tanker'
 gem 'kaminari'
 gem 'airbrake'
 
-gem 'rspec-rails', :group => [:test, :development]
+group :test, :development do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'forgery', " ~> 0.5.0"
+end
+
 group :test do
-	gem 'factory_girl_rails'
 	gem 'capybara'
 	gem 'guard-rspec'
 	gem 'launchy'

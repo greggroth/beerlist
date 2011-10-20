@@ -11,11 +11,11 @@
 
   <div class="field">
 	<%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+  <%= f.password_field :password, :id => "user_password" %></div>
 
   <div class="field">
 	<%= f.label "confirm Password" %><br />
-  <%= f.password_field :password_confirmation %></div>
+  <%= f.password_field :password_confirmation, :id => "user_confirm_password" %></div>
 
   <div class="actions">
 	<%= f.submit "Sign up" %></div>

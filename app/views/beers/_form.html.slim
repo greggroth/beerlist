@@ -1,0 +1,26 @@
+= form_for(@beer) do |f|
+  - if @beer.errors.any?
+    div id="error_explanation"
+      h2 = error_messages_for @beer, :header_message => "Whoops!", :message => "Please address the following:"
+  div class="field"
+    = f.label :name
+    br
+    = f.text_field :name
+  div class="field"
+    = f.label "Brewery Name"
+    br
+    = collection_select :beer, :brewery_id, Brewery.order('name ASC'), :id, :name, {:include_blank => 'Please Select'}
+  div class="field"
+    = f.label "Style"
+    br
+    = collection_select :beer, :beer_style_id, BeerStyle.order('name ASC'), :id, :name, {:include_blank => 'Please Select'}
+  div class="field"
+    = f.label 'ABV'
+    br
+    = f.text_field :abv
+  div class="field"
+    = f.label :description
+    br
+    = f.text_area :description
+  div class="actions"
+    = f.submit

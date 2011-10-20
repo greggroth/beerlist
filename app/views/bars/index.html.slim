@@ -1,0 +1,34 @@
+h1  Bars
+
+= form_tag bars_path, :method => :get, :remote => true do
+  p
+    = text_field_tag :search, params[:search], :size => 20
+    = submit_tag "Search", :name => nil, :class => "submit-search-button"
+
+    = link_to('Clear Search', bars_path, :class => "search_results_found", :style => "display:none;")
+
+br style="clear:both"
+
+p id="found_count" class="search_results_found"
+
+p Hint:  Click on a row to view the beer list for a bar!
+
+div id="bar_list"
+  - unless @user_bars.empty?
+    h2 id="followingBars-toggleButton"  Following
+    = render :partial => 'list_of_bars', :locals => { :bars => @user_bars }
+    br
+  h2 id="allBars-toggleButton"  All Bars
+  - unless user_signed_in?
+    p
+      = link_to "log in", new_user_session_path
+      | or
+      = link_to "create", new_user_registration_path 
+      | an account to follow your favorite bars
+  br
+  = render :partial => 'list_of_bars', :locals => { :bars => @bars }
+
+= link_to 'New Bar', new_bar_path
+br
+div id="bar-pagination"
+  = paginate @bars, :remote => true

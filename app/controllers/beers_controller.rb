@@ -15,13 +15,7 @@ class BeersController < ApplicationController
       end
     end
     
-    logger.debug "Hello Index!"
-    
-    # respond_to do |format|
-    #    format.js
-    #       format.html
-    #       format.iphone { render :layout => false }
-    #     end
+    logger.debug(@beers)
   end
 
   # GET /beers/1
@@ -53,7 +47,7 @@ class BeersController < ApplicationController
   # GET /beers/new
   # GET /beers/new.xml
   def new
-    @beer = Beer.new
+    @beer = Beer.new(params[:beer])
   end
 
   # GET /beers/1/edit

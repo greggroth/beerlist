@@ -63,19 +63,22 @@ class BeerItem < ActiveRecord::Base
   end
     
   def self.top_deals
-    hold = BeerItem.find(:all, :include => [:bar, :beer])
-    ordered = hold.sort_by { |e| -e.abd }            #  put things in order by abd
+    all_items = BeerItem.find(:all, :include => [:bar, :beer])
+    ordered = all_items.sort_by { |e| -e.abd }            #  put things in order by abd
     beer_id_check = []  #  <-- preallocating:  a hard habit to break after using matlab for so long  
     results = []
-
+    
     i = 0
-    until results.count == 20   # find the first 20 unique items
+    
+    while results.count <= [20, ordered.count].min   # find the first 20 unique items
+      break if ordered.at(i).nil?
       unless beer_id_check.include? ordered.at(i).beer_id  #  if the beer_id hasn't already been used
         results << ordered.at(i)                           #  then add it to the results
         beer_id_check << ordered.at(i).beer_id             #  and keep track of the beer_id to check against
       end
       i += 1
     end
+    
     return results
   end
 end

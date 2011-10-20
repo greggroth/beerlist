@@ -1,0 +1,26 @@
+table id="expanding_brewery_list" class="expandable_itemlist"
+  thead
+    tr align="left"
+      th width=250  Name
+      th width=250  Location
+      th width=100  Beers
+      th width=50
+      th width=50
+  tbody
+    - for brewery in @breweries do
+      tr id=brewery.id data-item-url="breweries/#{brewery.id}"
+        td = link_to brewery.name, brewery
+        - if brewery.citystate
+          td = brewery.citystate
+        - else
+          td
+        td = brewery.beers.count
+        - if user_signed_in? && current_user.id == 1
+          td = link_to 'Edit', edit_brewery_path(brewery), :class => "action_link"
+          td = link_to 'Destroy', brewery, :method => :delete, :class => "action_link"
+        - else
+          td
+          td
+      tr
+        td colspan="4" id="itemdesc-#{brewery.id}" class="itemdesc"
+          div

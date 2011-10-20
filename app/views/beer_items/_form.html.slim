@@ -1,0 +1,35 @@
+= form_for(@beer_item) do |f|
+  - if @beer_item.errors.any?
+    div id="error_explanation"
+      h2	= error_messages_for @beer_item, :header_message => "Whoops!", :message => "Please address the following:"
+
+  div class="field"
+    = f.label "Beer Name"
+    br
+    = grouped_collection_select :beer_item, :beer_id, Brewery.order('name ASC'), :beers, :name, :id, :name
+
+  div class="field"
+    = f.label "Bar Name"
+    br
+    = collection_select :beer_item, :bar_id, Bar.order('name ASC'), :id, :name, {:include_blank => 'Please Select'}
+
+  div class="field"
+    = f.label :volume
+    br
+    = f.text_field :volume
+    = select :beer_item, :volunit, options_for_select([["oz","oz"],["ml","ml"],["cl","cl"]],@beer_item.volunit)
+  
+  div class="field"
+    = f.label :pouring
+    br
+    = select "beer_item", "pouring", options_for_select([["draught","draught"],["bottle","bottle"],["can","can"],["pitcher", "pitcher"],["cask pour","cask pour"]], @beer_item.pouring)
+
+  div id="beer_item_pouring_notice" Note: a standard pitcher is 64 oz
+
+  div class="field"
+    = f.label :price 
+    br
+    = f.text_field :price
+
+  div class="actions"
+    = submit_or_cancel f, "Submit"

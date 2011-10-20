@@ -1,0 +1,28 @@
+h1  Details
+p
+  strong  Beer:  
+  = @beer_item.beer.name
+
+p
+  strong  Bar:  
+  = @beer_item.bar.name
+
+p
+  strong  Pouring:  
+  = number_to_human(@beer_item.volume, :units => {:unit => @beer_item.volunit})
+  = @beer_item.pouring
+
+p
+  strong  Price:  
+  = number_to_currency(@beer_item.price)
+
+p class="abd-info-needed"  
+  strong  Alcohol by Dollar:  
+  = sprintf("%.3f",@beer_item.abd)
+
+br
+
+div
+  #{link_to 'Edit', edit_beer_item_path(@beer_item)} | #{link_to 'Destroy', @beer_item, :method => :delete}
+br
+= link_to 'Back', beer_items_path

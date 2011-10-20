@@ -1,45 +1,48 @@
 FactoryGirl.define do
   factory :user do
-    sequence(:email) { |n| "foo#{n}@example.com" }
-    password "123456"
-    password_confirmation "123456"
+    pw = Forgery::Basic.password
+    sequence (:email){ |n| "user_#{n}@atlbeerlist.com" }
+    password pw
+    password_confirmation pw
   end
   
   factory :bar do
-    sequence(:name)  { |n| "bar#{n}" }
-    address "1234 Flat Shoals Avenue Southeast"
-    zip "30316"
-    state "GA"
-    city "Atlanta"
+    sequence (:name){ |n| "bar_#{n}" }
+    sequence (:address) { |n| "#{n}123 Running Ln"}
+    zip {Forgery::Address.zip}
+    state {Forgery::Address.state_abbrev}
+    city {Forgery::Address.city}
     url "http://www.test.com/"
   end
   
   factory :beer do
-    sequence(:name) { |n| "beer#{n}" }
-    abv '5'
-    brewery_id '1'
+    sequence (:name){ |n| "beer_#{n}" }
+    abv {Forgery::Basic.number}
+    association :brewery
+    association :beer_style
   end
   
   factory :brewery do
-    sequence(:name) { |n| "brewery#{n}" }
-    address "1234 Flat Shoals Avenue Southeast"
-    zip "30316"
-    state "GA"
-    city "Atlanta"
+    sequence (:name){ |n| "brewery_#{n}" }
+    address {Forgery::Address.street_address}
+    zip {Forgery::Address.zip}
+    state {Forgery::Address.state_abbrev}
+    city {Forgery::Address.city}
     url "http://www.test.com/"
   end
   
   factory :beer_style do
-    sequence(:name) { |n| "style#{n}"}
+    sequence (:name){ |n| "style_#{n}" }
     description "test description"
   end
 
   factory :beer_item do
-    # beer_id '1'
-    # bar_id '1'
-    # user_id '1'
-    price '4.00'
-    volume '12'
+    association :beer
+    association :bar
+    association :user
+    price {Forgery::Monetary.money}
+    volume {Forgery::Basic.number}
     volunit 'oz'
+    pouring 'draught'
   end
 end

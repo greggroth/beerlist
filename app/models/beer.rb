@@ -28,7 +28,9 @@ class Beer < ActiveRecord::Base
   end
   
   def brewery_name
-    self.brewery.name
+    if self.brewery.present?
+      self.brewery.name
+    end
   end
   
   

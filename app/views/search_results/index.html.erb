@@ -1,0 +1,13 @@
+<h1><%= pluralize(@results.count, "Result") %> found</h1>
+
+<div class="itemlist">
+<table id="search-results">
+	<tbody>
+	<% @results.each do |r| %>
+		<tr>
+			<td><%= link_to r.name, r %> (<%= r.class %>)</td>
+		</tr>
+	<% end %>
+	</tbody>
+</table>
+</div>

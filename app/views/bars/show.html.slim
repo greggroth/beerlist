@@ -1,0 +1,42 @@
+h1  = @bar.name
+p
+  = @bar.address
+  br
+  = @bar.city
+  = @bar.state 
+  br
+  = @bar.zip
+  br
+  = !@bar.url.nil? ? link_to("Website", @bar.url) : "" 
+
+p id="toggle-map-link"
+  a
+    Show Map
+
+div id="gmap_popup_panel"
+  a id="gmap_popup_panel_close" x  
+  - if @bar.latitude.present? && @bar.longitude.present?
+    = gmaps("map_options" => { "detect_location" => true, "center_on_user" => false, "zoom" => 14, "auto_adjust" => true, "auto_zoom" => false}, "markers" => { "data" => @json })
+
+h3 Pouring #{pluralize(@bar.beers.count, "beer")}
+br
+
+= user_signed_in? ? link_to("Add a new listing", new_beer_item_path(:beer_item => {:bar_id => @bar.id})) : ""
+
+div
+  = form_tag bar_path(@bar), :method => :get, :remote => true do
+    p
+      | View:  
+      = select_tag "sort_by_pouring", options_for_select([["All","all"],["draught","draught"],["bottle","bottle"],["can","can"],["pitcher", "pitcher"],["cask pour","cask pour"]],params[:sort_by_pouring]), :class => "searchable_option", :id => "pouring-select", :onchange => "this.form.submit();"
+
+div id="beer_item_list" class="itemlist"
+  - unless @recent_beer_items.empty?
+    h2  Added in the last week
+    = render :partial => "items_list", :locals => { :items => @recent_beer_items }
+    br
+  h2  All Beers
+  = render :partial => "items_list", :locals => { :items => @beer_items }
+
+br
+div
+  #{link_to 'Edit', edit_bar_path(@bar)}  |  #{link_to 'Back', :back}

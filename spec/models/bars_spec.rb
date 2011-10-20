@@ -12,5 +12,11 @@ describe "Bars", :type => :model do
     b.save!
   end
   
+  it "attempts to duplicate an existing bar" do
+    existing_bar = FactoryGirl.create(:bar)
+    new_bar = Bar.new(existing_bar.attributes)
+    new_bar.should have(1).error_on(:name)
+  end
+  
   
 end

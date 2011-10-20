@@ -1,0 +1,19 @@
+h1  Beers
+
+= form_tag beers_path, :method => :get, :remote => true do
+  p
+    = text_field_tag :search, params[:search], :size => 20
+    = submit_tag "Search", :name => nil, :class => "submit-search-button"
+    div
+      = link_to('Clear Search', beers_path, :class => "search_results_found", :style => "display:none;")
+
+p id="found_count" style="display:none;" class="search_results_found"
+  | Found #{pluralize(@beers.count, 'beer')}
+
+div class="itemlist" id="beer_list_index"
+  = render "beers_list"
+br
+= link_to 'New Beer', new_beer_path
+br
+div id="beer-pagination"
+  = paginate @beers, :remote => true

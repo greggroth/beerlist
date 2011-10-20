@@ -1,3 +1,7 @@
-$("#bar_list").html("<%= escape_javascript(render('list')) %>");
-$("#found_count").html("Found <%= escape_javascript(pluralize(@bars.count, 'bar')) %>");
-$(".search_results_found").show();
+$("#bar_list").html("<%= escape_javascript(render :partial => 'list_of_bars', :locals => { :bars => @bars }) %>");
+Application.format_expandable_itemlist('.expandable_itemlist');
+$("#bar-pagination").html("<%= escape_javascript(paginate(@bars, :remote => true).to_s) %>");
+<% if params[:search].present? %>
+	$("p#found_count").html("Found <%= escape_javascript(pluralize(@bars.count, 'bar')) %>");
+	$(".search_results_found").show();
+<% end %>
