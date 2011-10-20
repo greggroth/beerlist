@@ -7,10 +7,17 @@ html
       div id="main"
         - if iphone_user_agent?
           div id="iphone-message"
-            Using a mobile browser?
-            a href="http://m.atlbeerlist.com/" Use the optimized version of the site
-        = content_tag(:p, raw(notice), :class => 'notice') if notice.present?
-        = content_tag(:p, alert, :class => 'alert') if alert.present?
+            | Using a mobile browser?  #{link_to "Use the optimized version of the site", "http://m.atlbeerlist.com/"}
+        - if notice.present?
+          div class="ui-state-highlight ui-corner-all notice-container" style="margin-top: 20px; padding: 0 .7em;"
+            p
+              span class="ui-icon ui-icon-info" style="float: left; margin-right: 0.3em;"
+              strong #{raw(notice)}
+        - if alert.present?
+          div class="ui-state-error ui-corner-all notice-container" style="padding: 0 .7em;"
+            p
+              span class="ui-icon ui-icon-alert" style="float: left; margin-right: 0.3em;"
+              strong #{alert}
         br
         = yield
       = render :partial => "layouts/footer"

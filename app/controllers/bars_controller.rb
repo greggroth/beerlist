@@ -67,7 +67,7 @@ class BarsController < ApplicationController
 
     respond_to do |format|
       if @bar.save
-        format.html { redirect_to(bars_path, :notice => 'Bar was successfully created.') }
+        format.html { redirect_to(bars_path, :notice => "Bar was successfully created. (#{undo_link})") }
         format.iphone { redirect_to(bars_path, :notice => 'Bar was successfully created.') }
         format.xml  { render :xml => @bar, :status => :created, :location => @bar }
       else
@@ -83,7 +83,7 @@ class BarsController < ApplicationController
 
     respond_to do |format|
       if @bar.update_attributes(params[:bar])
-        format.html { redirect_to(@bar, :notice => 'Bar was successfully updated.') }
+        format.html { redirect_to(@bar, :notice => "Bar was successfully updated. (#{undo_link})") }
         format.iphone { redirect_to(@bar, :notice => 'Bar was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -104,7 +104,7 @@ class BarsController < ApplicationController
     end
 
     respond_to do |format|
-      format.html { redurect_to bars_path }
+      format.html { redirect_to bars_path }
       format.xml  { head :ok }
     end
   end	
@@ -130,6 +130,10 @@ private
 
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] :"desc"
+  end
+  
+  def undo_link
+    view_context.link_to("undo", revert_version_path(@bar.versions.scoped.last), :id => "undo_button", :method => :post)
   end
 
 end

@@ -9,15 +9,18 @@ div class="brewerylink"
 
 p
   strong Being served at #{pluralize(@beer.bars.count, "bar")}
-/ p
-/   strong Description:
-/   = @beer.description 
+
+- if @beer.description.present?
+  p
+    strong Description:  
+    = @beer.description
+
 p
   strong ABV:  
   = number_to_percentage @beer.abv, :precision => 1 
 
 br
-= user_signed_in? ? link_to("Add a new listing", new_beer_item_path(:beer_item => { :beer_id => @beer.id })) : ""
+= user_signed_in? ? link_to("Add a new listing", new_beer_item_path(:beer_item => { :beer_id => @beer.id })) : nil
 
 div class="itemlist"
   = render 'beer_items_list'
