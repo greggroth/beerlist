@@ -59,9 +59,8 @@ class BreweriesController < ApplicationController
 
     respond_to do |format|
       if @brewery.save
-        format.html { redirect_to(breweries_path, :notice => 'Brewery was successfully created.') }
+        format.html { redirect_to(breweries_path, :notice => "Brewery was successfully created. (#{undo_link})") }
         format.iphone { redirect_to(breweries_path, :notice => 'Brewery was successfully created.') }
-        format.xml  { render :xml => @brewery, :status => :created, :location => @brewery }
       else
         format.html { render :action => "new" }
         format.iphone { render :action => "new" }
@@ -77,7 +76,7 @@ class BreweriesController < ApplicationController
 
     respond_to do |format|
       if @brewery.update_attributes(params[:brewery])
-        format.html { redirect_to(@brewery, :notice => 'Brewery was successfully updated.') }
+        format.html { redirect_to(@brewery, :notice => "Brewery was successfully updated. (#{undo_link})") }
         format.iphone { redirect_to(@brewery) }
         format.xml  { head :ok }
       else
@@ -102,6 +101,11 @@ class BreweriesController < ApplicationController
 
   def beer_items(beerid)
 	  BeerItem.where("beer_id = ?", beerid)
+  end
+  
+private
+  def undo_link
+    view_context.link_to("undo", revert_version_path(@brewery.versions.scoped.last), :id => "undo_button", :method => :post)
   end
 
 end
