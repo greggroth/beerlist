@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111019022334) do
+ActiveRecord::Schema.define(:version => 20111021191851) do
 
   create_table "bar_followings", :force => true do |t|
     t.timestamp "created_at"
@@ -67,8 +67,13 @@ ActiveRecord::Schema.define(:version => 20111019022334) do
     t.timestamp "updated_at"
   end
 
-# Could not dump table "beer_tracks" because of following StandardError
-#   Unknown type 'beer_item_id' for column 'integer'
+  create_table "beer_tracks", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "beer_id"
+    t.integer  "bar_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "beers", :force => true do |t|
     t.string    "name"
