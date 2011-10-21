@@ -1,4 +1,4 @@
-/* DO NOT MODIFY. This file was compiled Fri, 21 Oct 2011 18:04:50 GMT from
+/* DO NOT MODIFY. This file was compiled Fri, 21 Oct 2011 18:15:19 GMT from
  * /Users/Greggory/Programing/beerlist/app/assets/javascripts/script.coffee
  */
 
@@ -31,8 +31,10 @@
     /*  Detail/Edit Links visible on hover */
     $('a.action_link').hide();
     $('tbody.with-action-links > tr').live('hover', function() {
-      $(this).find('a.action_link').toggle();
-      return $(this).toggleClass("active");
+      return $(this).find('a.action_link').toggle();
+      /*
+      		$(this).toggleClass("active")
+      		*/
     });
     /*  Up/Down sort arrows */
     $('#sorted_beer_item_list a').click(function() {

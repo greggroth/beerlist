@@ -21,7 +21,9 @@ $(document).ready ->
 	$('a.action_link').hide()
 	$('tbody.with-action-links > tr').live 'hover', () ->
 		$(this).find('a.action_link').toggle()
+		###
 		$(this).toggleClass("active")
+		###
 				
 		
 	###  Up/Down sort arrows ###

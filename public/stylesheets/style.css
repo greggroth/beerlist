@@ -531,7 +531,7 @@ div.rating-popup-border {
 }
 div.rating-popup-shadow {
 	position: fixed;
-	height: 320px;
+	height: 330px;
 	width: 440px;
 	top: 50%;
 	left: 50%;
