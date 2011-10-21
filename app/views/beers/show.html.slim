@@ -9,6 +9,10 @@ h1
 
 div class="brewerylink"
   = link_to @beer.brewery.name, @beer.brewery
+  - if user_signed_in?
+    - if current_user.has_drunk?(@beer)
+      span id="has-had-indicator"
+        strong You&#39;ve had it!
 
 p
   strong Being served at #{pluralize(@beer.bars.count, "bar")}
@@ -20,8 +24,12 @@ p
   strong ABV:  #{number_to_percentage @beer.abv, :precision => 1}
 p
   strong Rate:
-  div id="ratings-container"
-    = render :partial => "ratings_group", :locals => { :beer => @beer }
+  - if user_signed_in?
+    div id="ratings-container"
+      = render :partial => "ratings_group", :locals => { :beer => @beer }
+  - else
+    i 
+      | &nbsp;&nbsp;#{ link_to "Sign up", new_user_registration_path } or #{ link_to "log in", new_user_session_path } to rate beer!
 
 br
 = user_signed_in? ? link_to("Add a new listing", new_beer_item_path(:beer_item => { :beer_id => @beer.id })) : nil

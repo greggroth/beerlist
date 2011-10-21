@@ -547,3 +547,9 @@ span.popup-close-button {
 	display:block;  
 	cursor: pointer;  
 }
+
+span#has-had-indicator {
+  float: right;
+  margin-right: 50px;
+  font-size: 14px;
+}
