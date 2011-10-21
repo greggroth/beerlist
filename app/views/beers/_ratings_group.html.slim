@@ -1,0 +1,2 @@
+- ['overall', 'taste', 'smell', 'color', 'feel'].each do |category|
+  div class="ratings-business"  #{category.titleize}#{beer.average_rating(category).nan? ? nil : " (avg: " + beer.average_rating(category).to_s + ")"}:  #{render :partial => "beers/rating", :locals => { :dim => category, :beer => beer }}

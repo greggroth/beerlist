@@ -11,7 +11,7 @@
       div
         = g.hidden_field :bar_id
         = g.hidden_field :beer_id
-        = hidden_field_tag "beer_item_id", item.beer.id
+        = hidden_field_tag "beer_item_id", item.id
         div class="beer_tracking"
           / = image_submit_tag "empty_circle.png"
           = check_box_tag "beer_tracking", "add", false, :onclick => "$('#beer_tracks_#{item.id}').submit();"

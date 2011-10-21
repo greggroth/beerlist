@@ -1,0 +1,11 @@
+div class="ui-widget-shadow ui-corner-all rating-popup-shadow"
+div class="ui-corner-all rating-popup-border"
+  a id="close-popup"
+    span class="ui-icon ui-icon-circle-close popup-close-button" id="close-popup"
+div class="ui-widget ui-widget-content ui-corner-all rating-popup"
+  h2 Mmmmm, #{item.beer.name}
+  h3 Care to rate it?
+  br
+  br
+  div id="popup-ratings-container"
+    = render :partial => "beers/ratings_group", :locals => { :beer => item.beer }

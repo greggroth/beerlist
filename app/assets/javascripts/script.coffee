@@ -45,6 +45,7 @@ $(document).ready ->
 		
 	$('#gmap_popup_panel_close').click -> 
 		$('#gmap_popup_panel').css('z-index':'-1')
+		
 	
 	### $('#gmap_popup_panel_close').qtip({
 		content: 'Close'

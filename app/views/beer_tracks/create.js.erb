@@ -1,1 +1,2 @@
 $("#beer_tracker_form_<%= @beer_item.id %>").html("<%= escape_javascript(render(:partial => 'bars/track_it', :locals => { :item => @beer_item })) %>");
+$("div#rating-popup-container").html("<%= escape_javascript(render(:partial => "bars/rating_popup", :locals => { :item => @beer_item }))%>");

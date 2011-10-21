@@ -142,7 +142,7 @@ a.no_hover_background {
   float: left; 
 }
 
-#main div#ratings-container {
+#main div#ratings-container, #main div#popup-ratings-container {
   margin-left: 30px;
 }
 
@@ -153,6 +153,11 @@ a.no_hover_background {
 #main div#ratings-container form.rating_ballot { 
   float: right;
   margin-right: 630px;
+  margin-top: -6px !important;
+}
+#main div#popup-ratings-container form.rating_ballot { 
+  float: right;
+  margin-right: 60px;
   margin-top: -6px !important;
 }
 form.rating_ballot input#rating_submit { display: none; }
@@ -501,4 +506,44 @@ div#footer p {
 }
 div#social {
   clear: both;
+}
+div.rating-popup {
+	padding: 18px;
+	position: fixed;
+	height: 240px;
+	width: 350px;
+	top: 50%;
+	left: 50%;
+	margin-top: -180px;
+	margin-left: -230px;
+	background: white;
+}
+div.rating-popup-border {
+	padding: 18px;
+	position: fixed;
+	height: 280px;
+	width: 390px;
+	top: 50%;
+	left: 50%;
+	margin-top: -200px;
+	margin-left: -250px;
+	background: #FFCA43;
+}
+div.rating-popup-shadow {
+	position: fixed;
+	height: 320px;
+	width: 440px;
+	top: 50%;
+	left: 50%;
+	margin-top: -210px;
+	margin-left: -260px;
+}
+
+
+span.popup-close-button {  
+	right:6px;  
+	top:4px;  
+	position:absolute;  
+	display:block;  
+	cursor: pointer;  
 }

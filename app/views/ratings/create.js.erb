@@ -1,1 +1,1 @@
-$("form##{@dimension}_rating").replaceWith("<%= escape_javascript(render :partial => 'beers/rating', :locals => { :dim => @dimension} ) %>");
+$("form##{@dimension}_rating").replaceWith("<%= escape_javascript(render :partial => 'beers/rating', :locals => { :dim => @dimension, :beer => @beer } ) %>");

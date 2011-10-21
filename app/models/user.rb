@@ -34,13 +34,15 @@ class User < ActiveRecord::Base
 	end
 	
 	def has_drunk?(beer)
-	  beers.exists?(beer)
+	  self.had_beers.exists?(beer)
 	end
 	
-	def drinks_it(beer)
-	  if beer.has_key?(:beer_id)
-	    b = self.beer_tracks.new beer
+	def drinks_it(beer_track)
+	  if beer_track.has_key?(:beer_id)
+	    b = self.beer_tracks.new beer_track
 	    b.save
+	  else
+	    return false
 	  end
 	end
 	

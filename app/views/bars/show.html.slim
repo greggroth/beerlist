@@ -4,6 +4,7 @@
   = javascript_include_tag "gmaps4rails/gmaps4rails.bing.js"
   = javascript_include_tag "gmaps4rails/gmaps4rails.mapquest.js"
   = javascript_include_tag "gmaps4rails/gmaps4rails.openlayers.js"
+  = javascript_include_tag "rating_ballot"
 
 h1  = @bar.name
 p
@@ -42,3 +43,5 @@ div id="beer_item_list" class="itemlist"
 br
 div
   #{link_to 'Edit', edit_bar_path(@bar)}  |  #{link_to 'Back', :back}
+  
+div id="rating-popup-container"
