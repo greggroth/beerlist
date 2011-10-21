@@ -29,9 +29,12 @@ table id="sorted_beer_item_list"
           td = item.pouring
         td = sprintf("%.3f",item.abd)
         - if user_signed_in?
-          td = link_to 'Details', item, :class => "action_link"
-          td = link_to 'Edit', edit_beer_item_path(item), :class => "action_link"
-          td = link_to 'Destroy', item, :method => :delete, :class => "action_link"
+          td class="text-align-center"
+            = link_to 'Details', item, :class => "action_link"
+          td class="text-align-center"
+            = link_to 'Edit', edit_beer_item_path(item), :class => "action_link"
+          td class="text-align-center"
+            = link_to 'Destroy', item, :method => :delete, :class => "action_link"
         - else
           td
           td

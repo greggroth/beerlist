@@ -3,15 +3,19 @@ h1  = @brewery.name
 h3  Brewing #{pluralize(@brewery.beers.length, "beer")}
 
 p
-  = @brewery.address
-  br
-  #{@brewery.city} #{@brewery.state}
-  br
-  = @brewery.zip
-  br
-  = !@brewery.url.nil? ? link_to("Website", @brewery.url) : nil
+  - if @brewery.address.present?
+    = @brewery.address
+    br
+  - if @brewery.city.present? or @brewery.state.present?
+    #{@brewery.city} #{@brewery.state}
+    br
+  - if @brewery.zip.present?
+    = @brewery.zip
+    br
+  - unless @brewery.url.nil?
+    = link_to("Website", @brewery.url)
+    br
 
-br
 = user_signed_in? ? link_to("Add a beer", new_beer_path(:beer => { :brewery_id => @brewery.id})) : nil
 
 div class="itemlist"

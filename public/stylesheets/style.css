@@ -553,3 +553,7 @@ span#has-had-indicator {
   margin-right: 50px;
   font-size: 14px;
 }
+
+.text-align-center {
+  text-align: center;
+}

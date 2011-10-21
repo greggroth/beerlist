@@ -1,7 +1,9 @@
+br
 table id="sorted_beer_item_list"
   thead
     tr
-      th width="5%"
+      - if user_signed_in?
+        th width="7%" Had it?
       th width="20%"
         = sortable "beers.name", "Name"
         span class="asc"
@@ -17,15 +19,16 @@ table id="sorted_beer_item_list"
       th width="15%"
         = sortable "price", "Price"
         span class="asc"
-      th width="7%"
-      th width="7%"
-      th width="7%"
+      th width="6%"
+      th width="6%"
+      th width="6%"
   tbody class="with-action-links"
     - items.each do |item|
       tr	
-        td
-          div id="beer_tracker_form_#{item.id}"
-            = render :partial => "bars/track_it", :locals => { :item => item }
+        - if user_signed_in?
+          td
+            div id="beer_tracker_form_#{item.id}"
+              = render :partial => "bars/track_it", :locals => { :item => item }
         td = link_to item.beer.name, item.beer
         td = number_to_percentage item.beer.abv, :precision => 1
         - unless (item.volume.nil? || item.pouring.nil?)
@@ -36,9 +39,12 @@ table id="sorted_beer_item_list"
         td = sprintf("%.3f",item.abd) 
         td = number_to_currency(item.price)
         - if user_signed_in?
-          td = link_to 'Details', item, :class => "action_link"
-          td = link_to 'Edit', edit_beer_item_path(item), :class => "action_link" 
-          td = link_to 'Destroy', item, :method => :delete, :class => "action_link"
+          td class="text-align-center"
+            = link_to 'Details', item, :class => "action_link"
+          td class="text-align-center"
+            = link_to 'Edit', edit_beer_item_path(item), :class => "action_link" 
+          td class="text-align-center"
+            = link_to 'Destroy', item, :method => :delete, :class => "action_link"
         - else
           td
           td
