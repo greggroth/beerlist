@@ -7,7 +7,7 @@ table
       th width=15 Pouring at...
   tbody
     - @beers.each do |beer|
-      tr id="beers/#{beer.id}"
+      tr data-url="beers/#{beer.id}"
         td = link_to beer.name, beer
         td = link_to beer.brewery.name, beer.brewery
         td = beer.try(:beer_style) ? beer.beer_style.name : nil

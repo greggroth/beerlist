@@ -34,7 +34,7 @@ p
 br
 = user_signed_in? ? link_to("Add a new listing", new_beer_item_path(:beer_item => { :beer_id => @beer.id })) : nil
 
-div class="itemlist"
+div class="itemlist" id="beer-item-list"
   = render 'beer_items_list'
   
 div

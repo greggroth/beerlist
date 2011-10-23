@@ -1,0 +1,12 @@
+table
+  thead
+    th Bar
+    th ABD
+    th Price
+  tbody
+    - beer.beer_items.each do |item|
+      tr
+        td = item.bar.name
+        td = item.abd
+        td = item.price
+    

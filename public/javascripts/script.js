@@ -1,4 +1,4 @@
-/* DO NOT MODIFY. This file was compiled Fri, 21 Oct 2011 18:15:19 GMT from
+/* DO NOT MODIFY. This file was compiled Sun, 23 Oct 2011 15:09:23 GMT from
  * /Users/Greggory/Programing/beerlist/app/assets/javascripts/script.coffee
  */
 
@@ -6,6 +6,7 @@
   window.Application || (window.Application = {});
   /* Test If Updates script.js */
   $(document).ready(function() {
+    var reformat_profile_beer_items_container;
     Application.format_normal_itemlist('.itemlist');
     /* Generate Charts for /bar_owner */
     $('div.chart').each(function() {
@@ -95,6 +96,31 @@
       },
       style: {
         classes: 'ui-tooltip-light ui-tooltip-shadow'
+      }
+    });
+    reformat_profile_beer_items_container = function(x) {
+      $(x).find('tbody:not(#main-body) tr:nth-child(odd)').addClass('zebra');
+      $('a.action_link').hide();
+    };
+    /* preview for beer_items on the profiles page */
+    $('table#beer-item-preview tbody tr:nth-child(4n+1)').addClass('zebra');
+    $('table#beer-item-preview tbody tr:odd').hide();
+    $('table#beer-item-preview tbody > tr').live('click', function() {
+      var row, targetRow, url;
+      row = $(this);
+      if (row.next('tr').is(':visible')) {
+        return row.next('tr').hide();
+      } else {
+        url = row.attr('data-url') + ' #beer-item-list';
+        targetRow = 'tr#beer-item-details-container-' + row.attr('data-id');
+        $(targetRow).show();
+        return $(targetRow + ' td div').css({
+          'border': 'solid thin #E8E8E8',
+          'border-radius': '10px',
+          'padding-left': '5px'
+        }).html('loading...').load(url, function() {
+          return reformat_profile_beer_items_container('.itemlist');
+        });
       }
     });
   });

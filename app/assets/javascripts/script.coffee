@@ -84,7 +84,28 @@ $(document).ready ->
 		      classes: 'ui-tooltip-light ui-tooltip-shadow'
 				}
 	})
-
+	
+	reformat_profile_beer_items_container = (x) ->
+	  $(x).find('tbody:not(#main-body) tr:nth-child(odd)').addClass('zebra')
+  	$('a.action_link').hide()
+  	return
+	
+	### preview for beer_items on the profiles page ###
+	$('table#beer-item-preview tbody tr:nth-child(4n+1)').addClass('zebra')
+	$('table#beer-item-preview tbody tr:odd').hide()
+	$('table#beer-item-preview tbody > tr').live 'click', () ->
+	  row = $(this)
+	  if row.next('tr').is(':visible')
+	    row.next('tr').hide()
+  	else
+  	  url = row.attr('data-url') + ' #beer-item-list'
+  	  targetRow = 'tr#beer-item-details-container-' + row.attr('data-id')
+  	  $(targetRow).show()
+  	  $(targetRow + ' td div')
+  	    .css({'border':'solid thin #E8E8E8','border-radius':'10px','padding-left':'5px'})
+  	    .html('loading...')
+  	    .load url, () ->
+  	      reformat_profile_beer_items_container('.itemlist')
 	return
 	
 	
@@ -107,7 +128,10 @@ Application.format_expandable_itemlist = (x) ->
     $(this).closest('tr').next('tr').toggle(); \
    	if $(this).closest('tr').next('tr').is(':visible')
 			if $(this).closest('tr').next('tr').find('div.itemlist').size()==0
-   			$('#itemdesc-' + $(this).closest('tr').attr('id')).children('div').css({'border':'solid thin #E8E8E8','border-radius':'10px','padding-left':'5px'}).html('loading...').load($(this).closest('tr').attr('data-item-url') + ' .itemlist')
+   			$('#itemdesc-' + $(this).closest('tr').attr('id')).children('div')
+   			  .css({'border':'solid thin #E8E8E8','border-radius':'10px','padding-left':'5px'})
+   			  .html('loading...')
+   			  .load($(this).closest('tr').attr('data-item-url') + ' .itemlist')
 	return
 	
 Application.format_normal_itemlist = (x) ->

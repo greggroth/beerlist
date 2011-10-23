@@ -1,0 +1,10 @@
+h1 Profile
+
+h2 You&#39;ve had #{ pluralize(current_user.had_beers.count, "beer") }
+div
+  = render "beers_had"
+
+br
+h2 id="allBars-toggleButton" Bars you&#39;re following:
+div class="itemlist"
+  = render "barlist"

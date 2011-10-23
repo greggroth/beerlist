@@ -1,0 +1,14 @@
+table id="expanding_followed_bars_list"
+  thead
+    tr align="left"
+      th width=200 Name
+      th width=250 Address
+      th width=100 Zip
+      th width=100
+  tbody
+    - @user.bars.each do |f|
+      tr id="following-#{f.id}" data-item-url="../bars/#{f.id}"
+        td = link_to(f.name, f)
+        td = f.address
+        td = f.zip
+        td
