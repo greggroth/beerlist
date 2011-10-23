@@ -2,7 +2,7 @@ br
 table id="weekly-specials"
   tr
     th 
-    th Beer
+    th 
     th ABV
     th Pouring
     th ABD
@@ -11,7 +11,7 @@ table id="weekly-specials"
     tr class="weekly-heading-row"
       td colspan="6" 
         div class="weekday-heading"
-          = day_of_the_week(day)
+          = day_of_the_week(day).pluralize
       - items.each do |item|
         tr
           td 

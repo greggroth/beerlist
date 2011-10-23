@@ -558,6 +558,10 @@ span#has-had-indicator {
   text-align: center;
 }
 
+table#weekly-specials {
+  border: solid black 1px;
+}
+
 table#weekly-specials tr.weekly-heading-row {
   background: #FFCA43;
 }

@@ -37,7 +37,7 @@ div
       | View:  
       = select_tag "sort_by_pouring", options_for_select([["All","all"],["draught","draught"],["bottle","bottle"],["can","can"],["pitcher", "pitcher"],["cask pour","cask pour"]],params[:sort_by_pouring]), :class => "searchable_option", :id => "pouring-select", :onchange => "this.form.submit();"
 
-div id="beer_item_list" class="itemlist"
+div id="beer_item_list"
   = render "beers"
 
 br
