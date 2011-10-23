@@ -47,6 +47,8 @@ class BarsController < ApplicationController
   
 	
   	@recent_beer_items = BeerItem.alphabetical.find(:all, :conditions => ["bar_id = ? AND beer_items.updated_at > ?", params[:id], 1.week.ago])
+  	@specials = @beer_items.keep_if { |i| (0..6).member?(i.weekday) }.group_by { |i| i.weekday }
+  	logger.debug(@specials)
   	
   	if @bar.latitude.present? && @bar.longitude.present?
   		@json = @bar.to_gmaps4rails

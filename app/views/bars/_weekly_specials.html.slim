@@ -1,0 +1,26 @@
+br
+table id="weekly-specials"
+  tr
+    th 
+    th Beer
+    th ABV
+    th Pouring
+    th ABD
+    th Price
+  - @specials.each_pair do |day, items|
+    tr class="weekly-heading-row"
+      td colspan="6" 
+        div class="weekday-heading"
+          = day_of_the_week(day)
+      - items.each do |item|
+        tr
+          td 
+          td = link_to item.beer.name, item.beer
+          td = number_to_percentage item.beer.abv, :precision => 1
+          - unless (item.volume.nil? || item.pouring.nil?)
+            td 
+              #{number_to_human(item.volume, :units => {:unit => item.volunit})} #{item.pouring}
+          - else
+            td = item.pouring
+          td = sprintf("%.3f",item.abd) 
+          td = number_to_currency(item.price)

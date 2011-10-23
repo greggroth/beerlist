@@ -1,5 +1,9 @@
+- unless @specials.empty?
+  h2 Weekly specials
+  = render "bars/weekly_specials"
+  br
 - unless @recent_beer_items.empty?
-  h2  Added in the last week
+  h2  Modified in the last week
   = render :partial => "bars/items_list", :locals => { :items => @recent_beer_items }
   br
 h2  All Beers

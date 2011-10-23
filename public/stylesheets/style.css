@@ -557,3 +557,12 @@ span#has-had-indicator {
 .text-align-center {
   text-align: center;
 }
+
+table#weekly-specials tr.weekly-heading-row {
+  background: #FFCA43;
+}
+
+table#weekly-specials div.weekday-heading {
+  margin-left: 30px;
+  font-weight: bold;
+}
