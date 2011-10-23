@@ -12,6 +12,11 @@
     = f.label "Bar Name"
     br
     = collection_select :beer_item, :bar_id, Bar.order('name ASC'), :id, :name, {:include_blank => 'Please Select'}
+  
+  div class="field"
+    = f.label "Valid"
+    br
+    = select :beer_item, :weekday, options_for_select({"Everyday" => nil, "Monday" => 1, "Tuesday" => 2, "Wednesday" => 3, "Thursday" => 4, "Friday" => 5, "Saturday" => 6, "Sunday" => 0}, @beer_item.weekday)
 
   div class="field"
     = f.label :volume

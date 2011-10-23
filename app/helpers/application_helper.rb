@@ -18,4 +18,17 @@ module ApplicationHelper
 	  direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
 	  link_to title, {:sort => column, :direction => direction}, {:class => css_class}
 	end
+	
+	def day_of_the_week(wday)
+	  case wday
+    when 0 then "Sunday"
+    when 1 then "Monday"
+    when 2 then "Tuesday"
+    when 3 then "Wednesday"
+    when 4 then "Thursday"
+    when 5 then "Friday"
+    when 6 then "Saturday"
+    else "Everyday"
+    end
+	end
 end
