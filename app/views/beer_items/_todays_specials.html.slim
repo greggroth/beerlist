@@ -13,9 +13,6 @@ table id="sorted_beer_item_list" class="itemlist"
         td = link_to(deal.beer.name, deal.beer)
         td = link_to(deal.bar.name, deal.bar)
         td = deal.beer.try(:beer_style) ? deal.beer.beer_style.name : nil
-        - unless (deal.volume.nil? || deal.volunit.nil?)
-          td = "#{number_to_human(deal.volume, :units => {:unit => deal.volunit})} #{deal.pouring}"
-        - else
-          td 
+        td = pouring(deal) 
         td = sprintf("%.3f",deal.abd)
         td = number_to_currency(deal.price)

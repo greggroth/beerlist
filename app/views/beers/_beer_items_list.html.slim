@@ -23,10 +23,7 @@ table id="sorted_beer_item_list"
         td = link_to item.bar.name, item.bar
         td = item.bar.address
         td = number_to_currency(item.price)
-        - unless (item.volume.nil? || item.pouring.nil?)
-          td #{number_to_human(item.volume, :units => {:unit => item.volunit})} #{item.pouring}
-        - else
-          td = item.pouring
+        td = pouring(item)
         td = sprintf("%.3f",item.abd)
         - if user_signed_in?
           td class="text-align-center"

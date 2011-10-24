@@ -49,14 +49,25 @@ class BeerItem < ActiveRecord::Base
 
   def abd
     unless self.beer.abv.nil? || self.volume.nil? || self.price.nil?
- 		  case self.volunit
-   			when 'oz'
-   				(self.beer.abv*self.volume)/(100*self.price)
-   			when 'ml'
-   				(self.beer.abv*self.volume*0.03381)/(100*self.price)
-   			when 'cl'
-   				(self.beer.abv*self.volume*0.3381)/(100*self.price)
-   		end
+      if self.pouring == "bucket"
+        case self.volunit
+     			when 'oz'
+     				(self.beer.abv*self.volume*self.bucket_of)/(100*self.price)
+     			when 'ml'
+     				(self.beer.abv*self.volume*self.bucket_of*0.03381)/(100*self.price)
+     			when 'cl'
+     				(self.beer.abv*self.volume*self.bucket_of*0.3381)/(100*self.price)
+     		end
+      else
+   		  case self.volunit
+     			when 'oz'
+     				(self.beer.abv*self.volume)/(100*self.price)
+     			when 'ml'
+     				(self.beer.abv*self.volume*0.03381)/(100*self.price)
+     			when 'cl'
+     				(self.beer.abv*self.volume*0.3381)/(100*self.price)
+     		end
+     	end
    	else
    	  return 0
  	  end

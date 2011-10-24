@@ -13,8 +13,7 @@ p
 
 p
   strong  Pouring:  
-  = number_to_human(@beer_item.volume, :units => {:unit => @beer_item.volunit})
-  = @beer_item.pouring
+  = pouring(@beer_item)
 
 p
   strong  Price:  
