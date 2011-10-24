@@ -1,6 +1,11 @@
-h1 Profile
+h1 = current_user.email
+div id="profile-stats"
+  h3 Items added: #{ current_user.beer_items.count } &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Beers Followed: #{ current_user.had_beers.count }
 
-h2 You&#39;ve had #{ pluralize(current_user.had_beers.count, "beer") }
+
+h2 Your beers 
+p Hint:  click a row to see where it&#39;s being served
+br
 div
   = render "beers_had"
 

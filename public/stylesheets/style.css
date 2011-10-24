@@ -560,7 +560,7 @@ span.has-had-indicator {
 }
 
 table#weekly-specials {
-  border: solid black 1px;
+  border: solid #bbb 1px;
 }
 
 table#weekly-specials tr.weekly-heading-row {
@@ -590,4 +590,10 @@ a#beer-item-count {
 }
 span#beer-count {
   color: red;
+}
+div#profile-stats {
+  border-bottom: solid 1px #bbb;
+  padding-bottom: 15px;
+  margin: 0 50px 25px 50px;
+  text-align: center;
 }
