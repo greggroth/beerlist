@@ -584,3 +584,9 @@ div.inline-field input {
   margin-right: 4px;
   width: 20px !important;
 }
+a#beer-item-count {
+  color: #AF7817;
+}
+span#beer-count {
+  color: red;
+}

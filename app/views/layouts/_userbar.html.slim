@@ -11,7 +11,12 @@ div id="user_bar"
     - if user_signed_in?
       li = link_to "Profile", profile_path(current_user)
       li |
-      li Welcome, #{current_user.email} (#{link_to "Logout", destroy_user_session_path, :id=>'logout', :method => :delete})
+      li 
+        | Welcome, #{current_user.email} (
+        span id="user-stats"
+          = render "/layouts/user_stats"
+        | ) 
+        | - #{link_to "Logout", destroy_user_session_path, :id=>'logout', :method => :delete}
     - else
       li = link_to "Signup", new_user_registration_path
       li |
