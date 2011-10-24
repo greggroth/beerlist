@@ -9,10 +9,8 @@ div id="user_bar"
     li = link_to "Breweries", breweries_path
     li |
     - if user_signed_in?
-      li = link_to "Profile", profile_path(current_user)
-      li |
       li 
-        | Welcome, #{current_user.email} (
+        | Welcome, #{ link_to current_user.email, profile_path(current_user)} (
         span id="user-stats"
           = render "/layouts/user_stats"
         | ) 
