@@ -10,9 +10,8 @@ h1
 div class="brewerylink"
   = link_to @beer.brewery.name, @beer.brewery
   - if user_signed_in?
-    - if current_user.has_drunk?(@beer)
-      span id="has-had-indicator"
-        strong You&#39;ve had it!
+    span class="has-had-indicator" id="beer_tracker"
+      = render "beer_tracker"
 
 p
   strong Being served at #{pluralize(@beer.bars.count, "bar")}

@@ -1,6 +1,8 @@
 table
   thead
     tr align="left"
+      - if user_signed_in?
+        th width=25 Had it?
       th width=25 Name
       th width=25 Brewery
       th width=20 Style
@@ -8,6 +10,10 @@ table
   tbody
     - @beers.each do |beer|
       tr data-url="beers/#{beer.id}"
+        - if user_signed_in?
+          td
+            div id="beer-tracking-#{beer.id}"
+              = render :partial => "track_it", :locals => { :beer => beer }
         td = link_to beer.name, beer
         td = link_to beer.brewery.name, beer.brewery
         td = beer.try(:beer_style) ? beer.beer_style.name : nil

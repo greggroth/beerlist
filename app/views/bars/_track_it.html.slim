@@ -4,6 +4,7 @@
       div class="beer_tracking"
         = h.hidden_field :bar_id
         = hidden_field_tag "beer_item_id", item.id
+        = hidden_field_tag "from", "bars_page"
         = check_box_tag "beer_tracking", "remove", true, :onclick => "$('#beer_tracks_#{item.id}').submit();"
         / = image_submit_tag "full_circle.png"
   - else
@@ -12,6 +13,7 @@
         = g.hidden_field :bar_id
         = g.hidden_field :beer_id
         = hidden_field_tag "beer_item_id", item.id
+        = hidden_field_tag "from", "bars_page"
         div class="beer_tracking"
           / = image_submit_tag "empty_circle.png"
           = check_box_tag "beer_tracking", "add", false, :onclick => "$('#beer_tracks_#{item.id}').submit();"

@@ -548,10 +548,11 @@ span.popup-close-button {
 	cursor: pointer;  
 }
 
-span#has-had-indicator {
+span.has-had-indicator {
   float: right;
   margin-right: 50px;
   font-size: 14px;
+  font-weight: bold;
 }
 
 .text-align-center {

@@ -1,0 +1,4 @@
+- if current_user.has_drunk?(@beer)
+  | You've had it!
+- else
+  = link_to("Had it?", { :controller => "beer_tracks", :action => "create", :beer_track => {:beer_id => @beer.id}, :from => "beers_page" }, :method => :post, :remote => true)
