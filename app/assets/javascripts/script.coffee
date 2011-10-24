@@ -134,7 +134,8 @@ Application.format_expandable_itemlist = (x) ->
    			$('#itemdesc-' + $(this).closest('tr').attr('id')).children('div')
    			  .css({'border':'solid thin #E8E8E8','border-radius':'10px','padding-left':'5px'})
    			  .html('loading...')
-   			  .load($(this).closest('tr').attr('data-item-url') + ' .itemlist')
+   			  .load $(this).closest('tr').attr('data-item-url') + ' .itemlist', () ->
+   			    Application.reformat_bars_page('.itemlist')
 	return
 	
 Application.format_normal_itemlist = (x) ->

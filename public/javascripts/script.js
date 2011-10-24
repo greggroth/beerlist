@@ -1,4 +1,4 @@
-/* DO NOT MODIFY. This file was compiled Mon, 24 Oct 2011 14:58:15 GMT from
+/* DO NOT MODIFY. This file was compiled Mon, 24 Oct 2011 15:30:54 GMT from
  * /Users/Greggory/Programing/beerlist/app/assets/javascripts/script.coffee
  */
 
@@ -149,7 +149,9 @@
             'border': 'solid thin #E8E8E8',
             'border-radius': '10px',
             'padding-left': '5px'
-          }).html('loading...').load($(this).closest('tr').attr('data-item-url') + ' .itemlist');
+          }).html('loading...').load($(this).closest('tr').attr('data-item-url') + ' .itemlist', function() {
+            return Application.reformat_bars_page('.itemlist');
+          });
         }
       }
     });
