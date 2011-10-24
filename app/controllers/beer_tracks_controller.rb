@@ -2,7 +2,7 @@ class BeerTracksController < ApplicationController
   def create
     current_user.drinks_it(params[:beer_track])
       
-    @beer_item = BeerItem.find(params[:beer_item_id])
+    @beer_item = BeerItem.find(params[:beer_item_id], :include => [{:beer => :ratings}])
   end
 
   def destroy

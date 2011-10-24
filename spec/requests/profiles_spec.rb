@@ -13,6 +13,6 @@ describe "Profiles" do
   it "goes to a user profile" do
     visit root_path
     click_link "Profile"
-    current_path.should eq(user_profile_path)
+    current_path.should eq(profile_path(current_user))
   end
 end
