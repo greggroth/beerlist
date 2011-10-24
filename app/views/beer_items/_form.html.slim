@@ -24,12 +24,13 @@
     = f.text_field :volume
     = select :beer_item, :volunit, options_for_select([["oz","oz"],["ml","ml"],["cl","cl"]],@beer_item.volunit)
   
-  div class="field"
+  div class="field inline-field"
     = f.label :pouring
     br
-    = select "beer_item", "pouring", options_for_select([["draught","draught"],["bottle","bottle"],["can","can"],["pitcher", "pitcher"],["cask pour","cask pour"]], @beer_item.pouring)
-
-  div id="beer_item_pouring_notice" Note: a standard pitcher is 64 oz
+    = select "beer_item", "pouring", options_for_select([["draught","draught"],["bottle","bottle"],["can","can"],["pitcher", "pitcher"],["bucket","bucket"],["cask pour","cask pour"]], @beer_item.pouring)
+    span id="bucket" of #{ f.text_field :bucket_of, :size => 2, :maxlength => 2 } beers
+    
+  div id="pitcher" Note: a standard pitcher is 64 oz
 
   div class="field"
     = f.label :price 

@@ -24,7 +24,7 @@ table id="sorted_beer_item_list"
       th width="6%"
   tbody class="with-action-links"
     - items.each do |item|
-      tr	
+      tr class="#{ Time.now.wday == item.weekday ? "todays-deal" : "" }"
         - if user_signed_in?
           td
             div id="beer_tracker_form_#{item.id}"

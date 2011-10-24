@@ -34,13 +34,16 @@ $(document).ready ->
 	Application.format_expandable_itemlist('.expandable_itemlist')
 
 	###  add notice for beer_item edit ###
-	$('#beer_item_pouring_notice').hide()
+	$('div#pitcher').hide()
+	$('span#bucket').hide()
 	$('#beer_item_pouring').change ->
-		if $(this).val() == 'pitcher'
-			$('#beer_item_pouring_notice').show()
-		else
-			$('#beer_item_pouring_notice').hide()
-			
+    $('div#pitcher').hide()
+    $('span#bucket').hide()
+    if $(this).val() == 'pitcher'
+      $('div#pitcher').show()
+    else if $(this).val() == 'bucket'
+      $('span#bucket').show()
+
 	###  Show/Hide Google Map              ###      
 	$('#toggle-map-link a').click ->
 		$('#gmap_popup_panel').css('z-index':'1')

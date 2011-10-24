@@ -570,3 +570,17 @@ table#weekly-specials div.weekday-heading {
   margin-left: 30px;
   font-weight: bold;
 }
+
+tr.todays-deal {
+  
+}
+
+span#bucket {
+  margin-left: 4px;
+}
+div.inline-field input {
+  float: none !important;
+  margin-left: 4px;
+  margin-right: 4px;
+  width: 20px !important;
+}
