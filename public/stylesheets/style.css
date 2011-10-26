@@ -20,7 +20,8 @@ p {
   padding: 5px; 
 }
 a {
-  color: #002f5f;
+/*  color: #002f5f;*/
+  color: #AF7817;
   text-decoration: none; 
 }
 a:hover {
@@ -586,7 +587,7 @@ div.inline-field input {
   width: 20px !important;
 }
 a#beer-item-count {
-  color: #AF7817;
+  color: #002f5f;
 }
 span#beer-count {
   color: red;

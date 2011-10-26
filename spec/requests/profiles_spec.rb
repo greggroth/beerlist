@@ -1,10 +1,11 @@
 require 'spec_helper'
 
 describe "Profiles" do
+  user = FactoryGirl.create(:user)
+  
   before(:all) do
     visit root_path
     click_link "Login"
-    user = FactoryGirl.create(:user)
     fill_in "Email", :with => user.email
     fill_in "Password", :with => user.password
     click_button "Sign in"
@@ -12,7 +13,7 @@ describe "Profiles" do
   
   it "goes to a user profile" do
     visit root_path
-    click_link "Profile"
-    current_path.should eq(profile_path(current_user))
+    click_link user.email
+    current_path.should eq(profile_path(user))
   end
 end

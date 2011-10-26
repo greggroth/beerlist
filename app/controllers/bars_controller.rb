@@ -28,24 +28,24 @@ class BarsController < ApplicationController
     case params[:sort]
     when nil
       if params[:sort_by_pouring].nil? || params[:sort_by_pouring]=='all' # NIL NIL
-        @beer_items = BeerItem.find(:all, :include => [:bar, { :beer => [:beer_tracks, :ratings] }], :conditions => ["bar_id = ?", params[:id]], :order => "price ASC" )
+        @beer_items = BeerItem.find(:all, :include => [:bar, { :beer => [:beer_tracks, :ratings] }], :conditions => ["beer_items.bar_id = ?", params[:id]], :order => "price ASC" )
       else                              # NIL !NIL
-        @beer_items = BeerItem.find(:all, :include => [:bar, { :beer => [:beer_tracks, :ratings] }], :conditions => ["pouring = ? AND bar_id = ?", params[:sort_by_pouring], params[:id]], :order => "price ASC")
+        @beer_items = BeerItem.find(:all, :include => [:bar, { :beer => [:beer_tracks, :ratings] }], :conditions => ["pouring = ? AND beer_items.bar_id = ?", params[:sort_by_pouring], params[:id]], :order => "price ASC")
       end
     when 'abd'  # sorting will reset pouring type select
-      hold = BeerItem.find(:all, :include => [:beer, { :beer => [:beer_tracks, :ratings] }], :conditions => ["bar_id = ?", params[:id]])
+      hold = BeerItem.find(:all, :include => [:beer, { :beer => [:beer_tracks, :ratings] }], :conditions => ["beer_items.bar_id = ?", params[:id]])
        if params[:direction] == "asc"
          @beer_items = hold.sort_by { |e| e.abd }
        else  #desc
          @beer_items = hold.sort_by { |e| -e.abd }
        end
     else        #  normal sorting
-      @beer_items = BeerItem.find(:all, :include => [:bar, { :beer => [:beer_tracks, :ratings] }], :conditions => ["bar_id = ?", params[:id]], :order => [sort_column + " " + sort_direction])
+      @beer_items = BeerItem.find(:all, :include => [:bar, { :beer => [:beer_tracks, :ratings] }], :conditions => ["beer_items.bar_id = ?", params[:id]], :order => [sort_column + " " + sort_direction])
     end
   
 	
-  	@recent_beer_items = BeerItem.alphabetical.find(:all, :conditions => ["bar_id = ? AND beer_items.updated_at > ?", params[:id], 1.week.ago])
-  	
+    # @recent_beer_items = BeerItem.alphabetical.find(:all, :conditions => ["beer_items.bar_id = ? AND beer_items.updated_at > ?", params[:id], 1.week.ago])
+  	@recent_beer_items = @beer_items.select { |i| i.updated_at > 1.week.ago }
   	@specials = @beer_items.select { |i| (0..6).member?(i.weekday) }.group_by { |i| i.weekday }
   	
   	if @bar.latitude.present? && @bar.longitude.present?
