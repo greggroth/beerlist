@@ -29,7 +29,7 @@ def create
    
    respond_to do |format|
      if @beer_item.save
-	    format.html { redirect_to(beer_items_path, :notice => "Beer listing added (#{undo_link})") }
+	    format.html { redirect_to(bar_path(@beer_item.bar), :notice => "Beer listing added (#{undo_link})") }
 	    format.iphone { redirect_to(@beer_item) }
      else
 	    format.html { render :action => "new" }
@@ -49,7 +49,7 @@ def update
    
   respond_to do |format|
   	if @beer_item.update_attributes(params[:beer_item])
-  	  format.html { redirect_to(@beer_item, :notice => "Beer listing updated (#{undo_link})") }
+  	  format.html { redirect_to(bar_path(@beer_item.bar), :notice => "Beer listing updated (#{undo_link})") }
   	  format.iphone { redirect_to(@beer_item) }
   	else
   	  format.html { render :action => "edit" }
