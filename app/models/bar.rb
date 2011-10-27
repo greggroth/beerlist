@@ -9,6 +9,15 @@ class Bar < ActiveRecord::Base
   validates_format_of :zip, :with => /\A\d{5}([\-]\d{4})?\Z/, :allow_blank => true
   
   has_paper_trail
+  has_attached_file :photo,
+    :styles => { :small => "150x150>", :medium => "200x300>" },
+    :storage => :s3,
+    :bucket => 'barphotos.atlbeerlist.com',
+    :s3_credentials => {
+      :access_key_id => ENV['S3_KEY'],
+      :secret_access_key => ENV['S3_SECRET']
+    }
+  
   include Tanker
   
   tankit 'index' do

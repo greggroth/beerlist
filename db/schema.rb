@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111024143501) do
+ActiveRecord::Schema.define(:version => 20111027012714) do
 
   create_table "bar_followings", :force => true do |t|
     t.timestamp "created_at"
@@ -40,6 +40,10 @@ ActiveRecord::Schema.define(:version => 20111024143501) do
     t.float     "longitude"
     t.boolean   "gmaps"
     t.string    "url"
+    t.string    "photo_file_name"
+    t.string    "photo_content_type"
+    t.integer   "photo_file_size"
+    t.datetime  "photo_updated_at"
   end
 
   create_table "bars_users", :id => false, :force => true do |t|

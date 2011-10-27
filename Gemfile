@@ -20,6 +20,9 @@ gem 'devise'
 gem 'tanker'
 gem 'kaminari'
 gem 'airbrake'
+gem 'paperclip', "~> 2.4"
+gem "rmagick", :require => 'RMagick'
+gem "aws-s3"
 
 group :test, :development do
   gem 'rspec-rails'

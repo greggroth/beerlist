@@ -598,3 +598,12 @@ div#profile-stats {
   margin: 0 50px 25px 50px;
   text-align: center;
 }
+
+img#bar-photo {
+  float: right;
+  margin-right: 60px;
+}
+
+p#toggle-map-link a {
+  cursor: pointer;
+}

@@ -8,6 +8,8 @@
 
 h1  = @bar.name
 p
+  = image_tag @bar.photo.url(:small), :id => "bar-photo"
+  br
   = @bar.address
   br
   = @bar.city
@@ -19,7 +21,7 @@ p
 
 p id="toggle-map-link"
   a
-    Show Map
+    | Show Map
 
 div id="gmap_popup_panel"
   a id="gmap_popup_panel_close" x  
@@ -29,13 +31,13 @@ div id="gmap_popup_panel"
 h3 Pouring #{pluralize(@bar.beers.count, "beer")}
 br
 
-= user_signed_in? ? link_to("Add a new listing", new_beer_item_path(:beer_item => {:bar_id => @bar.id})) : ""
+= link_to("Add a new listing", new_beer_item_path(:beer_item => {:bar_id => @bar.id})) if user_signed_in?
 
-div
-  = form_tag bar_path(@bar), :method => :get, :remote => true do
-    p
-      | View:  
-      = select_tag "sort_by_pouring", options_for_select([["All","all"],["draught","draught"],["bottle","bottle"],["can","can"],["pitcher", "pitcher"],["cask pour","cask pour"]],params[:sort_by_pouring]), :class => "searchable_option", :id => "pouring-select", :onchange => "this.form.submit();"
+div style="clear:both"
+  / = form_tag bar_path(@bar), :method => :get, :remote => true do
+  /   p
+  /     | View:  
+  /     = select_tag "sort_by_pouring", options_for_select([["All","all"],["draught","draught"],["bottle","bottle"],["can","can"],["pitcher", "pitcher"],["cask pour","cask pour"]],params[:sort_by_pouring]), :class => "searchable_option", :id => "pouring-select", :onchange => "this.form.submit();"
 
 div id="beer_item_list"
   = render "beers"
