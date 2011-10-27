@@ -26,8 +26,12 @@
     = f.label "Url"
     br
     = f.text_field :url
+    
   div class="field"
+    = f.label "Image"
+    br
     = f.file_field :photo
+    p style="margin-left: 215px;" Photo must be in *.jpg or *.png format and must be less than 2 MB in size
 
   div class="actions"
     = f.submit

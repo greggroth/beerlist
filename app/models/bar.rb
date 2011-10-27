@@ -7,6 +7,8 @@ class Bar < ActiveRecord::Base
 	validates_format_of :state, :with => /\A(?-i:A[LKSZRAEP]|C[AOT]|D[EC]|F[LM]|G[AU]|HI|I[ADLN]|K[SY]|LA|M[ADEHINOPST]|N[CDEHJMVY]|O[HKR]|P[ARW]|RI|S[CD]|T[NX]|UT|V[AIT]|W[AIVY])\Z/, :message => "should be in the abbreviated form (i.e. GA or CO)", :allow_blank => true
   validates_format_of :url, :with => URI.regexp, :allow_blank => true
   validates_format_of :zip, :with => /\A\d{5}([\-]\d{4})?\Z/, :allow_blank => true
+  validates_attachment_size :photo, :less_than => 2.megabytes
+  validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png']
   
   has_paper_trail
   has_attached_file :photo,
