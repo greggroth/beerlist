@@ -28,9 +28,9 @@ class BarsController < ApplicationController
     case params[:sort]
     when nil
       if params[:sort_by_pouring].nil? || params[:sort_by_pouring]=='all' # NIL NIL
-        @beer_items = BeerItem.find(:all, :include => [:bar, { :beer => [:beer_tracks, :ratings] }], :conditions => ["beer_items.bar_id = ?", params[:id]], :order => "price ASC" )
+        @beer_items = BeerItem.find(:all, :include => [:bar, { :beer => [:beer_tracks, :ratings] }], :conditions => ["beer_items.bar_id = ?", params[:id]], :order => "beers.name ASC" )
       else                              # NIL !NIL
-        @beer_items = BeerItem.find(:all, :include => [:bar, { :beer => [:beer_tracks, :ratings] }], :conditions => ["pouring = ? AND beer_items.bar_id = ?", params[:sort_by_pouring], params[:id]], :order => "price ASC")
+        @beer_items = BeerItem.find(:all, :include => [:bar, { :beer => [:beer_tracks, :ratings] }], :conditions => ["pouring = ? AND beer_items.bar_id = ?", params[:sort_by_pouring], params[:id]], :order => "beers.name ASC")
       end
     when 'abd'  # sorting will reset pouring type select
       hold = BeerItem.find(:all, :include => [:beer, { :beer => [:beer_tracks, :ratings] }], :conditions => ["beer_items.bar_id = ?", params[:id]])
