@@ -13,6 +13,9 @@ class BeerTracksController < ApplicationController
       @from = "beers_index"
       @beer = Beer.find(params[:beer_track][:beer_id])
     end
+    
+    @had_beers = current_user.had_beers if user_signed_in?
+  	@beer_tracks = current_user.beer_tracks if user_signed_in?
   end
 
   def destroy
@@ -27,5 +30,8 @@ class BeerTracksController < ApplicationController
       @from = "beers_index"
       @beer = bt.beer
     end
+    
+    @had_beers = current_user.had_beers if user_signed_in?
+  	@beer_tracks = current_user.beer_tracks if user_signed_in?
   end
 end

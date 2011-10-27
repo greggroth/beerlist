@@ -85,7 +85,6 @@ class Bar < ActiveRecord::Base
 	end
 	
 	def followers_data
-
 	  followers_histogram_data = Array.new
 	  51.times do |n|
 	  	followers_histogram_data.push [n.week.ago.strftime("%Y-%m-%d"), self.users.find(:all, :conditions => ["bar_followings.created_at < ?", n.week.ago]).count]
@@ -94,7 +93,6 @@ class Bar < ActiveRecord::Base
 	end
 	
 	def followers_data_csv
-
 	  followers_histogram_data = Array.new
 	  51.times do |n|
 	  	followers_histogram_data.push [n.week.ago.strftime("%Y-%m-%d"), self.users.find(:all, :conditions => ["bar_followings.created_at < ?", n.week.ago]).count]
