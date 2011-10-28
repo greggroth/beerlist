@@ -1,4 +1,4 @@
-/* DO NOT MODIFY. This file was compiled Mon, 24 Oct 2011 15:30:54 GMT from
+/* DO NOT MODIFY. This file was compiled Fri, 28 Oct 2011 01:30:05 GMT from
  * /Users/Greggory/Programing/beerlist/app/assets/javascripts/script.coffee
  */
 
@@ -108,6 +108,9 @@
     /* preview for beer_items on the profiles page */
     $('table#beer-item-preview tbody tr:nth-child(4n+1)').addClass('zebra');
     $('table#beer-item-preview tbody tr:odd').hide();
+    $('table#beer-item-preview').find('a').click(function(e) {
+      return e.stopPropagation();
+    });
     $('table#beer-item-preview tbody > tr').live('click', function() {
       var row, targetRow, url;
       row = $(this);

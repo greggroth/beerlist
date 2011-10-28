@@ -96,6 +96,8 @@ $(document).ready ->
 	### preview for beer_items on the profiles page ###
 	$('table#beer-item-preview tbody tr:nth-child(4n+1)').addClass('zebra')
 	$('table#beer-item-preview tbody tr:odd').hide()
+	$('table#beer-item-preview').find('a').click (e) ->
+	  e.stopPropagation()
 	$('table#beer-item-preview tbody > tr').live 'click', () ->
 	  row = $(this)
 	  if row.next('tr').is(':visible')
