@@ -5,8 +5,7 @@ table id="expanding_followed_bars_list" class="expandable_itemlist"
       th width=200  Name
       th width=250  Address
       th width=100  Zip
-      th width=60
-      th width=60
+      th width=60 Beers
   tbody
     - bars.each do |f|
       tr id="following-#{f.id}" data-item-url="bars/#{f.id}"
@@ -26,13 +25,7 @@ table id="expanding_followed_bars_list" class="expandable_itemlist"
         td = link_to f.name, f 
         td = f.address
         td = f.zip
-        - if f.has_permission?(current_user)
-          span class="actions"
-            td = link_to 'Edit', f, :action => :edit
-            td = link_to 'Destroy', f, :confirm => 'Are you sure?', :method => :delete
-        - else
-          td
-          td
+        td = f.beers.count
       tr
         td colspan="6" id="itemdesc-following-#{f.id}" class="itemdesc"
           div
