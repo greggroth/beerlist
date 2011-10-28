@@ -12,7 +12,7 @@ class Bar < ActiveRecord::Base
   
   has_paper_trail
   has_attached_file :photo,
-    :styles => { :small => "150x150>", :medium => "200x300>" },
+    :styles => { :small => "150x150>", :medium => "250x300>" },
     :storage => :s3,
     :bucket => 'barphotos.atlbeerlist.com',
     :s3_credentials => {

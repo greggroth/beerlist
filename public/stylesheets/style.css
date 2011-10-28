@@ -604,8 +604,8 @@ img#bar-photo {
   margin-right: 60px;
 }
 div#bar-photo-missing {
-  height: 150px;
-  width: 150px;
+  height: 200px;
+  width: 300px;
   float: right;
   margin-right: 60px;
   border: solid #bbb 1px;
@@ -614,7 +614,7 @@ div#bar-photo-missing {
   border-radius: 10px;
 }
 div#bar-photo-missing p {
-  margin-top: 60px;
+  margin-top: 80px;
 }
 div#bar-photo-missing a {
   color: white;

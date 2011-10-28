@@ -9,7 +9,7 @@
 h1  = @bar.name
 p
   - if @bar.photo.present?
-    = image_tag @bar.photo.url(:small), :id => "bar-photo"
+    = image_tag @bar.photo.url(:medium), :id => "bar-photo"
   - else
     div id="bar-photo-missing"
       p = link_to "Add a photo!", edit_bar_path(@bar)
