@@ -117,7 +117,7 @@ $(document).ready ->
 Application.format_expandable_itemlist = (x) ->
 	###  Expandable Itemlist ###
 	$(x).find('tr:odd').addClass('odd').hover (e) -> \
-		$(e.target).closest('tr').toggleClass("active"); \
+		$(e.target).closest('tr').toggleClass("active") \
 		$(e.target).closest('tr').find('a.action_link').toggle()
 		
 	$(x).find('tbody tr:nth-child(4n+1)').addClass('zebra')
@@ -138,7 +138,7 @@ Application.format_expandable_itemlist = (x) ->
    			  .html('loading...')
    			  .load $(this).closest('tr').attr('data-item-url') + ' .itemlist', () ->
    			    Application.reformat_bars_page('.itemlist')
-	return
+	return false
 	
 Application.format_normal_itemlist = (x) ->
 	$(x).find('tbody tr:nth-child(odd)').addClass('zebra')
