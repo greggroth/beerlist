@@ -37,7 +37,7 @@ describe "BeerItems" do
     fill_in "Volume", :with => "12"
     fill_in "Price", :with => "4.00"
     click_button "Submit"
-    current_path.should eq(beer_items_path)
+    current_path.should eq(bar_path(bar))
     page.should have_content "Beer listing added"
   end
   

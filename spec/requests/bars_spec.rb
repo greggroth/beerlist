@@ -130,4 +130,18 @@ describe "Bars" do
     current_path.should eq(bars_path)
     page.should have_content "Url is invalid"
   end
+  
+  it " sorts listings by price" do
+    bar = FactoryGirl.create(:bar)
+    visit bar_path(bar)
+    click_link "Price"
+    current_path.should eq(bar_path(bar))
+  end
+  
+  it " sorts listings by abd" do
+    bar = FactoryGirl.create(:bar)
+    visit bar_path(bar)
+    click_link "ABD"
+    current_path.should eq(bar_path(bar))
+  end
 end
