@@ -7,7 +7,10 @@
     = f.label "Beer Name"
     br
     = grouped_collection_select :beer_item, :beer_id, Brewery.order('name ASC'), :beers, :name, :id, :name
-
+    
+  div id="new-beer-from-beer-item"
+    = render "new_beer"
+    
   div class="field"
     = f.label "Bar Name"
     br

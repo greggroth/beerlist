@@ -14,8 +14,6 @@ class BeersController < ApplicationController
         @beers = Beer.includes(:beer_style,:brewery).order('name ASC').page(params[:page]).per(25)
       end
     end
-    
-    logger.debug(@beers)
   end
 
   # GET /beers/1

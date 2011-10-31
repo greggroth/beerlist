@@ -11,6 +11,9 @@ class BeerItem < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :brewery
 	
+	accepts_nested_attributes_for :beer
+	
+	
 	
 	has_paper_trail
 	

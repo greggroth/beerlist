@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111027012714) do
+ActiveRecord::Schema.define(:version => 20111028202336) do
 
   create_table "bar_followings", :force => true do |t|
     t.timestamp "created_at"
@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(:version => 20111027012714) do
     t.integer   "photo_file_size"
     t.datetime  "photo_updated_at"
   end
+
+  add_index "bars", ["id"], :name => "index_bars_on_id"
 
   create_table "bars_users", :id => false, :force => true do |t|
     t.integer "bar_id"
@@ -92,6 +94,8 @@ ActiveRecord::Schema.define(:version => 20111027012714) do
     t.string    "volunit",       :default => "oz"
     t.integer   "beer_style_id"
   end
+
+  add_index "beers", ["id"], :name => "index_beers_on_id"
 
   create_table "breweries", :force => true do |t|
     t.string    "name"

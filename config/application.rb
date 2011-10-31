@@ -1,6 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+require 'rack/perftools_profiler'
 
 # If you have a Gemfile, require the gems listed there, including any gems
 # you've limited to :test, :development, or :production.
@@ -8,6 +9,8 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 module Beerlist
   class Application < Rails::Application
+  
+  
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -39,5 +42,7 @@ module Beerlist
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+    
+    config.middleware.use ::Rack::PerftoolsProfiler , :default_printer => 'gif', :bundler => true
   end
 end

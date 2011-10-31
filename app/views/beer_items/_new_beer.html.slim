@@ -1,0 +1,21 @@
+= fields_for @beer_item.beer do |g|
+  div class="field"
+    = g.label :name
+    br
+    = g.text_field :name
+  div class="field"
+    = g.label "Brewery Name"
+    br
+    = collection_select :beer, :brewery_id, Brewery.order('name ASC'), :id, :name, {:include_blank => 'Please Select'}
+  div class="field"
+    = g.label "Style"
+    br
+    = collection_select :beer, :beer_style_id, BeerStyle.order('name ASC'), :id, :name, {:include_blank => 'Please Select'}
+  div class="field"
+    = g.label 'ABV'
+    br
+    = g.text_field :abv
+  div class="field"
+    = g.label :description
+    br
+    = g.text_area :description

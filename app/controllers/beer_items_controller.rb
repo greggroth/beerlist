@@ -4,6 +4,8 @@ before_filter :authenticate_user!, :except => [:index, :show]
 
 
 def index
+  # BeerItem.where(weekday: Time.now.wday).includes([:beer, :bar])
+  
   @todays_deals = BeerItem.find(:all, :include => [:beer, :bar], :conditions => ["weekday = ?", Time.now.wday])
   
   unless params[:search_by_pouring].nil?
