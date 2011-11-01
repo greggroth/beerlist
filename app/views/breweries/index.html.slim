@@ -12,8 +12,9 @@ p id="found_count" class="search_results_found"
 br
 p Hint:  Click on a row to view the beer list for a bar!
 
-div id="brewery_list_index"
-  = render 'brewery_list'
+- cache "list_of_breweries" do
+  div id="brewery_list_index"
+    = render 'brewery_list'
 br
 
 div align="left"

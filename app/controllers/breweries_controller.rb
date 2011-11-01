@@ -1,8 +1,8 @@
 class BreweriesController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
 
-  # GET /breweries
-  # GET /breweries.xml
+  cache_sweeper :breweries_sweeper, :only => [:create, :update, :destroy]
+  
   def index
     if params[:search].present?
       @breweries = Brewery.includes(:beers).search_tank(params[:search])
