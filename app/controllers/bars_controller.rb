@@ -9,17 +9,19 @@ class BarsController < ApplicationController
       @bars = Bar.search_tank(params[:search])
     else
       if iphone_request?
-       @bars = Bar.includes(:beers).order("name ASC")
+       @bars = Bar.includes(:beer_items).order("name ASC")
       else
-       @bars = Bar.page(params[:page]).per(25)
+       @bars = Bar.includes(:beer_items).page(params[:page]).per(25)
       end
     end
     
     if user_signed_in?
-		  @user_bars = current_user.bars.find(:all)
+      # @user_followings = BarFollowing.where(user_id: current_user.id).includes(:bar => [ :beers ])
+		  @user_bars = BarFollowing.where(user_id: current_user.id).includes(:bar => [ :beer_items ]).map { |follow| follow.bar }
 		else
+      # @user_followings = []
 		  @user_bars = []
-	  end
+    end
   end
 
   def show
@@ -48,8 +50,10 @@ class BarsController < ApplicationController
   	@recent_beer_items = @beer_items.select { |i| i.updated_at > 1.week.ago }
   	@specials = @beer_items.select { |i| (0..6).member?(i.weekday) }.group_by { |i| i.weekday }
   	@beer_items.delete_if { |i| (0..6).include? i.weekday }
-  	@had_beers = current_user.had_beers if user_signed_in?
-  	@beer_tracks = current_user.beer_tracks if user_signed_in?
+  	if user_signed_in?
+    	@had_beers = current_user.had_beers
+    	@beer_tracks = current_user.beer_tracks
+    end
   	  	
   	if @bar.latitude.present? && @bar.longitude.present?
   		@json = @bar.to_gmaps4rails

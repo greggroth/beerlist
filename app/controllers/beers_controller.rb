@@ -2,22 +2,24 @@ class BeersController < ApplicationController
   helper_method :sort_column, :sort_direction
   before_filter :authenticate_user!, :except => [:index, :show]
 
-  # GET /beers
-  # GET /beers.xml
   def index
     if params[:search].present?
-      @beers = Beer.includes(:beer_style,:brewery).search_tank(params[:search])
+      @beers = Beer.includes(:beer_style, :brewery, :beer_items).search_tank(params[:search])
     else
       if iphone_request?
-        @beers = Beer.includes(:beer_style, :brewery).order('name ASC')
+        @beers = Beer.includes(:beer_style, :brewery, :beer_items).order('name ASC')
       else
-        @beers = Beer.includes(:beer_style,:brewery).order('name ASC').page(params[:page]).per(25)
+        @beers = Beer.includes(:beer_style,:brewery, :beer_items).order('name ASC').page(params[:page]).per(25)
       end
+    end
+    
+    if user_signed_in?
+      @user_beers = current_user.had_beers
+    else
+      @user_beers = []
     end
   end
 
-  # GET /beers/1
-  # GET /beers/1.xml
   def show
     @beer = Beer.find(params[:id])
   

@@ -1,4 +1,4 @@
-/* DO NOT MODIFY. This file was compiled Fri, 28 Oct 2011 19:37:25 GMT from
+/* DO NOT MODIFY. This file was compiled Tue, 01 Nov 2011 19:19:47 GMT from
  * /Users/Greggory/Programing/beerlist/app/assets/javascripts/script.coffee
  */
 
@@ -8,10 +8,6 @@
   $(document).ready(function() {
     var reformat_profile_beer_items_container;
     Application.format_normal_itemlist('.itemlist');
-    $('div#new-beer-from-beer-item').hide();
-    $('select#beer_item_beer_id').prepend('<option value="new">New Beer</option>').change(function() {
-      return $('div#new-beer-from-beer-item').toggle();
-    });
     /* Generate Charts for /bar_owner */
     $('div.chart').each(function() {
       return $.jqplot($(this).attr('id'), [$(this).metadata().chartdata], {

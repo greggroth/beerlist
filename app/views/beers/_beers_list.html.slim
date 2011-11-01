@@ -18,5 +18,5 @@ div
           td = link_to beer.name, beer
           td = link_to beer.brewery.name, beer.brewery
           td = beer.try(:beer_style) ? beer.beer_style.name : nil
-          td = pluralize(beer.bars.count,"bar")
+          td = pluralize(beer.beer_items.count, "bar")
   / = image_tag "ajax-loader.gif", :id => "beers-loading-animation"

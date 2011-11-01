@@ -4,11 +4,6 @@ window.Application ||= {}
 $(document).ready ->
 	Application.format_normal_itemlist('.itemlist')
 	
-	$('div#new-beer-from-beer-item').hide()
-	$('select#beer_item_beer_id').prepend('<option value="new">New Beer</option>').change ->
-	  $('div#new-beer-from-beer-item').toggle()
-	
-	
 	### Generate Charts for /bar_owner ###
 	$('div.chart').each ->
 		$.jqplot($(this).attr('id'), [$(this).metadata().chartdata], {

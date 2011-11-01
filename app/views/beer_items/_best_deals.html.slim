@@ -8,7 +8,7 @@ table id="sorted_beer_item_list" class="itemlist"
       th width=100 class="abd-table-heading"	ABD
       th width=80	Price
   tbody
-    - for deal in @best_deals do
+    - for deal in BeerItem.best_deals do
       tr
         td = link_to(deal.beer.name, deal.beer)
         td = link_to(deal.bar.name, deal.bar)

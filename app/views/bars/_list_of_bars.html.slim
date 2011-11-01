@@ -12,7 +12,7 @@ table id="expanding_followed_bars_list" class="expandable_itemlist"
         td
           div class="follow_form"
             - if user_signed_in?
-              - if f.is_followed? current_user
+              - if @user_bars.include?(f)
                 = form_for current_user.bar_followings.find_by_bar_id(f.id), :html => { :method => :delete }, :remote => true do |h|
                   div class="following"
                     = image_submit_tag "full_circle.png"
@@ -25,7 +25,7 @@ table id="expanding_followed_bars_list" class="expandable_itemlist"
         td = link_to f.name, f 
         td = f.address
         td = f.zip
-        td = f.beers.count
+        td = f.beer_items.count
       tr
         td colspan="6" id="itemdesc-following-#{f.id}" class="itemdesc"
           div

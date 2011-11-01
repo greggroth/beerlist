@@ -1,5 +1,5 @@
 - if user_signed_in?
-  - if current_user.has_drunk?(beer)
+  - if @user_beers.include? beer
     = form_for current_user.beer_tracks.find_by_beer_id(beer.id), :html => { :method => :delete, :id => "beer_tracks_#{beer.id}" }, :remote => true do |h|
       div class="beer_tracking"
         = hidden_field_tag "from", "beers_index"

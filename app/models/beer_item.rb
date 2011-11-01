@@ -7,7 +7,7 @@ class BeerItem < ActiveRecord::Base
 	validates :beer_id, :uniqueness => { :scope => [:bar_id, :volume, :volunit, :pouring], :message => "and bar combination already exists." }
 
 	belongs_to :bar
-	belongs_to :beer, :include => [:beer_style, :ratings, :beer_tracks]
+	belongs_to :beer
 	belongs_to :user
 	belongs_to :brewery
 	
@@ -94,5 +94,9 @@ class BeerItem < ActiveRecord::Base
     end
     
     return results
+  end
+  
+  def self.todays_deals
+    self.where("weekday = ?", Time.now.wday).includes(:beer, :bar)
   end
 end

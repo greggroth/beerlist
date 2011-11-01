@@ -1,4 +1,4 @@
-/* DO NOT MODIFY. This file was compiled Fri, 21 Oct 2011 18:05:34 GMT from
+/* DO NOT MODIFY. This file was compiled Tue, 01 Nov 2011 19:15:54 GMT from
  * /Users/Greggory/Programing/beerlist/app/assets/javascripts/rating_ballot.coffee
  */
 

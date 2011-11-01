@@ -1,3 +1,7 @@
+/ - content_for :head do
+/   = javascript_include_tag "beer_items.js.js"
+    
+
 = form_for(@beer_item, :html => { :class => "bigform" }) do |f|
   - if @beer_item.errors.any?
     div id="error_explanation"
