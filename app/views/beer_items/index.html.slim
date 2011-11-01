@@ -19,6 +19,6 @@ div id="best-deals-table-wrapper"
   br
 	h2 Top 20 Best Deals
 	br
-	- cache "best_deals", :expires_in => 1.hour do
+	- cache "top_deals" do
   	div id="best_deals"
   		= render "best_deals"

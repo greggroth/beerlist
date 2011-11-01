@@ -2,7 +2,7 @@ class BeerItemsController < ApplicationController
 helper_method :sort_column, :sort_direction
 before_filter :authenticate_user!, :except => [:index, :show]
 
-
+cache_sweeper :beer_items_sweeper, :only => [:create, :update, :destroy]
 
 def index
   # BeerItem.where(weekday: Time.now.wday).includes([:beer, :bar])
