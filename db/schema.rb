@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111028202336) do
+ActiveRecord::Schema.define(:version => 20111031211022) do
 
   create_table "bar_followings", :force => true do |t|
     t.timestamp "created_at"
@@ -107,6 +107,8 @@ ActiveRecord::Schema.define(:version => 20111028202336) do
     t.string    "city"
     t.string    "url"
   end
+
+  add_index "breweries", ["id"], :name => "index_breweries_on_id"
 
   create_table "profiles", :force => true do |t|
     t.integer   "user_id"

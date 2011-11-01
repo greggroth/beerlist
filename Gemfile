@@ -30,15 +30,14 @@ group :test, :development do
   gem 'forgery', " ~> 0.5.0"
 end
 
-group :development do
-  gem 'perftools.rb', :git => 'git://github.com/bearded/perftools.rb.git', :branch => 'perftools-1.8'
-  gem 'rack-perftools_profiler'
-end
+# gem 'perftools.rb', :git => 'git://github.com/bearded/perftools.rb.git', :branch => 'perftools-1.8'
+# gem 'rack-perftools_profiler'
 
 group :test do
 	gem 'capybara'
 	gem 'guard-rspec'
 	gem 'launchy'
+  # gem 'turn'
 end
 
 group :production do

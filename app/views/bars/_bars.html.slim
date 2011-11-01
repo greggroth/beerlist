@@ -5,9 +5,6 @@
 h2 id="allBars-toggleButton"  All Bars
 - unless user_signed_in?
   p
-    = link_to "log in", new_user_session_path
-    | or
-    = link_to "create", new_user_registration_path 
-    | an account to follow your favorite bars
+    | #{link_to "log in", new_user_session_path} or #{link_to "create", new_user_registration_path} an account to follow your favorite bars
 br
 = render :partial => 'bars/list_of_bars', :locals => { :bars => @bars }

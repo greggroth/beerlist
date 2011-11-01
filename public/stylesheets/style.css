@@ -631,3 +631,7 @@ div#beer_list_index img {
   left: 50%;
  /* z-index: 1;*/
 }
+div#devise-shared-links {
+  height: 50px;
+  margin-left: 30px;
+}
