@@ -1,4 +1,4 @@
-/* DO NOT MODIFY. This file was compiled Sun, 11 Sep 2011 15:43:20 GMT from
+/* DO NOT MODIFY. This file was compiled Tue, 01 Nov 2011 13:30:34 GMT from
  * /Users/Greggory/Programing/beerlist/app/assets/javascripts/gmaps4rails/gmaps4rails.googlemaps.js.coffee
  */
 
@@ -197,6 +197,7 @@
       return _results;
     };
     Gmaps4RailsGoogle.prototype.clearMarker = function(marker) {
+      console.log(marker);
       return marker.serviceObject.setMap(null);
     };
     Gmaps4RailsGoogle.prototype.showMarker = function(marker) {
@@ -241,21 +242,24 @@
       }
     };
     Gmaps4RailsGoogle.prototype.createInfoWindow = function(marker_container) {
-      var boxText, currentMap, info_window;
-      if (this.markers_conf.custom_infowindow_class === null && (marker_container.description != null)) {
-        info_window = new google.maps.InfoWindow({
-          content: marker_container.description
-        });
-        currentMap = this;
-        return google.maps.event.addListener(marker_container.serviceObject, 'click', this.openInfoWindow(currentMap, info_window, marker_container.serviceObject));
-      } else {
-        if (marker_container.description != null) {
+      var boxText, currentMap;
+      if (typeof this.jsTemplate === "function" || (marker_container.description != null)) {
+        if (typeof this.jsTemplate === "function") {
+          marker_container.description = this.jsTemplate(marker_container);
+        }
+        if (this.markers_conf.custom_infowindow_class !== null) {
           boxText = document.createElement("div");
           boxText.setAttribute("class", this.markers_conf.custom_infowindow_class);
           boxText.innerHTML = marker_container.description;
-          info_window = new InfoBox(this.infobox(boxText));
+          marker_container.infowindow = new InfoBox(this.infobox(boxText));
           currentMap = this;
-          return google.maps.event.addListener(marker_container.serviceObject, 'click', this.openInfoWindow(currentMap, info_window, marker_container.serviceObject));
+          return google.maps.event.addListener(marker_container.serviceObject, 'click', this.openInfoWindow(currentMap, marker_container.infowindow, marker_container.serviceObject));
+        } else {
+          marker_container.infowindow = new google.maps.InfoWindow({
+            content: marker_container.description
+          });
+          currentMap = this;
+          return google.maps.event.addListener(marker_container.serviceObject, 'click', this.openInfoWindow(currentMap, marker_container.infowindow, marker_container.serviceObject));
         }
       }
     };

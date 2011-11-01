@@ -1,4 +1,4 @@
-/* DO NOT MODIFY. This file was compiled Sun, 11 Sep 2011 15:45:06 GMT from
+/* DO NOT MODIFY. This file was compiled Tue, 01 Nov 2011 13:08:54 GMT from
  * /Users/Greggory/Programing/beerlist/app/assets/javascripts/gmaps4rails/gmaps4rails.mapquest.coffee
  */
 

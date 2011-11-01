@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111031211022) do
+ActiveRecord::Schema.define(:version => 20111101020648) do
 
   create_table "bar_followings", :force => true do |t|
     t.timestamp "created_at"
@@ -82,6 +82,9 @@ ActiveRecord::Schema.define(:version => 20111031211022) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "beer_tracks", ["beer_id"], :name => "index_beer_tracks_on_beer_id"
+  add_index "beer_tracks", ["user_id"], :name => "index_beer_tracks_on_user_id"
 
   create_table "beers", :force => true do |t|
     t.string    "name"

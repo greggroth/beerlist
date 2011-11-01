@@ -1,4 +1,4 @@
-/* DO NOT MODIFY. This file was compiled Sun, 11 Sep 2011 15:43:20 GMT from
+/* DO NOT MODIFY. This file was compiled Tue, 01 Nov 2011 13:30:34 GMT from
  * /Users/Greggory/Programing/beerlist/app/assets/javascripts/gmaps4rails/gmaps4rails.base.js.coffee
  */
 
@@ -6,11 +6,12 @@
   var Gmaps;
   Gmaps = {};
   Gmaps.loadMaps = function() {
-    var key, value, _results;
+    var key, load_function_name, searchLoadIncluded, value, _results;
     _results = [];
     for (key in Gmaps) {
       value = Gmaps[key];
-      _results.push(key !== "loadMaps" ? window["load_" + key]() : void 0);
+      searchLoadIncluded = key.search(/load/);
+      _results.push(searchLoadIncluded === -1 ? (load_function_name = "load_" + key, Gmaps[load_function_name]()) : void 0);
     }
     return _results;
   };
@@ -32,6 +33,7 @@
       this.infobox = function() {
         return false;
       };
+      this.jsTemplate = false;
       this.default_map_options = {
         id: 'map',
         draggable: true,
@@ -225,11 +227,11 @@
         latlng = this.createLatLng(point.lat, point.lng);
         polygon_coordinates.push(latlng);
         if (point === polygon[0]) {
-          strokeColor = this.polygons[i][j].strokeColor || this.polygons_conf.strokeColor;
-          strokeOpacity = this.polygons[i][j].strokeOpacity || this.polygons_conf.strokeOpacity;
-          strokeWeight = this.polygons[i][j].strokeWeight || this.polygons_conf.strokeWeight;
-          fillColor = this.polygons[i][j].fillColor || this.polygons_conf.fillColor;
-          fillOpacity = this.polygons[i][j].fillOpacity || this.polygons_conf.fillOpacity;
+          strokeColor = point.strokeColor || this.polygons_conf.strokeColor;
+          strokeOpacity = point.strokeOpacity || this.polygons_conf.strokeOpacity;
+          strokeWeight = point.strokeWeight || this.polygons_conf.strokeWeight;
+          fillColor = point.fillColor || this.polygons_conf.fillColor;
+          fillOpacity = point.fillOpacity || this.polygons_conf.fillOpacity;
         }
       }
       new_poly = new google.maps.Polygon({
@@ -294,8 +296,10 @@
       return this.clusterize();
     };
     Gmaps4Rails.prototype.createServiceMarkersFromMarkers = function() {
-      var Lat, LatLng, Lng, index, _ref, _ref2;
-      for (index = _ref = this.markers_conf.offset, _ref2 = this.markers.length - 1; _ref <= _ref2 ? index <= _ref2 : index >= _ref2; _ref <= _ref2 ? index++ : index--) {
+      var Lat, LatLng, Lng, index, marker, _len, _ref;
+      _ref = this.markers;
+      for (index = 0, _len = _ref.length; index < _len; index++) {
+        marker = _ref[index];
         Lat = this.markers[index].lat;
         Lng = this.markers[index].lng;
         if (this.markers_conf.randomize) {
@@ -383,8 +387,8 @@
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           polyline = _ref[_i];
           polyline_points = polyline.serviceObject.latLngs.getArray()[0].getArray();
-          for (_j = 0, _len2 = polyline.length; _j < _len2; _j++) {
-            point = polyline[_j];
+          for (_j = 0, _len2 = polyline_points.length; _j < _len2; _j++) {
+            point = polyline_points[_j];
             this.boundsObject.extend(point);
           }
         }
@@ -392,8 +396,8 @@
         for (_k = 0, _len3 = _ref2.length; _k < _len3; _k++) {
           polygon = _ref2[_k];
           polygon_points = polygon.serviceObject.latLngs.getArray()[0].getArray();
-          for (_l = 0, _len4 = polygon.length; _l < _len4; _l++) {
-            point = polygon[_l];
+          for (_l = 0, _len4 = polygon_points.length; _l < _len4; _l++) {
+            point = polygon_points[_l];
             this.boundsObject.extend(point);
           }
         }

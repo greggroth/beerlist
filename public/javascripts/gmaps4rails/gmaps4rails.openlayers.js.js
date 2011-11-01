@@ -1,4 +1,4 @@
-/* DO NOT MODIFY. This file was compiled Sun, 11 Sep 2011 15:43:20 GMT from
+/* DO NOT MODIFY. This file was compiled Tue, 01 Nov 2011 13:30:34 GMT from
  * /Users/Greggory/Programing/beerlist/app/assets/javascripts/gmaps4rails/gmaps4rails.openlayers.js.coffee
  */
 
@@ -152,14 +152,15 @@
       return clusters;
     };
     Gmaps4RailsOpenlayers.prototype.clusterize = function() {
-      var marker, markers_array, _i, _len;
+      var marker, markers_array, _i, _len, _ref;
       if (this.markers_conf.do_clustering === true) {
         if (this.markerClusterer !== null) {
           this.clearClusterer();
         }
         markers_array = new Array;
-        for (_i = 0, _len = markers.length; _i < _len; _i++) {
-          marker = markers[_i];
+        _ref = this.markers;
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          marker = _ref[_i];
           markers_array.push(marker.serviceObject);
         }
         return this.markerClusterer = this.createClusterer(markers_array);
