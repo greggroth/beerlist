@@ -22,7 +22,7 @@
 
 		<h1>Best Deals</h1>
 			<ul data-role="listview" data-inset="true" data-theme="d">
-			  <% for beer_item in @best_deals %>
+			  <% for beer_item in BeerItem.top_deals %>
 			    <li>
 			      <%= link_to beer_item.beer.name, beer_item %>
 						<div class="ui-li-count"><%= sprintf("%.3f",beer_item.abd) %></div>
