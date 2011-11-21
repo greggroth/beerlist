@@ -14,7 +14,8 @@ class BeerTracksController < ApplicationController
       @beer = Beer.find(params[:beer_track][:beer_id])
     end
     
-    @had_beers = current_user.had_beers if user_signed_in?
+    # @had_beers = current_user.had_beers if user_signed_in?
+    @user_beers = current_user.had_beers if user_signed_in?
   	@beer_tracks = current_user.beer_tracks if user_signed_in?
   end
 
@@ -31,7 +32,8 @@ class BeerTracksController < ApplicationController
       @beer = bt.beer
     end
     
-    @had_beers = current_user.had_beers if user_signed_in?
+    # @had_beers = current_user.had_beers if user_signed_in?
+    @user_beers = current_user.had_beers if user_signed_in?
   	@beer_tracks = current_user.beer_tracks if user_signed_in?
   end
 end

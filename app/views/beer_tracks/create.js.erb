@@ -6,6 +6,7 @@
 <% when "beers_page" %>
   $("span#beer_tracker").html("<%= escape_javascript(render(:partial => 'beers/beer_tracker')) %>");
 <% when "beers_index" %>
+  console.log("On the index page")
   $("div#beer-tracking-<%= @beer.id %>").html("<%= escape_javascript(render(:partial => 'beers/track_it', :locals => { :beer => @beer })) %>");
 <% end %>
 $("span#user-stats").html("<%= escape_javascript(render "/layouts/user_stats") %>");

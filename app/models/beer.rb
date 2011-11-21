@@ -44,6 +44,18 @@ class Beer < ActiveRecord::Base
     ratings.inject(0) { |sum, el| sum + el[:value] }.to_f / ratings.size
   end
   
+  #  Use this to merge the beer_items from one beer to a different one.  
+  #  Useful for when a beer is entered twice but under two slightly different names 
+  # for the same beer getting entered in 
+  def merge_beer_items_from(beer)
+    raise(ArgumentError, "Input must be another beer") unless beer.class == Beer
+    beer.beer_items.each do |item|
+      new_item = item.dup
+      new_item.beer_id = self.id
+      new_item.save!
+    end
+  end
+  
   
   after_save :update_tank_indexes
   after_destroy :delete_tank_indexes

@@ -1,5 +1,5 @@
 - if user_signed_in?
-  - if @had_beers.include? item.beer
+  - if @user_beers.include? item.beer
     = form_for @beer_tracks.select { |i| i.beer_id == item.beer.id }, :html => { :method => :delete, :id => "beer_tracks_#{item.id}" }, :remote => true do |h|
       div class="beer_tracking"
         = h.hidden_field :bar_id

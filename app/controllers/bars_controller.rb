@@ -51,7 +51,7 @@ class BarsController < ApplicationController
   	@specials = @beer_items.select { |i| (0..6).member?(i.weekday) }.group_by { |i| i.weekday }
   	@beer_items.delete_if { |i| (0..6).include? i.weekday }
   	if user_signed_in?
-    	@had_beers = current_user.had_beers
+    	@user_beers = current_user.had_beers
     	@beer_tracks = current_user.beer_tracks
     end
   	  	
