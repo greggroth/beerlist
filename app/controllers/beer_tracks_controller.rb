@@ -1,6 +1,10 @@
 class BeerTracksController < ApplicationController
+  cache_sweeper :beer_tracks_sweeper, :only => [:create, :destroy]
+  
   def create
     current_user.drinks_it(params[:beer_track])
+    # @beer_track = current_user.beer_tracks.new(params[:beer_track])
+    # @beer_track.save
     
     case params[:from]
     when "bars_page"
@@ -20,8 +24,8 @@ class BeerTracksController < ApplicationController
   end
 
   def destroy
-    bt = BeerTrack.find(params[:id])
-    bt.destroy
+    beer_track = BeerTrack.find(params[:id])
+    beer_track.destroy
     
     case params[:from]
     when "bars_page"
