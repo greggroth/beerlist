@@ -38,4 +38,4 @@ out = File.new("porter_beer_menu.yml", "w")
 out.write(beers.to_yaml)
 
 #  Give the user a notice
-puts "Found #{beers.count} listings and wrote the array to 'beer_menu.yml'"
+puts "Found #{beers.count} listings and wrote the array to 'porter_beer_menu.yml'"

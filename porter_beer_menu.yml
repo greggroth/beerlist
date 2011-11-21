@@ -1,48 +1,19 @@
 ---
-- - 21st Amendment/Ninkasi
-  - Allies Win the War
-  - Amber Ale
-  - California
-  - 8oz
-  - '8.5'
-  - ! 'this amber ale from 21st amendment and Ninkasi boasts citrus hops melded with
-    caramel and dark fruit '
-- - ! 'Allagash '
-  - ! 'Curieux '
-  - Tripel
-  - Portland, ME
-  - 8 oz
-  - '11'
-  - ! 'a Belgian triple aged in Jim Beam barrels, bourbonlicious! '
-- - ! 'Allagash '
-  - Hugh Malone
-  - Belgian-style IPA
-  - MAine
-  - 8oz
-  - '8.5'
-  - great Belgian style IPA, pine and grapefruit hop character, dry and astringent
-    finish
 - - Allagash
-  - Little Big Beer
-  - American Wild Ale
+  - Curieux
+  - Tripel
   - Maine
   - 8oz
-  - '6'
-  - Sour apples, hay, citrus and some funk
-- - Avery
-  - DuganA IPA
-  - American Double IPA
-  - Colorado
+  - '9'
+  - belgian triple aged in Jim Beam barrels
+- - Bell's
+  - Two Hearted Ale
+  - American IPA
+  - Michigan
   - 16oz
-  - '8.5'
-  - pine and citrus hop bitterness with malty sweetness
-- - Baladin
-  - Ali-skir
-  - Belgian Style Light Strong Ale
-  - Italy
-  - 8oz
-  - '10'
-  - complex, baking spices, dry finish, fruit forward
+  - '7'
+  - american malts and enormous hops, give this beer a crisp finish and incredible
+    floral aroma
 - - BFM/Terrapin
   - Spike and Jerome Cuvee
   - Barleywine
@@ -50,6 +21,14 @@
   - 8oz
   - '12'
   - complex with sour, vanilla, red wine notes in this boozy barley wine
+- - Boulder
+  - Mojo
+  - IPA
+  - Colorado
+  - 16oz
+  - '7'
+  - these guys taught the sweetwater boys how to brew, so taste the granddaddy of
+    420
 - - Brasserie d' Achouffe
   - La Chouffe
   - Belgian Strong Pale Ale
@@ -65,20 +44,13 @@
   - '10'
   - fabulous winter warmer, belgian dark and strong, nicely spiced with curacao and
     thyme
-- - Brooklyn
-  - Black Chocolate Stout
-  - Russian Imperial Stout
-  - New York
-  - 16oz
-  - '10.6'
-  - black body with a finger of sticky coffee colored lasting head
-- - Brouwerij Bosteels
-  - Pauwel Kwak
-  - Belgian Style Dark Strong Ale
+- - Brasserie Dubuisson
+  - Cuvee Des Trolls
+  - Beligian strong pale
   - Belgium
-  - 12 oz
-  - '8'
-  - bready malts, spicy yeast, toffee, dark fruits, and roasted nuts
+  - 10oz
+  - '7'
+  - ! 'sweet Belgian malt, subtle fruitiness, slightly bitter European hops '
 - - Brouwerij Huyghe
   - Delirium Tremens
   - Belgian Strong Pale Ale
@@ -93,42 +65,50 @@
   - 8 oz
   - '6.2'
   - apple, dark fruit, crisp acidity, spice, tart cherry
-- - Cain's
-  - Finest Bitter
-  - English Bitter
-  - England
-  - 20oz
-  - '4'
-  - award-winning traditional English bitter; bready aroma, biscuity malts and crisp
-    hops balance each other
-- - De Ranke
-  - XX Bitter
+- - Des Musketiers
+  - Troubador Magma Cascade Hop
   - Belgian IPA
   - Belgium
-  - 8 oz
-  - '6.2'
-  - mary jane hop flavor rounds out this smokable, oops! we mean drinkable IPA
-- - Emelisse
-  - Imperial Russian Stout
-  - Imperial Stout
-  - Netherlands
   - 8oz
-  - '11'
-  - black coffee, bittersweet chocolate, berries, rich roasted malt
-- - Founders
-  - Red's Rye
-  - Rye Beer
-  - Grand Rapids, MI
+  - '9.5'
+  - this unlabeled keg MAY be the Belgian IPA we ordered, but is dark & sweet like
+    Christmas beer…mysterious…
+- - Dogfish Head
+  - Robert Johnson's Hellhound on My Ale
+  - Double IPA
+  - Delaware
+  - 8oz
+  - '10'
+  - ! 'spicy citrus with fruit richness to balance the intense grapefruit hops '
+- - Dupont
+  - Monk's Stout
+  - English Stout
+  - Belgium
+  - '8'
+  - '5.2'
+  - strong and bitter like an iced espresso; refreshing, intensely roasted malt
+- - ! 'Great Divide '
+  - Denver Pale Ale
+  - English Pale Ale
+  - Colorado
   - 16 oz
-  - '6.6'
-  - grapefruit bouquet, with belgian caramel malts, make this a roundedly good beer
-- - Hopfenstark
-  - Berliner Weisse
-  - Berliner Weisse
-  - Canada
-  - 8oz
-  - '3.2'
-  - ! 'light wheat flavor and lemony tartness; refreshingly acidic '
+  - '5.6'
+  - ! 'sweet toffee-laced malt, hoppy astringency, bittering and piney and bracing '
+- - Irish Dry Stout
+  - ! 'Ohara''s '
+  - Dry Stout
+  - Ireland
+  - 16oz
+  - '4.3'
+  - touch of dark malt acidity, an appropriate amount of roastiness, finishes dry
+    with a touch of residual malt
+- - Jack's
+  - Hard Cider
+  - Cider
+  - Pennsylvania
+  - '16'
+  - '5'
+  - rome apples only make up this delicious demi-sec cider
 - - Jolly Pumpkin
   - ES Bam
   - Farmhouse/ Saison/ BiÃ¨re de garde
@@ -136,36 +116,65 @@
   - 8oz
   - '4.5'
   - rosemary and sage, earthy upfront, hoppy finish
-- - Mikkeller
-  - Black Hole White Wine
-  - Imperial Stout
-  - Denmark
-  - 8oz
-  - '13.1'
-  - coffee, dark chocolate, but then pear, grape and oak, wonderfully bizzare
-- - Ommegang
-  - Adoration Ale
-  - Belgian Strong Dark Ale
-  - New York
-  - 10oz
-  - 10%
-  - spicy Belgian malts and a certain, funky, yeasty wheat aroma, great for a cold
-    winter day
-- - ! 'Sierra Nevada   '
-  - Northern Hemisphere Harvest
-  - IPA
-  - Chico, CA
-  - 16oz
-  - '6.7'
-  - floral and citrus aroma, big spicy fresh-hop flavor
-- - Slaapmutske
-  - Hop Collection
-  - Belgian IPA
+- - Liefmans
+  - Oud Bruin
+  - Flanders Oud Bruin
   - Belgium
   - 8oz
+  - '5'
+  - ! 'pleasantly tart Flemish sour ale with fruity notes and a dry finish '
+- - Mikkeller
+  - Monk's Elixir
+  - Quadruple
+  - Denmark
+  - '8'
   - '10'
-  - dry hopped with Kent Golding Hops, it s definitely a mellow Belgian IPa with a
-    malt backbone
+  - dark fruits, spices, sweet malts, and spicy figs
+- - New Belgium
+  - L.O.F. Kick
+  - Fruit Beer
+  - Colorado
+  - 8oz
+  - '8.5'
+  - bit of spice and acidity with a nice dark fruit component, tart and mildly sour
+- - ! 'Nogne '
+  - Der Kollaborator
+  - Doppelbock
+  - Norway
+  - 8oz
+  - '8.5'
+  - sweet malt, coffee, fruity bitterness with a hint of tobacco
+- - Rogue
+  - Hazelnut Brown Nectar
+  - Brown Ale
+  - Oregon
+  - '16'
+  - '6.2'
+  - hazelnut flavor stands out in this balanced brown
+- - Scaldis
+  - Peche Mel
+  - Fruit Beer
+  - Belgium
+  - 8oz
+  - '8.5'
+  - ! 'very interesting fruit beer, slightly bitter, slightly sour, just enough to
+    cut the sweetness. Delicious! '
+- - Sierra Nevada
+  - Fritz & Ken's Ale
+  - Imperial Stout
+  - Chico, CA
+  - 8oz
+  - '9.2'
+  - imperial stout from Sierra Nevada is smooth and slightly sweet with rich, intense
+    roasted malt
+- - Sierra Nevada
+  - Jack & Ken's Ale
+  - Barleywine
+  - Chico, CA
+  - 8oz
+  - '10.2'
+  - Sierra Nevada’s anniversary barleywine has rich and bittersweet malts balanced
+    with powerful American hops
 - - St. Bernardus
   - Christmas
   - Christmas Ale
@@ -175,35 +184,43 @@
   - nicely spiced, banana notes, citrus all wrapped up a like a holiday package in
     this dark Belgian!
 - - Stoudts
-  - Double IPA
-  - Double IPA
+  - Smooth Hoperator
+  - Doppelbock
   - Pennsylvania
   - 8oz
-  - '10'
-  - piney citrus flavor up front followed by a nice caramel sweetness; finishes with
-    bitter grapefruit hops
-- - Terrapin/Heavy Seas
-  - Free Spirit
-  - Saison
-  - Athens, GA
+  - '7.2'
+  - german malts are subtle and american hop flavor shines through in this hoppy doppelbock…
+    it’s a hoppelbock!
+- - Sweetwater
+  - Sticky Nugs
+  - Fresh Hopped Double Red Ale
+  - Atlanta, GA
+  - 16oz
+  - '8'
+  - the aromas of this fresh dry hopped double red ale from the dank tank series will
+    give you a contact high
+- - Unibroue
+  - Maudite
+  - Belgian Style Dark Strong Ale
+  - Canada
   - 8oz
-  - '6'
-  - refreshing collaboration saison made with sunflower seeds and elderflowers
-- - Vicaris/Girardin
-  - Tripel/Gueze
-  - Tripel/Gueze
-  - Belgium
-  - 8oz
-  - '7'
-  - the sweet tripel and sour gueze cancel each other out in this mysterious brew
-    that I can’t stop drinking
+  - '8'
+  - ! 'pears, apples, caramel, cloves, delicious '
 - - Weyerbacher
-  - Harvest Ale
-  - IPA
+  - Double Simcoe
+  - ! 'American Double IPA '
   - Pennsylvania
   - 8oz
-  - '6.2'
-  - ! 'grassy, zesty IPA made with fresh hops just hours off the vine '
+  - '9'
+  - huge hop monster, woodsy, clean finish
+- - XS Old Crustacean
+  - Rogue
+  - Barleywine
+  - Oregon
+  - 8oz
+  - '11.5'
+  - big, rich, and bitter in this barley wine. brandy meets cocoa and cherries, in
+    a sophisticated blend
 - - Brewery
   - Beer
   - Style
@@ -286,6 +303,14 @@
   - '5.4'
   - delightful! sweet cereal grain malt character with very subdued spicy hops, subtle
     smoke
+- - Alba
+  - Scotch Pine Ale
+  - Scotch Ale
+  - Scotland
+  - 12oz
+  - '7.5'
+  - The wort is poured over young sprigs of pine and infused for several hours to
+    make up this piney complex beer
 - - Allagash
   - Four
   - Quadrupel
@@ -307,6 +332,14 @@
   - 6L
   - 9%
   - beautiful golden color, Belgian candi sugar, pear
+- - ! 'Allagash '
+  - Hugh Malone
+  - Belgian-style IPA
+  - MAine
+  - 750ml
+  - '8.5'
+  - great Belgian style IPA, pine and grapefruit hop character, dry and astringent
+    finish
 - - Alvinne
   - Extra Restyled
   - Belgian IPA
@@ -373,6 +406,13 @@
   - 12oz
   - '5.8'
   - malty, dark and dreamy, a great beer to have a few of
+- - Avery
+  - White Rascal
+  - Belgian Wit
+  - Colorado
+  - 12oz
+  - '5.5'
+  - lemon, orange, white pepper, refreshing, a perfect example of a belgian wit
 - - Avery
   - Joe's Pilsner
   - Pilsner
@@ -1035,6 +1075,13 @@
   - 22oz
   - '6.5'
   - Brewed with sake yeast and rice syrup for an eastern flavor
+- - Crispin
+  - Brut
+  - Cider
+  - Wisconsin
+  - 12oz
+  - '5'
+  - ! 'Fruit forward, with a fresh, crunchy appley nose, refreshingly crisp '
 - - De Dolle
   - Oerbier
   - Belgian Style Dark Strong Ale
@@ -1167,6 +1214,13 @@
   - '9'
   - honey, saffron, succulent papaya
 - - Dogfish Head
+  - Bitches Brew
+  - Imperial Stout
+  - Milton, DE
+  - 750 ml
+  - '9'
+  - brown sugar and molasses, creamy, loads of funky spice on the finish
+- - Dogfish Head
   - Raison D'Etre
   - Belgian Style Dark Strong Ale
   - Delaware
@@ -1181,6 +1235,13 @@
   - '7.5'
   - herbal and earthy; bold grapefruit bitterness; Malts are unobtrusive but give
     a floral honey touch
+- - Dogfish Head
+  - Faithfull
+  - Belgian Strong Pale Ale
+  - Delaware
+  - 750ml
+  - '7'
+  - creamy, taste verges on a triple, pear and apple fruit flavors
 - - Drie Fonteinen
   - Oude Kriek
   - Traditional Lambic
@@ -1360,6 +1421,13 @@
   - '7.2'
   - delicious cascade hops make this a floral IPA with a refreshing bitterness
 - - Founders
+  - Red Rye
+  - American Style Pale Ale
+  - Grand Rapids, MI
+  - 12 oz
+  - '6.6'
+  - grapefruit bouquet, with belgian caramel malts, make this a roundedly good beer
+- - Founders
   - Backwoods Bastard
   - Scotch Ale
   - Michigan
@@ -1487,6 +1555,13 @@
   - 750 ml
   - '7'
   - lemon zest, coriander, full-flavored and amazing
+- - Gouden Carolus
+  - Hopsinjoor
+  - Belgian IPA
+  - Belgium
+  - 12oz
+  - '8'
+  - Citrus hops, actually bitter, but still with lots of delicate fruit
 - - Grado Plato
   - Cantus Caeli
   - Fruit Beer
@@ -2063,6 +2138,19 @@
   - 12 oz
   - '5.3'
   - malty sweet to start with grass in the middle and a citrus hops finish
+- - Lagunitas
+  - Hairy Eyeball
+  - Strong Ale/Old Ale
+  - California
+  - 12oz
+  - '10'
+- - Lagunitas
+  - Sucks Holiday Ale
+  - IPA
+  - California
+  - 12oz
+  - '7.85'
+  - So they forgot to make brown suggah’ so they made this delish beer instead!
 - - Lakefront
   - Fixed Gear
   - Flemish Sour/Red Ales
@@ -3559,6 +3647,14 @@
   - 500 ml
   - '7.7'
   - weizenbock, complex banana flavors, richness
+- - Wells
+  - Courage
+  - Russian Imperial Stout
+  - England
+  - 330ml
+  - '10'
+  - Courage Russian Imperial Stout England 275ml/10% $10.75 Hasn’t been made since
+    1993 until this year, black as tar, figs, sherry, cocoa, roasted coffee
 - - Wells & Youngs
   - Bombardier Bitter
   - English Bitter
