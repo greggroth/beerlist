@@ -2,13 +2,12 @@ h1  = @brewery.name
 
 h3  Brewing #{pluralize(@brewery.beers.length, "beer")}
 
-p
+div
   - if @brewery.address.present?
     = @brewery.address
     br
   - if @brewery.city.present? or @brewery.state.present?
     #{@brewery.city} #{@brewery.state}
-    br
   - if @brewery.zip.present?
     = @brewery.zip
     br
