@@ -2,7 +2,7 @@ h1  = @brewery.name
 
 h3  Brewing #{pluralize(@brewery.beers.length, "beer")}
 
-div
+div class="address"
   - if @brewery.address.present?
     = @brewery.address
     br
@@ -15,7 +15,8 @@ div
     = link_to("Website", @brewery.url)
     br
 
-= user_signed_in? ? link_to("Add a beer", new_beer_path(:beer => { :brewery_id => @brewery.id})) : nil
+div 
+  = user_signed_in? ? link_to("Add a beer", new_beer_path(:beer => { :brewery_id => @brewery.id})) : nil
 
 div class="itemlist"
   = render 'beers_list'
