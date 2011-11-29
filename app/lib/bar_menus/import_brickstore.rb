@@ -1,9 +1,9 @@
 class ImportBrickstore
-  require "nokogiri"
-  require "open-uri"
-  require "yaml"
-  require "enumerator"
-  require "active_support"
+  # require "nokogiri"
+  # require "open-uri"
+  # require "yaml"
+  # require "enumerator"
+  # require "active_support"
   
   def self.load_list(url)
     #  Let's check out The Porter's selection
