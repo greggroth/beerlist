@@ -1,4 +1,5 @@
 $(document).ready () ->	
+  
   $('form.rating_ballot').each ->
     checkedId = $(this).children('input:checked').attr('id')
     $(this).children('label[for=' + checkedId + ']').prevAll().andSelf().addClass('bright')
@@ -18,4 +19,26 @@ $(document).ready () ->
 
   $('form.rating_ballot').live 'change', () -> 
     $(this).submit()
+    
+  $('.beer_tracking_checkbox').live 'change', (e) ->
+    bar = $(e.target).attr('data-bar')
+    beer = $(e.target).attr('data-beer')
+    token = $('meta[name=csrf-token]').attr('content')
+    
+    console.log("CHANGED") 
+    $.ajax({
+     url: '/beer_tracks',
+     type: 'POST',
+     data: { authenticity_token: token, beer_track: { bar_id: bar, beer_id: beer } },
+     dataType: 'json',
+     sucess: (data) ->
+       console.log("SUCESS!")
+    })
+
+  $.getJSON '/beer_tracks', (data) ->
+    console.log(data)
+    $('.beer_tracking_checkbox').each (index) ->
+      if $.inArray( parseInt($(this).attr('data-beer')), data ) != -1
+        $(this).attr("checked", "checked")
+  
   return 

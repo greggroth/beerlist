@@ -33,6 +33,7 @@ group :test, :development do
 end
 
 # gem 'perftools.rb', :git => 'git://github.com/bearded/perftools.rb.git', :branch => 'perftools-1.8'
+# # gem 'perftools.rb', :git => 'https://github.com/tmm1/perftools.rb.git'
 # gem 'rack-perftools_profiler'
 
 group :test do

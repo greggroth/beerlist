@@ -1,6 +1,8 @@
 class BarsController < ApplicationController
   helper_method :sort_column, :sort_direction
   before_filter :authenticate_user!, :except => [:index, :show]
+  
+  cache_sweeper :bars_sweeper, :only => [:create, :update, :destroy]
 
   # GET /bars
   # GET /bars.xml
@@ -30,19 +32,19 @@ class BarsController < ApplicationController
     case params[:sort]
     when nil
       if params[:sort_by_pouring].nil? || params[:sort_by_pouring]=='all' # NIL NIL
-        @beer_items = @bar.beer_items.includes({ :beer => [:beer_tracks, :ratings] }).order("beers.name ASC")
+        @beer_items = @bar.beer_items.includes({ :beer => [:beer_tracks, :ratings, :brewery] }).order("beers.name ASC")
       else                              # NIL !NIL
-        @beer_items = @bar.beer_items.find(:all, :include => [{ :beer => [:beer_tracks, :ratings] }], :conditions => ["pouring = ?", params[:sort_by_pouring]], :order => "beers.name ASC")
+        @beer_items = @bar.beer_items.find(:all, :include => [{ :beer => [:beer_tracks, :ratings, :brewery] }], :conditions => ["pouring = ?", params[:sort_by_pouring]], :order => "beers.name ASC")
       end
     when 'abd'  # sorting will reset pouring type select
-      hold = @bar.beer_items.find(:all, :include => [{ :beer => [:beer_tracks, :ratings] }])
+      hold = @bar.beer_items.find(:all, :include => [{ :beer => [:beer_tracks, :ratings, :brewery] }])
        if params[:direction] == "asc"
          @beer_items = hold.sort_by { |e| e.abd }
        else  #desc
          @beer_items = hold.sort_by { |e| -e.abd }
        end
     else        #  normal sorting
-      @beer_items = @bar.beer_items.find(:all, :include => [{ :beer => [:beer_tracks, :ratings] }], :order => [sort_column + " " + sort_direction])
+      @beer_items = @bar.beer_items.find(:all, :include => [{ :beer => [:beer_tracks, :ratings, :brewery] }], :order => [sort_column + " " + sort_direction])
     end
   
 	
@@ -50,14 +52,17 @@ class BarsController < ApplicationController
   	@recent_beer_items = @beer_items.select { |i| i.updated_at > 1.week.ago }
   	@specials = @beer_items.select { |i| (0..6).member?(i.weekday) }.group_by { |i| i.weekday }
   	@beer_items.delete_if { |i| (0..6).include? i.weekday }
+  
   	if user_signed_in?
     	@user_beers = current_user.had_beers
     	@beer_tracks = current_user.beer_tracks
+    	
     end
   	  	
   	if @bar.latitude.present? && @bar.longitude.present?
-  		@json = @bar.to_gmaps4rails
+  		@gmaps_json = @bar.to_gmaps4rails
   	end
+  
   end
 
   def new
@@ -92,11 +97,9 @@ class BarsController < ApplicationController
       if @bar.update_attributes(params[:bar])
         format.html { redirect_to(@bar, :notice => "Bar was successfully updated. (#{undo_link})") }
         format.iphone { redirect_to(@bar, :notice => 'Bar was successfully updated.') }
-        format.xml  { head :ok }
       else
         format.html { render :action => "edit", :notice => 'Unable to edit' }
         format.iphone { render :action => "edit", :notice => 'Unable to edit' }
-        format.xml  { render :xml => @bar.errors, :status => :unprocessable_entity }
       end
     end
   end

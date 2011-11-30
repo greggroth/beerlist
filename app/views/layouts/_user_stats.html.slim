@@ -1,5 +1,4 @@
-- cache 'user_stats' do
-  = link_to current_user.beer_items.count, new_beer_item_path, { :id => "beer-item-count", :title => "Add a new menu listing" }
-  | &nbsp;| 
-  span id="beer-count"
-    = current_user.had_beers.count
+= link_to current_user.beer_items.count, new_beer_item_path, { :id => "beer-item-count", :title => "Add a new menu listing" }
+| &nbsp;| 
+span id="beer-count"
+  = current_user.had_beers.count

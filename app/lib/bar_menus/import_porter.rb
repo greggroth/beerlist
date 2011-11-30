@@ -18,12 +18,23 @@ class ImportPorter
 
   def self.fix_volume(in_volume)
     volume = in_volume.delete(" ").split(/(\d+)/)
+    if volume.length == 3
+      volume[1] = (volume[0] == ".") ? ["0", volume[0], volume[1]].join : [volume[0], volume[1]].join
+    end
     if (volume.length == 4) or (volume.length == 5)  # there was a decimal or decimal+unit
       corrected = [volume[1], volume[2], volume[3]].join
       volume[1] = corrected
-      volume[2] = ["oz", "ml", "cl"].include?(volume.last) ? volume.last : "oz"
     end
-    return volume
+    case volume.last.downcase
+    when "L"
+      volume[1] = (volume[1].to_f*1000).to_i
+      volume[2] = "ml"
+    when "oz", "ml", "cl"
+      volume[2] = volume.last.downcase
+    else
+      volume[2] = "oz"
+    end
+    return volume.take(3)
   end
   
   # the porter keeps their list in the format:
@@ -65,6 +76,7 @@ class ImportPorter
         updating_item = BeerItem.where(bar_id: bar.id, beer_id: bubs.id).first
         if updating_item.present?
           #  Updates the existing record to make sure it's up to date
+          puts "updating the listing for #{listing[1]}"
           volume = fix_volume(listing[4])
           BeerItem.update(updating_item.id, :pouring => pouring, :volume => volume[1].to_f, :volunit => volume[2])
           next
@@ -83,6 +95,7 @@ class ImportPorter
         bubs.save!
       end
       # MAKE THE ITEM
+      puts "creating new listing for #{listing[1]}"
       volume = fix_volume(listing[4])
       new_item = bar.beer_items.new :beer => bubs, :volume => volume[1].to_f, :volunit => volume[2], :pouring => pouring
       new_item.save!
@@ -92,7 +105,7 @@ class ImportPorter
 end
 
 beers = ImportPorter.load_list('http://www.theporterbeerbar.com/drink/beer/')
-ImportPorter.save_to_db(beers.take(50))
+ImportPorter.save_to_db(beers)
 
 # #  Save the data
 # out = File.new("porter_beer_menu.yml", "w")

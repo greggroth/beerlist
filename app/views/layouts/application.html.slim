@@ -7,7 +7,7 @@ html
       div id="main"
         - if iphone_user_agent?
           div id="iphone-message"
-            | Using a mobile browser?  #{link_to "Use the optimized version of the site", "http://m.atlbeerlist.com/"}
+            | Using a mobile browser?  #{link_to "Use an optimized version of the site", "http://m.atlbeerlist.com/"}
         - if notice.present?
           div class="ui-state-highlight ui-corner-all notice-container" style="margin-top: 20px; padding: 0 .7em;"
             p
@@ -20,4 +20,5 @@ html
               strong #{alert}
         br
         = yield
-      = render :partial => "layouts/footer"
+      - cache "page_footer" do
+        = render :partial => "layouts/footer"

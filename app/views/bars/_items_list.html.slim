@@ -7,41 +7,42 @@ table id="sorted_beer_item_list"
       th width="20%"
         = sortable "beers.name", "Beer"
         span class="asc"
+      th width="20%"
+        = sortable "beers.brewery.name", "Brewery"
+        span class="asc"
       th width="12%"
         = sortable "beers.abv", "ABV"
         span class="asc"
-      th width="18%"
+      th width="16%"
         = sortable "volume", "Pouring"
         span class="asc"
-      th width="10%" class="abd-table-heading"
+      th width="9%" class="abd-table-heading"
         = sortable "abd", "ABD"
         span class="asc"
-      th width="15%"
+      th width="7%"
         = sortable "price", "Price"
         span class="asc"
-      th width="6%"
-      th width="6%"
-      th width="6%"
+      th width="5%"
+      th width="5%"
   tbody class="with-action-links"
     - items.each do |item|
       tr class="#{ Time.now.wday == item.weekday ? "todays-deal" : "" }"
         - if user_signed_in?
           td
             div id="beer_tracker_form_#{item.id}"
-              = render :partial => "bars/track_it", :locals => { :item => item }
-        td = link_to item.beer.name, item.beer
+              / = render :partial => "bars/track_it", :locals => { :item => item }
+              = check_box_tag "beer_tracking", "add", false, {class: "beer_tracking_checkbox", :"data-beer" => item.beer.id, :"data-bar" => item.bar.id}
+        td = link_to(item.beer.name, item.beer)
+        td = link_to(item.beer.brewery.name, item.beer.brewery)
         td = number_to_percentage item.beer.abv, :precision => 1
         td = pouring(item)
-        td = sprintf("%.3f",item.abd) 
-        td = number_to_currency(item.price)
+        td = (item.abd == 0) ? "-" : sprintf("%.3f",item.abd) 
+        td = item.price.nil? ? "-" : number_to_currency(item.price)
         - if user_signed_in?
           td class="text-align-center"
             = link_to 'Details', item, :class => "action_link"
           td class="text-align-center"
             = link_to 'Edit', edit_beer_item_path(item), :class => "action_link" 
-          td class="text-align-center"
-            = link_to 'Destroy', item, :method => :delete, :class => "action_link"
         - else
-          td
           td
           td
