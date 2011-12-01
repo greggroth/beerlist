@@ -1,5 +1,6 @@
 class BeerTracksController < ApplicationController
-
+  # before_filter :authenticate_user!
+  
   def index
     @user_beers = user_signed_in? ? current_user.had_beers.map { |i| i.id } : []
     
@@ -9,15 +10,16 @@ class BeerTracksController < ApplicationController
   end
   
   def create
-    puts "BEER TRACK CREATE ACTION CALLED"
-
-    if current_user.has_drunk?(Beer.find(params[:beer_track][:beer_id]))
-      puts "REMOVED IT"
-      current_user.didnt_drink(params[:beer_track][:beer_id])
-    else
-      puts "ADDED IT"
-      current_user.drinks_it(params[:beer_track])
+    if user_signed_in?
+      if current_user.has_drunk?(Beer.find(params[:beer_track][:beer_id]))
+        current_user.didnt_drink(params[:beer_track][:beer_id])
+      else
+        current_user.drinks_it(params[:beer_track])
+      end
     end
+    
+    render template: 'beer_tracks/create.js.erb'
+    
     #     
     #     case params[:from]
     #     when "bars_page"
@@ -34,24 +36,5 @@ class BeerTracksController < ApplicationController
     #     # @had_beers = current_user.had_beers if user_signed_in?
     #     @user_beers = current_user.had_beers if user_signed_in?
     # @beer_tracks = current_user.beer_tracks if user_signed_in?
-  end
-
-  def destroy
-    puts "DESTROY THE BEER TRACK"
-    # bt = BeerTrack.find(params[:id])
-    #     bt.destroy
-    #     
-    #     case params[:from]
-    #     when "bars_page"
-    #       @from = "bars_page"
-    #       @beer_item = BeerItem.find(params[:beer_item_id])
-    #     when "beers_index"
-    #       @from = "beers_index"
-    #       @beer = bt.beer
-    #     end
-    #     
-    #     # @had_beers = current_user.had_beers if user_signed_in?
-    #     @user_beers = current_user.had_beers if user_signed_in?
-    #     @beer_tracks = current_user.beer_tracks if user_signed_in?
   end
 end

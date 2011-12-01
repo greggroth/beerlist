@@ -25,14 +25,12 @@ $(document).ready () ->
     beer = $(e.target).attr('data-beer')
     token = $('meta[name=csrf-token]').attr('content')
     
-    console.log("CHANGED") 
     $.ajax({
      url: '/beer_tracks',
      type: 'POST',
      data: { authenticity_token: token, beer_track: { bar_id: bar, beer_id: beer } },
      dataType: 'json',
      sucess: (data) ->
-       console.log("SUCESS!")
     })
 
   $.getJSON '/beer_tracks', (data) ->

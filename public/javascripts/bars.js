@@ -1,4 +1,4 @@
-/* DO NOT MODIFY. This file was compiled Wed, 30 Nov 2011 21:50:03 GMT from
+/* DO NOT MODIFY. This file was compiled Wed, 30 Nov 2011 22:39:39 GMT from
  * /Users/Greggory/Programing/beerlist/app/assets/javascripts/bars.coffee
  */
 
@@ -31,7 +31,6 @@
       bar = $(e.target).attr('data-bar');
       beer = $(e.target).attr('data-beer');
       token = $('meta[name=csrf-token]').attr('content');
-      console.log("CHANGED");
       return $.ajax({
         url: '/beer_tracks',
         type: 'POST',
@@ -43,9 +42,7 @@
           }
         },
         dataType: 'json',
-        sucess: function(data) {
-          return console.log("SUCESS!");
-        }
+        sucess: function(data) {}
       });
     });
     $.getJSON('/beer_tracks', function(data) {

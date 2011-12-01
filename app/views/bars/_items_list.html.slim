@@ -2,8 +2,7 @@ br
 table id="sorted_beer_item_list"
   thead
     tr
-      - if user_signed_in?
-        th width="7%" Had it?
+      th width="7%" Had it?
       th width="20%"
         = sortable "beers.name", "Beer"
         span class="asc"
@@ -27,11 +26,9 @@ table id="sorted_beer_item_list"
   tbody class="with-action-links"
     - items.each do |item|
       tr class="#{ Time.now.wday == item.weekday ? "todays-deal" : "" }"
-        - if user_signed_in?
-          td
-            div id="beer_tracker_form_#{item.id}"
-              / = render :partial => "bars/track_it", :locals => { :item => item }
-              = check_box_tag "beer_tracking", "add", false, {class: "beer_tracking_checkbox", :"data-beer" => item.beer.id, :"data-bar" => item.bar.id}
+        td
+          div id="beer_tracker_form_#{item.id}"
+            = check_box_tag "beer_tracking", "add", false, {class: "beer_tracking_checkbox", :"data-beer" => item.beer.id, :"data-bar" => item.bar.id}
         td = link_to(item.beer.name, item.beer)
         td = link_to(item.beer.brewery.name, item.beer.brewery)
         td = number_to_percentage item.beer.abv, :precision => 1
