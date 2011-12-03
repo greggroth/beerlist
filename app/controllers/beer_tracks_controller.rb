@@ -1,5 +1,5 @@
 class BeerTracksController < ApplicationController
-  # before_filter :authenticate_user!
+  # before_filter :authenticate_user!, only: :create
   
   def index
     @user_beers = user_signed_in? ? current_user.had_beers.map { |i| i.id } : []
@@ -18,7 +18,10 @@ class BeerTracksController < ApplicationController
       end
     end
     
-    render template: 'beer_tracks/create.js.erb'
+    respond_to do |format|
+      format.js
+    end
+    
     
     #     
     #     case params[:from]

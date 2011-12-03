@@ -1,4 +1,4 @@
-/* DO NOT MODIFY. This file was compiled Wed, 30 Nov 2011 22:39:39 GMT from
+/* DO NOT MODIFY. This file was compiled Sat, 03 Dec 2011 00:05:28 GMT from
  * /Users/Greggory/Programing/beerlist/app/assets/javascripts/bars.coffee
  */
 
@@ -31,22 +31,15 @@
       bar = $(e.target).attr('data-bar');
       beer = $(e.target).attr('data-beer');
       token = $('meta[name=csrf-token]').attr('content');
-      return $.ajax({
-        url: '/beer_tracks',
-        type: 'POST',
-        data: {
-          authenticity_token: token,
-          beer_track: {
-            bar_id: bar,
-            beer_id: beer
-          }
-        },
-        dataType: 'json',
-        sucess: function(data) {}
+      return $.post('/beer_tracks', {
+        "authenticity_token": token,
+        "beer_track": {
+          "bar_id": bar,
+          "beer_id": beer
+        }
       });
     });
     $.getJSON('/beer_tracks', function(data) {
-      console.log(data);
       return $('.beer_tracking_checkbox').each(function(index) {
         if ($.inArray(parseInt($(this).attr('data-beer')), data) !== -1) {
           return $(this).attr("checked", "checked");

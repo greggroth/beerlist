@@ -25,16 +25,9 @@ $(document).ready () ->
     beer = $(e.target).attr('data-beer')
     token = $('meta[name=csrf-token]').attr('content')
     
-    $.ajax({
-     url: '/beer_tracks',
-     type: 'POST',
-     data: { authenticity_token: token, beer_track: { bar_id: bar, beer_id: beer } },
-     dataType: 'json',
-     sucess: (data) ->
-    })
+    $.post '/beer_tracks', { "authenticity_token": token, "beer_track" : { "bar_id": bar, "beer_id": beer } }
 
   $.getJSON '/beer_tracks', (data) ->
-    console.log(data)
     $('.beer_tracking_checkbox').each (index) ->
       if $.inArray( parseInt($(this).attr('data-beer')), data ) != -1
         $(this).attr("checked", "checked")
