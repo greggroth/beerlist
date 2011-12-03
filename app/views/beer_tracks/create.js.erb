@@ -1,4 +1,4 @@
-<% unless current_user && current_user.signed_in? %>
+<% unless user_signed_in? %>
   $(':checked').removeAttr('checked');
   if ( $("div#notice-container").length == 0) {
     $("<%= escape_javascript(render :partial => 'layouts/notice', locals: { notice: "Gotta #{ link_to 'sign up', new_user_registration_path } or #{ link_to 'log in', new_user_session_path} before you can track your beers" }) %>").hide().prependTo('div#main').slideDown('fast');

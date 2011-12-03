@@ -1,5 +1,9 @@
 $(document).ready () ->	
-  
+  $.getJSON '/beer_tracks', (data) ->
+    $('.beer_tracking_checkbox').each (index) ->
+      if $.inArray( parseInt($(this).attr('data-beer')), data ) != -1
+        $(this).attr("checked", "checked")
+        
   $('form.rating_ballot').each ->
     checkedId = $(this).children('input:checked').attr('id')
     $(this).children('label[for=' + checkedId + ']').prevAll().andSelf().addClass('bright')
@@ -26,10 +30,5 @@ $(document).ready () ->
     token = $('meta[name=csrf-token]').attr('content')
     
     $.post '/beer_tracks', { "authenticity_token": token, "beer_track" : { "bar_id": bar, "beer_id": beer } }
-
-  $.getJSON '/beer_tracks', (data) ->
-    $('.beer_tracking_checkbox').each (index) ->
-      if $.inArray( parseInt($(this).attr('data-beer')), data ) != -1
-        $(this).attr("checked", "checked")
   
   return 
