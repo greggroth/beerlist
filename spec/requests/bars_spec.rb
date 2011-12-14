@@ -42,7 +42,7 @@ describe "Bars" do
     fill_in "bar_state", :with => "GA"
     fill_in "bar_url", :with => "http://www.bar-stop.com/"
     click_button "Create Bar"
-    
+
     current_path.should eq(bars_path)
     page.should have_content "Bar was successfully created."
   end
@@ -91,7 +91,7 @@ describe "Bars" do
     page.should have_content "Zip is invalid"
   end
 
-  it " attempts to create a bar with an invalud state" do
+  it " attempts to create a bar with an invalid state" do
     visit root_path
     click_link "Login"
     user = FactoryGirl.create(:user)
@@ -131,17 +131,17 @@ describe "Bars" do
     page.should have_content "Url is invalid"
   end
   
-  it " sorts listings by price" do
-    bar = FactoryGirl.create(:bar)
-    visit bar_path(bar)
-    click_link "Price"
-    current_path.should eq(bar_path(bar))
-  end
-  
-  it " sorts listings by abd" do
-    bar = FactoryGirl.create(:bar)
-    visit bar_path(bar)
-    click_link "ABD"
-    current_path.should eq(bar_path(bar))
-  end
+  # it " sorts listings by price" do
+  #   bar = FactoryGirl.create(:bar)
+  #   visit bar_path(bar)
+  #   click_link "Price"
+  #   current_path.should eq(bar_path(bar))
+  # end
+  # 
+  # it " sorts listings by abd" do
+  #   bar = FactoryGirl.create(:bar)
+  #   visit bar_path(bar)
+  #   click_link "ABD"
+  #   current_path.should eq(bar_path(bar))
+  # end
 end

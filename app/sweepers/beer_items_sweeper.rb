@@ -14,7 +14,8 @@ class BeerItemsSweeper < ActionController::Caching::Sweeper
     def expire_cache(beer_item)
       expire_fragment 'todays_deals'
       expire_fragment 'top_deals'
-      expire_fragment 'user_stats'
+      expire_fragment "list_of_beer_items_#{beerItem.bar.id}"
+      expire_fragment 'page_header'
     end
 
 end

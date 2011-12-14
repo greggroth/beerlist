@@ -2,22 +2,35 @@ doctype html
 html
   = render :partial => "layouts/doc_header"
   body
-    = render :partial => "layouts/page_header"
+    div id="title"
+      = render :partial => "layouts/userbar"
     div id="wrap"
       div id="main"
         - if iphone_user_agent?
           div id="iphone-message"
-            | Using a mobile browser?  #{link_to "Use the optimized version of the site", "http://m.atlbeerlist.com/"}
-        - if notice.present?
-          div class="ui-state-highlight ui-corner-all notice-container" style="margin-top: 20px; padding: 0 .7em;"
-            p
-              span class="ui-icon ui-icon-info" style="float: left; margin-right: 0.3em;"
-              strong #{raw(notice)}
-        - if alert.present?
+            | Using a mobile browser?  #{link_to "Use an optimized version of the site", "http://m.atlbeerlist.com/"}
+        - if flash[:notice].present?
+          = render partial: "layouts/notice"
+        - if flash[:alert].present?
           div class="ui-state-error ui-corner-all notice-container" style="padding: 0 .7em;"
             p
               span class="ui-icon ui-icon-alert" style="float: left; margin-right: 0.3em;"
               strong #{alert}
         br
         = yield
-      = render :partial => "layouts/footer"
+      div id="footer"
+        = yield :scripts
+        - cache "page_footer" do
+          div id="footerinfo"
+            div id="design"
+              = link_to image_tag("hodgsonlogo.png"), "http://www.hodgsonco.com", :class => "no_hover_background"
+            div id="footercomments"
+              p
+                | Send comments, suggestions or bugs to the #{mail_to "admin@atlbeerlist.com", "admin"}
+                br
+                | &#64; 2011, Greggory Rothmeier
+          br
+          div id="social"
+            = link_to image_tag("facebook-icon.jpg", :height => "22px", :width => "22px"), "http://www.facebook.com/pages/AtlBeerListcom/106072122833011", :class => "no_hover_background", :target => "_blank"
+            a href="http://www.twitter.com/atlbeerlist" class="no_hover_background" target="_blank"
+              img src="http://twitter-badges.s3.amazonaws.com/t_small-a.png" alt="Follow atlbeerlist on Twitter"

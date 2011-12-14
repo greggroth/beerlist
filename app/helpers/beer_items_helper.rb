@@ -6,6 +6,8 @@ module BeerItemsHelper
   def pouring(item)
     if item.pouring == "bucket"
       "bucket of #{item.bucket_of} (#{number_to_human(item.volume, :units => {:unit => item.volunit})} each)"
+    elsif item.volunit.nil?
+      "#{number_to_human(item.volume)} #{item.pouring}"
     else
       "#{number_to_human(item.volume, :units => {:unit => item.volunit})} #{item.pouring}"
     end

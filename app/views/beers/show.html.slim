@@ -1,5 +1,6 @@
 = content_for :head do
   = javascript_include_tag "rating_ballot"
+  = javascript_include_tag "beers"
 
 h1
   = @beer.name
@@ -25,7 +26,8 @@ p
   strong Rate:
   - if user_signed_in?
     div id="ratings-container"
-      = render :partial => "ratings_group", :locals => { :beer => @beer }
+      - ['overall', 'taste', 'smell', 'color', 'feel'].each do |category|
+        div class="ratings-business"  #{category.titleize}#{@beer.average_rating(category).nan? ? nil : " (avg: " + @beer.average_rating(category).to_s + ")"}:  #{render :partial => "beers/rating", :locals => { :dim => category, :beer => @beer }}
   - else
     i 
       | &nbsp;&nbsp;#{ link_to "Sign up", new_user_registration_path } or #{ link_to "log in", new_user_session_path } to rate beer!

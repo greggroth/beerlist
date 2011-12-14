@@ -22,7 +22,7 @@ describe User do
     fill_in "Password", :with => user.password
     click_button "Sign in"
     current_path.should eq(root_path)
-    page.should have_content("Signed in successfully.")
+    page.should have_content("Welcome back!")
     page.should have_content("Welcome, #{user.email}")
     
     click_link "Logout"

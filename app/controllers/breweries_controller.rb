@@ -64,7 +64,6 @@ class BreweriesController < ApplicationController
       else
         format.html { render :action => "new" }
         format.iphone { render :action => "new" }
-        format.xml  { render :xml => @brewery.errors, :status => :unprocessable_entity }
       end
     end
   end

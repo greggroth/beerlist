@@ -274,6 +274,12 @@ form.rating_ballot label.rating.glow {
   width: 40%;
   text-align: center;
 }
+#main .notice-container a {
+  color: #AF7817;
+}
+#main .notice-container a:hover {
+  color: #b71234;
+}
 #main #announcement {
   text-align: center;
   padding: 25px 50px;

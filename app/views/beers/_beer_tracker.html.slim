@@ -1,4 +1,4 @@
 - if current_user.has_drunk?(@beer)
-  | You've had it!
+  | You've Had it (#{link_to("unhad", { controller: "beer_tracks", action: "create", beer_track: {beer_id: @beer.id}}, method: :post, remote: true, id: "unhad")})
 - else
-  = link_to("Had it?", { :controller => "beer_tracks", :action => "create", :beer_track => {:beer_id => @beer.id}, :from => "beers_page" }, :method => :post, :remote => true)
+  = link_to("Had it?", { controller: "beer_tracks", action: "create", beer_track: {beer_id: @beer.id}}, method: :post, remote: true, id: "had")

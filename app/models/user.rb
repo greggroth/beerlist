@@ -40,14 +40,14 @@ class User < ActiveRecord::Base
 	def drinks_it(beer_track)
 	  if beer_track.has_key?(:beer_id)
 	    b = self.beer_tracks.new beer_track
-	    b.save
+	    return b.save
 	  else
 	    return false
 	  end
 	end
 	
-	def didnt_drink(beer)
-	 self.beer_tracks.find_by_beer_id(beer).destroy
+	def didnt_drink(beer_id)
+	 self.beer_tracks.find_by_beer_id(beer_id).destroy
 	end
 
 	def admin_bars

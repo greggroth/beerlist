@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111101020648) do
+ActiveRecord::Schema.define(:version => 20111214155403) do
 
   create_table "bar_followings", :force => true do |t|
     t.timestamp "created_at"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(:version => 20111101020648) do
     t.string    "photo_file_name"
     t.string    "photo_content_type"
     t.integer   "photo_file_size"
-    t.datetime  "photo_updated_at"
+    t.timestamp "photo_updated_at"
   end
 
   add_index "bars", ["id"], :name => "index_bars_on_id"
@@ -68,6 +68,9 @@ ActiveRecord::Schema.define(:version => 20111101020648) do
     t.integer   "bucket_of"
   end
 
+  add_index "beer_items", ["bar_id"], :name => "index_beer_items_on_bar_id"
+  add_index "beer_items", ["beer_id"], :name => "index_beer_items_on_beer_id"
+
   create_table "beer_styles", :force => true do |t|
     t.string    "name"
     t.string    "description"
@@ -76,11 +79,11 @@ ActiveRecord::Schema.define(:version => 20111101020648) do
   end
 
   create_table "beer_tracks", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "beer_id"
-    t.integer  "bar_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer   "user_id"
+    t.integer   "beer_id"
+    t.integer   "bar_id"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   add_index "beer_tracks", ["beer_id"], :name => "index_beer_tracks_on_beer_id"
@@ -122,12 +125,12 @@ ActiveRecord::Schema.define(:version => 20111101020648) do
   end
 
   create_table "ratings", :force => true do |t|
-    t.integer  "beer_id"
-    t.integer  "user_id"
-    t.integer  "value"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "dimension"
+    t.integer   "beer_id"
+    t.integer   "user_id"
+    t.integer   "value"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.string    "dimension"
   end
 
   create_table "sessions", :force => true do |t|

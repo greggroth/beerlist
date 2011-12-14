@@ -4,12 +4,12 @@ class BeersController < ApplicationController
 
   def index
     if params[:search].present?
-      @beers = Beer.includes(:beer_style, :brewery, :beer_items).search_tank(params[:search])
+      @beers = Beer.includes(:beer_style, :brewery, :beer_items, :beer_tracks).search_tank(params[:search])
     else
       if iphone_request?
-        @beers = Beer.includes(:beer_style, :brewery, :beer_items).order('name ASC')
+        @beers = Beer.includes(:beer_style, :brewery, :beer_items, :beer_tracks).order('name ASC')
       else
-        @beers = Beer.includes(:beer_style,:brewery, :beer_items).order('name ASC').page(params[:page]).per(25)
+        @beers = Beer.includes(:beer_style, :brewery, :beer_items, :beer_tracks).order('name ASC').page(params[:page]).per(25)
       end
     end
     
@@ -21,8 +21,8 @@ class BeersController < ApplicationController
   end
 
   def show
-    @beer = Beer.find(params[:id])
-  
+    @beer = Beer.find(params[:id], include: [:ratings, :beer_style, {:beer_items => :bar}])
+    
     if params[:sort].nil?
       @beer_items = BeerItem.find(:all, :include => [:bar, :beer], :conditions => ["beer_id = ?",params[:id]], :order => "price ASC" )
     else
