@@ -1,11 +1,10 @@
-/* DO NOT MODIFY. This file was compiled Wed, 14 Dec 2011 16:41:14 GMT from
+/* DO NOT MODIFY. This file was compiled Wed, 14 Dec 2011 21:01:41 GMT from
  * /Users/Greggory/Programing/beerlist/app/assets/javascripts/bars.coffee
  */
 
 
   $(document).ready(function() {
     $.getJSON('/beer_tracks', function(data) {
-      console.log(data);
       return $('.beer_tracking_checkbox').each(function(index) {
         if ($.inArray(parseInt($(this).attr('data-beer')), data) !== -1) {
           return $(this).attr("checked", "checked");
@@ -33,6 +32,18 @@
     });
     $('form.rating_ballot').live('change', function() {
       return $(this).submit();
+    });
+    /*  Show/Hide Google Map
+    */
+    $('#toggle-map-link a').click(function() {
+      return $('#gmap_popup_panel').css({
+        'z-index': '1'
+      });
+    });
+    $('#gmap_popup_panel_close').click(function() {
+      return $('#gmap_popup_panel').css({
+        'z-index': '-1'
+      });
     });
     $('.beer_tracking_checkbox').live('change', function(e) {
       var bar, beer, token;

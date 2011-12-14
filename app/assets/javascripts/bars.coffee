@@ -1,7 +1,6 @@
 $(document).ready () ->	
   #  Gets an array of beers the user has had and checks the appropiate boxes
   $.getJSON '/beer_tracks', (data) ->
-    console.log(data)
     $('.beer_tracking_checkbox').each (index) ->
       if $.inArray( parseInt($(this).attr('data-beer')), data ) != -1
         $(this).attr("checked", "checked")
@@ -26,6 +25,13 @@ $(document).ready () ->
   $('form.rating_ballot').live 'change', () -> 
     $(this).submit()
     
+  ###  Show/Hide Google Map              ###      
+  $('#toggle-map-link a').click ->
+    $('#gmap_popup_panel').css('z-index':'1')
+
+  $('#gmap_popup_panel_close').click -> 
+    $('#gmap_popup_panel').css('z-index':'-1')
+      
   $('.beer_tracking_checkbox').live 'change', (e) ->
     bar = $(e.target).attr('data-bar')
     beer = $(e.target).attr('data-beer')

@@ -30,13 +30,6 @@ $(document).ready ->
     else if $(this).val() == 'bucket'
       $('span#bucket').show()
 
-  ###  Show/Hide Google Map              ###      
-  $('#toggle-map-link a').click ->
-    $('#gmap_popup_panel').css('z-index':'1')
-
-  $('#gmap_popup_panel_close').click -> 
-    $('#gmap_popup_panel').css('z-index':'-1')
-
   ###  Sorting Options ###
   $('#adv-searching').hide()
   $('#adv-searching-button').click ->

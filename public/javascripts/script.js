@@ -1,4 +1,4 @@
-/* DO NOT MODIFY. This file was compiled Wed, 14 Dec 2011 20:25:45 GMT from
+/* DO NOT MODIFY. This file was compiled Wed, 14 Dec 2011 21:01:41 GMT from
  * /Users/Greggory/Programing/beerlist/app/assets/javascripts/script.coffee
  */
 
@@ -40,18 +40,6 @@
       } else if ($(this).val() === 'bucket') {
         return $('span#bucket').show();
       }
-    });
-    /*  Show/Hide Google Map
-    */
-    $('#toggle-map-link a').click(function() {
-      return $('#gmap_popup_panel').css({
-        'z-index': '1'
-      });
-    });
-    $('#gmap_popup_panel_close').click(function() {
-      return $('#gmap_popup_panel').css({
-        'z-index': '-1'
-      });
     });
     /*  Sorting Options
     */

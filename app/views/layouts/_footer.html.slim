@@ -1,15 +1,16 @@
 div id="footer"
   = yield :scripts
-  div id="footerinfo"
-    div id="design"
-      = link_to image_tag("hodgsonlogo.png"), "http://www.hodgsonco.com", :class => "no_hover_background"
-    div id="footercomments"
-      p
-        | Send comments, suggestions or bugs to the #{mail_to "admin@atlbeerlist.com", "admin"}
-        br
-        | &#64; 2011, Greggory Rothmeier
-  br
-  div id="social"
-    = link_to image_tag("facebook-icon.jpg", :height => "22px", :width => "22px"), "http://www.facebook.com/pages/AtlBeerListcom/106072122833011", :class => "no_hover_background", :target => "_blank"
-    a href="http://www.twitter.com/atlbeerlist" class="no_hover_background" target="_blank"
-      img src="http://twitter-badges.s3.amazonaws.com/t_small-a.png" alt="Follow atlbeerlist on Twitter"
+  - cache "page_footer" do
+    div id="footerinfo"
+      div id="design"
+        = link_to image_tag("hodgsonlogo.png"), "http://www.hodgsonco.com", :class => "no_hover_background"
+      div id="footercomments"
+        p
+          | Send comments, suggestions or bugs to the #{mail_to "admin@atlbeerlist.com", "admin"}
+          br
+          | &#64; 2011, Greggory Rothmeier
+    br
+    div id="social"
+      = link_to image_tag("facebook-icon.jpg", :height => "22px", :width => "22px"), "http://www.facebook.com/pages/AtlBeerListcom/106072122833011", :class => "no_hover_background", :target => "_blank"
+      a href="http://www.twitter.com/atlbeerlist" class="no_hover_background" target="_blank"
+        img src="http://twitter-badges.s3.amazonaws.com/t_small-a.png" alt="Follow atlbeerlist on Twitter"

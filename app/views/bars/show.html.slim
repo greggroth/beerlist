@@ -25,19 +25,21 @@
     br
     = !@bar.url.nil? ? link_to("Website", @bar.url) : "" 
 
+- unless @gmaps_json.empty?
   p id="toggle-map-link"
     a
       | Show Map
 
+h3 Pouring #{pluralize(@bar.beers.count, "beer")}
+br
+
+= link_to("Add a new listing", new_beer_item_path(:beer_item => {:bar_id => @bar.id})) if user_signed_in?
+
+- unless @gmaps_json.empty?
   div id="gmap_popup_panel"
     a id="gmap_popup_panel_close" x  
-    - if @bar.latitude.present? && @bar.longitude.present?
-      = gmaps("map_options" => { "detect_location" => true, "center_on_user" => false, "zoom" => 14, "auto_adjust" => true, "auto_zoom" => false}, "markers" => { "data" => @gmaps_json })
-
-  h3 Pouring #{pluralize(@bar.beers.count, "beer")}
-  br
-
-  = link_to("Add a new listing", new_beer_item_path(:beer_item => {:bar_id => @bar.id})) if user_signed_in?
+    = gmaps("map_options" => { "detect_location" => true, "center_on_user" => false, "zoom" => 14, "auto_adjust" => true, "auto_zoom" => false}, "markers" => { "data" => @gmaps_json })
+    
 
 div style="clear:both"
   / = form_tag bar_path(@bar), :method => :get, :remote => true do

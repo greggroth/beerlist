@@ -55,6 +55,8 @@ class BarsController < ApplicationController
   	  	
     if @bar.latitude.present? && @bar.longitude.present?
       @gmaps_json = @bar.to_gmaps4rails
+    else
+      @gmaps_json = []
     end
   
   end
