@@ -24,7 +24,7 @@ gem 'paperclip', "~> 2.4"
 gem "rmagick", :require => 'RMagick'
 gem "aws-s3"
 gem 'dalli'
-gem 'whenever', :require => false
+# gem 'whenever', :require => false
 
 group :test, :development do
   # gem 'ruby-prof'

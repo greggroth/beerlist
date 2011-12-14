@@ -4,6 +4,7 @@ FactoryGirl.define do
     sequence (:email){ |n| "user_#{n}@atlbeerlist.com" }
     password pw
     password_confirmation pw
+    confirmed_at 1.week.ago
   end
   
   factory :bar do

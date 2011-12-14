@@ -8,9 +8,9 @@ html
         - if iphone_user_agent?
           div id="iphone-message"
             | Using a mobile browser?  #{link_to "Use an optimized version of the site", "http://m.atlbeerlist.com/"}
-        - if notice.present?
-          - render "layouts/notice"
-        - if alert.present?
+        - if flash[:notice].present?
+          = render partial: "layouts/notice"
+        - if flash[:alert].present?
           div class="ui-state-error ui-corner-all notice-container" style="padding: 0 .7em;"
             p
               span class="ui-icon ui-icon-alert" style="float: left; margin-right: 0.3em;"
@@ -18,4 +18,4 @@ html
         br
         = yield
       - cache "page_footer" do
-        = render :partial => "layouts/footer"
+        = render partial: "layouts/footer"
