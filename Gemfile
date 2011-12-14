@@ -24,6 +24,7 @@ gem 'paperclip', "~> 2.4"
 gem "rmagick", :require => 'RMagick'
 gem "aws-s3"
 gem 'dalli'
+gem 'nokogiri'
 # gem 'whenever', :require => false
 
 group :test, :development do
