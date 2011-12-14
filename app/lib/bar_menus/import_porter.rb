@@ -46,7 +46,7 @@ class ImportPorter
   #  5  - ABV
   #  6  - Description
   #  DOES NOT HAVE PRICE!!!  :-(
-  def self.save_to_db(beer_list)
+  def self.update_db(beer_list)
     bar = Bar.find_by_name("The Porter Beer Bar")
     
     pouring = "draught"
@@ -78,7 +78,7 @@ class ImportPorter
           #  Updates the existing record to make sure it's up to date
           puts "updating the listing for #{listing[1]}"
           volume = fix_volume(listing[4])
-          BeerItem.update(updating_item.id, :pouring => pouring, :volume => volume[1].to_f, :volunit => volume[2])
+          BeerItem.update(updating_item.id, pouring: pouring, volume: volume[1].to_f, volunit: volume[2], updated_at: Time.now)
           next
         end
       else
@@ -101,12 +101,26 @@ class ImportPorter
       new_item.save!
     end
   end
+  
+  def self.clean_db
+    puts "----------------------"
+    puts "Removing old listings"
+    puts "----------------------"
+    # Removes any beer items that were not updated within the past week (aka not updated by self.update_db)
+    bar = Bar.find_by_name("The Porter Beer Bar")
+    BeerItem.where("bar_id == ? AND updated_at < ?", bar.id, 1.week.ago).each do |i| 
+      puts "Removing beer listing for:  #{i.beer.name}"
+      i.destroy
+    end
+  end
 
 end
 
 beers = ImportPorter.load_list('http://www.theporterbeerbar.com/drink/beer/')
-ImportPorter.save_to_db(beers)
-expire_fragment("list_of_beer_items_#{Bar.find_by_name("The Porter Beer Bar").id}")
+ImportPorter.update_db(beers)
+ImportPorter.clean_db
+ActionController::Base.new.expire_fragment("list_of_beer_items_#{Bar.find_by_name("The Porter Beer Bar").id}")
+ActionController::Base.new.expire_fragment("bar_details_#{Bar.find_by_name("The Porter Beer Bar").id}")
 
 # #  Save the data
 # out = File.new("porter_beer_menu.yml", "w")
