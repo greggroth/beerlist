@@ -114,12 +114,13 @@ class ImportPorter
     end
   end
 
-  def perform
+  def self.perform
     beers = ImportPorter.load_list('http://www.theporterbeerbar.com/drink/beer/')
     ImportPorter.update_db(beers)
     ImportPorter.clean_db
     ActionController::Base.new.expire_fragment("list_of_beer_items_#{Bar.find_by_name("The Porter Beer Bar").id}")
     ActionController::Base.new.expire_fragment("bar_details_#{Bar.find_by_name("The Porter Beer Bar").id}")
   end
-
 end
+
+ImportPorter.perform
