@@ -1,4 +1,4 @@
-/* DO NOT MODIFY. This file was compiled Wed, 14 Dec 2011 21:01:41 GMT from
+/* DO NOT MODIFY. This file was compiled Wed, 14 Dec 2011 21:38:42 GMT from
  * /Users/Greggory/Programing/beerlist/app/assets/javascripts/script.coffee
  */
 
@@ -101,7 +101,9 @@
   Application.format_expandable_itemlist = function(x) {
     /*  Expandable Itemlist
     */    $(x).find('tr:odd').addClass('odd').hover(function(e) {
-      return $(e.target).closest('tr').toggleClass("active")($(e.target).closest('tr').find('a.action_link').toggle());
+      $(e.target).closest('tr').toggleClass("active");
+      $(e.target).closest('tr').find('a.action_link').toggle();
+      return true;
     });
     $(x).find('tbody tr:nth-child(4n+1)').addClass('zebra');
     $(x).find('tr:not(.odd)').hide();
@@ -129,10 +131,10 @@
   };
 
   Application.format_normal_itemlist = function(x) {
-    $(x).find('tbody tr:nth-child(odd)').addClass('zebra');
+    return $(x).find('tbody tr:nth-child(odd)').addClass('zebra');
   };
 
   Application.reformat_bars_page = function(x) {
     $(x).find('tbody tr:nth-child(odd)').addClass('zebra');
-    $('a.action_link').hide();
+    return $('a.action_link').hide();
   };

@@ -80,35 +80,34 @@ $(document).ready ->
   return
 
 Application.format_expandable_itemlist = (x) ->
-	###  Expandable Itemlist ###
-	$(x).find('tr:odd').addClass('odd').hover (e) -> \
-		$(e.target).closest('tr').toggleClass("active") \
-		$(e.target).closest('tr').find('a.action_link').toggle()
-		
-	$(x).find('tbody tr:nth-child(4n+1)').addClass('zebra')
-	
-	$(x).find('tr:not(.odd)').hide()
-	$(x).find('tr:first-child').show()
-	$(x).find('a').click (e) ->
-		e.stopPropagation()
-	$(x).find('div.follow_form').click (e) ->
-		e.stopPropagation()
-	
-	$(x).find('tr.odd').click -> \
+  ###  Expandable Itemlist ###
+  $(x).find('tr:odd').addClass('odd').hover (e) ->
+    $(e.target).closest('tr').toggleClass("active")
+    $(e.target).closest('tr').find('a.action_link').toggle()
+    return true
+
+  $(x).find('tbody tr:nth-child(4n+1)').addClass('zebra')
+
+  $(x).find('tr:not(.odd)').hide()
+  $(x).find('tr:first-child').show()
+  $(x).find('a').click (e) ->
+    e.stopPropagation()
+  $(x).find('div.follow_form').click (e) ->
+    e.stopPropagation()
+
+  $(x).find('tr.odd').click -> \
     $(this).closest('tr').next('tr').toggle(); \
-   	if $(this).closest('tr').next('tr').is(':visible')
-			if $(this).closest('tr').next('tr').find('div.itemlist').size()==0
-   			$('#itemdesc-' + $(this).closest('tr').attr('id')).children('div')
-   			  .css({'border':'solid thin #E8E8E8','border-radius':'10px','padding-left':'5px'})
-   			  .html('loading...')
-   			  .load $(this).closest('tr').attr('data-item-url') + ' .itemlist', () ->
-   			    Application.reformat_bars_page('.itemlist')
-	
+    if $(this).closest('tr').next('tr').is(':visible')
+      if $(this).closest('tr').next('tr').find('div.itemlist').size()==0
+        $('#itemdesc-' + $(this).closest('tr').attr('id')).children('div')
+          .css({'border':'solid thin #E8E8E8','border-radius':'10px','padding-left':'5px'})
+          .html('loading...')
+          .load $(this).closest('tr').attr('data-item-url') + ' .itemlist', () ->
+            Application.reformat_bars_page('.itemlist')
+
 Application.format_normal_itemlist = (x) ->
-	$(x).find('tbody tr:nth-child(odd)').addClass('zebra')
-	return
-	
+  $(x).find('tbody tr:nth-child(odd)').addClass('zebra')
+
 Application.reformat_bars_page = (x) ->
-	$(x).find('tbody tr:nth-child(odd)').addClass('zebra')
-	$('a.action_link').hide()
-	return
+  $(x).find('tbody tr:nth-child(odd)').addClass('zebra')
+  $('a.action_link').hide()
