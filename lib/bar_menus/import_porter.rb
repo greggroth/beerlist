@@ -108,7 +108,7 @@ class ImportPorter
     puts "----------------------"
     # Removes any beer items that were not updated within the past week (aka not updated by self.update_db)
     bar = Bar.find_by_name("The Porter Beer Bar")
-    BeerItem.where("bar_id == ? AND updated_at < ?", bar.id, 1.week.ago).each do |i| 
+    BeerItem.where("bar_id = ? and updated_at < ?", bar.id, 1.week.ago).each do |i| 
       puts "Removing beer listing for:  #{i.beer.name}"
       i.destroy
     end
