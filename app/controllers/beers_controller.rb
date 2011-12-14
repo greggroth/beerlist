@@ -21,8 +21,8 @@ class BeersController < ApplicationController
   end
 
   def show
-    @beer = Beer.find(params[:id])
-  
+    @beer = Beer.find(params[:id], include: [:ratings, :beer_style, {:beer_items => :bar}])
+    
     if params[:sort].nil?
       @beer_items = BeerItem.find(:all, :include => [:bar, :beer], :conditions => ["beer_id = ?",params[:id]], :order => "price ASC" )
     else
