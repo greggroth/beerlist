@@ -106,6 +106,7 @@ end
 
 beers = ImportPorter.load_list('http://www.theporterbeerbar.com/drink/beer/')
 ImportPorter.save_to_db(beers)
+expire_fragment("list_of_beer_items_#{Bar.find_by_name("The Porter Beer Bar").id}")
 
 # #  Save the data
 # out = File.new("porter_beer_menu.yml", "w")

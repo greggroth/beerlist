@@ -27,13 +27,14 @@ gem 'dalli'
 gem 'whenever', :require => false
 
 group :test, :development do
+  # gem 'ruby-prof'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'forgery', " ~> 0.5.0"
 end
 
 # gem 'perftools.rb', :git => 'git://github.com/bearded/perftools.rb.git', :branch => 'perftools-1.8'
-# # gem 'perftools.rb', :git => 'https://github.com/tmm1/perftools.rb.git'
+# gem 'perftools.rb', :git => 'https://github.com/tmm1/perftools.rb.git'
 # gem 'rack-perftools_profiler'
 
 group :test do

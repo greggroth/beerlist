@@ -7,7 +7,7 @@ table id="weekly-specials"
     th Pouring
     th ABD
     th Price
-  - @specials.each_pair do |day, items|
+  - @beer_items.select { |i| (0..6).member?(i.weekday) }.group_by { |i| i.weekday }.each_pair do |day, items|
     tr class="weekly-heading-row"
       td colspan="6" 
         div class="weekday-heading"

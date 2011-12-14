@@ -1,12 +1,13 @@
-- unless @specials.empty?
-  h2 Weekly specials
-  = render "bars/weekly_specials"
-  br
-- unless @recent_beer_items.empty?
-  h2  Modified in the last week
-  div class="itemlist"
-    = render :partial => "bars/items_list", :locals => { :items => @recent_beer_items }
-  br
+/ - unless @beer_items.select { |i| (0..6).member?(i.weekday) }.empty?
+/   h2 Weekly specials
+/   = render "bars/weekly_specials"
+/   br
+/ - unless @beer_items.select { |i| i.created_at > 1.week.ago }.empty?
+/   h2  Modified in the last week
+/   div class="itemlist"
+/     = render :partial => "bars/items_list", :locals => { :items => @beer_items.select { |i| i.created_at > 1.week.ago } }
+/   br
 h2  All Beers
-div class="itemlist"
-  = render :partial => "bars/items_list", :locals => { :items => @beer_items }
+- cache "list_of_beer_items_#{@bar.id}" do
+  div class="itemlist"
+    = render :partial => "bars/items_list", :locals => { :items => @beer_items }

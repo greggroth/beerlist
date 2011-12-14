@@ -3,24 +3,24 @@ table id="sorted_beer_item_list"
   thead
     tr
       th width="7%" Had it?
-      th width="20%"
-        = sortable "beers.name", "Beer"
-        span class="asc"
-      th width="20%"
-        = sortable "beers.brewery.name", "Brewery"
-        span class="asc"
-      th width="12%"
-        = sortable "beers.abv", "ABV"
-        span class="asc"
-      th width="16%"
-        = sortable "volume", "Pouring"
-        span class="asc"
-      th width="9%" class="abd-table-heading"
-        = sortable "abd", "ABD"
-        span class="asc"
-      th width="7%"
-        = sortable "price", "Price"
-        span class="asc"
+      th width="20%" Beer
+      / = sortable "beers.name", "Beer"
+      / span class="asc"
+      th width="20%" Brewery
+      / = sortable "beers.brewery.name", "Brewery"
+      / span class="asc"
+      th width="12%" ABV
+      / = sortable "beers.abv", "ABV"
+      / span class="asc"
+      th width="16%" Pouring
+      / = sortable "volume", "Pouring"
+      / span class="asc"
+      th width="9%" class="abd-table-heading" ABD
+      / = sortable "abd", "ABD"
+      / span class="asc"
+      th width="7%" Price
+      / = sortable "price", "Price"
+      / span class="asc"
       th width="5%"
       th width="5%"
   tbody class="with-action-links"
@@ -28,7 +28,7 @@ table id="sorted_beer_item_list"
       tr class="#{ Time.now.wday == item.weekday ? "todays-deal" : "" }"
         td
           div id="beer_tracker_form_#{item.id}"
-            = check_box_tag "beer_tracking", "add", false, {class: "beer_tracking_checkbox", :"data-beer" => item.beer.id, :"data-bar" => item.bar.id}
+            = check_box_tag "beer_tracking", "add", false, {class: "beer_tracking_checkbox", :"data-beer" => item.beer.id, :"data-bar" => @bar.id}
         td = link_to(item.beer.name, item.beer)
         td = link_to(item.beer.brewery.name, item.beer.brewery)
         td = number_to_percentage item.beer.abv, :precision => 1

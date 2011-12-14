@@ -28,38 +28,34 @@ class BarsController < ApplicationController
 
   def show
     @bar = Bar.find(params[:id])
+
+    @beer_items = BeerItem.where("bar_id = ?", params[:id]).includes({ :beer => [:ratings, :brewery] }).order("beers.name ASC")
     
-    case params[:sort]
-    when nil
-      if params[:sort_by_pouring].nil? || params[:sort_by_pouring]=='all' # NIL NIL
-        @beer_items = @bar.beer_items.includes({ :beer => [:beer_tracks, :ratings, :brewery] }).order("beers.name ASC")
-      else                              # NIL !NIL
-        @beer_items = @bar.beer_items.find(:all, :include => [{ :beer => [:beer_tracks, :ratings, :brewery] }], :conditions => ["pouring = ?", params[:sort_by_pouring]], :order => "beers.name ASC")
-      end
-    when 'abd'  # sorting will reset pouring type select
-      hold = @bar.beer_items.find(:all, :include => [{ :beer => [:beer_tracks, :ratings, :brewery] }])
-       if params[:direction] == "asc"
-         @beer_items = hold.sort_by { |e| e.abd }
-       else  #desc
-         @beer_items = hold.sort_by { |e| -e.abd }
-       end
-    else        #  normal sorting
-      @beer_items = @bar.beer_items.find(:all, :include => [{ :beer => [:beer_tracks, :ratings, :brewery] }], :order => [sort_column + " " + sort_direction])
-    end
+    # case params[:sort]
+    # when nil
+    #   if params[:sort_by_pouring].nil? || params[:sort_by_pouring]=='all' # NIL NIL
+    #     @beer_items = @bar.beer_items.includes({ :beer => [:ratings, :brewery] }).order("beers.name ASC")
+    #   else                              # NIL !NIL
+    #     @beer_items = @bar.beer_items.find(:all, :include => [{ :beer => [:ratings, :brewery] }], :conditions => ["pouring = ?", params[:sort_by_pouring]], :order => "beers.name ASC")
+    #   end
+    # when 'abd'  # sorting will reset pouring type select
+    #   hold = @bar.beer_items.find(:all, :include => [{ :beer => [:ratings, :brewery] }])
+    #    if params[:direction] == "asc"
+    #      @beer_items = hold.sort_by { |e| e.abd }
+    #    else  #desc
+    #      @beer_items = hold.sort_by { |e| -e.abd }
+    #    end
+    # else        #  normal sorting
+    #   @beer_items = @bar.beer_items.find(:all, :include => [{ :beer => [:ratings, :brewery] }], :order => [sort_column + " " + sort_direction])
+    # end
   
-    @recent_beer_items = @beer_items.select { |i| i.updated_at > 1.week.ago }
-    @specials = @beer_items.select { |i| (0..6).member?(i.weekday) }.group_by { |i| i.weekday }
-    @beer_items.delete_if { |i| (0..6).include? i.weekday }
-  
-    # if user_signed_in?
-    #       @user_beers = current_user.had_beers
-    #       @beer_tracks = current_user.beer_tracks
-    #       
-    #     end
+    # @recent_beer_items = @beer_items.select { |i| i.created_at > 1.week.ago }
+    # @specials = @beer_items.select { |i| (0..6).member?(i.weekday) }.group_by { |i| i.weekday }
+    # @beer_items.delete_if { |i| (0..6).include? i.weekday }
   	  	
-  	if @bar.latitude.present? && @bar.longitude.present?
-  		@gmaps_json = @bar.to_gmaps4rails
-  	end
+    if @bar.latitude.present? && @bar.longitude.present?
+      @gmaps_json = @bar.to_gmaps4rails
+    end
   
   end
 

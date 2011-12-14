@@ -1,10 +1,11 @@
-/* DO NOT MODIFY. This file was compiled Sat, 03 Dec 2011 14:43:58 GMT from
+/* DO NOT MODIFY. This file was compiled Wed, 14 Dec 2011 16:41:14 GMT from
  * /Users/Greggory/Programing/beerlist/app/assets/javascripts/bars.coffee
  */
 
-(function() {
+
   $(document).ready(function() {
     $.getJSON('/beer_tracks', function(data) {
+      console.log(data);
       return $('.beer_tracking_checkbox').each(function(index) {
         if ($.inArray(parseInt($(this).attr('data-beer')), data) !== -1) {
           return $(this).attr("checked", "checked");
@@ -47,4 +48,3 @@
       });
     });
   });
-}).call(this);

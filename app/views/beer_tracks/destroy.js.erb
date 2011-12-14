@@ -1,4 +1,0 @@
-<% case @from %>
-<% when "beers_index"%>
-  $("div#beer-tracking-<%= @beer.id %>").html("<%= escape_javascript(render(:partial => 'beers/track_it', :locals => { :beer => @beer })) %>");
-<% end %>

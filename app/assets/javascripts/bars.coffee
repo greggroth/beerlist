@@ -1,5 +1,7 @@
 $(document).ready () ->	
+  #  Gets an array of beers the user has had and checks the appropiate boxes
   $.getJSON '/beer_tracks', (data) ->
+    console.log(data)
     $('.beer_tracking_checkbox').each (index) ->
       if $.inArray( parseInt($(this).attr('data-beer')), data ) != -1
         $(this).attr("checked", "checked")
