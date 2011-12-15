@@ -1,7 +1,7 @@
 class BeerTracksController < ApplicationController
 
   def index
-    @user_beers = user_signed_in? ? current_user.had_beers.map { |i| i.id } : []
+    @user_beers = user_signed_in? ? current_user.beer_tracks.map(&:beer_id) : []
     
     respond_to do |format|
      format.json { render json: @user_beers }

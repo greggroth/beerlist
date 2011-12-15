@@ -1,6 +1,11 @@
 require 'spec_helper'
 
 describe "Bars" do 
+  before(:each) do
+    User.all.each { |i| i.destroy }
+    @user = FactoryGirl.create(:user)
+  end
+  
   it "goes from root_path to bars index" do
     visit root_path
     click_link "Bars"
@@ -28,9 +33,8 @@ describe "Bars" do
   it "adds a new bar" do
     visit root_path
     click_link "Login"
-    user = FactoryGirl.create(:user)
-    fill_in "Email", :with => user.email
-    fill_in "Password", :with => user.password
+    fill_in "Email", :with => @user.email
+    fill_in "Password", :with => @user.password
     click_button "Sign in"
     
     visit bars_path
@@ -50,9 +54,8 @@ describe "Bars" do
   it "attempts to add a bar already in the database" do
     visit root_path
     click_link "Login"
-    user = FactoryGirl.create(:user)
-    fill_in "Email", :with => user.email
-    fill_in "Password", :with => user.password
+    fill_in "Email", :with => @user.email
+    fill_in "Password", :with => @user.password
     click_button "Sign in"
     
     visit bars_path
@@ -72,9 +75,8 @@ describe "Bars" do
   it " attempts to create a bar with an invalid zip" do
     visit root_path
     click_link "Login"
-    user = FactoryGirl.create(:user)
-    fill_in "Email", :with => user.email
-    fill_in "Password", :with => user.password
+    fill_in "Email", :with => @user.email
+    fill_in "Password", :with => @user.password
     click_button "Sign in"
     
     visit new_bar_path
@@ -94,9 +96,8 @@ describe "Bars" do
   it " attempts to create a bar with an invalid state" do
     visit root_path
     click_link "Login"
-    user = FactoryGirl.create(:user)
-    fill_in "Email", :with => user.email
-    fill_in "Password", :with => user.password
+    fill_in "Email", :with => @user.email
+    fill_in "Password", :with => @user.password
     click_button "Sign in"
     
     visit new_bar_path
@@ -111,12 +112,11 @@ describe "Bars" do
   end
   
   it " attempts to create a bar with an invalid url" do
-    user = FactoryGirl.create(:user)
     bar = FactoryGirl.create(:bar)
     
     visit new_user_session_path
-    fill_in "Email", :with => user.email
-    fill_in "Password", :with => user.password
+    fill_in "Email", :with => @user.email
+    fill_in "Password", :with => @user.password
     click_button "Sign in"
     
     visit new_bar_path

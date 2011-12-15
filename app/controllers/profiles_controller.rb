@@ -2,9 +2,11 @@ class ProfilesController < ApplicationController
   before_filter :authenticate_user!
 
   def show
+    flash[:notice] = "HError?"
+    
     if same_user?
-      @user = current_user
-
+      @user = User.includes(:beer_items, :bars, { :had_beers => [:beer_style, :brewery, :beer_items] }).find(params[:id])
+      
       respond_to do |format|
         format.html
       end
@@ -17,7 +19,6 @@ class ProfilesController < ApplicationController
 
 private
   def same_user?
-    logger.debug "fdkfsjldfj"
     current_user == User.find(params[:id])
   end
  

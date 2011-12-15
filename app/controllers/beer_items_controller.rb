@@ -14,6 +14,7 @@ def index
   # else
   #   @best_deals = BeerItem.top_deals
   # end 
+  
 end
 
 

@@ -2,6 +2,11 @@ require 'spec_helper'
 require 'beer_item'
 
 describe User do
+  before(:each) do
+    User.all.each { |i| i.destroy }
+    @user = FactoryGirl.create(:user)
+  end
+  
   it "create a new user" do
     visit root_path
     click_link "Signup"
@@ -10,32 +15,28 @@ describe User do
     fill_in "user_confirm_password", :with => '123456'
     click_button "Sign up"
     current_path.should eq(root_path)
-    page.should have_content("Welcome! You have signed up successfully.")
+    page.should have_content("Welcome to ATL Beer List!  Check your e-mail to confirm your account")
   end
   
   it "logs in and logs out" do
-    user = FactoryGirl.create(:user)
-    
     visit root_path
     click_link "Login"
-    fill_in "Email", :with => user.email
-    fill_in "Password", :with => user.password
+    fill_in "Email", :with => @user.email
+    fill_in "Password", :with => @user.password
     click_button "Sign in"
     current_path.should eq(root_path)
     page.should have_content("Welcome back!")
-    page.should have_content("Welcome, #{user.email}")
+    page.should have_content("Welcome, #{@user.email}")
     
     click_link "Logout"
     current_path.should eq(root_path)
-    page.should have_content("Signed out successfully.")
+    page.should have_content("See you later!")
   end
   
   it " attempts login with invalid password" do
-    user = FactoryGirl.create(:user)
-    
     visit root_path
     click_link "Login"
-    fill_in "Email", :with => user.email
+    fill_in "Email", :with => @user.email
     fill_in "Password", :with => "1234"
     click_button "Sign in"
     current_path.should eq(new_user_session_path)
@@ -52,17 +53,16 @@ describe User do
     page.should have_content "Invalid email or password."
   end
   
-  it " follows a new bar" do       ###  Needs to be finished  ####
-    user = FactoryGirl.create(:user)
-    FactoryGirl.create(:bar)
-    
-    visit root_path
-    click_link "Login"
-    fill_in "Email", :with => user.email
-    fill_in "Password", :with => user.password
-    click_button "Sign in"
-    
-    visit bars_path
-    # save_and_open_page
-  end
+  # it " follows a new bar" do       ###  Needs to be finished  ####
+  #   FactoryGirl.create(:bar)
+  #   
+  #   visit root_path
+  #   click_link "Login"
+  #   fill_in "Email", :with => @user.email
+  #   fill_in "Password", :with => @user.password
+  #   click_button "Sign in"
+  #   
+  #   visit bars_path
+  #   # save_and_open_page
+  # end
 end

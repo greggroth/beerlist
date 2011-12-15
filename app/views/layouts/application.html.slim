@@ -10,12 +10,12 @@ html
           div id="iphone-message"
             | Using a mobile browser?  #{link_to "Use an optimized version of the site", "http://m.atlbeerlist.com/"}
         - if flash[:notice].present?
-          = render partial: "layouts/notice"
+          = render partial: "layouts/notice", locals: { notice: flash[:notice] }
         - if flash[:alert].present?
           div class="ui-state-error ui-corner-all notice-container" style="padding: 0 .7em;"
             p
               span class="ui-icon ui-icon-alert" style="float: left; margin-right: 0.3em;"
-              strong #{alert}
+              strong #{flash[:alert]}
         br
         = yield
       div id="footer"

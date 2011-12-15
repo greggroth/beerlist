@@ -2,9 +2,15 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :redirect_iphone_to_m
   before_filter :adjust_format_for_iphone
-  # before_filter :iphone_login_required
+  before_filter :mailer_set_url_options
+
+   
   
   private
+    def mailer_set_url_options
+      ActionMailer::Base.default_url_options[:host] = request.host_with_port
+    end
+  
   	def adjust_format_for_iphone
   		request.format = :iphone if iphone_request?
   	end
