@@ -100,6 +100,7 @@ describe "BeerItems" do
     
     visit bar_path(bar)
     page.should have_content "6"
+    page.should have_content bar.name
   end
   
   # it "views beer item listing" do

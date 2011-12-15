@@ -51,6 +51,9 @@ class ImportPorter
     
     pouring = "draught"
     beer_list.each do |listing|
+      # Get rid of leading or trailing whitespace
+      listing.map(&:strip)
+      
       puts "---------------"
       
       if listing[0] == "Brewery"  
