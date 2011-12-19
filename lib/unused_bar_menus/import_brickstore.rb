@@ -54,6 +54,7 @@ class ImportBrickstore
   #  5  - Price
 
   def self.update_db(beer_list, pouring)
+    user = User.find_by_email("admin@atlbeerlist.com")
     bar = Bar.find_by_name("Brick Store Pub")
     brewery_names = Brewery.all.map(&:name)
     
@@ -70,8 +71,10 @@ class ImportBrickstore
       end
       
       # remove parentheses, the brewery's name, and any possessive 's
-      beer_name = listing[0].delete("()").gsub(brewery_name, "").gsub("'s","").strip
-      beer_name = brewery_name if beer_name.empty?
+      beer_name = listing[0].delete("()").gsub(brewery_name, "").gsub("'s","").strip!
+      puts "beer: #{beer_name}"
+      beer_name = brewery_name if beer_name.nil?
+      puts "fixed beer: #{beer_name}"
       price = listing[5].delete("$").to_f    
       brewy = Brewery.find_by_name(brewery_name)
       bubs = Beer.where(name: beer_name, brewery_id: brewy.id).first
@@ -82,25 +85,23 @@ class ImportBrickstore
           puts "updating the listing for #{beer_name}"
           volume = fix_volume(listing[3])
           v = volume[1].nil? ? nil : volume[1].to_f
-          BeerItem.update(updating_item.id, pouring: pouring, volume: v, volunit: volume[2], price: price, updated_at: Time.now)
+          updating_item.update_attributes(user_id: user.id, pouring: pouring, volume: v, volunit: volume[2], price: price, updated_at: Time.now)
           next
         end
       else
         # Check beer styles
-        style = BeerStyle.find_or_create_by_name(listing[1])
+        style = BeerStyle.find_or_create_by_name(listing[1].strip)
       
         # MAKE THE BEER
-        unless beer_name.strip.empty?
-          puts "adding beer:  #{beer_name}"
-          bubs = brewy.beers.new name: beer_name, abv: listing[4].to_f, beer_style: style
-          bubs.save!
-        end
+        puts "adding beer:  #{beer_name}"
+        bubs = brewy.beers.new name: beer_name, abv: listing[4].to_f, beer_style: style
+        bubs.save!
       end
       # MAKE THE ITEM
       puts "creating new listing for #{listing[0]}"
       volume = fix_volume(listing[3])
       v = volume[1].nil? ? nil : volume[1].to_f
-      new_item = bar.beer_items.new beer: bubs, volume: v, volunit: volume[2], pouring: pouring, price: price
+      new_item = bar.beer_items.new user_id: user.id, beer_id: bubs.id, volume: v, volunit: volume[2], pouring: pouring, price: price
       new_item.save!
     end
     

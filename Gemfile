@@ -25,6 +25,7 @@ gem "rmagick", :require => 'RMagick'
 gem "aws-s3"
 gem 'dalli'
 gem 'nokogiri'
+gem 'fog'
 # gem 'whenever', :require => false
 
 group :test, :development do

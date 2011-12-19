@@ -47,6 +47,7 @@ class ImportPorter
   #  6  - Description
   #  DOES NOT HAVE PRICE!!!  :-(
   def self.update_db(beer_list)
+    user = User.find_by_email("admin@atlbeerlist.com")
     bar = Bar.find_by_name("The Porter Beer Bar")
     
     pouring = "draught"
@@ -81,7 +82,7 @@ class ImportPorter
           #  Updates the existing record to make sure it's up to date
           puts "updating the listing for #{listing[1]}"
           volume = fix_volume(listing[4])
-          BeerItem.update(updating_item.id, pouring: pouring, volume: volume[1].to_f, volunit: volume[2], updated_at: Time.now)
+          BeerItem.update(updating_item.id, user_id: user.id, pouring: pouring, volume: volume[1].to_f, volunit: volume[2], updated_at: Time.now)
           next
         end
       else
@@ -89,18 +90,18 @@ class ImportPorter
         style = BeerStyle.find_by_name(listing[2])
         if style.nil?
           puts "adding style:  #{listing[2]}"
-          style = BeerStyle.new :name => listing[2]
+          style = BeerStyle.new name: listing[2]
           style.save!
         end
         # MAKE THE BEER
         puts "adding beer:  #{listing[1]}"
-        bubs = brewy.beers.new :name => listing[1], :abv => listing[5].to_f, :beer_style => style
+        bubs = brewy.beers.new name: listing[1], abv: listing[5].to_f, beer_style: style
         bubs.save!
       end
       # MAKE THE ITEM
       puts "creating new listing for #{listing[1]}"
       volume = fix_volume(listing[4])
-      new_item = bar.beer_items.new :beer => bubs, :volume => volume[1].to_f, :volunit => volume[2], :pouring => pouring
+      new_item = bar.beer_items.new user_id: user.id, beer_id: bubs.id, volume: volume[1].to_f, volunit: volume[2], pouring: pouring
       new_item.save!
     end
   end
