@@ -26,7 +26,14 @@ gem "aws-s3"
 gem 'dalli'
 gem 'nokogiri'
 gem 'fog'
+gem 'heroku'
 # gem 'whenever', :require => false
+
+group :development do
+  gem 'pry-rails'
+  gem 'pry'
+  gem 'pry-doc'
+end
 
 group :test, :development do
   # gem 'ruby-prof'
@@ -47,7 +54,7 @@ group :test do
 end
 
 group :production do
-  # gems specifically for Heroku go here
+  # gems specifically for go here
   gem "pg"
 end
 
