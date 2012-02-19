@@ -35,11 +35,7 @@ table id="sorted_beer_item_list"
         td = pouring(item)
         td = (item.abd == 0) ? "-" : sprintf("%.3f",item.abd) 
         td = item.price.nil? ? "-" : number_to_currency(item.price)
-        - if user_signed_in?
-          td class="text-align-center"
-            = link_to 'Details', item, :class => "action_link"
-          td class="text-align-center"
-            = link_to 'Edit', edit_beer_item_path(item), :class => "action_link" 
-        - else
-          td
-          td
+        td class="text-align-center"
+          = link_to 'Details', item, :class => "action_link"
+        td class="text-align-center"
+          = link_to 'Edit', edit_beer_item_path(item), :class => "action_link" 
