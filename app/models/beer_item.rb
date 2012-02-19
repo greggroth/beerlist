@@ -51,7 +51,7 @@ class BeerItem < ActiveRecord::Base
   end
 
   def abd
-    return 0 if (self.beer.abv.nil? || self.volume.nil? || self.price.nil?)
+    return 0 if (self.beer.abv.nil? || self.volume.nil? || self.price.nil? || (self.price==0))
     if self.pouring == "bucket"
       case self.volunit
    			when 'oz'
