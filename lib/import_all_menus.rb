@@ -10,4 +10,5 @@ Dir['app/lib/bar_menus/*.rb'].each do |f|
   pid = spawn("rails r #{f}")
   waitpid(pid, 0)
 end
+ActionController::Base.new.expire_fragment("top_deals")
 puts "finished import"
