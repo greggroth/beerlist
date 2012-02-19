@@ -26,7 +26,7 @@ class ImportPorter
       volume[1] = corrected
     end
     case volume.last.downcase
-    when "L"
+    when "l"
       volume[1] = (volume[1].to_f*1000).to_i
       volume[2] = "ml"
     when "oz", "ml", "cl"
