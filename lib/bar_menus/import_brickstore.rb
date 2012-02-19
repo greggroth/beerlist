@@ -69,14 +69,19 @@ class ImportBrickstore
         puts "**  BREWERY COULD NOT BE DETERMINED  **"
         next
       end
+      puts "Brewery:  #{brewery_name}"
       
       # remove parentheses, the brewery's name, and any possessive 's
-      beer_name = listing[0].delete("()").gsub(brewery_name, "").gsub("'s","").strip!
-      puts "beer: #{beer_name}"
-      beer_name = brewery_name if beer_name.nil?
-      puts "fixed beer: #{beer_name}"
+      beer_name = listing[0].delete("()").gsub(brewery_name, "").gsub("'s","").strip
+      beer_name.delete!("^\u{0000}-\u{007F}")
+      puts "Beer: #{beer_name}"
       price = listing[5].delete("$").to_f    
       brewy = Brewery.find_by_name(brewery_name)
+      style = BeerStyle.find_or_create_by_name(listing[1].strip)
+      if beer_name.blank?
+        beer_name = brewy.name + " " + style.name
+        puts "beer changed to: #{beer_name}"
+      end
       bubs = Beer.where(name: beer_name, brewery_id: brewy.id).first
       if not bubs.nil?
         updating_item = BeerItem.where(bar_id: bar.id, beer_id: bubs.id).first
@@ -85,12 +90,17 @@ class ImportBrickstore
           puts "updating the listing for #{beer_name}"
           volume = fix_volume(listing[3])
           v = volume[1].nil? ? nil : volume[1].to_f
+
           updating_item.update_attributes(user_id: user.id, pouring: pouring, volume: v, volunit: volume[2], price: price, updated_at: Time.now)
           next
         end
       else
         # Check beer styles
-        style = BeerStyle.find_or_create_by_name(listing[1].strip)
+        # style = BeerStyle.find_or_create_by_name(listing[1].strip)
+        # if beer_name.blank? or beer_name.nil?
+        #   beer_name = brewery_name + " " + style
+        #   puts "beer changed to: #{beer_name}"
+        # end
       
         # MAKE THE BEER
         puts "adding beer:  #{beer_name}"
@@ -104,7 +114,18 @@ class ImportBrickstore
       new_item = bar.beer_items.new user_id: user.id, beer_id: bubs.id, volume: v, volunit: volume[2], pouring: pouring, price: price
       new_item.save!
     end
-    
+  end
+  
+  def self.clean_db
+    puts "----------------------"
+    puts "Removing old listings"
+    puts "----------------------"
+    # Removes any beer items that were not updated within the past week (aka not updated by self.update_db)
+    bar = Bar.find_by_name("Brick Store Pub")
+    BeerItem.where("bar_id = ? and updated_at < ?", bar.id, 1.week.ago).each do |i| 
+      puts "Removing beer listing for:  #{i.beer.name}"
+      i.destroy
+    end
   end
 end
 
@@ -113,6 +134,7 @@ draught = ImportBrickstore.load_list('http://www.brickstorepub.com/draughtbeer/'
 
 ImportBrickstore.update_db(bottles, "bottle")
 ImportBrickstore.update_db(draught, "draught")
+ImportBrickstore.clean_db
   
 ActionController::Base.new.expire_fragment("list_of_beer_items_14")
 ActionController::Base.new.expire_fragment("bar_details_14")
