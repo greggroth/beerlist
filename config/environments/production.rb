@@ -54,7 +54,7 @@ Beerlist::Application.configure do
   
   ActionMailer::Base.smtp_settings = {
     :user_name => "greggroth",
-    :password => "on750273",
+    :password => ENV['MAIL_PASSWORD'],
     :domain => "atlbeerlist.com",
     :address => "smtp.sendgrid.net",
     :port => 587,
